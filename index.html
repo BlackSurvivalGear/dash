@@ -28,8 +28,8 @@ GLOBAL THREAT LEVEL
 
 </header>
 
-<div class="ticker" id="ticker">
-Loading intelligence feed...
+<div class="ticker">
+<span id="tickerText">Loading global headlines...</span>
 </div>
 
 <nav>
@@ -43,7 +43,7 @@ Loading intelligence feed...
 <h2>Welcome to BSG Global Strategic Awareness</h2>
 
 <p>
-This dashboard provides open-source intelligence monitoring tools for global strategic awareness.
+This dashboard provides open-source intelligence monitoring tools for global strategic awareness including conflict monitoring, aircraft tracking, maritime traffic, satellite fire detection, and global markets.
 </p>
 
 </section>
@@ -51,7 +51,9 @@ This dashboard provides open-source intelligence monitoring tools for global str
 <section id="news" class="tab">
 
 <div id="newsFeed" class="newsGrid">
+
 Loading intelligence feeds...
+
 </div>
 
 </section>
@@ -91,6 +93,7 @@ Loading intelligence feeds...
 <div id="market1" class="marketPanel active">
 
 <div class="tradingview-widget-container">
+
 <div class="tradingview-widget-container__widget"></div>
 
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
@@ -109,6 +112,7 @@ Loading intelligence feeds...
 <div id="market2" class="marketPanel">
 
 <div class="tradingview-widget-container">
+
 <div class="tradingview-widget-container__widget"></div>
 
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
@@ -127,6 +131,7 @@ Loading intelligence feeds...
 <div id="market3" class="marketPanel">
 
 <div class="tradingview-widget-container">
+
 <div class="tradingview-widget-container__widget"></div>
 
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
@@ -144,6 +149,7 @@ Loading intelligence feeds...
 <div id="market4" class="marketPanel">
 
 <div class="tradingview-widget-container">
+
 <div class="tradingview-widget-container__widget"></div>
 
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
@@ -202,11 +208,12 @@ Loading intelligence feeds...
 </section>
 
 <footer>
+
 BlackSurvivalGear.com
+
 </footer>
 
 <script>
-
 
 function showTab(id){
 
@@ -235,6 +242,8 @@ event.target.classList.add("active");
 }
 
 
+
+/* NEWS FEEDS */
 
 async function loadNews(){
 
@@ -269,9 +278,11 @@ try{
 const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url);
 
 const res=await fetch(proxy);
+
 const xml=await res.text();
 
 const parser=new DOMParser();
+
 const data=parser.parseFromString(xml,"text/xml");
 
 const items=data.querySelectorAll("item");
@@ -281,16 +292,30 @@ items.forEach((item,i)=>{
 if(i>4)return;
 
 const title=item.querySelector("title")?.textContent;
+
 const link=item.querySelector("link")?.textContent;
 
 let img="";
 
+/* media tag */
 const media=item.querySelector("media\\:content");
-
 if(media) img=media.getAttribute("url");
 
+/* enclosure */
 if(!img){
-img="https://via.placeholder.com/400x200/071e16/c6a55a?text=News";
+const enclosure=item.querySelector("enclosure");
+if(enclosure) img=enclosure.getAttribute("url");
+}
+
+/* description */
+if(!img){
+const desc=item.querySelector("description")?.textContent;
+const match=desc?.match(/<img.*?src="(.*?)"/);
+if(match) img=match[1];
+}
+
+if(!img){
+img="https://picsum.photos/400/200";
 }
 
 html+=`
@@ -321,7 +346,7 @@ ${feed.name}
 
 }catch(e){
 
-console.log("Feed failed:",feed.name);
+console.log("feed error");
 
 }
 
@@ -333,14 +358,18 @@ document.getElementById("newsFeed").innerHTML=html;
 
 
 
+/* NEWS TICKER */
+
 async function ticker(){
 
 const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
 
 const res=await fetch(proxy);
+
 const xml=await res.text();
 
 const parser=new DOMParser();
+
 const data=parser.parseFromString(xml,"text/xml");
 
 const items=data.querySelectorAll("item");
@@ -348,20 +377,24 @@ const items=data.querySelectorAll("item");
 let text="";
 
 items.forEach((item,i)=>{
-if(i<8) text+=item.querySelector("title").textContent+" ◆ ";
-});
 
-document.getElementById("ticker").innerText=text;
+if(i<12){
+
+text+=item.querySelector("title").textContent+" ◆ ";
 
 }
 
+});
+
+document.getElementById("tickerText").innerText=text;
+
+}
 
 
 loadNews();
 ticker();
 
 setInterval(loadNews,300000);
-
 
 </script>
 
