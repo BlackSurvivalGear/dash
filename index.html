@@ -21,19 +21,18 @@
 
 <h1>BSG Global Strategic Awareness</h1>
 
-<div class="threat">
+<div class="threatPanel">
 
 <div class="threatTitle">
-GLOBAL THREAT LEVEL
-<span class="level">ELEVATED</span>
+
+GLOBAL THREAT LEVEL <span class="threatCurrent">ELEVATED</span>
+
 </div>
 
-<div class="threatIndex">
-NORMAL<br>
-GUARDED<br>
-ELEVATED<br>
-HIGH<br>
-CRITICAL
+<div class="threatScale">
+
+<span>NORMAL</span> <span>GUARDED</span> <span class="active">ELEVATED</span> <span>HIGH</span> <span>CRITICAL</span>
+
 </div>
 
 </div>
@@ -41,7 +40,9 @@ CRITICAL
 </header>
 
 <div class="ticker">
-<span id="ticker"></span>
+
+<span id="ticker">Loading global headlines...</span>
+
 </div>
 
 <nav>
@@ -56,11 +57,11 @@ CRITICAL
 
 <button onclick="showTab('marine')">Marine Watch</button>
 
-<button onclick="showTab('fire')">Fire Monitor</button>
-
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 
 <button onclick="showTab('bases')">Military Bases</button>
+
+<button onclick="showTab('fire')">Fire Monitor</button>
 
 <button onclick="showTab('markets')">Markets</button>
 
@@ -80,7 +81,7 @@ Multi-domain monitoring console covering:
 
 Global conflicts
 Airspace activity
-Naval shipping
+Maritime traffic
 Cyber warfare
 Wildfires
 Military installations
@@ -113,14 +114,6 @@ Military installations
 
 </section>
 
-<section id="fire" class="tab">
-
-<h2>Global Wildfire Monitor</h2>
-
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
-
-</section>
-
 <section id="cyber" class="tab">
 
 <h2>Global Cyber Attack Map</h2>
@@ -134,6 +127,14 @@ Military installations
 <h2>Global Military Installations</h2>
 
 <iframe src="https://umap.openstreetmap.fr/en/map/military-bases-around-the-world_510207"></iframe>
+
+</section>
+
+<section id="fire" class="tab">
+
+<h2>Global Wildfire Monitor</h2>
+
+<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
 
 </section>
 
@@ -234,6 +235,7 @@ card.innerHTML=`
 <a href="${article.link}" target="_blank">Read report</a>
 
 </div>
+
 `
 
 container.appendChild(card)
