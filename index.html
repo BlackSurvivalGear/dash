@@ -15,7 +15,7 @@
 
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- ===== HEADER WITH GLOBAL THREAT INDICATOR ===== -->
 
 <header>
 
@@ -23,11 +23,13 @@
 
 <h1>BSG Global Strategic Awareness</h1>
 
-<div class="threat">
+<div class="threatBox">
 
 GLOBAL THREAT LEVEL
 
-<span class="level">ELEVATED</span>
+<span id="threatLevel" class="threatLevel elevated">
+ELEVATED
+</span>
 
 </div>
 
@@ -53,9 +55,13 @@ GLOBAL THREAT LEVEL
 
 <button onclick="showTab('air')">Aircraft Watch</button>
 
+<button onclick="showTab('alerts')">Missile Alerts</button>
+
 <button onclick="showTab('marine')">Marine Watch</button>
 
 <button onclick="showTab('fire')">Fire Monitor</button>
+
+<button onclick="showTab('cyber')">Cyber Attacks</button>
 
 <button onclick="showTab('markets')">Markets</button>
 
@@ -73,7 +79,7 @@ GLOBAL THREAT LEVEL
 
 <p>
 
-This dashboard provides open-source intelligence monitoring including conflict tracking, military aircraft activity, maritime shipping routes, satellite fire detection, and global financial markets.
+Strategic OSINT dashboard monitoring conflicts, military aircraft activity, maritime shipping routes, satellite fire detection, cyber attacks, and global markets.
 
 </p>
 
@@ -107,6 +113,16 @@ Loading intelligence feeds...
 
 </section>
 
+<!-- ===== MISSILE / AIRSPACE ALERT TAB ===== -->
+
+<section id="alerts" class="tab">
+
+<h2>Missile Launch & Airspace Activity</h2>
+
+<iframe src="https://globe.adsbexchange.com/?military=1&zoom=2"></iframe>
+
+</section>
+
 <!-- ===== MARINE WATCH TAB ===== -->
 
 <section id="marine" class="tab">
@@ -120,6 +136,16 @@ Loading intelligence feeds...
 <section id="fire" class="tab">
 
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
+
+</section>
+
+<!-- ===== CYBER ATTACK MAP TAB ===== -->
+
+<section id="cyber" class="tab">
+
+<h2>Global Cyber Attack Map</h2>
+
+<iframe src="https://cybermap.kaspersky.com"></iframe>
 
 </section>
 
@@ -143,49 +169,25 @@ Loading intelligence feeds...
 
 <div id="market1" class="marketPanel active">
 
-<div class="tradingview-widget-container">
-
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
-
-</div>
+<iframe src="https://s.tradingview.com/embed-widget/market-quotes/"></iframe>
 
 </div>
 
 <div id="market2" class="marketPanel">
 
-<div class="tradingview-widget-container">
-
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async></script>
-
-</div>
+<iframe src="https://s.tradingview.com/embed-widget/crypto-coins-heatmap/"></iframe>
 
 </div>
 
 <div id="market3" class="marketPanel">
 
-<div class="tradingview-widget-container">
-
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
-
-</div>
+<iframe src="https://s.tradingview.com/embed-widget/advanced-chart/"></iframe>
 
 </div>
 
 <div id="market4" class="marketPanel">
 
-<div class="tradingview-widget-container">
-
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async></script>
-
-</div>
+<iframe src="https://s.tradingview.com/embed-widget/forex-cross-rates/"></iframe>
 
 </div>
 
@@ -199,7 +201,7 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- ===== CURRENCY TAB BLOCK ===== -->
+<!-- ===== CURRENCY TAB ===== -->
 
 <section id="currency" class="tab">
 
@@ -285,297 +287,18 @@ BlackSurvivalGear.com
 
 function showTab(id){
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 
-document.getElementById(id).classList.add("active");
+document.getElementById(id).classList.add("active")
 
-document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
-event.target.classList.add("active");
-
-}
-
-
-/* ===== MARKET SUB-TABS ===== */
-
-function showMarket(id){
-
-document.querySelectorAll(".marketPanel").forEach(p=>p.classList.remove("active"));
-
-document.getElementById(id).classList.add("active");
-
-document.querySelectorAll(".marketTabs button").forEach(b=>b.classList.remove("active"));
-
-event.target.classList.add("active");
+event.target.classList.add("active")
 
 }
 
 
-/* ===== NEWS FEEDS ===== */
-
-async function loadNews(){
-
-const feeds=[
-
-{name:"BBC",logo:"https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif",url:"https://feeds.bbci.co.uk/news/world/rss.xml"},
-
-{name:"Reuters",logo:"https://www.reuters.com/resources_v2/images/favicon/favicon-96x96.png",url:"https://www.reutersagency.com/feed/?best-topics=world&post_type=best"},
-
-{name:"Al Jazeera",logo:"https://www.aljazeera.com/favicon.ico",url:"https://www.aljazeera.com/xml/rss/all.xml"}
-
-];
-
-let html="";
-
-for(const feed of feeds){
-
-try{
-
-const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url);
-
-const res=await fetch(proxy);
-
-const xml=await res.text();
-
-const parser=new DOMParser();
-
-const data=parser.parseFromString(xml,"text/xml");
-
-const items=data.querySelectorAll("item");
-
-items.forEach((item,i)=>{
-
-if(i>4)return;
-
-const title=item.querySelector("title")?.textContent;
-
-const link=item.querySelector("link")?.textContent;
-
-let img="";
-
-const media=item.querySelector("media\\:content");
-
-if(media) img=media.getAttribute("url");
-
-if(!img){
-
-const enclosure=item.querySelector("enclosure");
-
-if(enclosure) img=enclosure.getAttribute("url");
-
-}
-
-if(!img){
-
-img="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800";
-
-}
-
-html+=`
-
-<div class="newsCard">
-
-<img src="${img}">
-
-<div class="newsContent">
-
-<div class="newsSource">
-
-<img src="${feed.logo}">
-
-${feed.name}
-
-</div>
-
-<a class="newsTitle" href="${link}" target="_blank">${title}</a>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}catch(e){
-
-console.log("feed error");
-
-}
-
-}
-
-document.getElementById("newsFeed").innerHTML=html;
-
-}
-
-
-/* ===== NEWS TICKER ===== */
-
-async function ticker(){
-
-const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
-
-const res=await fetch(proxy);
-
-const xml=await res.text();
-
-const parser=new DOMParser();
-
-const data=parser.parseFromString(xml,"text/xml");
-
-const items=data.querySelectorAll("item");
-
-let text="";
-
-items.forEach((item,i)=>{
-
-if(i<10){
-
-text+=item.querySelector("title").textContent+" ◆ ";
-
-}
-
-});
-
-document.getElementById("tickerText").innerText=text;
-
-}
-
-
-/* ===== CURRENCY CONVERTER SCRIPT ===== */
-
-const fromCurrency=document.getElementById('from-currency');
-const toCurrency=document.getElementById('to-currency');
-const result=document.getElementById('result');
-const error=document.getElementById('error');
-
-const tableRates={
-GBP:document.getElementById('gbp-rate'),
-USD:document.getElementById('usd-rate'),
-CAD:document.getElementById('cad-rate'),
-EUR:document.getElementById('eur-rate'),
-RUB:document.getElementById('rub-rate'),
-CNY:document.getElementById('cny-rate')
-};
-
-const fixedCurrencies=[
-{code:'USD',country:'United States Dollar'},
-{code:'GBP',country:'United Kingdom Pound'},
-{code:'EUR',country:'Euro'},
-{code:'CAD',country:'Canadian Dollar'},
-{code:'RUB',country:'Russian Ruble'},
-{code:'CNY',country:'Chinese Yuan'}
-];
-
-const africanCurrencies=[
-
-{code:'NGN',country:'Nigeria'},
-{code:'KES',country:'Kenya'},
-{code:'GHS',country:'Ghana'},
-{code:'EGP',country:'Egypt'},
-{code:'MAD',country:'Morocco'},
-{code:'DZD',country:'Algeria'},
-{code:'TND',country:'Tunisia'},
-{code:'ETB',country:'Ethiopia'},
-{code:'TZS',country:'Tanzania'},
-{code:'UGX',country:'Uganda'}
-
-];
-
-function populateCurrencies(){
-
-const all=[...fixedCurrencies,...africanCurrencies];
-
-const options=all.map(c=>`<option value="${c.code}">${c.code} - ${c.country}</option>`).join('');
-
-fromCurrency.innerHTML=options;
-toCurrency.innerHTML=options;
-
-fromCurrency.value='USD';
-toCurrency.value='NGN';
-
-}
-
-async function fetchRates(base){
-
-const url=`https://api.exchangerate-api.com/v4/latest/${base}`;
-
-const response=await fetch(url);
-
-const data=await response.json();
-
-return data.rates;
-
-}
-
-async function convertCurrency(){
-
-const amount=parseFloat(document.getElementById('amount').value);
-
-const from=fromCurrency.value;
-
-const to=toCurrency.value;
-
-if(isNaN(amount)||amount<=0){
-
-error.textContent='Please enter a valid amount';
-
-result.textContent='';
-
-return;
-
-}
-
-error.textContent='';
-
-const rates=await fetchRates(from);
-
-const rate=rates[to];
-
-if(rate){
-
-const converted=(amount*rate).toFixed(2);
-
-result.textContent=`${amount} ${from} = ${converted} ${to}`;
-
-}
-
-}
-
-async function updateConversionTable(){
-
-const rates=await fetchRates('NGN');
-
-for(const [currency,element] of Object.entries(tableRates)){
-
-const rate=rates[currency];
-
-if(rate){
-
-element.textContent=(1/rate).toFixed(2);
-
-}
-
-}
-
-}
-
-
-populateCurrencies();
-
-updateConversionTable();
-
-loadNews();
-
-ticker();
-
-setInterval(loadNews,300000);
-
-</script>
-
-</body>
-</html>
+/* ===== THREAT LEVEL CONTROL ===== */
 
 function setThreat(level){
 
@@ -587,6 +310,9 @@ el.innerText=level.toUpperCase()
 
 }
 
-/* Example trigger */
-
 setThreat("elevated")
+
+</script>
+
+</body>
+</html>
