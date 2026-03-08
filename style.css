@@ -4,8 +4,6 @@ margin:0;
 font-family:Segoe UI;
 color:#e2f0e9;
 
-/* BSG watermark */
-
 background:#041f18 url("bsg.jpg") no-repeat center;
 background-size:55%;
 background-attachment:fixed;
@@ -153,7 +151,7 @@ color:#c6a55a;
 font-size:12px;
 }
 
-/* CHOKEPOINT OVERLAY */
+/* NAVAL CHOKEPOINTS */
 
 .mapWrapper{
 position:relative;
