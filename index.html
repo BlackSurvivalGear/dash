@@ -11,9 +11,7 @@
 
 <link rel="stylesheet" href="style.css">
 
-<link rel="icon" href="BSG2.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 </head>
 
@@ -27,7 +25,9 @@
 
 <div class="threatPanel">
 
-<div class="threatLabel">GLOBAL THREAT LEVEL</div>
+<div class="threatLabel">
+GLOBAL THREAT LEVEL
+</div>
 
 <div class="threatScale">
 
@@ -45,11 +45,11 @@
 
 <nav>
 
-<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('cyber')">Cyber Attacks</button> <button onclick="showTab('bases')">Military Bases</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('live')">Live News</button> <button onclick="showTab('osint')">OSINT Monitor</button> <button onclick="showTab('command')">Command Overview</button>
+<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('cyber')">Cyber Attacks</button> <button onclick="showTab('bases')">Military Bases</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('osint')">OSINT Monitor</button> <button onclick="showTab('command')">Command Overview</button>
 
 </nav>
 
-<section id="home" class="tab active home-bg">
+<section id="home" class="tab active">
 
 <h2>Strategic Awareness</h2>
 
@@ -59,6 +59,7 @@ Preparedness is no longer optional.
 
 <p>
 Across the modern world we are witnessing increasing geopolitical tension, economic instability, and expanding regional conflicts.
+Situational awareness is now a necessity rather than a luxury.
 </p>
 
 <p>
@@ -128,39 +129,9 @@ src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map"></iframe>
 </section>
 
-<section id="live" class="tab">
-
-<h2>Global Live News Monitor</h2>
-
-<div class="tvWall">
-
-<div class="tvPanel">
-<div class="tvLabel">Sky News</div>
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-</div>
-
-<div class="tvPanel">
-<div class="tvLabel">Al Jazeera</div>
-<iframe src="https://www.youtube.com/embed/-upyPouRrB8"></iframe>
-</div>
-
-<div class="tvPanel">
-<div class="tvLabel">RT News</div>
-<iframe src="https://rumble.com/embed/v35waq4/?pub=4"></iframe>
-</div>
-
-<div class="tvPanel">
-<div class="tvLabel">WION</div>
-<iframe src="https://www.youtube.com/embed/wJ3OjqjDq4k"></iframe>
-</div>
-
-</div>
-
-</section>
-
 <section id="osint" class="tab">
 
-<h2>Multi-OSINT Social Monitor</h2>
+<h2>Global OSINT Social Monitor</h2>
 
 <div class="grid">
 
@@ -194,7 +165,151 @@ BlackSurvivalGear.com
 
 </footer>
 
-<script src="app.js"></script>
+<script>
+
+function showTab(id){
+
+document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"))
+document.getElementById(id).classList.add("active")
+
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+event.target.classList.add("active")
+
+}
+
+
+async function openSource(evt,source){
+
+document.querySelectorAll(".sourceTab").forEach(btn=>btn.classList.remove("active"))
+evt.currentTarget.classList.add("active")
+
+const feeds={
+
+bbc:"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
+
+cnn:"https://api.rss2json.com/v1/api.json?rss_url=http://rss.cnn.com/rss/edition_world.rss",
+
+sky:"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.skynews.com/feeds/rss/world.xml",
+
+aljazeera:"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
+
+reuters:"https://api.rss2json.com/v1/api.json?rss_url=https://www.reuters.com/world/rss",
+
+rt:"https://api.rss2json.com/v1/api.json?rss_url=https://www.rt.com/rss/news/",
+
+tass:"https://api.rss2json.com/v1/api.json?rss_url=https://tass.com/rss/v2.xml",
+
+france24:"https://api.rss2json.com/v1/api.json?rss_url=https://www.france24.com/en/rss",
+
+wion:"https://api.rss2json.com/v1/api.json?rss_url=https://www.wionews.com/rss/world-news",
+
+africa:"https://api.rss2json.com/v1/api.json?rss_url=https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf",
+
+sputnik:"https://api.rss2json.com/v1/api.json?rss_url=https://sputnikglobe.com/export/rss2/archive/index.xml"
+
+}
+
+const grid=document.getElementById("newsGrid")
+grid.innerHTML="Loading..."
+
+try{
+
+const res=await fetch(feeds[source])
+const data=await res.json()
+
+grid.innerHTML=""
+
+data.items.slice(0,10).forEach(article=>{
+
+const card=document.createElement("div")
+card.className="newsCard"
+
+card.innerHTML=`
+
+<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
+
+<div class="newsText">
+
+<span class="source">${source.toUpperCase()}</span>
+
+<h3>${article.title}</h3>
+
+<a href="${article.link}" target="_blank">Read report</a>
+
+</div>
+
+`
+
+grid.appendChild(card)
+
+})
+
+}catch{
+
+grid.innerHTML="Source temporarily unavailable"
+
+}
+
+}
+
+
+
+async function loadTicker(){
+
+const feeds=[
+"https://feeds.bbci.co.uk/news/world/rss.xml",
+"https://www.aljazeera.com/xml/rss/all.xml",
+"https://www.rt.com/rss/news/"
+]
+
+let headlines=[]
+
+for(const url of feeds){
+
+try{
+
+const res=await fetch("https://api.rss2json.com/v1/api.json?rss_url="+url)
+const data=await res.json()
+
+data.items.slice(0,5).forEach(a=>headlines.push(a.title))
+
+}catch{}
+
+}
+
+if(headlines.length>0){
+document.getElementById("ticker").textContent=headlines.join(" ◆ ")
+}
+
+}
+
+setInterval(loadTicker,60000)
+loadTicker()
+
+
+function focusChokepoint(point){
+
+const map=document.getElementById("marineMap")
+
+const urls={
+
+global:"https://www.marinetraffic.com/en/ais/embed/zoom:2",
+
+suez:"https://www.marinetraffic.com/en/ais/embed/zoom:8/lat:30.1/lon:32.6",
+
+hormuz:"https://www.marinetraffic.com/en/ais/embed/zoom:7/lat:26.6/lon:56.3",
+
+bab:"https://www.marinetraffic.com/en/ais/embed/zoom:7/lat:12.7/lon:43.3",
+
+malacca:"https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:3.0/lon:101.0"
+
+}
+
+map.src=urls[point]
+
+}
+
+</script>
 
 </body>
 </html>
