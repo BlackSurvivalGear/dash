@@ -15,7 +15,7 @@
 
 <body>
 
-<!-- ===== HEADER WITH GLOBAL THREAT INDICATOR ===== -->
+<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -24,18 +24,13 @@
 <h1>BSG Global Strategic Awareness</h1>
 
 <div class="threatBox">
-
 GLOBAL THREAT LEVEL
-
-<span id="threatLevel" class="threatLevel elevated">
-ELEVATED
-</span>
-
+<span id="threatLevel" class="threatLevel elevated">ELEVATED</span>
 </div>
 
 </header>
 
-<!-- ===== NEWS TICKER ===== -->
+<!-- ================= NEWS TICKER ================= -->
 
 <div class="ticker">
 
@@ -43,7 +38,7 @@ ELEVATED
 
 </div>
 
-<!-- ===== MAIN NAVIGATION ===== -->
+<!-- ================= NAVIGATION ================= -->
 
 <nav>
 
@@ -63,6 +58,8 @@ ELEVATED
 
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 
+<button onclick="showTab('bases')">Military Bases</button>
+
 <button onclick="showTab('markets')">Markets</button>
 
 <button onclick="showTab('currency')">Currency</button>
@@ -71,33 +68,37 @@ ELEVATED
 
 </nav>
 
-<!-- ===== HOME TAB ===== -->
+<!-- ================= HOME TAB ================= -->
 
 <section id="home" class="tab active">
 
-<h2>Welcome to BSG Global Strategic Awareness</h2>
+<h2>Welcome</h2>
 
 <p>
 
-Strategic OSINT dashboard monitoring conflicts, military aircraft activity, maritime shipping routes, satellite fire detection, cyber attacks, and global markets.
+BSG Global Strategic Awareness monitors real-time global security indicators including:
+
+• Conflicts
+• Military aircraft
+• Naval traffic
+• Cyber attacks
+• Satellite fire detection
+• Markets
+• Military installations
 
 </p>
 
 </section>
 
-<!-- ===== CONFLICT NEWS TAB ===== -->
+<!-- ================= CONFLICT NEWS ================= -->
 
 <section id="news" class="tab">
 
-<div id="newsFeed" class="newsGrid">
-
-Loading intelligence feeds...
-
-</div>
+<div id="newsFeed" class="newsGrid"></div>
 
 </section>
 
-<!-- ===== CONFLICT MAP TAB ===== -->
+<!-- ================= CONFLICT MAP ================= -->
 
 <section id="map" class="tab">
 
@@ -105,7 +106,7 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- ===== AIRCRAFT WATCH TAB ===== -->
+<!-- ================= AIRCRAFT WATCH ================= -->
 
 <section id="air" class="tab">
 
@@ -113,7 +114,7 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- ===== MISSILE / AIRSPACE ALERT TAB ===== -->
+<!-- ================= MISSILE ALERTS ================= -->
 
 <section id="alerts" class="tab">
 
@@ -123,7 +124,7 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- ===== MARINE WATCH TAB ===== -->
+<!-- ================= MARINE WATCH ================= -->
 
 <section id="marine" class="tab">
 
@@ -131,77 +132,83 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- ===== FIRE MONITOR TAB ===== -->
+<!-- ================= FIRE MONITOR ================= -->
 
 <section id="fire" class="tab">
 
-<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
+<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs"></iframe>
 
 </section>
 
-<!-- ===== CYBER ATTACK MAP TAB ===== -->
+<!-- ================= CYBER ATTACK MAP ================= -->
 
 <section id="cyber" class="tab">
 
 <h2>Global Cyber Attack Map</h2>
 
-<iframe src="https://cybermap.kaspersky.com"></iframe>
+<iframe src="https://threatmap.checkpoint.com/"></iframe>
 
 </section>
 
-<!-- ===== MARKETS TAB ===== -->
+<!-- ================= GLOBAL MILITARY BASE MAP ================= -->
+
+<section id="bases" class="tab">
+
+<h2>Global Military Installations</h2>
+
+<iframe src="https://storymaps.arcgis.com/stories/7f6bb3c7cb474ee7a0c9c6cfa11d63c1"></iframe>
+
+</section>
+
+<!-- ================= MARKETS ================= -->
 
 <section id="markets" class="tab">
 
 <div class="marketTabs">
 
-<button onclick="showMarket('market1')" class="active">Market Overview</button>
-
-<button onclick="showMarket('market2')">Crypto Heatmap</button>
-
-<button onclick="showMarket('market3')">BTC Chart</button>
-
-<button onclick="showMarket('market4')">Forex</button>
-
-<button onclick="showMarket('market5')">Economic Map</button>
+<button onclick="showMarket('market1')" class="active">Market Overview</button> <button onclick="showMarket('market2')">Crypto Heatmap</button> <button onclick="showMarket('market3')">BTC Chart</button> <button onclick="showMarket('market4')">Forex</button>
 
 </div>
 
 <div id="market1" class="marketPanel active">
 
-<iframe src="https://s.tradingview.com/embed-widget/market-quotes/"></iframe>
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
+</div>
 
 </div>
 
 <div id="market2" class="marketPanel">
 
-<iframe src="https://s.tradingview.com/embed-widget/crypto-coins-heatmap/"></iframe>
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async></script>
+</div>
 
 </div>
 
 <div id="market3" class="marketPanel">
 
-<iframe src="https://s.tradingview.com/embed-widget/advanced-chart/"></iframe>
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
+</div>
 
 </div>
 
 <div id="market4" class="marketPanel">
 
-<iframe src="https://s.tradingview.com/embed-widget/forex-cross-rates/"></iframe>
-
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async></script>
 </div>
-
-<div id="market5" class="marketPanel">
-
-<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-economic-map.js"></script>
-
-<tv-economic-map region="africa"></tv-economic-map>
 
 </div>
 
 </section>
 
-<!-- ===== CURRENCY TAB ===== -->
+<!-- ================= CURRENCY TAB ================= -->
 
 <section id="currency" class="tab">
 
@@ -209,47 +216,15 @@ Loading intelligence feeds...
 
 <div class="converter">
 
-<h1>African Currency Converter</h1>
+<h2>African Currency Converter</h2>
 
 <input type="number" id="amount" placeholder="Enter amount">
 
-<select id="from-currency"></select>
-
-<select id="to-currency"></select>
+<select id="from-currency"></select> <select id="to-currency"></select>
 
 <button onclick="convertCurrency()">Convert</button>
 
-<div class="result" id="result"></div>
-
-<div class="error" id="error"></div>
-
-</div>
-
-<div class="table-container">
-
-<h2>NGN Exchange Rates</h2>
-
-<table class="conversion-table">
-
-<thead>
-<tr>
-<th>Currency</th>
-<th>NGN Rate</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr><td>GBP</td><td id="gbp-rate">-</td></tr>
-<tr><td>USD</td><td id="usd-rate">-</td></tr>
-<tr><td>CAD</td><td id="cad-rate">-</td></tr>
-<tr><td>EUR</td><td id="eur-rate">-</td></tr>
-<tr><td>RUB</td><td id="rub-rate">-</td></tr>
-<tr><td>CNY</td><td id="cny-rate">-</td></tr>
-
-</tbody>
-
-</table>
+<div id="result"></div>
 
 </div>
 
@@ -257,18 +232,15 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- ===== COMMAND OVERVIEW TAB ===== -->
+<!-- ================= COMMAND OVERVIEW ================= -->
 
 <section id="overview" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
+<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs"></iframe>
 
 </div>
@@ -283,13 +255,11 @@ BlackSurvivalGear.com
 
 <script>
 
-/* ===== TAB CONTROL ===== */
-
-function showTab(id){
+function showTab(tab){
 
 document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 
-document.getElementById(id).classList.add("active")
+document.getElementById(tab).classList.add("active")
 
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
@@ -298,19 +268,59 @@ event.target.classList.add("active")
 }
 
 
-/* ===== THREAT LEVEL CONTROL ===== */
+/* ================= NEWS FEEDS ================= */
 
-function setThreat(level){
+async function loadNews(){
 
-const el=document.getElementById("threatLevel")
+const feeds=[
+"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world"
+]
 
-el.className="threatLevel "+level
+const container=document.getElementById("newsFeed")
+container.innerHTML=""
 
-el.innerText=level.toUpperCase()
+for(const url of feeds){
+
+try{
+
+const response=await fetch(url)
+const data=await response.json()
+
+data.items.slice(0,6).forEach(article=>{
+
+const card=document.createElement("div")
+card.className="newsCard"
+
+card.innerHTML=`
+
+<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
+
+<div class="newsContent">
+
+<div class="newsSource">${data.feed.title}</div>
+
+<h3>${article.title}</h3>
+
+<a href="${article.link}" target="_blank">Read report</a>
+
+</div>
+`
+
+container.appendChild(card)
+
+})
+
+}catch(e){}
 
 }
 
-setThreat("elevated")
+}
+
+loadNews()
+
+setInterval(loadNews,300000)
 
 </script>
 
