@@ -1,10 +1,8 @@
 body{
-
 margin:0;
 font-family:'Rajdhani',sans-serif;
 color:#e2f0e9;
 background:#041f18;
-
 }
 
 /* WATERMARK */
@@ -21,18 +19,16 @@ width:100%;
 height:100%;
 
 background:url("bsg.jpg") center center no-repeat;
-background-size:950px;
+background-size:900px;
 
-opacity:0.35;
-
-filter:brightness(1.4);
+opacity:0.32;
 
 pointer-events:none;
 z-index:-2;
 
 }
 
-/* RADAR ANIMATION */
+/* RADAR SWEEP */
 
 body::after{
 
@@ -60,7 +56,7 @@ z-index:-1;
 
 @keyframes radarPulse{
 
-0%{transform:translate(-50%,-50%) scale(0.8)}
+0%{transform:translate(-50%,-50%) scale(0.9)}
 100%{transform:translate(-50%,-50%) scale(1.3)}
 
 }
@@ -70,7 +66,6 @@ z-index:-1;
 body{
 
 background-image:
-
 linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
 linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
 
@@ -94,25 +89,34 @@ border-bottom:2px solid #c6a55a;
 }
 
 header h1{
-
 color:#718754;
 font-weight:600;
-
 }
+
+/* LOGO GLOW */
 
 .logo{
 
 height:80px;
 margin-right:20px;
 
-animation:radarSpin 12s linear infinite;
+animation:logoGlow 4s ease-in-out infinite;
 
 }
 
-@keyframes radarSpin{
+@keyframes logoGlow{
 
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
+0%{
+filter:drop-shadow(0 0 4px rgba(198,165,90,0.4));
+}
+
+50%{
+filter:drop-shadow(0 0 12px rgba(198,165,90,0.7));
+}
+
+100%{
+filter:drop-shadow(0 0 4px rgba(198,165,90,0.4));
+}
 
 }
 
@@ -193,7 +197,6 @@ animation:scroll 80s linear infinite;
 nav{
 
 display:flex;
-
 background:#0b3a2e;
 
 }
@@ -312,6 +315,8 @@ color:#041f18;
 .newsSources{
 
 display:flex;
+flex-wrap:wrap;
+
 gap:10px;
 margin-bottom:15px;
 
@@ -338,7 +343,7 @@ color:#041f18;
 
 }
 
-/* MARINE SUBNAV */
+/* SUBNAV */
 
 .subnav{
 
@@ -406,5 +411,21 @@ text-align:center;
 padding:15px;
 
 border-top:1px solid #1b4d3e;
+
+}
+
+.footerLink{
+
+color:#718754;
+
+text-decoration:none;
+
+font-weight:600;
+
+}
+
+.footerLink:hover{
+
+color:#c6a55a;
 
 }
