@@ -23,37 +23,37 @@ height:100%;
 background:url("bsg.jpg") center center no-repeat;
 background-size:950px;
 
-opacity:0.35;
+opacity:0.24;
 
-filter:brightness(1.4);
+filter:grayscale(100%) brightness(1.35);
 
 pointer-events:none;
 z-index:-2;
 
 }
 
-/* RADAR ANIMATION */
+/* RADAR RINGS */
 
 body::after{
 
 content:"";
 position:fixed;
-
 top:50%;
 left:50%;
 
 width:900px;
 height:900px;
 
-border-radius:50%;
-
 transform:translate(-50%,-50%);
+
+border-radius:50%;
 
 background:
 radial-gradient(circle,rgba(198,165,90,0.15) 2px,transparent 2px);
 
 animation:radarPulse 8s linear infinite;
 
+pointer-events:none;
 z-index:-1;
 
 }
@@ -65,7 +65,7 @@ z-index:-1;
 
 }
 
-/* GRID */
+/* GRID OVERLAY */
 
 body{
 
@@ -87,16 +87,9 @@ align-items:center;
 
 padding:15px;
 
-background:rgba(6,35,28,0.85);
+background:rgba(6,35,28,0.75);
 
 border-bottom:2px solid #c6a55a;
-
-}
-
-header h1{
-
-color:#718754;
-font-weight:600;
 
 }
 
@@ -104,43 +97,52 @@ font-weight:600;
 
 height:80px;
 margin-right:20px;
-
-animation:radarSpin 12s linear infinite;
-
-}
-
-@keyframes radarSpin{
-
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
+cursor:pointer;
 
 }
 
-/* THREAT LEVEL */
+header h1{
+
+color:#718754;
+font-weight:600;
+letter-spacing:1px;
+
+}
+
+/* THREAT PANEL */
 
 .threatPanel{
+
 margin-left:auto;
 text-align:right;
+
 }
 
 .threatLabel{
+
 color:#718754;
 font-weight:600;
 margin-bottom:6px;
+
 }
 
 .threatScale{
+
 display:flex;
 gap:8px;
+
 }
 
 .threatScale span{
 
 padding:4px 10px;
+
 border:1px solid rgba(255,255,255,0.25);
 border-radius:4px;
 
 opacity:0.35;
+
+font-size:12px;
 
 }
 
@@ -150,7 +152,7 @@ opacity:1;
 
 border:1px solid #c6a55a;
 
-box-shadow:0 0 8px rgba(198,165,90,0.4);
+box-shadow:0 0 8px rgba(198,165,90,0.35);
 
 }
 
@@ -158,14 +160,17 @@ box-shadow:0 0 8px rgba(198,165,90,0.4);
 
 .ticker{
 
-background:#232D12;
+background:transparent;
 
 color:#e2f0e9;
 
 overflow:hidden;
 white-space:nowrap;
 
-padding:10px;
+padding:10px 0;
+
+border-top:1px solid rgba(198,165,90,0.6);
+border-bottom:1px solid rgba(198,165,90,0.6);
 
 font-weight:600;
 
@@ -174,9 +179,7 @@ font-weight:600;
 .ticker span{
 
 display:inline-block;
-
 padding-left:100%;
-
 animation:scroll 80s linear infinite;
 
 }
@@ -193,7 +196,6 @@ animation:scroll 80s linear infinite;
 nav{
 
 display:flex;
-
 background:#0b3a2e;
 
 }
@@ -214,7 +216,7 @@ nav button:hover
 
 nav button.active{
 
-background:#718754;
+background:#c6a55a;
 color:#041f18;
 
 }
@@ -227,9 +229,11 @@ display:none;
 
 padding:25px;
 
-background:rgba(8,40,32,0.45);
+background:rgba(8,40,32,0.40);
 
 backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.08);
 
 border-radius:8px;
 
@@ -246,18 +250,21 @@ display:block;
 .newsGrid{
 
 display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 
 gap:20px;
 
 }
 
-/* NEWS CARD */
+/* NEWS CARDS */
 
 .newsCard{
 
-background:rgba(10,45,35,0.35);
+background:rgba(10,45,35,0.38);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.08);
 
 border-radius:8px;
 
@@ -269,9 +276,10 @@ transition:all 0.25s ease;
 
 .newsCard:hover{
 
-transform:translateY(-3px);
+transform:translateY(-2px);
 
 box-shadow:
+0 8px 35px rgba(0,0,0,0.45),
 0 0 25px rgba(198,165,90,0.25);
 
 }
@@ -295,6 +303,9 @@ padding:12px;
 display:inline-block;
 
 font-size:11px;
+font-weight:700;
+
+letter-spacing:0.5px;
 
 padding:3px 8px;
 
@@ -307,58 +318,25 @@ color:#041f18;
 
 }
 
-/* SOURCE TABS */
+/* BREAKING ALERT */
 
-.newsSources{
+.breaking{
 
-display:flex;
-gap:10px;
-margin-bottom:15px;
+border:1px solid rgba(255,70,70,0.6);
 
-}
+box-shadow:
+0 0 10px rgba(255,0,0,0.25),
+0 0 25px rgba(255,0,0,0.1);
 
-.sourceTab{
-
-padding:6px 12px;
-
-background:#0b3a2e;
-
-border:1px solid rgba(255,255,255,0.2);
-
-color:#e2f0e9;
-
-cursor:pointer;
+animation:breakingPulse 2s infinite;
 
 }
 
-.sourceTab.active{
+@keyframes breakingPulse{
 
-background:#718754;
-color:#041f18;
-
-}
-
-/* MARINE SUBNAV */
-
-.subnav{
-
-display:flex;
-gap:10px;
-margin-bottom:15px;
-
-}
-
-.subnav button{
-
-padding:6px 10px;
-
-background:#0b3a2e;
-
-border:1px solid rgba(255,255,255,0.2);
-
-color:#e2f0e9;
-
-cursor:pointer;
+0%{box-shadow:0 0 5px rgba(255,0,0,0.3)}
+50%{box-shadow:0 0 18px rgba(255,0,0,0.6)}
+100%{box-shadow:0 0 5px rgba(255,0,0,0.3)}
 
 }
 
@@ -381,7 +359,6 @@ width:100%;
 height:100%;
 
 border:none;
-
 border-radius:6px;
 
 }
@@ -402,7 +379,6 @@ border:none;
 footer{
 
 text-align:center;
-
 padding:15px;
 
 border-top:1px solid #1b4d3e;
