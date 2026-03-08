@@ -63,8 +63,6 @@ height:84px;
 cursor:pointer;
 }
 
-/* THREAT */
-
 .threatBox{
 margin-left:auto;
 display:flex;
@@ -90,6 +88,9 @@ color:#071e16;
 font-weight:600;
 overflow:hidden;
 white-space:nowrap;
+display:flex;
+align-items:center;
+height:32px;
 }
 
 .ticker span{
@@ -176,107 +177,9 @@ border-radius:4px;
 margin-bottom:6px;
 }
 
-.thumb{
-width:80px;
-height:60px;
-object-fit:cover;
-border-radius:4px;
-}
-
 .meta{
 font-size:12px;
 color:#8fb9a6;
-}
-
-/* AIRCRAFT */
-
-.airControls{
-margin-bottom:10px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.airControls button{
-background:#0b2f22;
-border:1px solid var(--bsg-border);
-color:var(--bsg-text);
-padding:6px 12px;
-cursor:pointer;
-border-radius:4px;
-}
-
-.airControls button.active{
-background:var(--bsg-gold);
-color:#071e16;
-}
-
-/* MARINE */
-
-.marineControls{
-margin-bottom:10px;
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-}
-
-.marineControls button{
-background:#0b2f22;
-border:1px solid var(--bsg-border);
-color:var(--bsg-text);
-padding:6px 12px;
-cursor:pointer;
-border-radius:4px;
-}
-
-.marineControls button.active{
-background:var(--bsg-gold);
-color:#071e16;
-}
-
-/* MARKETS */
-
-.marketGrid{
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-template-rows:auto 1fr;
-gap:12px;
-height:90vh;
-}
-
-.marketPanel{
-background:rgba(7,25,18,0.9);
-border:1px solid var(--bsg-border);
-border-radius:6px;
-padding:15px;
-overflow:auto;
-}
-
-.marketPanel h3{
-color:var(--bsg-gold);
-}
-
-.cryptoTable{
-width:100%;
-border-collapse:collapse;
-}
-
-.cryptoTable td{
-padding:6px;
-border-bottom:1px solid var(--bsg-border);
-}
-
-.cryptoName{
-color:var(--bsg-gold);
-}
-
-.cryptoPrice{
-text-align:right;
-}
-
-.heatmapPanel{
-grid-column:1/3;
-height:100%;
 }
 
 /* COMMAND OVERVIEW */
@@ -285,8 +188,8 @@ height:100%;
 display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:10px;
-height:90vh;
+gap:8px;
+height:88vh;
 }
 
 .overviewPanel{
@@ -362,7 +265,7 @@ GLOBAL THREAT LEVEL
 
 <div class="tabs">
 
-<button class="active" onclick="showTab('home')">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('markets')">Markets</button> <button onclick="showTab('overview')">Command Overview</button>
+<button class="active" onclick="showTab('home')">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('overview')">Command Overview</button>
 
 </div>
 
@@ -375,11 +278,15 @@ GLOBAL THREAT LEVEL
 <h2>Welcome to BSG Global Strategic Awareness</h2>
 
 <p>
-This platform provides real-time open-source monitoring of global conflict activity, military aircraft movement, maritime shipping routes, satellite fire detections, and financial markets.
+This dashboard provides open-source intelligence monitoring tools for global strategic awareness.
 </p>
 
 <p>
-Use the tabs above to navigate between intelligence monitoring systems or open the Command Overview for a multi-sensor operational display.
+Use the navigation tabs to monitor conflict developments, military aircraft activity, maritime shipping routes, and satellite fire detections across the world.
+</p>
+
+<p>
+The Command Overview tab provides a multi-sensor operational display combining key monitoring feeds.
 </p>
 
 </div>
@@ -401,35 +308,13 @@ Use the tabs above to navigate between intelligence monitoring systems or open t
 <!-- AIR -->
 
 <div id="air" class="section">
-
-<div class="airControls">
-<button onclick="setAirFilter('military')" class="active">Military</button>
-<button onclick="setAirFilter('tankers')">Tankers</button>
-<button onclick="setAirFilter('surveillance')">AWACS</button>
-<button onclick="setAirFilter('all')">All</button>
-</div>
-
-<iframe id="airMap" src="https://globe.adsbexchange.com/?military=1"></iframe>
-
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 </div>
 
 <!-- MARINE -->
 
 <div id="marine" class="section">
-
-<div class="marineControls">
-<button onclick="setMarine('global')" class="active">Global</button>
-<button onclick="setMarine('hormuz')">Hormuz</button>
-<button onclick="setMarine('mandeb')">Bab-el-Mandeb</button>
-<button onclick="setMarine('suez')">Suez</button>
-<button onclick="setMarine('bosporus')">Bosporus</button>
-<button onclick="setMarine('malacca')">Malacca</button>
-</div>
-
-<iframe id="marineMap"
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4">
-</iframe>
-
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
 </div>
 
 <!-- FIRE -->
@@ -441,60 +326,6 @@ Satellite Fire Detection (NASA FIRMS)
 </h3>
 
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
-
-</div>
-
-<!-- MARKETS -->
-
-<div id="markets" class="section">
-
-<div class="marketGrid">
-
-<div class="marketPanel">
-
-<h3>Top Crypto (Binance)</h3>
-
-<table class="cryptoTable" id="cryptoTable">
-<tr><td>Loading market data...</td></tr>
-</table>
-
-</div>
-
-<div class="marketPanel">
-
-<h3>Commodities</h3>
-
-<div id="commodityPrices">
-Loading commodities...
-</div>
-
-</div>
-
-<div class="marketPanel heatmapPanel">
-
-<h3>US Stock Market Heatmap</h3>
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-{
-"dataSource":"SPX500",
-"blockSize":"market_cap_basic",
-"blockColor":"change",
-"grouping":"sector",
-"locale":"en",
-"colorTheme":"dark",
-"width":"100%",
-"height":"100%"
-}
-</script>
-
-</div>
-
-</div>
-
-</div>
 
 </div>
 
@@ -549,67 +380,87 @@ document.querySelector(`[onclick="showTab('${id}')"]`)
 
 }
 
-/* CRYPTO */
+/* NEWS FEED */
 
-function loadCrypto(){
+async function loadNews(){
 
-const symbols=[
-"BTCUSDT","ETHUSDT","BNBUSDT","SOLUSDT","XRPUSDT",
-"ADAUSDT","AVAXUSDT","DOGEUSDT","DOTUSDT","LINKUSDT"
-];
+const feed="https://api.allorigins.win/raw?url="+
+encodeURIComponent("https://feeds.bbci.co.uk/news/world/rss.xml");
 
-const table=document.getElementById("cryptoTable");
-table.innerHTML="";
+try{
 
-symbols.forEach(sym=>{
+const res=await fetch(feed);
+const xml=await res.text();
 
-fetch("https://api.binance.com/api/v3/ticker/price?symbol="+sym)
-.then(r=>r.json())
-.then(data=>{
+const parser=new DOMParser();
+const data=parser.parseFromString(xml,"text/xml");
 
-const name=sym.replace("USDT","");
+const items=data.querySelectorAll("item");
 
-table.innerHTML+=`
-<tr>
-<td class="cryptoName">${name}</td>
-<td class="cryptoPrice">$${parseFloat(data.price).toFixed(2)}</td>
-</tr>
-`;
+const container=document.getElementById("newsFeed");
+container.innerHTML="";
 
-});
+items.forEach((item,i)=>{
 
-});
+if(i>12)return;
 
-}
+const title=item.querySelector("title")?.textContent;
+const link=item.querySelector("link")?.textContent;
+const pub=item.querySelector("pubDate")?.textContent;
 
-loadCrypto();
-setInterval(loadCrypto,60000);
+container.innerHTML+=`
 
-/* COMMODITIES */
+<div class="card">
 
-function loadCommodities(){
+<div>
+<div><a href="${link}" target="_blank">${title}</a></div>
+<div class="meta">${new Date(pub).toLocaleString()}</div>
+</div>
 
-fetch("https://api.metals.live/v1/spot")
-.then(r=>r.json())
-.then(data=>{
-
-let gold=data.find(x=>x.gold)?.gold;
-let silver=data.find(x=>x.silver)?.silver;
-
-document.getElementById("commodityPrices").innerHTML=`
-
-Gold: $${gold} / oz<br><br>
-
-Silver: $${silver} / oz<br>
+</div>
 
 `;
 
 });
 
+}catch{
+
+document.getElementById("newsFeed").innerHTML="Unable to load feeds.";
+
 }
 
-loadCommodities();
-setInterval(loadCommodities,300000);
+}
+
+loadNews();
+setInterval(loadNews,300000);
+
+/* BREAKING NEWS */
+
+async function loadTicker(){
+
+const feed="https://api.allorigins.win/raw?url="+
+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
+
+const res=await fetch(feed);
+const xml=await res.text();
+
+const parser=new DOMParser();
+const data=parser.parseFromString(xml,"text/xml");
+
+const items=data.querySelectorAll("item");
+
+let headlines="";
+
+items.forEach((item,i)=>{
+if(i<8) headlines+=item.querySelector("title").textContent+" ◆ ";
+});
+
+document.getElementById("breakingNews").textContent=headlines;
+
+}
+
+loadTicker();
+setInterval(loadTicker,600000);
 
 </script>
 
