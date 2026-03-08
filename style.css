@@ -49,8 +49,20 @@ color:#071e16;
 .ticker{
 background:#c6a55a;
 color:#071e16;
-padding:8px;
-font-weight:500;
+overflow:hidden;
+white-space:nowrap;
+padding:10px 0;
+}
+
+.ticker span{
+display:inline-block;
+padding-left:100%;
+animation:tickerMove 80s linear infinite;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
 }
 
 .tab{
@@ -101,13 +113,6 @@ grid-template-columns:1fr 1fr;
 gap:10px;
 }
 
-footer{
-text-align:center;
-padding:12px;
-border-top:1px solid #1e5a42;
-margin-top:20px;
-}
-
 .newsGrid{
 display:grid;
 grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
@@ -152,3 +157,10 @@ text-decoration:none;
 }
 
 .newsTitle:hover
+
+footer{
+text-align:center;
+padding:12px;
+border-top:1px solid #1e5a42;
+margin-top:20px;
+}
