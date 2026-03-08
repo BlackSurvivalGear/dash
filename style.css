@@ -1,313 +1,111 @@
-body{
+body
+{
 margin:0;
-font-family:'Rajdhani',sans-serif;
-color:#e2f0e9;
-background:#041f18;
+font-family:Arial, Helvetica, sans-serif;
+background:#0b0b0b;
+color:white;
 }
 
-/* GRID OVERLAY */
+/* TOP BAR */
 
-body{
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
-background-size:60px 60px;
-}
-
-/* WATERMARK */
-
-body::before{
-
-content:"";
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-background:url("bsg.jpg") center center no-repeat;
-
-background-size:900px;
-
-opacity:0.30;
-
-pointer-events:none;
-
-z-index:-2;
-
-}
-
-/* HEADER */
-
-header{
-
-display:flex;
-align-items:center;
+.topbar
+{
+background:#111;
 padding:15px;
-
-background:rgba(6,35,28,0.9);
-
-border-bottom:2px solid #c6a55a;
-
+text-align:center;
+border-bottom:2px solid #00ff9c;
 }
 
-header h1{
-
-color:#718754;
-font-weight:600;
-
+.topbar h1
+{
+margin:0;
+font-size:24px;
+letter-spacing:2px;
 }
-
-/* RADAR VIDEO LOGO */
-
-.logoRadar{
-
-height:70px;
-width:70px;
-
-object-fit:cover;
-
-border-radius:50%;
-
-margin-right:14px;
-
-cursor:pointer;
-
-box-shadow:
-0 0 8px rgba(198,165,90,0.5),
-0 0 16px rgba(198,165,90,0.3);
-
-}
-
-/* TICKER */
-
-.ticker{
-
-background:#232D12;
-
-padding:10px;
-
-overflow:hidden;
-white-space:nowrap;
-
-font-weight:600;
-
-}
-
-.ticker span{
-
-display:inline-block;
-
-padding-left:100%;
-
-animation:scroll 80s linear infinite;
-
-}
-
-@keyframes scroll{
-
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-
-}
-
-/* NAVIGATION */
-
-nav{
-
-display:flex;
-background:#0b3a2e;
-
-}
-
-nav button{
-
-padding:14px 18px;
-
-background:#0b3a2e;
-
-border:none;
-
-color:#e2f0e9;
-
-cursor:pointer;
-
-}
-
-nav button.active{
-
-background:#718754;
-color:#041f18;
-
-}
-
-nav button:hover
 
 /* TABS */
 
-.tab{
-display:none;
-padding:25px;
+.tabs
+{
+display:flex;
+background:#151515;
+border-bottom:1px solid #333;
 }
 
-.tab.active{
+.tablink
+{
+flex:1;
+padding:14px;
+background:#151515;
+border:none;
+color:#aaa;
+cursor:pointer;
+font-size:15px;
+transition:0.3s;
+}
+
+.tablink:hover
+{
+background:#222;
+color:white;
+}
+
+.tablink.active
+{
+background:#00ff9c;
+color:black;
+font-weight:bold;
+}
+
+/* CONTENT */
+
+.content
+{
+padding:20px;
+}
+
+/* TAB CONTENT */
+
+.tabcontent
+{
+display:none;
+animation:fade 0.4s;
+}
+
+.tabcontent.active
+{
 display:block;
 }
 
-/* NEWS GRID */
+/* WIDGET */
 
-.newsGrid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
-gap:20px;
-
+.widget
+{
+background:#151515;
+border:1px solid #333;
+padding:20px;
+margin-top:10px;
 }
 
-.newsCard{
+/* VIDEO */
 
-background:rgba(10,45,35,0.35);
-
-border-radius:8px;
-
-overflow:hidden;
-
-}
-
-.newsCard img{
-
+.video-container
+{
 width:100%;
-height:180px;
-
-object-fit:cover;
-
+max-width:600px;
+margin:auto;
 }
 
-/* TV WALL */
-
-.tvWall{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-grid-template-rows:45vh 45vh;
-
-gap:14px;
-
-}
-
-.tvPanel{
-
-background:rgba(8,40,32,0.45);
-
-border-radius:8px;
-
-overflow:hidden;
-
-position:relative;
-
-}
-
-.tvPanel iframe{
-
+video
+{
 width:100%;
-height:100%;
-
-border:none;
-
+border:2px solid #00ff9c;
 }
 
-.tvLabel{
+/* ANIMATION */
 
-position:absolute;
-
-top:8px;
-left:10px;
-
-background:rgba(0,0,0,0.6);
-
-padding:4px 10px;
-
-font-size:13px;
-
-border-radius:4px;
-
-color:#c6a55a;
-
+@keyframes fade
+{
+from{opacity:0;}
+to{opacity:1;}
 }
-
-/* OSINT GRID */
-
-.grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-grid-template-rows:45vh 45vh;
-
-gap:10px;
-
-}
-
-.grid iframe{
-
-width:100%;
-height:100%;
-
-border:none;
-
-border-radius:6px;
-
-}
-
-/* HOME LOGO PANEL */
-
-.homeLogoPanel{
-
-display:flex;
-
-justify-content:center;
-
-margin-top:40px;
-
-opacity:0.55;
-
-}
-
-.homeLogo{
-
-width:420px;
-
-max-width:70%;
-
-filter:
-drop-shadow(0 0 18px rgba(198,165,90,0.4));
-
-}
-
-/* FOOTER */
-
-footer{
-
-text-align:center;
-
-padding:15px;
-
-border-top:1px solid #1b4d3e;
-
-}
-
-.footerLink{
-
-color:#718754;
-text-decoration:none;
-font-weight:600;
-
-}
-
-.footerLink:hover
