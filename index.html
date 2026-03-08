@@ -51,8 +51,6 @@ position:relative;
 z-index:1;
 }
 
-/* LOGO */
-
 .logo{
 height:42px;
 }
@@ -61,7 +59,6 @@ height:42px;
 
 .tabs{
 display:flex;
-flex-wrap:wrap;
 background:#081912;
 border-bottom:1px solid #1f4a35;
 position:relative;
@@ -94,7 +91,7 @@ z-index:1;
 display:block;
 }
 
-/* FEED */
+/* NEWS FEED */
 
 .feed{
 height:60vh;
@@ -160,45 +157,29 @@ BSG Strategic Awareness
 <div class="tabs">
 
 <button onclick="showTab('news')">Conflict News</button>
-<button onclick="showTab('africa')">Africa Security</button>
-<button onclick="showTab('markets')">Markets</button>
-<button onclick="showTab('video')">Video Monitor</button>
-<button onclick="showTab('air')">Aircraft</button>
-<button onclick="showTab('marine')">Marine</button>
 <button onclick="showTab('map')">Conflict Map</button>
+<button onclick="showTab('air')">Aircraft Watch</button>
+<button onclick="showTab('marine')">Marine Watch</button>
 
 </div>
 
-<!-- NEWS -->
+<!-- CONFLICT NEWS -->
 
 <div id="news" class="section active">
 <div class="feed" id="newsFeed">Loading intelligence feeds...</div>
 </div>
 
-<!-- AFRICA -->
+<!-- CONFLICT MAP -->
 
-<div id="africa" class="section">
-<div class="feed" id="africaFeed"></div>
-</div>
-
-<!-- MARKETS -->
-
-<div id="markets" class="section">
-<div class="feed" id="marketFeed"></div>
-</div>
-
-<!-- VIDEO -->
-
-<div id="video" class="section">
+<div id="map" class="section">
 
 <iframe
-src="https://www.youtube.com/embed/live_stream?channel=UCpwvZwUam-URkxB7g4USKpg"
-allowfullscreen>
+src="https://liveuamap.com">
 </iframe>
 
 </div>
 
-<!-- AIRCRAFT -->
+<!-- AIRCRAFT WATCH -->
 
 <div id="air" class="section">
 
@@ -208,22 +189,12 @@ src="https://globe.adsbexchange.com/">
 
 </div>
 
-<!-- MARINE -->
+<!-- MARINE WATCH -->
 
 <div id="marine" class="section">
 
 <iframe
 src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4/shownames:false/mmsi:0/shipid:0/fleet:/fleet_id:/vtypes:0">
-</iframe>
-
-</div>
-
-<!-- CONFLICT MAP -->
-
-<div id="map" class="section">
-
-<iframe
-src="https://liveuamap.com">
 </iframe>
 
 </div>
@@ -248,7 +219,7 @@ return `
 
 <div class="card">
 
-<img class="thumb" src="${img}" referrerpolicy="no-referrer">
+<img class="thumb" src="${img}">
 
 <div>
 
@@ -286,12 +257,7 @@ const keywords=[
 ];
 
 const news=document.getElementById("newsFeed");
-const africa=document.getElementById("africaFeed");
-const market=document.getElementById("marketFeed");
-
 news.innerHTML="";
-africa.innerHTML="";
-market.innerHTML="";
 
 feeds.forEach(feed=>{
 
@@ -317,20 +283,7 @@ const m=desc.match(/<img.*?src="(.*?)"/);
 
 if(m) img=m[1];
 
-const html=buildCard(title,link,date,img,feed.name);
-
-news.innerHTML+=html;
-
-if(lower.includes("africa")||lower.includes("sahel")||lower.includes("nigeria"))
-africa.innerHTML+=html;
-
-if(
-lower.includes("oil")||
-lower.includes("gold")||
-lower.includes("market")||
-lower.includes("inflation")
-)
-market.innerHTML+=html;
+news.innerHTML+=buildCard(title,link,date,img,feed.name);
 
 });
 
