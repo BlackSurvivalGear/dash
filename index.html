@@ -51,28 +51,22 @@ GLOBAL THREAT LEVEL
 
 </header>
 
+
 <div class="ticker">
 <span id="ticker">Loading global headlines...</span>
 </div>
 
+
 <nav>
 
 <button onclick="showTab('home')" class="active">Home</button>
-
 <button onclick="showTab('news')">Conflict News</button>
-
 <button onclick="showTab('map')">Conflict Map</button>
-
 <button onclick="showTab('air')">Aircraft Watch</button>
-
 <button onclick="showTab('marine')">Marine Watch</button>
-
 <button onclick="showTab('cyber')">Cyber Attacks</button>
-
 <button onclick="showTab('bases')">Military Bases</button>
-
 <button onclick="showTab('fire')">Fire Monitor</button>
-
 <button onclick="showTab('command')">Command Overview</button>
 
 </nav>
@@ -154,7 +148,11 @@ Black Survival Gear created the Global Strategic Awareness OSINT platform to pro
 
 
 <footer>
+
+<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
 BlackSurvivalGear.com
+</a>
+
 </footer>
 
 
@@ -177,15 +175,12 @@ document.querySelector(`nav button[onclick="showTab('${id}')"]`).classList.add("
 }
 
 
-
 async function loadNews(){
 
 const feeds=[
 
 "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
-
 "https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-
 "https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
 
 ]
@@ -210,7 +205,7 @@ headlines.push(article.title)
 const card=document.createElement("div")
 card.className="newsCard"
 
-const breakingWords=["war","attack","missile","explosion","strike","assault"]
+const breakingWords=["war","attack","missile","explosion","strike"]
 
 let breaking=false
 
@@ -254,7 +249,6 @@ document.getElementById("ticker").textContent=headlines.join(" ◆ ")
 document.addEventListener("DOMContentLoaded",()=>{
 
 loadNews()
-
 setInterval(loadNews,60000)
 
 })
