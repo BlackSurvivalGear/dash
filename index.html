@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 
@@ -12,7 +13,6 @@
 :root{
 --bsg-dark:#071e16;
 --bsg-green:#0b2f22;
---bsg-panel:#0f3a2a;
 --bsg-border:#1e5a42;
 --bsg-gold:#c6a55a;
 --bsg-text:#d7e8df;
@@ -53,7 +53,6 @@ align-items:center;
 gap:16px;
 padding:16px 22px;
 font-size:28px;
-color:var(--bsg-text);
 border-bottom:1px solid var(--bsg-border);
 position:relative;
 z-index:1;
@@ -63,14 +62,52 @@ z-index:1;
 height:84px;
 }
 
+/* THREAT */
+
+.threatBox{
+margin-left:auto;
+display:flex;
+align-items:center;
+gap:10px;
+font-size:14px;
+font-weight:600;
+}
+
+.threatLevel{
+padding:6px 12px;
+border-radius:4px;
+background:#f0c541;
+color:#071e16;
+}
+
+/* BREAKING NEWS */
+
+.ticker{
+width:100%;
+background:var(--bsg-gold);
+color:#071e16;
+font-weight:600;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.ticker span{
+display:inline-block;
+padding-left:100%;
+animation:ticker 40s linear infinite;
+}
+
+@keyframes ticker{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
 /* TABS */
 
 .tabs{
 display:flex;
 background:var(--bsg-green);
 border-bottom:1px solid var(--bsg-border);
-position:relative;
-z-index:1;
 }
 
 .tabs button{
@@ -80,18 +117,16 @@ border:none;
 color:var(--bsg-text);
 cursor:pointer;
 border-right:1px solid var(--bsg-border);
-font-weight:500;
-}
-
-.tabs button:hover{
-background:#174734;
 }
 
 .tabs button.active{
 background:var(--bsg-gold);
-color:var(--bsg-dark);
+color:#071e16;
 font-weight:600;
-box-shadow:0 0 10px rgba(198,165,90,0.6);
+}
+
+.tabs button:hover{
+background:#174734;
 }
 
 /* PANELS */
@@ -99,8 +134,6 @@ box-shadow:0 0 10px rgba(198,165,90,0.6);
 .section{
 display:none;
 padding:12px;
-position:relative;
-z-index:1;
 }
 
 .section.active{
@@ -115,7 +148,6 @@ overflow:auto;
 background:rgba(5,20,14,0.97);
 border-radius:6px;
 padding:12px;
-backdrop-filter:blur(2px);
 }
 
 .card{
@@ -137,7 +169,6 @@ border-radius:4px;
 
 .title{
 font-size:15px;
-color:var(--bsg-text);
 }
 
 .meta{
@@ -149,6 +180,52 @@ color:#8fb9a6;
 font-size:12px;
 color:var(--bsg-gold);
 text-decoration:none;
+}
+
+/* AIRCRAFT CONTROLS */
+
+.airControls{
+margin-bottom:10px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.airControls button{
+background:#0b2f22;
+border:1px solid var(--bsg-border);
+color:var(--bsg-text);
+padding:6px 12px;
+cursor:pointer;
+border-radius:4px;
+}
+
+.airControls button.active{
+background:var(--bsg-gold);
+color:#071e16;
+}
+
+/* MARINE CONTROLS */
+
+.marineControls{
+margin-bottom:10px;
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.marineControls button{
+background:#0b2f22;
+border:1px solid var(--bsg-border);
+color:var(--bsg-text);
+padding:6px 12px;
+cursor:pointer;
+border-radius:4px;
+}
+
+.marineControls button.active{
+background:var(--bsg-gold);
+color:#071e16;
 }
 
 /* MAPS */
@@ -173,18 +250,11 @@ text-align:center;
 padding:8px;
 font-size:14px;
 color:var(--bsg-gold);
-letter-spacing:1px;
-z-index:2;
 }
 
 footer a{
 color:var(--bsg-gold);
 text-decoration:none;
-font-weight:600;
-}
-
-footer a:hover{
-text-decoration:underline;
 }
 
 </style>
@@ -199,18 +269,24 @@ text-decoration:underline;
 
 BSG Strategic Awareness
 
+<div class="threatBox">
+GLOBAL THREAT LEVEL
+<span class="threatLevel" id="threatLevel">ELEVATED</span>
+</div>
+
+</div>
+
+<div class="ticker">
+<span id="breakingNews">Loading breaking news...</span>
 </div>
 
 <div class="tabs">
 
-<button class="active" onclick="showTab('news')">Conflict News</button>
-<button onclick="showTab('map')">Conflict Map</button>
-<button onclick="showTab('air')">Aircraft Watch</button>
-<button onclick="showTab('marine')">Marine Watch</button>
+<button class="active" onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button>
 
 </div>
 
-<!-- CONFLICT NEWS -->
+<!-- NEWS -->
 
 <div id="news" class="section active">
 <div class="feed" id="newsFeed">Loading intelligence feeds...</div>
@@ -219,29 +295,50 @@ BSG Strategic Awareness
 <!-- CONFLICT MAP -->
 
 <div id="map" class="section">
-
-<iframe
-src="https://liveuamap.com">
-</iframe>
-
+<iframe src="https://liveuamap.com"></iframe>
 </div>
 
-<!-- AIRCRAFT WATCH -->
+<!-- AIRCRAFT -->
 
 <div id="air" class="section">
 
-<iframe
-src="https://globe.adsbexchange.com/">
+<div class="airControls">
+<button onclick="setAirFilter('military')" class="active">Military</button>
+<button onclick="setAirFilter('tankers')">Tankers</button>
+<button onclick="setAirFilter('surveillance')">AWACS</button>
+<button onclick="setAirFilter('all')">All</button>
+</div>
+
+<iframe id="airMap" src="https://globe.adsbexchange.com/?military=1"></iframe>
+
+</div>
+
+<!-- MARINE -->
+
+<div id="marine" class="section">
+
+<div class="marineControls">
+
+<button onclick="setMarine('global')" class="active">Global</button> <button onclick="setMarine('hormuz')">Hormuz</button> <button onclick="setMarine('mandeb')">Bab-el-Mandeb</button> <button onclick="setMarine('suez')">Suez</button> <button onclick="setMarine('bosporus')">Bosporus</button> <button onclick="setMarine('malacca')">Malacca</button>
+
+</div>
+
+<iframe id="marineMap"
+src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4">
 </iframe>
 
 </div>
 
-<!-- MARINE WATCH -->
+<!-- FIRE MONITOR -->
 
-<div id="marine" class="section">
+<div id="fire" class="section">
+
+<h3 style="color:#c6a55a;margin-bottom:10px;">
+Satellite Fire Detection (NASA FIRMS)
+</h3>
 
 <iframe
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4/shownames:false">
+src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z">
 </iframe>
 
 </div>
@@ -269,44 +366,109 @@ document.querySelector(`[onclick="showTab('${id}')"]`)
 
 }
 
+/* BREAKING NEWS */
+
+function loadBreakingNews(){
+
+const feed="https://feeds.bbci.co.uk/news/world/rss.xml";
+
+fetch("https://api.allorigins.win/raw?url="+encodeURIComponent(feed))
+.then(r=>r.text())
+.then(str=>{
+
+const xml=new DOMParser().parseFromString(str,"text/xml");
+
+let headlines=[];
+
+xml.querySelectorAll("item").forEach((item,i)=>{
+
+if(i>10)return;
+
+const title=item.querySelector("title")?.textContent||"";
+
+headlines.push(title);
+
+});
+
+document.getElementById("breakingNews").innerText=headlines.join("   ✦   ");
+
+});
+
+}
+
+loadBreakingNews();
+setInterval(loadBreakingNews,300000);
+
+/* AIRCRAFT FILTER */
+
+function setAirFilter(type){
+
+const map=document.getElementById("airMap");
+
+const urls={
+military:"https://globe.adsbexchange.com/?military=1",
+tankers:"https://globe.adsbexchange.com/?icaoType=K35R,K135",
+surveillance:"https://globe.adsbexchange.com/?icaoType=E3TF,E3CF,E8",
+all:"https://globe.adsbexchange.com/"
+};
+
+map.src=urls[type]||urls.all;
+
+}
+
+/* MARINE NAVIGATION */
+
+function setMarine(area){
+
+const map=document.getElementById("marineMap");
+
+const urls={
+
+global:"https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4",
+
+hormuz:"https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:26.6/centerx:56.3/maptype:4",
+
+mandeb:"https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:12.7/centerx:43.3/maptype:4",
+
+suez:"https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:30.2/centerx:32.5/maptype:4",
+
+bosporus:"https://www.marinetraffic.com/en/ais/embed/zoom:9/centery:41.1/centerx:29.0/maptype:4",
+
+malacca:"https://www.marinetraffic.com/en/ais/embed/zoom:6/centery:2.5/centerx:101.0/maptype:4"
+
+};
+
+map.src=urls[area]||urls.global;
+
+}
+
+/* NEWS FEED */
+
 function buildCard(title,link,date,img,source){
 
 if(!img)
 img="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
 
 return `
-
 <div class="card">
-
 <img class="thumb" src="${img}">
-
 <div>
-
 <div class="title">${title}</div>
 <div class="meta">${source} • ${date}</div>
-
-<a class="link" href="${link}" target="_blank">
-Open Source →
-</a>
-
+<a class="link" href="${link}" target="_blank">Open Source →</a>
 </div>
-
 </div>
-
 `;
-
 }
 
 function loadFeeds(){
 
 const feeds=[
-
 {url:"https://feeds.bbci.co.uk/news/world/rss.xml",name:"BBC"},
 {url:"https://www.reutersagency.com/feed/?best-topics=politics",name:"Reuters"},
 {url:"https://www.aljazeera.com/xml/rss/all.xml",name:"Al Jazeera"},
 {url:"https://apnews.com/rss/apf-topnews",name:"AP"},
 {url:"https://www.rt.com/rss/news/",name:"RT"}
-
 ];
 
 const keywords=[
@@ -334,13 +496,13 @@ const date=item.querySelector("pubDate")?.textContent||"";
 
 const lower=title.toLowerCase();
 
-if(!keywords.some(w=>lower.includes(w))) return;
+if(!keywords.some(w=>lower.includes(w)))return;
 
 let img="";
 const desc=item.querySelector("description")?.textContent||"";
 const m=desc.match(/<img.*?src="(.*?)"/);
 
-if(m) img=m[1];
+if(m)img=m[1];
 
 news.innerHTML+=buildCard(title,link,date,img,feed.name);
 
