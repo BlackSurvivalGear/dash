@@ -9,8 +9,11 @@ background:black;
 
 #radar{
 position:fixed;
+top:0;
+left:0;
 min-width:100%;
 min-height:100%;
+object-fit:cover;
 z-index:-2;
 }
 
@@ -48,7 +51,7 @@ color:#d5e6cf;
 font-weight:500;
 }
 
-/* threat */
+/* threat level */
 
 .label{
 font-size:12px;
@@ -94,6 +97,7 @@ display:flex;
 gap:20px;
 padding:10px 30px;
 background:#0d3c31;
+border-bottom:1px solid #1d5a47;
 }
 
 .tab{
@@ -106,6 +110,12 @@ font-size:15px;
 
 .tab.active{
 color:#ffd36a;
+}
+
+/* container */
+
+.container{
+padding:20px;
 }
 
 /* grid */
@@ -147,6 +157,10 @@ font-size:12px;
 
 .card h3{
 margin:15px 0;
+}
+
+.card a{
+color:#7aa6ff;
 }
 
 /* tabs */
