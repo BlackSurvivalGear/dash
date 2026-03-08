@@ -8,461 +8,231 @@
 
 <title>BSG Global Strategic Awareness</title>
 
-<style>
-
-:root{
---bsg-dark:#071e16;
---bsg-green:#0b2f22;
---bsg-border:#1e5a42;
---bsg-gold:#c6a55a;
---bsg-text:#d7e8df;
-}
-
-html,body{
-margin:0;
-padding:0;
-height:100%;
-background:var(--bsg-dark);
-font-family:Segoe UI,Arial;
-color:var(--bsg-text);
-}
-
-/* WATERMARK */
-
-body::before{
-content:"";
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:900px;
-height:900px;
-background-image:url("bsg.jpg");
-background-size:contain;
-background-repeat:no-repeat;
-opacity:0.035;
-pointer-events:none;
-z-index:0;
-}
-
-/* HEADER */
-
-.header{
-display:flex;
-align-items:center;
-gap:16px;
-padding:16px 22px;
-font-size:28px;
-border-bottom:1px solid var(--bsg-border);
-position:relative;
-z-index:1;
-}
-
-.logo{
-height:84px;
-cursor:pointer;
-}
-
-.threatBox{
-margin-left:auto;
-display:flex;
-align-items:center;
-gap:10px;
-font-size:14px;
-font-weight:600;
-}
-
-.threatLevel{
-padding:6px 12px;
-border-radius:4px;
-background:#f0c541;
-color:#071e16;
-}
-
-/* BREAKING NEWS */
-
-.ticker{
-width:100%;
-background:var(--bsg-gold);
-color:#071e16;
-font-weight:600;
-overflow:hidden;
-white-space:nowrap;
-display:flex;
-align-items:center;
-height:32px;
-}
-
-.ticker span{
-display:inline-block;
-padding-left:100%;
-animation:ticker 80s linear infinite;
-}
-
-@keyframes ticker{
-0%{transform:translateX(0);}
-100%{transform:translateX(-100%);}
-}
-
-/* TABS */
-
-.tabs{
-display:flex;
-background:var(--bsg-green);
-border-bottom:1px solid var(--bsg-border);
-flex-wrap:wrap;
-}
-
-.tabs button{
-padding:12px 18px;
-background:var(--bsg-green);
-border:none;
-color:var(--bsg-text);
-cursor:pointer;
-border-right:1px solid var(--bsg-border);
-}
-
-.tabs button.active{
-background:var(--bsg-gold);
-color:#071e16;
-font-weight:600;
-}
-
-.tabs button:hover{
-background:#174734;
-}
-
-/* PANELS */
-
-.section{
-display:none;
-padding:20px;
-}
-
-.section.active{
-display:block;
-}
-
-/* HOME */
-
-.homePanel{
-background:rgba(7,25,18,0.85);
-border:1px solid var(--bsg-border);
-border-radius:6px;
-padding:30px;
-max-width:900px;
-}
-
-.homePanel h2{
-color:var(--bsg-gold);
-}
-
-/* NEWS */
-
-.feed{
-height:70vh;
-overflow:auto;
-background:rgba(5,20,14,0.97);
-border-radius:6px;
-padding:12px;
-}
-
-.card{
-display:flex;
-gap:12px;
-padding:12px;
-border-bottom:1px solid var(--bsg-border);
-background:rgba(7,25,18,0.85);
-border-radius:4px;
-margin-bottom:6px;
-}
-
-.meta{
-font-size:12px;
-color:#8fb9a6;
-}
-
-/* COMMAND OVERVIEW */
-
-.overviewGrid{
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:8px;
-height:88vh;
-}
-
-.overviewPanel{
-background:#071e16;
-border:1px solid var(--bsg-border);
-border-radius:6px;
-overflow:hidden;
-position:relative;
-}
-
-.overviewTitle{
-position:absolute;
-top:6px;
-left:10px;
-background:rgba(0,0,0,0.6);
-color:var(--bsg-gold);
-padding:4px 8px;
-font-size:12px;
-border-radius:4px;
-z-index:5;
-}
-
-.overviewPanel iframe{
-width:100%;
-height:100%;
-border:none;
-}
-
-iframe{
-width:100%;
-height:92vh;
-border:none;
-border-radius:6px;
-}
-
-/* FOOTER */
-
-footer{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-background:var(--bsg-dark);
-border-top:1px solid var(--bsg-border);
-text-align:center;
-padding:8px;
-font-size:14px;
-color:var(--bsg-gold);
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div class="header">
+<header>
 
-<img class="logo" src="bsg.jpg" onclick="showTab('home')">
+<img src="bsg.jpg" class="logo" onclick="showTab('home')">
 
-BSG Global Strategic Awareness
+<h1>BSG Global Strategic Awareness</h1>
 
-<div class="threatBox">
+<div class="threat">
 GLOBAL THREAT LEVEL
-<span class="threatLevel">ELEVATED</span>
+<span class="level">ELEVATED</span>
 </div>
 
-</div>
+</header>
 
 <div class="ticker">
-<span id="breakingNews">Loading breaking news...</span>
+<span id="breakingNews">Loading intelligence feed...</span>
 </div>
 
-<div class="tabs">
+<nav>
 
-<button class="active" onclick="showTab('home')">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('overview')">Command Overview</button>
+<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('markets')">Markets</button> <button onclick="showTab('currency')">Currency</button> <button onclick="showTab('overview')">Command Overview</button>
 
-</div>
+</nav>
 
 <!-- HOME -->
 
-<div id="home" class="section active">
+<section id="home" class="tab active">
 
-<div class="homePanel">
+<div class="panel">
 
-<h2>Welcome to BSG Global Strategic Awareness</h2>
-
-<p>
-This dashboard provides open-source intelligence monitoring tools for global strategic awareness.
-</p>
+<h2>Welcome</h2>
 
 <p>
-Use the navigation tabs to monitor conflict developments, military aircraft activity, maritime shipping routes, and satellite fire detections across the world.
-</p>
-
-<p>
-The Command Overview tab provides a multi-sensor operational display combining key monitoring feeds.
+BSG Global Strategic Awareness provides open-source monitoring of global conflict activity, military aircraft movements, maritime shipping routes, satellite fire detections, and global financial markets.
 </p>
 
 </div>
 
-</div>
+</section>
 
 <!-- NEWS -->
 
-<div id="news" class="section">
-<div class="feed" id="newsFeed">Loading intelligence feeds...</div>
+<section id="news" class="tab">
+
+<div id="newsFeed" class="feed">
+Loading intelligence feeds...
 </div>
+
+</section>
 
 <!-- MAP -->
 
-<div id="map" class="section">
+<section id="map" class="tab">
+
 <iframe src="https://liveuamap.com"></iframe>
-</div>
 
-<!-- AIR -->
+</section>
 
-<div id="air" class="section">
+<!-- AIRCRAFT -->
+
+<section id="air" class="tab">
+
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-</div>
+
+</section>
 
 <!-- MARINE -->
 
-<div id="marine" class="section">
+<section id="marine" class="tab">
+
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
-</div>
+
+</section>
 
 <!-- FIRE -->
 
-<div id="fire" class="section">
-
-<h3 style="color:#c6a55a;margin-bottom:10px;">
-Satellite Fire Detection (NASA FIRMS)
-</h3>
+<section id="fire" class="tab">
 
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
 
+</section>
+
+<!-- MARKETS -->
+
+<section id="markets" class="tab">
+
+<div class="marketTabs">
+
+<button class="mTab active" onclick="showMarket('overviewMarket')">Market Overview</button> <button class="mTab" onclick="showMarket('cryptoHeat')">Crypto Heatmap</button> <button class="mTab" onclick="showMarket('btcChart')">BTC Chart</button> <button class="mTab" onclick="showMarket('forexRates')">Forex</button> <button class="mTab" onclick="showMarket('econMap')">Economic Map</button>
+
 </div>
+
+<div id="overviewMarket" class="marketPanel active">
+
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+{
+"colorTheme":"dark",
+"locale":"en",
+"width":"100%",
+"height":550
+}
+</script>
+
+</div>
+
+</div>
+
+<div id="cryptoHeat" class="marketPanel">
+
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+{
+"dataSource":"Crypto",
+"colorTheme":"dark",
+"width":"100%",
+"height":600
+}
+</script>
+
+</div>
+
+</div>
+
+<div id="btcChart" class="marketPanel">
+
+<div class="tradingview-widget-container">
+
+<div class="tradingview-widget-container__widget"></div>
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+{
+"symbol":"BINANCE:BTCUSDT",
+"theme":"dark",
+"autosize":true
+}
+</script>
+
+</div>
+
+</div>
+
+<div id="forexRates" class="marketPanel">
+
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+{
+"colorTheme":"dark",
+"width":"100%",
+"height":400
+}
+</script>
+
+</div>
+
+</div>
+
+<div id="econMap" class="marketPanel">
+
+<script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-economic-map.js"></script>
+
+<tv-economic-map region="africa"></tv-economic-map>
+
+</div>
+
+</section>
+
+<!-- CURRENCY -->
+
+<section id="currency" class="tab">
+
+<div class="currency">
+
+<h2>African Currency Converter</h2>
+
+<input id="amount" placeholder="Enter amount">
+
+<select id="from"></select>
+
+<select id="to"></select>
+
+<button onclick="convert()">Convert</button>
+
+<div id="result"></div>
+
+</div>
+
+</section>
 
 <!-- COMMAND OVERVIEW -->
 
-<div id="overview" class="section">
+<section id="overview" class="tab">
 
-<div class="overviewGrid">
+<div class="grid">
 
-<div class="overviewPanel">
-<div class="overviewTitle">Conflict Map</div>
 <iframe src="https://liveuamap.com"></iframe>
-</div>
 
-<div class="overviewPanel">
-<div class="overviewTitle">Aircraft Watch</div>
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-</div>
 
-<div class="overviewPanel">
-<div class="overviewTitle">Marine Watch</div>
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
-</div>
 
-<div class="overviewPanel">
-<div class="overviewTitle">Fire Monitor</div>
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
-</div>
 
 </div>
 
-</div>
+</section>
 
 <footer>
+
 BlackSurvivalGear.com
+
 </footer>
 
-<script>
-
-function showTab(id){
-
-document.querySelectorAll(".section")
-.forEach(s=>s.classList.remove("active"));
-
-document.getElementById(id).classList.add("active");
-
-document.querySelectorAll(".tabs button")
-.forEach(btn=>btn.classList.remove("active"));
-
-document.querySelector(`[onclick="showTab('${id}')"]`)
-.classList.add("active");
-
-}
-
-/* NEWS FEED */
-
-async function loadNews(){
-
-const feed="https://api.allorigins.win/raw?url="+
-encodeURIComponent("https://feeds.bbci.co.uk/news/world/rss.xml");
-
-try{
-
-const res=await fetch(feed);
-const xml=await res.text();
-
-const parser=new DOMParser();
-const data=parser.parseFromString(xml,"text/xml");
-
-const items=data.querySelectorAll("item");
-
-const container=document.getElementById("newsFeed");
-container.innerHTML="";
-
-items.forEach((item,i)=>{
-
-if(i>12)return;
-
-const title=item.querySelector("title")?.textContent;
-const link=item.querySelector("link")?.textContent;
-const pub=item.querySelector("pubDate")?.textContent;
-
-container.innerHTML+=`
-
-<div class="card">
-
-<div>
-<div><a href="${link}" target="_blank">${title}</a></div>
-<div class="meta">${new Date(pub).toLocaleString()}</div>
-</div>
-
-</div>
-
-`;
-
-});
-
-}catch{
-
-document.getElementById("newsFeed").innerHTML="Unable to load feeds.";
-
-}
-
-}
-
-loadNews();
-setInterval(loadNews,300000);
-
-/* BREAKING NEWS */
-
-async function loadTicker(){
-
-const feed="https://api.allorigins.win/raw?url="+
-encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
-
-const res=await fetch(feed);
-const xml=await res.text();
-
-const parser=new DOMParser();
-const data=parser.parseFromString(xml,"text/xml");
-
-const items=data.querySelectorAll("item");
-
-let headlines="";
-
-items.forEach((item,i)=>{
-if(i<8) headlines+=item.querySelector("title").textContent+" ◆ ";
-});
-
-document.getElementById("breakingNews").textContent=headlines;
-
-}
-
-loadTicker();
-setInterval(loadTicker,600000);
-
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
