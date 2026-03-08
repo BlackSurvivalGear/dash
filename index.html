@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BSG Global Strategic Awareness</title>
+<title>BSG Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -19,20 +19,21 @@
 
 <img src="bsg.jpg" class="logo" onclick="showTab('home')">
 
-<h1>BSG Global Strategic Awareness</h1>
+<h1>BSG Global Strategic Awareness OSINT</h1>
 
 <div class="threatPanel">
 
 <div class="threatTitle">
-
-GLOBAL THREAT LEVEL <span class="threatCurrent">ELEVATED</span>
-
+GLOBAL THREAT LEVEL
+<span class="threatCurrent">ELEVATED</span>
 </div>
 
 <div class="threatScale">
-
-<span>NORMAL</span> <span>GUARDED</span> <span class="active">ELEVATED</span> <span>HIGH</span> <span>CRITICAL</span>
-
+<span>NORMAL</span>
+<span>GUARDED</span>
+<span class="active">ELEVATED</span>
+<span>HIGH</span>
+<span>CRITICAL</span>
 </div>
 
 </div>
@@ -40,9 +41,7 @@ GLOBAL THREAT LEVEL <span class="threatCurrent">ELEVATED</span>
 </header>
 
 <div class="ticker">
-
 <span id="ticker">Loading global headlines...</span>
-
 </div>
 
 <nav>
@@ -62,10 +61,6 @@ GLOBAL THREAT LEVEL <span class="threatCurrent">ELEVATED</span>
 <button onclick="showTab('bases')">Military Bases</button>
 
 <button onclick="showTab('fire')">Fire Monitor</button>
-
-<button onclick="showTab('markets')">Markets</button>
-
-<button onclick="showTab('currency')">Currency</button>
 
 <button onclick="showTab('command')">Command Overview</button>
 
@@ -138,31 +133,17 @@ Military installations
 
 </section>
 
-<section id="markets" class="tab">
-
-<iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview"></iframe>
-
-</section>
-
-<section id="currency" class="tab">
-
-<h2>African Currency Converter</h2>
-
-<p>Currency module placeholder</p>
-
-</section>
-
 <section id="command" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
 
-<iframe src="https://globe.adsbexchange.com"></iframe>
+<iframe src="https://threatmap.checkpoint.com"></iframe>
 
 <iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
 
-<iframe src="https://threatmap.checkpoint.com"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
 
 </div>
 
