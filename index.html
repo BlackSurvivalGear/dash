@@ -1,140 +1,15 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>BSG Global Strategic Awareness</title>
 
-<style>
-
-body{
-background:#071e16;
-color:#d7e8df;
-font-family:Segoe UI;
-margin:0;
-}
-
-header{
-display:flex;
-align-items:center;
-gap:20px;
-padding:15px;
-border-bottom:1px solid #1e5a42;
-}
-
-.logo{
-height:90px;
-cursor:pointer;
-}
-
-.threat{
-margin-left:auto;
-font-size:14px;
-}
-
-.level{
-background:#c6a55a;
-color:#071e16;
-padding:6px 12px;
-margin-left:10px;
-}
-
-.ticker{
-background:#c6a55a;
-color:#071e16;
-padding:8px;
-font-weight:500;
-}
-
-nav{
-display:flex;
-background:#0b2f22;
-}
-
-nav button{
-padding:14px 18px;
-border:none;
-background:#0b2f22;
-color:#fff;
-cursor:pointer;
-font-size:15px;
-}
-
-nav button.active{
-background:#c6a55a;
-color:#071e16;
-}
-
-.tab{
-display:none;
-padding:20px;
-}
-
-.tab.active{
-display:block;
-}
-
-iframe{
-width:100%;
-height:80vh;
-border:none;
-}
-
-.marketTabs{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-}
-
-.marketTabs button{
-padding:10px 15px;
-background:#0b2f22;
-border:1px solid #1e5a42;
-color:white;
-cursor:pointer;
-}
-
-.marketTabs button.active{
-background:#c6a55a;
-color:#071e16;
-}
-
-.marketPanel{
-display:none;
-}
-
-.marketPanel.active{
-display:block;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-footer{
-text-align:center;
-padding:12px;
-border-top:1px solid #1e5a42;
-margin-top:20px;
-}
-
-.converter input,
-.converter select,
-.converter button{
-width:100%;
-padding:10px;
-margin:10px 0;
-background:#111;
-color:white;
-border:1px solid #333;
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -175,7 +50,9 @@ This dashboard provides open-source intelligence monitoring tools for global str
 
 <section id="news" class="tab">
 
-<div id="newsFeed">Loading intelligence feeds...</div>
+<div id="newsFeed" class="newsGrid">
+Loading intelligence feeds...
+</div>
 
 </section>
 
@@ -216,7 +93,14 @@ This dashboard provides open-source intelligence monitoring tools for global str
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+{
+"colorTheme":"dark",
+"locale":"en",
+"width":"100%",
+"height":550
+}
+</script>
 
 </div>
 
@@ -227,7 +111,14 @@ This dashboard provides open-source intelligence monitoring tools for global str
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async></script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+{
+"dataSource":"Crypto",
+"colorTheme":"dark",
+"width":"100%",
+"height":600
+}
+</script>
 
 </div>
 
@@ -238,7 +129,13 @@ This dashboard provides open-source intelligence monitoring tools for global str
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+{
+"symbol":"BINANCE:BTCUSDT",
+"theme":"dark",
+"autosize":true
+}
+</script>
 
 </div>
 
@@ -249,7 +146,13 @@ This dashboard provides open-source intelligence monitoring tools for global str
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async></script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+{
+"colorTheme":"dark",
+"width":"100%",
+"height":400
+}
+</script>
 
 </div>
 
@@ -299,12 +202,11 @@ This dashboard provides open-source intelligence monitoring tools for global str
 </section>
 
 <footer>
-
 BlackSurvivalGear.com
-
 </footer>
 
 <script>
+
 
 function showTab(id){
 
@@ -318,6 +220,8 @@ event.target.classList.add("active");
 
 }
 
+
+
 function showMarket(id){
 
 document.querySelectorAll(".marketPanel").forEach(p=>p.classList.remove("active"));
@@ -330,11 +234,41 @@ event.target.classList.add("active");
 
 }
 
+
+
 async function loadNews(){
 
-const feed="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/world/rss.xml");
+const feeds=[
 
-const res=await fetch(feed);
+{
+name:"BBC",
+logo:"https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif",
+url:"https://feeds.bbci.co.uk/news/world/rss.xml"
+},
+
+{
+name:"Reuters",
+logo:"https://www.reuters.com/resources_v2/images/favicon/favicon-96x96.png",
+url:"https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
+},
+
+{
+name:"Al Jazeera",
+logo:"https://www.aljazeera.com/favicon.ico",
+url:"https://www.aljazeera.com/xml/rss/all.xml"
+}
+
+];
+
+let html="";
+
+for(const feed of feeds){
+
+try{
+
+const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url);
+
+const res=await fetch(proxy);
 const xml=await res.text();
 
 const parser=new DOMParser();
@@ -342,30 +276,68 @@ const data=parser.parseFromString(xml,"text/xml");
 
 const items=data.querySelectorAll("item");
 
-let html="";
-
 items.forEach((item,i)=>{
 
-if(i>10)return;
+if(i>4)return;
 
-const title=item.querySelector("title").textContent;
-const link=item.querySelector("link").textContent;
+const title=item.querySelector("title")?.textContent;
+const link=item.querySelector("link")?.textContent;
 
-html+=`<p><a href="${link}" target="_blank">${title}</a></p>`;
+let img="";
+
+const media=item.querySelector("media\\:content");
+
+if(media) img=media.getAttribute("url");
+
+if(!img){
+img="https://via.placeholder.com/400x200/071e16/c6a55a?text=News";
+}
+
+html+=`
+
+<div class="newsCard">
+
+<img src="${img}">
+
+<div class="newsContent">
+
+<div class="newsSource">
+
+<img src="${feed.logo}">
+
+${feed.name}
+
+</div>
+
+<a class="newsTitle" href="${link}" target="_blank">${title}</a>
+
+</div>
+
+</div>
+
+`;
 
 });
+
+}catch(e){
+
+console.log("Feed failed:",feed.name);
+
+}
+
+}
 
 document.getElementById("newsFeed").innerHTML=html;
 
 }
 
-loadNews();
+
 
 async function ticker(){
 
-const feed="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
+const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
 
-const res=await fetch(feed);
+const res=await fetch(proxy);
 const xml=await res.text();
 
 const parser=new DOMParser();
@@ -376,16 +348,20 @@ const items=data.querySelectorAll("item");
 let text="";
 
 items.forEach((item,i)=>{
-
-if(i<8)text+=item.querySelector("title").textContent+" ◆ ";
-
+if(i<8) text+=item.querySelector("title").textContent+" ◆ ";
 });
 
-document.getElementById("ticker").textContent=text;
+document.getElementById("ticker").innerText=text;
 
 }
 
+
+
+loadNews();
 ticker();
+
+setInterval(loadNews,300000);
+
 
 </script>
 
