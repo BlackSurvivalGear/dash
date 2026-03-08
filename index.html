@@ -1,208 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BSG Global Strategic Awareness OSINT</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header class="topbar">
+<header class="header">
 
-<div class="brand">
+<div class="header-left">
+
 <img src="BSG2.png" class="logo">
+
 <h1>BSG Global Strategic Awareness OSINT</h1>
+
 </div>
 
 <div class="threat">
-<span>GLOBAL THREAT LEVEL</span>
+
+<div class="label">GLOBAL THREAT LEVEL</div>
+
 <div class="levels">
+
 <button>NORMAL</button>
 <button>GUARDED</button>
 <button class="active">ELEVATED</button>
 <button>HIGH</button>
 <button>CRITICAL</button>
+
 </div>
+
 </div>
 
 </header>
 
 
 <div class="ticker">
+
 <div class="ticker-track">
-Dozens killed as Israeli special forces raid Lebanese village ◆ War fuels debate in Cyprus over UK military bases ◆ Missile alerts reported in Israel ◆ Cyber attacks rising globally ◆ Maritime disruptions reported in Red Sea
+
+Heavy rains and flooding kills at least 23 in Nairobi ◆ Swiss to vote on right-wing push to slash licence fee for public broadcaster ◆ Russian strike on Kharkiv apartment block kills ten ◆ Armed robots take to the battlefield
+
 </div>
+
 </div>
 
 
-<nav class="tabs">
 
-<button class="tab active" onclick="openTab(event,'home')">Home</button>
-<button class="tab" onclick="openTab(event,'conflictnews')">Conflict News</button>
-<button class="tab" onclick="openTab(event,'conflictmap')">Conflict Map</button>
-<button class="tab" onclick="openTab(event,'aircraft')">Aircraft Watch</button>
-<button class="tab" onclick="openTab(event,'marine')">Marine Watch</button>
-<button class="tab" onclick="openTab(event,'cyber')">Cyber Attacks</button>
-<button class="tab" onclick="openTab(event,'bases')">Military Bases</button>
-<button class="tab" onclick="openTab(event,'fire')">Fire Monitor</button>
-<button class="tab" onclick="openTab(event,'command')">Command Overview</button>
+<nav class="nav">
+
+<a>Home</a>
+<a>Conflict News</a>
+<a>Conflict Map</a>
+<a>Aircraft Watch</a>
+<a>Marine Watch</a>
+<a>Cyber Attacks</a>
+<a>Military Bases</a>
+<a>Fire Monitor</a>
+<a>Command Overview</a>
 
 </nav>
 
 
 
-<div class="container">
-
-<section id="home" class="tabcontent active">
-
-<h2>Strategic Monitoring Console</h2>
-
-<div class="panel">
-This console aggregates open-source intelligence across conflict zones, cyber activity,
-aviation movements, maritime traffic, and environmental monitoring.
-</div>
-
-</section>
+<main class="content">
 
 
+<div class="card">
 
-<section id="conflictnews" class="tabcontent">
+<img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d">
 
-<div class="panel">
-<iframe src="https://news.google.com/search?q=war%20conflict%20military"
-width="100%" height="650"></iframe>
-</div>
+<div class="card-body">
 
-</section>
+<span class="source">BBC News</span>
 
+<h3>
+Dozens killed as Israeli special forces raid Lebanese village in search of 40-year-old remains
+</h3>
 
-
-<section id="conflictmap" class="tabcontent">
-
-<div class="panel">
-<iframe src="https://liveuamap.com/"
-width="100%" height="650"></iframe>
-</div>
-
-</section>
-
-
-
-<section id="aircraft" class="tabcontent">
-
-<div class="panel">
-<iframe src="https://www.flightradar24.com/simple"
-width="100%" height="650"></iframe>
-</div>
-
-</section>
-
-
-
-<section id="marine" class="tabcontent">
-
-<div class="panel">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"
-width="100%" height="650"></iframe>
-</div>
-
-</section>
-
-
-
-<section id="cyber" class="tabcontent">
-
-<div class="panel">
-<iframe src="https://threatmap.checkpoint.com/"
-width="100%" height="650"></iframe>
-</div>
-
-</section>
-
-
-
-<section id="bases" class="tabcontent">
-
-<div class="panel">
-<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1H4F8q3tN1KcMilitaryBasesExample"
-width="100%" height="650"></iframe>
-</div>
-
-</section>
-
-
-
-<section id="fire" class="tabcontent">
-
-<div class="panel">
-<iframe src="https://firms.modaps.eosdis.nasa.gov/map/"
-width="100%" height="650"></iframe>
-</div>
-
-</section>
-
-
-
-<section id="command" class="tabcontent">
-
-<div class="grid">
-
-<div class="panel">
-<h3>Conflict Monitor</h3>
-<iframe src="https://news.google.com/search?q=war"
-width="100%" height="300"></iframe>
-</div>
-
-<div class="panel">
-<h3>Cyber Threat Map</h3>
-<iframe src="https://threatmap.checkpoint.com/"
-width="100%" height="300"></iframe>
-</div>
-
-<div class="panel">
-<h3>Aircraft Activity</h3>
-<iframe src="https://www.flightradar24.com/simple"
-width="100%" height="300"></iframe>
-</div>
-
-<div class="panel">
-<h3>Marine Traffic</h3>
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"
-width="100%" height="300"></iframe>
-</div>
+<a href="#">Read report</a>
 
 </div>
-
-</section>
 
 </div>
 
 
 
-<script>
+<div class="card">
 
-function openTab(evt,tabName){
+<img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9">
 
-let tabcontent=document.getElementsByClassName("tabcontent");
-for(let i=0;i<tabcontent.length;i++){
-tabcontent[i].style.display="none";
-}
+<div class="card-body">
 
-let tabs=document.getElementsByClassName("tab");
-for(let i=0;i<tabs.length;i++){
-tabs[i].classList.remove("active");
-}
+<span class="source">BBC News</span>
 
-document.getElementById(tabName).style.display="block";
-evt.currentTarget.classList.add("active");
+<h3>
+War fuels debate in Cyprus over UK military bases
+</h3>
 
-}
+<a href="#">Read report</a>
 
-document.getElementById("home").style.display="block";
+</div>
 
-</script>
+</div>
+
+
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c">
+
+<div class="card-body">
+
+<span class="source">BBC News</span>
+
+<h3>
+Explosion at US embassy in Oslo may have been terrorism, Norway police say
+</h3>
+
+<a href="#">Read report</a>
+
+</div>
+
+</div>
+
+
+</main>
 
 </body>
 </html>
