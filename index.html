@@ -94,7 +94,7 @@ white-space:nowrap;
 .ticker span{
 display:inline-block;
 padding-left:100%;
-animation:ticker 40s linear infinite;
+animation:ticker 80s linear infinite;
 }
 
 @keyframes ticker{
@@ -140,7 +140,7 @@ padding:12px;
 display:block;
 }
 
-/* NEWS FEED */
+/* NEWS */
 
 .feed{
 height:70vh;
@@ -228,6 +228,42 @@ background:var(--bsg-gold);
 color:#071e16;
 }
 
+/* COMMAND OVERVIEW GRID */
+
+.overviewGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:10px;
+height:90vh;
+}
+
+.overviewPanel{
+background:#071e16;
+border:1px solid #1e5a42;
+border-radius:6px;
+overflow:hidden;
+position:relative;
+}
+
+.overviewTitle{
+position:absolute;
+top:6px;
+left:10px;
+background:rgba(0,0,0,0.6);
+color:#c6a55a;
+padding:4px 8px;
+font-size:12px;
+border-radius:4px;
+z-index:5;
+}
+
+.overviewPanel iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
 /* MAPS */
 
 iframe{
@@ -282,7 +318,7 @@ GLOBAL THREAT LEVEL
 
 <div class="tabs">
 
-<button class="active" onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button>
+<button class="active" onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('overview')">Command Overview</button>
 
 </div>
 
@@ -337,9 +373,37 @@ src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/mapt
 Satellite Fire Detection (NASA FIRMS)
 </h3>
 
-<iframe
-src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z">
-</iframe>
+<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
+
+</div>
+
+<!-- COMMAND OVERVIEW -->
+
+<div id="overview" class="section">
+
+<div class="overviewGrid">
+
+<div class="overviewPanel">
+<div class="overviewTitle">Conflict Map</div>
+<iframe src="https://liveuamap.com"></iframe>
+</div>
+
+<div class="overviewPanel">
+<div class="overviewTitle">Aircraft Watch</div>
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+</div>
+
+<div class="overviewPanel">
+<div class="overviewTitle">Marine Watch</div>
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
+</div>
+
+<div class="overviewPanel">
+<div class="overviewTitle">Fire Monitor</div>
+<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
+</div>
+
+</div>
 
 </div>
 
@@ -390,7 +454,7 @@ headlines.push(title);
 
 });
 
-document.getElementById("breakingNews").innerText=headlines.join("   ✦   ");
+document.getElementById("breakingNews").innerText=headlines.join("      ✦      ");
 
 });
 
