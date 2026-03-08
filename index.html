@@ -5,7 +5,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BSG Global Strategic Awareness OSINT</title>
@@ -78,97 +77,86 @@ GLOBAL THREAT LEVEL
 
 </nav>
 
+
 <section id="home" class="tab active">
 
-<h2>Operational Awareness</h2>
+<h2>Global Strategic Awareness OSINT</h2>
 
-<p>
+<p class="homeText">
 
-Preparedness is no longer optional.
-
-Across the modern world we are witnessing increasing geopolitical tension, economic instability, and expanding regional conflicts. In such an environment, access to reliable information and situational awareness becomes essential.
-
-History has shown that when systems fail — when borders close, currencies collapse, or violence erupts — the African diaspora is often the last to be protected and the first to be stranded.
-
-Black Survival Gear was built to change that reality.
-
-BSG Global Strategic Awareness OSINT is an open-source intelligence platform designed to monitor global developments in real time. By consolidating conflict monitoring, airspace activity, maritime tracking, cyber incidents, and environmental alerts, the system provides the awareness needed to make informed decisions and remain prepared.
-
-Information is the first layer of defence.
+The global security environment is becoming increasingly unpredictable. Strategic competition between major powers, regional conflicts, economic instability, and information warfare are shaping a world where crises can develop rapidly and with little warning. In such an environment, situational awareness is no longer a luxury — it is a necessity.
 
 </p>
 
+<p class="homeText">
+
+Black Survival Gear created the Global Strategic Awareness OSINT platform to provide real-time visibility of global developments that may affect security, mobility, and stability. By monitoring conflict zones, military air activity, maritime movements, cyber incidents, and environmental events, this system brings together multiple intelligence streams into a single operational picture. Access to timely information enables better judgement, better planning, and greater preparedness.
+
+</p>
+
+<div class="homeImage">
+<img src="BSG2.png">
+</div>
+
 </section>
+
 
 <section id="news" class="tab">
-
 <div id="newsGrid" class="newsGrid"></div>
-
 </section>
+
 
 <section id="map" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
+
 
 <section id="air" class="tab">
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
+
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
+
 
 <section id="cyber" class="tab">
-
 <h2>Global Cyber Attack Map</h2>
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
+
 
 <section id="bases" class="tab">
-
 <h2>Global Military Installations</h2>
-
 <iframe src="https://umap.openstreetmap.fr/en/map/military-bases-around-the-world_510207"></iframe>
-
 </section>
+
 
 <section id="fire" class="tab">
-
 <h2>Global Wildfire Monitor</h2>
-
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
-
 </section>
+
 
 <section id="command" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
-
 <iframe src="https://globe.adsbexchange.com"></iframe>
 
 </div>
 
 </section>
 
+
 <footer>
-
 BlackSurvivalGear.com
-
 </footer>
+
 
 <script>
 
@@ -187,6 +175,8 @@ btn.classList.remove("active")
 document.querySelector(`nav button[onclick="showTab('${id}')"]`).classList.add("active")
 
 }
+
+
 
 async function loadNews(){
 
@@ -211,7 +201,6 @@ for(const feed of feeds){
 try{
 
 const res=await fetch(feed)
-
 const data=await res.json()
 
 data.items.slice(0,10).forEach(article=>{
@@ -219,16 +208,9 @@ data.items.slice(0,10).forEach(article=>{
 headlines.push(article.title)
 
 const card=document.createElement("div")
-
 card.className="newsCard"
 
-const breakingWords=[
-
-"war","attack","missile","explosion",
-
-"killed","strike","assault","invasion"
-
-]
+const breakingWords=["war","attack","missile","explosion","strike","assault"]
 
 let breaking=false
 
@@ -255,7 +237,6 @@ card.innerHTML=`
 <a href="${article.link}" target="_blank">Read report</a>
 
 </div>
-
 `
 
 container.appendChild(card)
@@ -281,5 +262,4 @@ setInterval(loadNews,60000)
 </script>
 
 </body>
-
 </html>
