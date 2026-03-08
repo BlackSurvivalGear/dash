@@ -5,7 +5,7 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>BSG Global Strategic Awareness</title>
 
@@ -15,6 +15,8 @@
 
 <body>
 
+<!-- ===== HEADER ===== -->
+
 <header>
 
 <img src="bsg.jpg" class="logo" onclick="showTab('home')">
@@ -22,61 +24,120 @@
 <h1>BSG Global Strategic Awareness</h1>
 
 <div class="threat">
+
 GLOBAL THREAT LEVEL
+
 <span class="level">ELEVATED</span>
+
 </div>
 
 </header>
 
+<!-- ===== NEWS TICKER ===== -->
+
 <div class="ticker">
+
 <span id="tickerText">Loading global headlines...</span>
+
 </div>
+
+<!-- ===== MAIN NAVIGATION ===== -->
 
 <nav>
 
-<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('markets')">Markets</button> <button onclick="showTab('currency')">Currency</button> <button onclick="showTab('overview')">Command Overview</button>
+<button onclick="showTab('home')" class="active">Home</button>
+
+<button onclick="showTab('news')">Conflict News</button>
+
+<button onclick="showTab('map')">Conflict Map</button>
+
+<button onclick="showTab('air')">Aircraft Watch</button>
+
+<button onclick="showTab('marine')">Marine Watch</button>
+
+<button onclick="showTab('fire')">Fire Monitor</button>
+
+<button onclick="showTab('markets')">Markets</button>
+
+<button onclick="showTab('currency')">Currency</button>
+
+<button onclick="showTab('overview')">Command Overview</button>
 
 </nav>
+
+<!-- ===== HOME TAB ===== -->
 
 <section id="home" class="tab active">
 
 <h2>Welcome to BSG Global Strategic Awareness</h2>
 
 <p>
-This platform provides open-source intelligence monitoring including conflict tracking, military aircraft monitoring, maritime traffic, satellite fire detection and global market activity.
+
+This dashboard provides open-source intelligence monitoring including conflict tracking, military aircraft activity, maritime shipping routes, satellite fire detection, and global financial markets.
+
 </p>
 
 </section>
 
+<!-- ===== CONFLICT NEWS TAB ===== -->
+
 <section id="news" class="tab">
 
 <div id="newsFeed" class="newsGrid">
+
 Loading intelligence feeds...
+
 </div>
 
 </section>
 
+<!-- ===== CONFLICT MAP TAB ===== -->
+
 <section id="map" class="tab">
+
 <iframe src="https://liveuamap.com"></iframe>
+
 </section>
+
+<!-- ===== AIRCRAFT WATCH TAB ===== -->
 
 <section id="air" class="tab">
+
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+
 </section>
+
+<!-- ===== MARINE WATCH TAB ===== -->
 
 <section id="marine" class="tab">
+
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
+
 </section>
 
+<!-- ===== FIRE MONITOR TAB ===== -->
+
 <section id="fire" class="tab">
+
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
+
 </section>
+
+<!-- ===== MARKETS TAB ===== -->
 
 <section id="markets" class="tab">
 
 <div class="marketTabs">
 
-<button onclick="showMarket('market1')" class="active">Market Overview</button> <button onclick="showMarket('market2')">Crypto Heatmap</button> <button onclick="showMarket('market3')">BTC Chart</button> <button onclick="showMarket('market4')">Forex</button> <button onclick="showMarket('market5')">Economic Map</button>
+<button onclick="showMarket('market1')" class="active">Market Overview</button>
+
+<button onclick="showMarket('market2')">Crypto Heatmap</button>
+
+<button onclick="showMarket('market3')">BTC Chart</button>
+
+<button onclick="showMarket('market4')">Forex</button>
+
+<button onclick="showMarket('market5')">Economic Map</button>
 
 </div>
 
@@ -138,11 +199,15 @@ Loading intelligence feeds...
 
 </section>
 
+<!-- ===== CURRENCY TAB BLOCK ===== -->
+
 <section id="currency" class="tab">
+
+<div class="currencyContainer">
 
 <div class="converter">
 
-<h2>African Currency Converter</h2>
+<h1>African Currency Converter</h1>
 
 <input type="number" id="amount" placeholder="Enter amount">
 
@@ -152,86 +217,111 @@ Loading intelligence feeds...
 
 <button onclick="convertCurrency()">Convert</button>
 
-<div id="result"></div>
+<div class="result" id="result"></div>
+
+<div class="error" id="error"></div>
+
+</div>
+
+<div class="table-container">
+
+<h2>NGN Exchange Rates</h2>
+
+<table class="conversion-table">
+
+<thead>
+<tr>
+<th>Currency</th>
+<th>NGN Rate</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr><td>GBP</td><td id="gbp-rate">-</td></tr>
+<tr><td>USD</td><td id="usd-rate">-</td></tr>
+<tr><td>CAD</td><td id="cad-rate">-</td></tr>
+<tr><td>EUR</td><td id="eur-rate">-</td></tr>
+<tr><td>RUB</td><td id="rub-rate">-</td></tr>
+<tr><td>CNY</td><td id="cny-rate">-</td></tr>
+
+</tbody>
+
+</table>
+
+</div>
 
 </div>
 
 </section>
+
+<!-- ===== COMMAND OVERVIEW TAB ===== -->
 
 <section id="overview" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
+
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
-<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
+
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs"></iframe>
 
 </div>
 
 </section>
 
 <footer>
+
 BlackSurvivalGear.com
+
 </footer>
 
 <script>
 
-/* TAB CONTROL */
+/* ===== TAB CONTROL ===== */
 
 function showTab(id){
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
 
-document.getElementById(id).classList.add("active")
+document.getElementById(id).classList.add("active");
 
-document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
 
-event.target.classList.add("active")
+event.target.classList.add("active");
 
 }
 
 
-
-/* MARKET TABS */
+/* ===== MARKET SUB-TABS ===== */
 
 function showMarket(id){
 
-document.querySelectorAll(".marketPanel").forEach(p=>p.classList.remove("active"))
+document.querySelectorAll(".marketPanel").forEach(p=>p.classList.remove("active"));
 
-document.getElementById(id).classList.add("active")
+document.getElementById(id).classList.add("active");
 
-document.querySelectorAll(".marketTabs button").forEach(b=>b.classList.remove("active"))
+document.querySelectorAll(".marketTabs button").forEach(b=>b.classList.remove("active"));
 
-event.target.classList.add("active")
+event.target.classList.add("active");
 
 }
 
 
-
-/* NEWS FEEDS */
+/* ===== NEWS FEEDS ===== */
 
 async function loadNews(){
 
 const feeds=[
 
-{
-name:"BBC",
-logo:"https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif",
-url:"https://feeds.bbci.co.uk/news/world/rss.xml"
-},
+{name:"BBC",logo:"https://news.bbcimg.co.uk/nol/shared/img/bbc_news_120x60.gif",url:"https://feeds.bbci.co.uk/news/world/rss.xml"},
 
-{
-name:"Reuters",
-logo:"https://www.reuters.com/resources_v2/images/favicon/favicon-96x96.png",
-url:"https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
-},
+{name:"Reuters",logo:"https://www.reuters.com/resources_v2/images/favicon/favicon-96x96.png",url:"https://www.reutersagency.com/feed/?best-topics=world&post_type=best"},
 
-{
-name:"Al Jazeera",
-logo:"https://www.aljazeera.com/favicon.ico",
-url:"https://www.aljazeera.com/xml/rss/all.xml"
-}
+{name:"Al Jazeera",logo:"https://www.aljazeera.com/favicon.ico",url:"https://www.aljazeera.com/xml/rss/all.xml"}
 
 ];
 
@@ -241,65 +331,57 @@ for(const feed of feeds){
 
 try{
 
-const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url)
+const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url);
 
-const res=await fetch(proxy)
+const res=await fetch(proxy);
 
-const xml=await res.text()
+const xml=await res.text();
 
-const parser=new DOMParser()
+const parser=new DOMParser();
 
-const data=parser.parseFromString(xml,"text/xml")
+const data=parser.parseFromString(xml,"text/xml");
 
-const items=data.querySelectorAll("item")
+const items=data.querySelectorAll("item");
 
 items.forEach((item,i)=>{
 
-if(i>4)return
+if(i>4)return;
 
-const title=item.querySelector("title")?.textContent
+const title=item.querySelector("title")?.textContent;
 
-const link=item.querySelector("link")?.textContent
+const link=item.querySelector("link")?.textContent;
 
-let img=""
+let img="";
 
-/* media */
-const media=item.querySelector("media\\:content")
-if(media) img=media.getAttribute("url")
+const media=item.querySelector("media\\:content");
 
-/* enclosure */
-if(!img){
-const enclosure=item.querySelector("enclosure")
-if(enclosure) img=enclosure.getAttribute("url")
-}
+if(media) img=media.getAttribute("url");
 
-/* description extraction */
 if(!img){
 
-const desc=item.querySelector("description")?.textContent
-const match=desc?.match(/<img.*?src="(.*?)"/)
+const enclosure=item.querySelector("enclosure");
 
-if(match) img=match[1]
+if(enclosure) img=enclosure.getAttribute("url");
 
 }
 
-/* fallback */
-
 if(!img){
-img="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800"
+
+img="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800";
+
 }
 
 html+=`
 
 <div class="newsCard">
 
-<img src="${img}" loading="lazy">
+<img src="${img}">
 
 <div class="newsContent">
 
 <div class="newsSource">
 
-<img src="${feed.logo}" height="14">
+<img src="${feed.logo}">
 
 ${feed.name}
 
@@ -311,62 +393,184 @@ ${feed.name}
 
 </div>
 
-`
+`;
 
-})
+});
 
 }catch(e){
 
-console.log("Feed error")
+console.log("feed error");
 
 }
 
 }
 
-document.getElementById("newsFeed").innerHTML=html
+document.getElementById("newsFeed").innerHTML=html;
 
 }
 
 
-
-/* TICKER */
+/* ===== NEWS TICKER ===== */
 
 async function ticker(){
 
-const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml")
+const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
 
-const res=await fetch(proxy)
+const res=await fetch(proxy);
 
-const xml=await res.text()
+const xml=await res.text();
 
-const parser=new DOMParser()
+const parser=new DOMParser();
 
-const data=parser.parseFromString(xml,"text/xml")
+const data=parser.parseFromString(xml,"text/xml");
 
-const items=data.querySelectorAll("item")
+const items=data.querySelectorAll("item");
 
-let text=""
+let text="";
 
 items.forEach((item,i)=>{
 
 if(i<10){
 
-text+=item.querySelector("title").textContent+" ◆ "
+text+=item.querySelector("title").textContent+" ◆ ";
 
 }
 
-})
+});
 
-document.getElementById("tickerText").innerText=text
+document.getElementById("tickerText").innerText=text;
 
 }
 
 
+/* ===== CURRENCY CONVERTER SCRIPT ===== */
 
-loadNews()
-ticker()
+const fromCurrency=document.getElementById('from-currency');
+const toCurrency=document.getElementById('to-currency');
+const result=document.getElementById('result');
+const error=document.getElementById('error');
 
-setInterval(loadNews,300000)
+const tableRates={
+GBP:document.getElementById('gbp-rate'),
+USD:document.getElementById('usd-rate'),
+CAD:document.getElementById('cad-rate'),
+EUR:document.getElementById('eur-rate'),
+RUB:document.getElementById('rub-rate'),
+CNY:document.getElementById('cny-rate')
+};
+
+const fixedCurrencies=[
+{code:'USD',country:'United States Dollar'},
+{code:'GBP',country:'United Kingdom Pound'},
+{code:'EUR',country:'Euro'},
+{code:'CAD',country:'Canadian Dollar'},
+{code:'RUB',country:'Russian Ruble'},
+{code:'CNY',country:'Chinese Yuan'}
+];
+
+const africanCurrencies=[
+
+{code:'NGN',country:'Nigeria'},
+{code:'KES',country:'Kenya'},
+{code:'GHS',country:'Ghana'},
+{code:'EGP',country:'Egypt'},
+{code:'MAD',country:'Morocco'},
+{code:'DZD',country:'Algeria'},
+{code:'TND',country:'Tunisia'},
+{code:'ETB',country:'Ethiopia'},
+{code:'TZS',country:'Tanzania'},
+{code:'UGX',country:'Uganda'}
+
+];
+
+function populateCurrencies(){
+
+const all=[...fixedCurrencies,...africanCurrencies];
+
+const options=all.map(c=>`<option value="${c.code}">${c.code} - ${c.country}</option>`).join('');
+
+fromCurrency.innerHTML=options;
+toCurrency.innerHTML=options;
+
+fromCurrency.value='USD';
+toCurrency.value='NGN';
+
+}
+
+async function fetchRates(base){
+
+const url=`https://api.exchangerate-api.com/v4/latest/${base}`;
+
+const response=await fetch(url);
+
+const data=await response.json();
+
+return data.rates;
+
+}
+
+async function convertCurrency(){
+
+const amount=parseFloat(document.getElementById('amount').value);
+
+const from=fromCurrency.value;
+
+const to=toCurrency.value;
+
+if(isNaN(amount)||amount<=0){
+
+error.textContent='Please enter a valid amount';
+
+result.textContent='';
+
+return;
+
+}
+
+error.textContent='';
+
+const rates=await fetchRates(from);
+
+const rate=rates[to];
+
+if(rate){
+
+const converted=(amount*rate).toFixed(2);
+
+result.textContent=`${amount} ${from} = ${converted} ${to}`;
+
+}
+
+}
+
+async function updateConversionTable(){
+
+const rates=await fetchRates('NGN');
+
+for(const [currency,element] of Object.entries(tableRates)){
+
+const rate=rates[currency];
+
+if(rate){
+
+element.textContent=(1/rate).toFixed(2);
+
+}
+
+}
+
+}
+
+
+populateCurrencies();
+
+updateConversionTable();
+
+loadNews();
+
+ticker();
+
+setInterval(loadNews,300000);
 
 </script>
 
