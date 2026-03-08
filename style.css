@@ -1,7 +1,8 @@
 body{
 
 margin:0;
-font-family:Segoe UI;
+font-family:'Rajdhani',sans-serif;
+
 color:#e2f0e9;
 background:#041f18;
 
@@ -13,6 +14,7 @@ body::before{
 
 content:"";
 position:fixed;
+
 top:0;
 left:0;
 
@@ -20,11 +22,11 @@ width:100%;
 height:100%;
 
 background:url("bsg.jpg") center center no-repeat;
-background-size:900px;
+background-size:950px;
 
-opacity:0.16;
+opacity:0.22;
 
-filter:grayscale(100%) brightness(1.2);
+filter:grayscale(100%) brightness(1.35);
 
 pointer-events:none;
 z-index:-1;
@@ -46,11 +48,11 @@ height:100%;
 background:
 conic-gradient(
 transparent 0deg,
-rgba(198,165,90,0.08) 40deg,
-transparent 80deg
+rgba(198,165,90,0.18) 45deg,
+transparent 90deg
 );
 
-animation:radarSweep 12s linear infinite;
+animation:radarSweep 10s linear infinite;
 
 pointer-events:none;
 
@@ -87,6 +89,14 @@ cursor:pointer;
 
 }
 
+header h1{
+
+color:#718754;
+font-weight:600;
+letter-spacing:1px;
+
+}
+
 /* THREAT PANEL */
 
 .threatPanel{
@@ -98,7 +108,8 @@ text-align:right;
 
 .threatLabel{
 
-font-weight:bold;
+color:#718754;
+font-weight:600;
 margin-bottom:6px;
 
 }
@@ -126,17 +137,18 @@ font-size:12px;
 .threatScale .active{
 
 opacity:1;
+
 border:1px solid #c6a55a;
 
 box-shadow:0 0 8px rgba(198,165,90,0.35);
 
 }
 
-/* TICKER */
+/* NEWS TICKER */
 
 .ticker{
 
-background:#232D12;
+background:transparent;
 
 color:#e2f0e9;
 
@@ -145,8 +157,8 @@ white-space:nowrap;
 
 padding:10px 0;
 
-border-top:2px solid #c6a55a;
-border-bottom:2px solid #c6a55a;
+border-top:1px solid rgba(198,165,90,0.6);
+border-bottom:1px solid rgba(198,165,90,0.6);
 
 font-weight:600;
 
@@ -155,7 +167,6 @@ font-weight:600;
 .ticker span{
 
 display:inline-block;
-
 padding-left:100%;
 
 animation:scroll 80s linear infinite;
@@ -229,7 +240,9 @@ display:block;
 .newsGrid{
 
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
 gap:20px;
 
 }
@@ -266,6 +279,7 @@ box-shadow:
 
 width:100%;
 height:180px;
+
 object-fit:cover;
 
 }
@@ -286,11 +300,13 @@ font-weight:700;
 letter-spacing:0.5px;
 
 padding:3px 8px;
+
 margin-bottom:6px;
 
 border-radius:4px;
 
 background:#c6a55a;
+
 color:#041f18;
 
 }
@@ -336,6 +352,7 @@ width:100%;
 height:100%;
 
 border:none;
+
 border-radius:6px;
 
 }
@@ -346,6 +363,7 @@ iframe{
 
 width:100%;
 height:85vh;
+
 border:none;
 
 }
