@@ -3,11 +3,14 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BSG Global Strategic Awareness</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -24,11 +27,27 @@
 
 GLOBAL THREAT LEVEL
 
-<span class="level">ELEVATED</span>
+<span class="level elevated">ELEVATED</span>
 
 </div>
 
 </header>
+
+<!-- THREAT LEGEND -->
+
+<div class="threatLegend">
+
+<span class="legend normal">NORMAL</span>
+
+<span class="legend guarded">GUARDED</span>
+
+<span class="legend elevated">ELEVATED</span>
+
+<span class="legend high">HIGH</span>
+
+<span class="legend critical">CRITICAL</span>
+
+</div>
 
 <!-- NEWS TICKER -->
 
@@ -38,7 +57,7 @@ GLOBAL THREAT LEVEL
 
 </div>
 
-<!-- NAV BAR -->
+<!-- NAVIGATION -->
 
 <nav>
 
@@ -50,9 +69,9 @@ GLOBAL THREAT LEVEL
 
 <button onclick="showTab('air')">Aircraft Watch</button>
 
-<button onclick="showTab('launch')">Launch Monitor</button>
-
 <button onclick="showTab('marine')">Marine Watch</button>
+
+<button onclick="showTab('fleet')">Naval Fleet</button>
 
 <button onclick="showTab('fire')">Fire Monitor</button>
 
@@ -68,7 +87,7 @@ GLOBAL THREAT LEVEL
 
 </nav>
 
-<!-- HOME TAB -->
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -76,21 +95,21 @@ GLOBAL THREAT LEVEL
 
 <p>
 
-Multi-domain intelligence console monitoring:
+Multi-domain intelligence monitoring:
 
-Global conflict zones
-Airspace activity
-Naval traffic
-Satellite launches
-Cyber attacks
-Military installations
-Global markets
+Conflict zones
+Aircraft activity
+Naval fleets
+Cyber warfare
+Wildfires
+Military bases
+Markets
 
 </p>
 
 </section>
 
-<!-- NEWS TAB -->
+<!-- NEWS -->
 
 <section id="news" class="tab">
 
@@ -106,21 +125,11 @@ Global markets
 
 </section>
 
-<!-- AIRCRAFT WATCH -->
+<!-- AIRCRAFT -->
 
 <section id="air" class="tab">
 
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
-</section>
-
-<!-- LAUNCH MONITOR -->
-
-<section id="launch" class="tab">
-
-<h2>Global Satellite Tracker</h2>
-
-<iframe src="https://keeptrack.space"></iframe>
 
 </section>
 
@@ -129,6 +138,34 @@ Global markets
 <section id="marine" class="tab">
 
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+</section>
+
+<!-- NAVAL FLEET + CHOKEPOINTS -->
+
+<section id="fleet" class="tab">
+
+<h2>Global Naval Fleet & Strategic Chokepoints</h2>
+
+<div class="mapWrapper">
+
+<iframe
+src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"
+class="fleetMap">
+</iframe>
+
+<div class="chokepoints">
+
+<div class="point hormuz">Hormuz</div>
+<div class="point malacca">Malacca</div>
+<div class="point suez">Suez</div>
+<div class="point gibraltar">Gibraltar</div>
+<div class="point bab">Bab-el-Mandeb</div>
+<div class="point panama">Panama</div>
+
+</div>
+
+</div>
 
 </section>
 
@@ -142,7 +179,7 @@ Global markets
 
 </section>
 
-<!-- CYBER ATTACK MAP -->
+<!-- CYBER MAP -->
 
 <section id="cyber" class="tab">
 
@@ -152,7 +189,7 @@ Global markets
 
 </section>
 
-<!-- MILITARY BASE MAP -->
+<!-- MILITARY BASES -->
 
 <section id="bases" class="tab">
 
@@ -176,7 +213,7 @@ Global markets
 
 <h2>African Currency Converter</h2>
 
-<p>Currency converter module here</p>
+<p>Currency module placeholder.</p>
 
 </section>
 
@@ -292,5 +329,4 @@ setInterval(loadNews,300000)
 </script>
 
 </body>
-
 </html>
