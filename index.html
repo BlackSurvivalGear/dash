@@ -192,13 +192,29 @@ try{
 const res=await fetch(feed)
 const data=await res.json()
 
-data.items.slice(0,4).forEach(article=>{
+data.items.slice(0,10).forEach(article=>{
 
 headlines.push(article.title)
 
 const card=document.createElement("div")
-
 card.className="newsCard"
+
+const breakingWords=[
+"war","attack","missile","explosion",
+"killed","strike","assault","invasion"
+]
+
+let breaking=false
+
+breakingWords.forEach(word=>{
+if(article.title.toLowerCase().includes(word)){
+breaking=true
+}
+})
+
+if(breaking){
+card.classList.add("breaking")
+}
 
 card.innerHTML=`
 
@@ -232,7 +248,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 loadNews()
 
-setInterval(loadNews,300000)
+setInterval(loadNews,60000)
 
 })
 
