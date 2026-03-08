@@ -45,28 +45,37 @@ GLOBAL THREAT LEVEL
 
 <nav>
 
-<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('cyber')">Cyber Attacks</button> <button onclick="showTab('bases')">Military Bases</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('command')">Command Overview</button>
+<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('cyber')">Cyber Attacks</button> <button onclick="showTab('bases')">Military Bases</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('osint')">OSINT Monitor</button> <button onclick="showTab('command')">Command Overview</button>
 
 </nav>
 
 <section id="home" class="tab active">
 
-<h2>Operational Awareness</h2>
+<h2>Strategic Awareness</h2>
+
+<p class="introLead">
+Preparedness is no longer optional.
+</p>
 
 <p>
-
-Preparedness is no longer optional.
-
 Across the modern world we are witnessing increasing geopolitical tension, economic instability, and expanding regional conflicts.
+Situational awareness is now a necessity rather than a luxury.
+</p>
 
+<p>
 History has shown that when systems fail — when borders close, currencies collapse, or violence erupts — the African diaspora is often the last to be protected and the first to be stranded.
+</p>
 
-Black Survival Gear was built to change that reality.
+<p>
+Black Survival Gear was created to change that reality.
+</p>
 
-BSG Global Strategic Awareness OSINT is an open-source intelligence platform designed to monitor global developments in real time.
+<p>
+BSG Global Strategic Awareness OSINT consolidates open-source intelligence from conflict monitoring, airspace activity, maritime tracking, cyber incidents, and geopolitical reporting into a single operational picture.
+</p>
 
+<p class="closingStatement">
 Information is the first layer of defence.
-
 </p>
 
 </section>
@@ -77,7 +86,7 @@ Information is the first layer of defence.
 
 <div class="newsSources">
 
-<button class="sourceTab active" onclick="openSource(event,'bbc')">BBC</button> <button class="sourceTab" onclick="openSource(event,'aljazeera')">Al Jazeera</button> <button class="sourceTab" onclick="openSource(event,'reuters')">Reuters</button> <button class="sourceTab" onclick="openSource(event,'rt')">RT</button>
+<button class="sourceTab active" onclick="openSource(event,'bbc')">BBC</button> <button class="sourceTab" onclick="openSource(event,'cnn')">CNN</button> <button class="sourceTab" onclick="openSource(event,'sky')">Sky</button> <button class="sourceTab" onclick="openSource(event,'aljazeera')">Al Jazeera</button> <button class="sourceTab" onclick="openSource(event,'reuters')">Reuters</button> <button class="sourceTab" onclick="openSource(event,'rt')">RT</button> <button class="sourceTab" onclick="openSource(event,'tass')">TASS</button> <button class="sourceTab" onclick="openSource(event,'france24')">France24</button> <button class="sourceTab" onclick="openSource(event,'wion')">WION</button> <button class="sourceTab" onclick="openSource(event,'africa')">Africa</button> <button class="sourceTab" onclick="openSource(event,'sputnik')">Sputnik</button>
 
 </div>
 
@@ -99,7 +108,7 @@ Information is the first layer of defence.
 
 <div class="subnav">
 
-<button onclick="focusChokepoint('global')" class="subactive">Global</button> <button onclick="focusChokepoint('suez')">Suez Canal</button> <button onclick="focusChokepoint('hormuz')">Hormuz</button> <button onclick="focusChokepoint('bab')">Bab-el-Mandeb</button> <button onclick="focusChokepoint('malacca')">Malacca</button>
+<button onclick="focusChokepoint('global')">Global</button> <button onclick="focusChokepoint('suez')">Suez</button> <button onclick="focusChokepoint('hormuz')">Hormuz</button> <button onclick="focusChokepoint('bab')">Bab-el-Mandeb</button> <button onclick="focusChokepoint('malacca')">Malacca</button>
 
 </div>
 
@@ -117,7 +126,22 @@ src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 <section id="fire" class="tab">
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+<iframe src="https://firms.modaps.eosdis.nasa.gov/map"></iframe>
+</section>
+
+<section id="osint" class="tab">
+
+<h2>Global OSINT Social Monitor</h2>
+
+<div class="grid">
+
+<iframe src="https://twitframe.com/show?url=https://twitter.com/sentdefender"></iframe>
+<iframe src="https://twitframe.com/show?url=https://twitter.com/intelcrab"></iframe>
+<iframe src="https://twitframe.com/show?url=https://twitter.com/WarMonitor3"></iframe>
+<iframe src="https://twitframe.com/show?url=https://twitter.com/MarineTraffic"></iframe>
+
+</div>
+
 </section>
 
 <section id="command" class="tab">
@@ -125,16 +149,20 @@ src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
 <iframe src="https://globe.adsbexchange.com"></iframe>
+<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
+<iframe src="https://threatmap.checkpoint.com"></iframe>
 
 </div>
 
 </section>
 
 <footer>
+
+<a href="https://blacksurvivalgear.com" target="_blank" class="footerLink">
 BlackSurvivalGear.com
+</a>
+
 </footer>
 
 <script>
@@ -152,21 +180,32 @@ event.target.classList.add("active")
 
 async function openSource(evt,source){
 
-document.querySelectorAll(".sourceTab").forEach(btn=>{
-btn.classList.remove("active")
-})
-
+document.querySelectorAll(".sourceTab").forEach(btn=>btn.classList.remove("active"))
 evt.currentTarget.classList.add("active")
 
 const feeds={
 
 bbc:"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
 
+cnn:"https://api.rss2json.com/v1/api.json?rss_url=http://rss.cnn.com/rss/edition_world.rss",
+
+sky:"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.skynews.com/feeds/rss/world.xml",
+
 aljazeera:"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
 
-reuters:"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
+reuters:"https://api.rss2json.com/v1/api.json?rss_url=https://www.reuters.com/world/rss",
 
-rt:"https://api.rss2json.com/v1/api.json?rss_url=https://www.rt.com/rss/news/"
+rt:"https://api.rss2json.com/v1/api.json?rss_url=https://www.rt.com/rss/news/",
+
+tass:"https://api.rss2json.com/v1/api.json?rss_url=https://tass.com/rss/v2.xml",
+
+france24:"https://api.rss2json.com/v1/api.json?rss_url=https://www.france24.com/en/rss",
+
+wion:"https://api.rss2json.com/v1/api.json?rss_url=https://www.wionews.com/rss/world-news",
+
+africa:"https://api.rss2json.com/v1/api.json?rss_url=https://allafrica.com/tools/headlines/rdf/latest/headlines.rdf",
+
+sputnik:"https://api.rss2json.com/v1/api.json?rss_url=https://sputnikglobe.com/export/rss2/archive/index.xml"
 
 }
 
@@ -191,7 +230,7 @@ card.innerHTML=`
 
 <div class="newsText">
 
-<span class="source">${data.feed.title}</span>
+<span class="source">${source.toUpperCase()}</span>
 
 <h3>${article.title}</h3>
 
@@ -207,41 +246,68 @@ grid.appendChild(card)
 
 }catch{
 
-grid.innerHTML="Feed unavailable"
+grid.innerHTML="Source temporarily unavailable"
 
 }
 
 }
+
+
+
+async function loadTicker(){
+
+const feeds=[
+"https://feeds.bbci.co.uk/news/world/rss.xml",
+"https://www.aljazeera.com/xml/rss/all.xml",
+"https://www.rt.com/rss/news/"
+]
+
+let headlines=[]
+
+for(const url of feeds){
+
+try{
+
+const res=await fetch("https://api.rss2json.com/v1/api.json?rss_url="+url)
+const data=await res.json()
+
+data.items.slice(0,5).forEach(a=>headlines.push(a.title))
+
+}catch{}
+
+}
+
+if(headlines.length>0){
+document.getElementById("ticker").textContent=headlines.join(" ◆ ")
+}
+
+}
+
+setInterval(loadTicker,60000)
+loadTicker()
 
 
 function focusChokepoint(point){
 
 const map=document.getElementById("marineMap")
 
-const coords={
+const urls={
 
-global:"zoom:2",
+global:"https://www.marinetraffic.com/en/ais/embed/zoom:2",
 
-suez:"zoom:7/lat:30.0/lon:32.5",
+suez:"https://www.marinetraffic.com/en/ais/embed/zoom:8/lat:30.1/lon:32.6",
 
-hormuz:"zoom:7/lat:26.5/lon:56.5",
+hormuz:"https://www.marinetraffic.com/en/ais/embed/zoom:7/lat:26.6/lon:56.3",
 
-bab:"zoom:7/lat:12.7/lon:43.3",
+bab:"https://www.marinetraffic.com/en/ais/embed/zoom:7/lat:12.7/lon:43.3",
 
-malacca:"zoom:6/lat:3.0/lon:101.0"
-
-}
-
-map.src="https://www.marinetraffic.com/en/ais/embed/"+coords[point]
+malacca:"https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:3.0/lon:101.0"
 
 }
 
+map.src=urls[point]
 
-document.addEventListener("DOMContentLoaded",function(){
-
-openSource({currentTarget:document.querySelector(".sourceTab.active")},"bbc")
-
-})
+}
 
 </script>
 
