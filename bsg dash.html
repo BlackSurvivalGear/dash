@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>BSG Strategic Awareness</title>
+
+<style>
+
+html,body{
+margin:0;
+padding:0;
+height:100%;
+background:#06150f;
+font-family:Segoe UI,Arial;
+color:#e6f2ec;
+}
+
+/* WATERMARK */
+
+body::before{
+content:"";
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:900px;
+height:900px;
+background-image:url("https://lh3.googleusercontent.com/sitesv/APaQ0SSB5vRhEplmuBS10X2DwmnR0K-GeHMtSVvbEH_X_LYvs4on4hc0WcZkYAn1wA087aJIlsuBan74GGE3neGeT0ZTuamyrMAFsbI3wpLMT0_Iuz4tjLqMNyKISIXohV1kXRLZRfjK7ptIQuVJVos_QVMQn5zp4zQwkxjxZsZuLzlhlH4NxO3ye_ipXvpa3X6EH4LB-oFe8Ch4fpNHsOv9a-JGkkTX1fUSD5Sp=w1280");
+background-size:contain;
+background-repeat:no-repeat;
+opacity:0.06;
+pointer-events:none;
+z-index:0;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+align-items:center;
+gap:14px;
+padding:18px;
+font-size:26px;
+color:#9fd4b3;
+border-bottom:1px solid #1f4a35;
+position:relative;
+z-index:1;
+}
+
+/* LOGO */
+
+.logo{
+height:42px;
+}
+
+/* TABS */
+
+.tabs{
+display:flex;
+flex-wrap:wrap;
+background:#081912;
+border-bottom:1px solid #1f4a35;
+position:relative;
+z-index:1;
+}
+
+.tabs button{
+padding:10px 16px;
+background:#0f2a1e;
+border:none;
+color:#e6f2ec;
+cursor:pointer;
+border-right:1px solid #1f4a35;
+}
+
+.tabs button:hover{
+background:#174734;
+}
+
+/* PANELS */
+
+.section{
+display:none;
+padding:12px;
+position:relative;
+z-index:1;
+}
+
+.section.active{
+display:block;
+}
+
+/* NEWS FEEDS */
+
+.feed{
+height:60vh;
+overflow:auto;
+background:rgba(8,25,18,0.92);
+border-radius:6px;
+padding:10px;
+}
+
+.card{
+display:flex;
+gap:10px;
+padding:10px 0;
+border-bottom:1px solid #1f4a35;
+}
+
+.thumb{
+width:80px;
+height:60px;
+object-fit:cover;
+border-radius:4px;
+}
+
+.title{
+font-size:15px;
+color:#9fd4b3;
+}
+
+.meta{
+font-size:12px;
+color:#6fa98c;
+}
+
+.link{
+font-size:12px;
+color:#8bc5ff;
+text-decoration:none;
+}
+
+/* MAPS */
+
+iframe{
+width:100%;
+height:85vh;
+border:none;
+border-radius:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<img class="logo"
+src="https://lh3.googleusercontent.com/sitesv/APaQ0SSB5vRhEplmuBS10X2DwmnR0K-GeHMtSVvbEH_X_LYvs4on4hc0WcZkYAn1wA087aJIlsuBan74GGE3neGeT0ZTuamyrMAFsbI3wpLMT0_Iuz4tjLqMNyKISIXohV1kXRLZRfjK7ptIQuVJVos_QVMQn5zp4zQwkxjxZsZuLzlhlH4NxO3ye_ipXvpa3X6EH4LB-oFe8Ch4fpNHsOv9a-JGkkTX1fUSD5Sp=w1280">
+
+BSG Strategic Awareness
+
+</div>
+
+<div class="tabs">
+
+<button onclick="showTab('news')">Conflict News</button>
+<button onclick="showTab('africa')">Africa Security</button>
+<button onclick="showTab('markets')">Markets</button>
+<button onclick="showTab('video')">Video Monitor</button>
+<button onclick="showTab('air')">Aircraft</button>
+<button onclick="showTab('marine')">Marine</button>
+<button onclick="showTab('map')">Conflict Map</button>
+
+</div>
+
+<!-- NEWS -->
+
+<div id="news" class="section active">
+<div class="feed" id="newsFeed">Loading intelligence feeds...</div>
+</div>
+
+<!-- AFRICA -->
+
+<div id="africa" class="section">
+<div class="feed" id="africaFeed"></div>
+</div>
+
+<!-- MARKETS -->
+
+<div id="markets" class="section">
+<div class="feed" id="marketFeed"></div>
+</div>
+
+<!-- VIDEO -->
+
+<div id="video" class="section">
+
+<iframe
+src="https://www.youtube.com/embed/live_stream?channel=UCpwvZwUam-URkxB7g4USKpg"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<!-- AIRCRAFT -->
+
+<div id="air" class="section">
+
+<iframe
+src="https://globe.adsbexchange.com/">
+</iframe>
+
+</div>
+
+<!-- MARINE -->
+
+<div id="marine" class="section">
+
+<iframe
+src="https://www.fleetmon.com/services/vessels/">
+</iframe>
+
+</div>
+
+<!-- CONFLICT MAP -->
+
+<div id="map" class="section">
+
+<iframe
+src="https://liveuamap.com">
+</iframe>
+
+</div>
+
+<script>
+
+function showTab(id){
+
+document.querySelectorAll(".section")
+.forEach(s=>s.classList.remove("active"));
+
+document.getElementById(id).classList.add("active");
+
+}
+
+function buildCard(title,link,date,img,source){
+
+if(!img)
+img="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
+
+return `
+
+<div class="card">
+
+<img class="thumb" src="${img}" referrerpolicy="no-referrer">
+
+<div>
+
+<div class="title">${title}</div>
+<div class="meta">${source} • ${date}</div>
+
+<a class="link" href="${link}" target="_blank">
+Open Source →
+</a>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+function loadFeeds(){
+
+const feeds=[
+
+{url:"https://feeds.bbci.co.uk/news/world/rss.xml",name:"BBC"},
+{url:"https://www.reutersagency.com/feed/?best-topics=politics",name:"Reuters"},
+{url:"https://www.aljazeera.com/xml/rss/all.xml",name:"Al Jazeera"},
+{url:"https://apnews.com/rss/apf-topnews",name:"AP"},
+{url:"https://www.rt.com/rss/news/",name:"RT"}
+
+];
+
+const keywords=[
+"war","conflict","attack","missile","military",
+"troops","gaza","ukraine","russia","israel",
+"china","taiwan","strike","bomb"
+];
+
+const news=document.getElementById("newsFeed");
+const africa=document.getElementById("africaFeed");
+const market=document.getElementById("marketFeed");
+
+news.innerHTML="";
+africa.innerHTML="";
+market.innerHTML="";
+
+feeds.forEach(feed=>{
+
+fetch("https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url))
+.then(r=>r.text())
+.then(str=>{
+
+const xml=new DOMParser().parseFromString(str,"text/xml");
+
+xml.querySelectorAll("item").forEach(item=>{
+
+const title=item.querySelector("title")?.textContent||"";
+const link=item.querySelector("link")?.textContent||"";
+const date=item.querySelector("pubDate")?.textContent||"";
+
+const lower=title.toLowerCase();
+
+if(!keywords.some(w=>lower.includes(w))) return;
+
+let img="";
+const desc=item.querySelector("description")?.textContent||"";
+const m=desc.match(/<img.*?src="(.*?)"/);
+
+if(m) img=m[1];
+
+const html=buildCard(title,link,date,img,feed.name);
+
+news.innerHTML+=html;
+
+if(lower.includes("africa")||lower.includes("sahel")||lower.includes("nigeria"))
+africa.innerHTML+=html;
+
+if(
+lower.includes("oil")||
+lower.includes("gold")||
+lower.includes("market")||
+lower.includes("inflation")
+)
+market.innerHTML+=html;
+
+});
+
+});
+
+});
+
+}
+
+loadFeeds();
+setInterval(loadFeeds,300000);
+
+</script>
+
+</body>
+</html>
+
