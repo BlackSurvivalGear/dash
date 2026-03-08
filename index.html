@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -14,18 +13,15 @@
 
 <body>
 
-<video autoplay muted loop id="radarVideo">
+<video autoplay muted loop id="radar">
 <source src="radar3.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
 
-
 <header>
 <h1>BSG STRATEGIC AWARENESS</h1>
 </header>
-
-
 
 <nav class="tabs">
 
@@ -39,8 +35,6 @@
 
 </nav>
 
-
-
 <div class="container">
 
 <section id="home" class="tabcontent active">
@@ -50,13 +44,11 @@
 <h2>Strategic Monitoring Console</h2>
 
 <div class="panel">
-Multi-domain monitoring platform tracking global conflict,
-cyber incidents, maritime movement and aviation activity.
+Global strategic monitoring platform tracking conflict zones,
+cyber incidents, maritime traffic, aviation movement and economic indicators.
 </div>
 
 </section>
-
-
 
 <section id="conflict" class="tabcontent">
 
@@ -66,14 +58,12 @@ cyber incidents, maritime movement and aviation activity.
 
 <iframe
 src="https://news.google.com/search?q=global%20conflict&hl=en-GB&gl=GB&ceid=GB:en"
-width="100%" height="600">
+width="100%" height="650">
 </iframe>
 
 </div>
 
 </section>
-
-
 
 <section id="cyber" class="tabcontent">
 
@@ -83,14 +73,12 @@ width="100%" height="600">
 
 <iframe
 src="https://threatmap.checkpoint.com/"
-width="100%" height="600">
+width="100%" height="650">
 </iframe>
 
 </div>
 
 </section>
-
-
 
 <section id="maritime" class="tabcontent">
 
@@ -99,32 +87,28 @@ width="100%" height="600">
 <div class="panel">
 
 <iframe
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:3/shownames:false"
-width="100%" height="600">
+src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:3"
+width="100%" height="650">
 </iframe>
 
 </div>
 
 </section>
 
-
-
 <section id="flight" class="tabcontent">
 
-<h2>Global Flight Tracking</h2>
+<h2>Global Flight Monitoring</h2>
 
 <div class="panel">
 
 <iframe
 src="https://www.flightradar24.com/simple"
-width="100%" height="600">
+width="100%" height="650">
 </iframe>
 
 </div>
 
 </section>
-
-
 
 <section id="economy" class="tabcontent">
 
@@ -136,38 +120,33 @@ Gold • Silver • Oil • Bitcoin • Global Markets
 
 </section>
 
-
-
 <section id="intel" class="tabcontent">
 
-<h2>Strategic Intelligence</h2>
+<h2>Strategic Intelligence Feed</h2>
 
 <div class="panel">
-Aggregated alerts and geopolitical intelligence summaries.
+Aggregated intelligence alerts and geopolitical monitoring.
 </div>
 
 </section>
 
-
 </div>
-
-
 
 <script>
 
-function openTab(evt, tabName) {
+function openTab(evt, tabName){
 
 let tabcontent = document.getElementsByClassName("tabcontent");
-for (let i = 0; i < tabcontent.length; i++) {
-tabcontent[i].style.display = "none";
+for(let i=0;i<tabcontent.length;i++){
+tabcontent[i].style.display="none";
 }
 
 let tabs = document.getElementsByClassName("tab");
-for (let i = 0; i < tabs.length; i++) {
+for(let i=0;i<tabs.length;i++){
 tabs[i].classList.remove("active");
 }
 
-document.getElementById(tabName).style.display = "block";
+document.getElementById(tabName).style.display="block";
 evt.currentTarget.classList.add("active");
 
 }
@@ -175,7 +154,6 @@ evt.currentTarget.classList.add("active");
 document.getElementById("home").style.display="block";
 
 </script>
-
 
 </body>
 </html>
