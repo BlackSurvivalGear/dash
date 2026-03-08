@@ -5,7 +5,7 @@ color:#e2f0e9;
 background:#041f18;
 }
 
-/* FADED BSG WATERMARK */
+/* WATERMARK */
 
 body::before{
 
@@ -17,38 +17,71 @@ width:100%;
 height:100%;
 
 background:url("bsg.jpg") center center no-repeat;
-background-size:900px;
+background-size:950px;
 
-opacity:0.03;
-filter:grayscale(100%) brightness(0.55);
+opacity:0.06;
+filter:grayscale(100%) brightness(0.6);
 
-mask-image: radial-gradient(circle at center,
-rgba(0,0,0,1) 35%,
-rgba(0,0,0,0.6) 55%,
-rgba(0,0,0,0.2) 70%,
+mask-image:radial-gradient(circle at center,
+rgba(0,0,0,1) 40%,
+rgba(0,0,0,0.5) 65%,
 rgba(0,0,0,0) 85%);
 
--webkit-mask-image: radial-gradient(circle at center,
-rgba(0,0,0,1) 35%,
-rgba(0,0,0,0.6) 55%,
-rgba(0,0,0,0.2) 70%,
+-webkit-mask-image:radial-gradient(circle at center,
+rgba(0,0,0,1) 40%,
+rgba(0,0,0,0.5) 65%,
 rgba(0,0,0,0) 85%);
 
 pointer-events:none;
-z-index:0;
+z-index:-1;
 
 }
 
-header, nav, .tab, footer, .ticker{
-position:relative;
-z-index:1;
+/* RADAR SWEEP */
+
+body::after{
+
+content:"";
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+conic-gradient(
+transparent 0deg,
+rgba(198,165,90,0.08) 30deg,
+transparent 60deg
+);
+
+animation:radarSweep 12s linear infinite;
+
+pointer-events:none;
+z-index:-1;
+
 }
+
+@keyframes radarSweep{
+
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+
+}
+
+/* HEADER */
 
 header{
 
 display:flex;
 align-items:center;
+
 padding:15px;
+
+background:rgba(6,35,28,0.65);
+
+backdrop-filter:blur(10px);
 
 border-bottom:2px solid #c6a55a;
 
@@ -68,50 +101,42 @@ text-align:right;
 font-size:13px;
 }
 
-.threatTitle{
-font-weight:bold;
-margin-bottom:6px;
-}
-
-.threatCurrent{
-margin-left:8px;
-letter-spacing:1px;
-}
-
 .threatScale{
 display:flex;
 gap:10px;
 font-size:11px;
-opacity:0.8;
 }
 
 .threatScale span{
 padding:3px 6px;
-border:1px solid rgba(255,255,255,0.25);
-border-radius:3px;
+border:1px solid rgba(255,255,255,0.2);
 }
 
 .threatScale .active{
-border:1px solid rgba(255,255,255,0.7);
 font-weight:bold;
+animation:threatPulse 3s infinite;
 }
 
-/* NEWS TICKER */
+@keyframes threatPulse{
+0%{opacity:1}
+50%{opacity:0.5}
+100%{opacity:1}
+}
+
+/* TICKER */
 
 .ticker{
 
-background:#c6a55a;
-color:#041f18;
+background:#0b3a2e;
+color:#e2f0e9;
 
 overflow:hidden;
 white-space:nowrap;
 
 padding:10px 0;
 
-border-top:1px solid #8e7336;
-border-bottom:1px solid #8e7336;
-
-font-weight:600;
+border-top:2px solid #c6a55a;
+border-bottom:2px solid #c6a55a;
 
 }
 
@@ -130,15 +155,12 @@ animation:scroll 80s linear infinite;
 
 }
 
-/* NAVIGATION */
+/* NAV */
 
 nav{
 
 display:flex;
-background:#062e24;
-
-border-top:1px solid #0f4a3b;
-border-bottom:1px solid #0f4a3b;
+background:#0b3a2e;
 
 }
 
@@ -146,7 +168,8 @@ nav button{
 
 padding:14px 18px;
 border:none;
-background:#062e24;
+
+background:#0b3a2e;
 color:#e2f0e9;
 
 cursor:pointer;
@@ -159,31 +182,33 @@ nav button.active{
 
 background:#c6a55a;
 color:#041f18;
-font-weight:bold;
 
 }
 
-/* PANELS */
+/* GLASS PANELS */
 
 .tab{
+
 display:none;
-padding:20px;
-background:rgba(4,31,24,0.88);
+padding:25px;
+
+background:rgba(8,40,32,0.55);
+
+backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+border-radius:8px;
+
+margin:15px;
+
 }
 
 .tab.active{
 display:block;
 }
 
-/* IFRAMES */
-
-iframe{
-width:100%;
-height:85vh;
-border:none;
-}
-
-/* NEWS GRID */
+/* NEWS */
 
 .newsGrid{
 
@@ -195,9 +220,14 @@ gap:20px;
 
 .newsCard{
 
-background:rgba(6,46,36,0.92);
-border:1px solid #1b4d3e;
-border-radius:6px;
+background:rgba(10,45,35,0.5);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+border-radius:8px;
+
 overflow:hidden;
 
 }
@@ -212,9 +242,19 @@ object-fit:cover;
 padding:12px;
 }
 
-.source{
-font-size:12px;
-opacity:0.8;
+/* PANEL HOVER */
+
+.tab:hover,
+.newsCard:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 8px 35px rgba(0,0,0,0.45),
+0 0 25px rgba(198,165,90,0.25);
+
+transition:all 0.25s ease;
+
 }
 
 /* COMMAND GRID */
@@ -223,8 +263,28 @@ opacity:0.8;
 
 display:grid;
 grid-template-columns:1fr 1fr;
+grid-template-rows:45vh 45vh;
+
 gap:10px;
 
+}
+
+.grid iframe{
+
+width:100%;
+height:100%;
+border:none;
+
+border-radius:6px;
+
+}
+
+/* IFRAME */
+
+iframe{
+width:100%;
+height:85vh;
+border:none;
 }
 
 /* FOOTER */
@@ -233,6 +293,7 @@ footer{
 
 text-align:center;
 padding:15px;
+
 border-top:1px solid #1b4d3e;
 
 }
