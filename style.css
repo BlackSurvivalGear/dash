@@ -14,7 +14,7 @@ border-bottom:1px solid #1e5a42;
 }
 
 .logo{
-height:80px;
+height:90px;
 cursor:pointer;
 }
 
@@ -25,7 +25,7 @@ margin-left:auto;
 .level{
 background:#c6a55a;
 color:#071e16;
-padding:4px 10px;
+padding:6px 12px;
 }
 
 nav{
@@ -34,10 +34,10 @@ background:#0b2f22;
 }
 
 nav button{
-padding:12px 18px;
+padding:14px 18px;
 border:none;
 background:#0b2f22;
-color:#fff;
+color:white;
 cursor:pointer;
 }
 
@@ -49,8 +49,8 @@ color:#071e16;
 .ticker{
 background:#c6a55a;
 color:#071e16;
-padding:6px;
-overflow:hidden;
+padding:8px;
+font-weight:500;
 }
 
 .tab{
@@ -64,35 +64,25 @@ display:block;
 
 iframe{
 width:100%;
-height:85vh;
+height:80vh;
 border:none;
-}
-
-.feed{
-max-height:80vh;
-overflow:auto;
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
 }
 
 .marketTabs{
 display:flex;
 gap:10px;
-margin-bottom:10px;
+margin-bottom:20px;
 }
 
-.mTab{
-padding:8px 14px;
+.marketTabs button{
+padding:10px 15px;
 background:#0b2f22;
 border:1px solid #1e5a42;
+color:white;
 cursor:pointer;
 }
 
-.mTab.active{
+.marketTabs button.active{
 background:#c6a55a;
 color:#071e16;
 }
@@ -105,13 +95,60 @@ display:none;
 display:block;
 }
 
-.currency{
-max-width:300px;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
 footer{
 text-align:center;
-padding:10px;
+padding:12px;
 border-top:1px solid #1e5a42;
+margin-top:20px;
 }
 
+.newsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(350px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.newsCard{
+background:#0b2f22;
+border:1px solid #1e5a42;
+border-radius:6px;
+overflow:hidden;
+}
+
+.newsCard img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.newsContent{
+padding:12px;
+}
+
+.newsSource{
+font-size:12px;
+color:#c6a55a;
+margin-bottom:6px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.newsSource img{
+height:16px;
+}
+
+.newsTitle{
+font-size:15px;
+color:white;
+text-decoration:none;
+}
+
+.newsTitle:hover
