@@ -3,19 +3,16 @@
 <html>
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>BSG Global Strategic Awareness</title>
 
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
 <header>
 
@@ -23,25 +20,25 @@
 
 <h1>BSG Global Strategic Awareness</h1>
 
-<div class="threatBox">
+<div class="threat">
 
 GLOBAL THREAT LEVEL
 
-<span class="threatLevel">ELEVATED</span>
+<span class="level">ELEVATED</span>
 
 </div>
 
 </header>
 
-<!-- ================= NEWS TICKER ================= -->
+<!-- NEWS TICKER -->
 
 <div class="ticker">
 
-<span id="tickerText">Loading global headlines...</span>
+<span id="ticker"></span>
 
 </div>
 
-<!-- ================= NAVIGATION ================= -->
+<!-- NAV BAR -->
 
 <nav>
 
@@ -53,7 +50,7 @@ GLOBAL THREAT LEVEL
 
 <button onclick="showTab('air')">Aircraft Watch</button>
 
-<button onclick="showTab('alerts')">Launch Monitor</button>
+<button onclick="showTab('launch')">Launch Monitor</button>
 
 <button onclick="showTab('marine')">Marine Watch</button>
 
@@ -67,11 +64,11 @@ GLOBAL THREAT LEVEL
 
 <button onclick="showTab('currency')">Currency</button>
 
-<button onclick="showTab('overview')">Command Overview</button>
+<button onclick="showTab('command')">Command Overview</button>
 
 </nav>
 
-<!-- ================= HOME ================= -->
+<!-- HOME TAB -->
 
 <section id="home" class="tab active">
 
@@ -79,29 +76,29 @@ GLOBAL THREAT LEVEL
 
 <p>
 
-Multi-domain OSINT monitoring system covering:
+Multi-domain intelligence console monitoring:
 
-• Conflicts
-• Aircraft
-• Maritime traffic
-• Satellite launches
-• Cyber warfare
-• Global markets
-• Military installations
+Global conflict zones
+Airspace activity
+Naval traffic
+Satellite launches
+Cyber attacks
+Military installations
+Global markets
 
 </p>
 
 </section>
 
-<!-- ================= CONFLICT NEWS ================= -->
+<!-- NEWS TAB -->
 
 <section id="news" class="tab">
 
-<div id="newsFeed" class="newsGrid"></div>
+<div id="newsGrid" class="newsGrid"></div>
 
 </section>
 
-<!-- ================= CONFLICT MAP ================= -->
+<!-- CONFLICT MAP -->
 
 <section id="map" class="tab">
 
@@ -109,7 +106,7 @@ Multi-domain OSINT monitoring system covering:
 
 </section>
 
-<!-- ================= AIRCRAFT WATCH ================= -->
+<!-- AIRCRAFT WATCH -->
 
 <section id="air" class="tab">
 
@@ -117,17 +114,17 @@ Multi-domain OSINT monitoring system covering:
 
 </section>
 
-<!-- ================= LAUNCH MONITOR ================= -->
+<!-- LAUNCH MONITOR -->
 
-<section id="alerts" class="tab">
+<section id="launch" class="tab">
 
-<h2>Global Launch Monitor & Satellite Tracker</h2>
+<h2>Global Satellite Tracker</h2>
 
-<iframe src="https://stuffin.space/"></iframe>
+<iframe src="https://keeptrack.space"></iframe>
 
 </section>
 
-<!-- ================= MARINE WATCH ================= -->
+<!-- MARINE WATCH -->
 
 <section id="marine" class="tab">
 
@@ -135,71 +132,67 @@ Multi-domain OSINT monitoring system covering:
 
 </section>
 
-<!-- ================= FIRE MONITOR ================= -->
+<!-- FIRE MONITOR -->
 
 <section id="fire" class="tab">
 
-<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs"></iframe>
+<h2>Global Wildfire Monitor</h2>
+
+<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
 
 </section>
 
-<!-- ================= CYBER ATTACK MAP ================= -->
+<!-- CYBER ATTACK MAP -->
 
 <section id="cyber" class="tab">
 
 <h2>Global Cyber Attack Map</h2>
 
-<iframe src="https://threatmap.checkpoint.com/"></iframe>
+<iframe src="https://threatmap.checkpoint.com"></iframe>
 
 </section>
 
-<!-- ================= MILITARY BASES ================= -->
+<!-- MILITARY BASE MAP -->
 
 <section id="bases" class="tab">
 
 <h2>Global Military Installations</h2>
 
-<iframe src="https://militarybases.com/map/"></iframe>
+<iframe src="https://umap.openstreetmap.fr/en/map/military-bases-around-the-world_510207"></iframe>
 
 </section>
 
-<!-- ================= MARKETS ================= -->
+<!-- MARKETS -->
 
 <section id="markets" class="tab">
 
-<div class="tradingview-widget-container">
-
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
-
-</div>
+<iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview"></iframe>
 
 </section>
 
-<!-- ================= CURRENCY ================= -->
+<!-- CURRENCY -->
 
 <section id="currency" class="tab">
 
 <h2>African Currency Converter</h2>
 
-<p>Currency converter module goes here.</p>
+<p>Currency converter module here</p>
 
 </section>
 
-<!-- ================= COMMAND OVERVIEW ================= -->
+<!-- COMMAND OVERVIEW -->
 
-<section id="overview" class="tab">
+<section id="command" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
 
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
 
 <iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
 
-<iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs"></iframe>
+<iframe src="https://threatmap.checkpoint.com"></iframe>
 
 </div>
 
@@ -213,11 +206,11 @@ BlackSurvivalGear.com
 
 <script>
 
-function showTab(tab){
+function showTab(id){
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"))
 
-document.getElementById(tab).classList.add("active")
+document.getElementById(id).classList.add("active")
 
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
@@ -227,7 +220,7 @@ event.target.classList.add("active")
 
 
 
-/* ================= NEWS + TICKER ================= */
+/* NEWS + TICKER */
 
 async function loadNews(){
 
@@ -241,33 +234,33 @@ const feeds=[
 
 ]
 
-const container=document.getElementById("newsFeed")
-const ticker=document.getElementById("tickerText")
+let headlines=[]
+const container=document.getElementById("newsGrid")
 
 container.innerHTML=""
-let headlines=[]
 
-for(const url of feeds){
+for(const feed of feeds){
 
 try{
 
-const response=await fetch(url)
-const data=await response.json()
+const res=await fetch(feed)
+const data=await res.json()
 
 data.items.slice(0,4).forEach(article=>{
 
 headlines.push(article.title)
 
 const card=document.createElement("div")
+
 card.className="newsCard"
 
 card.innerHTML=`
 
 <img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
 
-<div class="newsContent">
+<div class="newsText">
 
-<div class="newsSource">${data.feed.title}</div>
+<span class="source">${data.feed.title}</span>
 
 <h3>${article.title}</h3>
 
@@ -284,11 +277,11 @@ container.appendChild(card)
 
 }
 
-ticker.textContent=headlines.join(" ◆ ")
+document.getElementById("ticker").textContent=headlines.join(" ◆ ")
 
 }
 
-document.addEventListener("DOMContentLoaded",function(){
+document.addEventListener("DOMContentLoaded",()=>{
 
 loadNews()
 
