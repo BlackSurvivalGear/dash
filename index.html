@@ -1,94 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BSG Strategic Awareness</title>
-
+<title>BSG Global Strategic Awareness OSINT</title>
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-<video autoplay muted loop id="radar">
-<source src="RADAR2.mp4" type="video/mp4">
-</video>
+<header class="topbar">
 
-<div class="overlay"></div>
+<div class="brand">
+<img src="BSG2.png" class="logo">
+<h1>BSG Global Strategic Awareness OSINT</h1>
+</div>
 
-
-<header class="header">
-
-<h1>BSG STRATEGIC AWARENESS</h1>
-
-<div class="ticker">
-<div class="ticker-track">
-
-GLOBAL CONFLICT ALERTS • SAHEL INSTABILITY • RED SEA SHIPPING RISK •
-CYBER ATTACK ACTIVITY SPIKING • NATO AIR MOVEMENTS •
-ENERGY MARKET VOLATILITY • GLOBAL MILITARY EXERCISES •
-
+<div class="threat">
+<span>GLOBAL THREAT LEVEL</span>
+<div class="levels">
+<button>NORMAL</button>
+<button>GUARDED</button>
+<button class="active">ELEVATED</button>
+<button>HIGH</button>
+<button>CRITICAL</button>
 </div>
 </div>
 
 </header>
 
 
+<div class="ticker">
+<div class="ticker-track">
+Dozens killed as Israeli special forces raid Lebanese village ◆ War fuels debate in Cyprus over UK military bases ◆ Missile alerts reported in Israel ◆ Cyber attacks rising globally ◆ Maritime disruptions reported in Red Sea
+</div>
+</div>
+
 
 <nav class="tabs">
 
-<button onclick="openTab(event,'home')" class="tab active">Home</button>
-<button onclick="openTab(event,'conflict')" class="tab">Conflict News</button>
-<button onclick="openTab(event,'cyber')" class="tab">Cyber Attacks</button>
-<button onclick="openTab(event,'maritime')" class="tab">Marine Tracker</button>
-<button onclick="openTab(event,'flight')" class="tab">Flight Tracker</button>
-<button onclick="openTab(event,'economy')" class="tab">Economy</button>
-<button onclick="openTab(event,'intel')" class="tab">Intel</button>
+<button class="tab active" onclick="openTab(event,'home')">Home</button>
+<button class="tab" onclick="openTab(event,'conflictnews')">Conflict News</button>
+<button class="tab" onclick="openTab(event,'conflictmap')">Conflict Map</button>
+<button class="tab" onclick="openTab(event,'aircraft')">Aircraft Watch</button>
+<button class="tab" onclick="openTab(event,'marine')">Marine Watch</button>
+<button class="tab" onclick="openTab(event,'cyber')">Cyber Attacks</button>
+<button class="tab" onclick="openTab(event,'bases')">Military Bases</button>
+<button class="tab" onclick="openTab(event,'fire')">Fire Monitor</button>
+<button class="tab" onclick="openTab(event,'command')">Command Overview</button>
 
 </nav>
 
 
-<div class="dashboard">
+
+<div class="container">
 
 <section id="home" class="tabcontent active">
 
-<img src="BSG2.png" class="logo">
+<h2>Strategic Monitoring Console</h2>
 
 <div class="panel">
-
-<h2>Strategic Command Overview</h2>
-
-Multi-domain intelligence monitoring platform combining:
-
-• conflict reporting  
-• cyber threat mapping  
-• maritime movement tracking  
-• aviation monitoring  
-• economic indicators  
-
+This console aggregates open-source intelligence across conflict zones, cyber activity,
+aviation movements, maritime traffic, and environmental monitoring.
 </div>
 
 </section>
 
 
 
-<section id="conflict" class="tabcontent">
+<section id="conflictnews" class="tabcontent">
 
 <div class="panel">
+<iframe src="https://news.google.com/search?q=war%20conflict%20military"
+width="100%" height="650"></iframe>
+</div>
 
-<h2>Conflict News Filter</h2>
+</section>
 
-<iframe
-src="https://news.google.com/search?q=war%20conflict%20military"
-width="100%"
-height="650">
-</iframe>
 
+
+<section id="conflictmap" class="tabcontent">
+
+<div class="panel">
+<iframe src="https://liveuamap.com/"
+width="100%" height="650"></iframe>
+</div>
+
+</section>
+
+
+
+<section id="aircraft" class="tabcontent">
+
+<div class="panel">
+<iframe src="https://www.flightradar24.com/simple"
+width="100%" height="650"></iframe>
+</div>
+
+</section>
+
+
+
+<section id="marine" class="tabcontent">
+
+<div class="panel">
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"
+width="100%" height="650"></iframe>
 </div>
 
 </section>
@@ -98,78 +115,63 @@ height="650">
 <section id="cyber" class="tabcontent">
 
 <div class="panel">
-
-<h2>Cyber Attack Map</h2>
-
-<iframe
-src="https://threatmap.checkpoint.com/"
-width="100%"
-height="650">
-</iframe>
-
+<iframe src="https://threatmap.checkpoint.com/"
+width="100%" height="650"></iframe>
 </div>
 
 </section>
 
 
 
-<section id="maritime" class="tabcontent">
+<section id="bases" class="tabcontent">
 
 <div class="panel">
-
-<h2>Global Maritime Tracker</h2>
-
-<iframe
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2"
-width="100%"
-height="650">
-</iframe>
-
+<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1H4F8q3tN1KcMilitaryBasesExample"
+width="100%" height="650"></iframe>
 </div>
 
 </section>
 
 
 
-<section id="flight" class="tabcontent">
+<section id="fire" class="tabcontent">
 
 <div class="panel">
-
-<h2>Global Flight Tracker</h2>
-
-<iframe
-src="https://www.flightradar24.com/simple"
-width="100%"
-height="650">
-</iframe>
-
+<iframe src="https://firms.modaps.eosdis.nasa.gov/map/"
+width="100%" height="650"></iframe>
 </div>
 
 </section>
 
 
 
-<section id="economy" class="tabcontent">
+<section id="command" class="tabcontent">
+
+<div class="grid">
 
 <div class="panel">
-
-<h2>Markets Monitor</h2>
-
-Gold • Silver • Oil • Bitcoin • Global Markets
-
+<h3>Conflict Monitor</h3>
+<iframe src="https://news.google.com/search?q=war"
+width="100%" height="300"></iframe>
 </div>
 
-</section>
-
-
-
-<section id="intel" class="tabcontent">
+<div class="panel">
+<h3>Cyber Threat Map</h3>
+<iframe src="https://threatmap.checkpoint.com/"
+width="100%" height="300"></iframe>
+</div>
 
 <div class="panel">
+<h3>Aircraft Activity</h3>
+<iframe src="https://www.flightradar24.com/simple"
+width="100%" height="300"></iframe>
+</div>
 
-<h2>Strategic Intelligence</h2>
-
-Filtered geopolitical intelligence summaries.
+<div class="panel">
+<h3>Marine Traffic</h3>
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"
+width="100%" height="300"></iframe>
+</div>
 
 </div>
 
@@ -181,18 +183,16 @@ Filtered geopolitical intelligence summaries.
 
 <script>
 
-function openTab(evt, tabName){
+function openTab(evt,tabName){
 
-let tabs=document.getElementsByClassName("tabcontent");
-
-for(let i=0;i<tabs.length;i++){
-tabs[i].style.display="none";
+let tabcontent=document.getElementsByClassName("tabcontent");
+for(let i=0;i<tabcontent.length;i++){
+tabcontent[i].style.display="none";
 }
 
-let buttons=document.getElementsByClassName("tab");
-
-for(let i=0;i<buttons.length;i++){
-buttons[i].classList.remove("active");
+let tabs=document.getElementsByClassName("tab");
+for(let i=0;i<tabs.length;i++){
+tabs[i].classList.remove("active");
 }
 
 document.getElementById(tabName).style.display="block";
@@ -203,7 +203,6 @@ evt.currentTarget.classList.add("active");
 document.getElementById("home").style.display="block";
 
 </script>
-
 
 </body>
 </html>
