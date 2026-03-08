@@ -14,8 +14,6 @@
 
 <body>
 
-<!-- Radar Background -->
-
 <video autoplay muted loop id="radarVideo">
 <source src="radar3.mp4" type="video/mp4">
 </video>
@@ -24,17 +22,18 @@
 
 
 <header>
-
 <h1>BSG STRATEGIC AWARENESS</h1>
-
 </header>
+
 
 
 <nav class="tabs">
 
 <button class="tab active" onclick="openTab(event,'home')">Home</button>
-<button class="tab" onclick="openTab(event,'africa')">Africa</button>
-<button class="tab" onclick="openTab(event,'world')">World</button>
+<button class="tab" onclick="openTab(event,'conflict')">Conflict News</button>
+<button class="tab" onclick="openTab(event,'cyber')">Cyber Attacks</button>
+<button class="tab" onclick="openTab(event,'maritime')">Marine Tracker</button>
+<button class="tab" onclick="openTab(event,'flight')">Flight Tracker</button>
 <button class="tab" onclick="openTab(event,'economy')">Economy</button>
 <button class="tab" onclick="openTab(event,'intel')">Intel</button>
 
@@ -44,39 +43,83 @@
 
 <div class="container">
 
-
 <section id="home" class="tabcontent active">
 
 <img src="BSG2.png" class="logo">
 
-<h2>Strategic Overview</h2>
+<h2>Strategic Monitoring Console</h2>
 
 <div class="panel">
-Global monitoring platform tracking conflict zones, geopolitical shifts and economic indicators.
+Multi-domain monitoring platform tracking global conflict,
+cyber incidents, maritime movement and aviation activity.
 </div>
 
 </section>
 
 
 
-<section id="africa" class="tabcontent">
+<section id="conflict" class="tabcontent">
 
-<h2>Africa Monitoring</h2>
+<h2>Global Conflict News</h2>
 
 <div class="panel">
-Regional security and political intelligence feeds.
+
+<iframe
+src="https://news.google.com/search?q=global%20conflict&hl=en-GB&gl=GB&ceid=GB:en"
+width="100%" height="600">
+</iframe>
+
 </div>
 
 </section>
 
 
 
-<section id="world" class="tabcontent">
+<section id="cyber" class="tabcontent">
 
-<h2>Global Situation</h2>
+<h2>Cyber Attack Monitoring</h2>
 
 <div class="panel">
-Major power conflicts and geopolitical developments.
+
+<iframe
+src="https://threatmap.checkpoint.com/"
+width="100%" height="600">
+</iframe>
+
+</div>
+
+</section>
+
+
+
+<section id="maritime" class="tabcontent">
+
+<h2>Global Maritime Traffic</h2>
+
+<div class="panel">
+
+<iframe
+src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:3/shownames:false"
+width="100%" height="600">
+</iframe>
+
+</div>
+
+</section>
+
+
+
+<section id="flight" class="tabcontent">
+
+<h2>Global Flight Tracking</h2>
+
+<div class="panel">
+
+<iframe
+src="https://www.flightradar24.com/simple"
+width="100%" height="600">
+</iframe>
+
 </div>
 
 </section>
@@ -88,7 +131,7 @@ Major power conflicts and geopolitical developments.
 <h2>Economic Indicators</h2>
 
 <div class="panel">
-Gold • Silver • Bitcoin • Global Markets
+Gold • Silver • Oil • Bitcoin • Global Markets
 </div>
 
 </section>
@@ -97,10 +140,10 @@ Gold • Silver • Bitcoin • Global Markets
 
 <section id="intel" class="tabcontent">
 
-<h2>Intelligence Feed</h2>
+<h2>Strategic Intelligence</h2>
 
 <div class="panel">
-Strategic alerts and filtered intelligence monitoring.
+Aggregated alerts and geopolitical intelligence summaries.
 </div>
 
 </section>
@@ -135,5 +178,4 @@ document.getElementById("home").style.display="block";
 
 
 </body>
-
 </html>
