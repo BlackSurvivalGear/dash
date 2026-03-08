@@ -43,7 +43,7 @@ GLOBAL THREAT LEVEL
 <h2>Welcome to BSG Global Strategic Awareness</h2>
 
 <p>
-This dashboard provides open-source intelligence monitoring tools for global strategic awareness including conflict monitoring, aircraft tracking, maritime traffic, satellite fire detection, and global markets.
+This platform provides open-source intelligence monitoring including conflict tracking, military aircraft monitoring, maritime traffic, satellite fire detection and global market activity.
 </p>
 
 </section>
@@ -51,35 +51,25 @@ This dashboard provides open-source intelligence monitoring tools for global str
 <section id="news" class="tab">
 
 <div id="newsFeed" class="newsGrid">
-
 Loading intelligence feeds...
-
 </div>
 
 </section>
 
 <section id="map" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
 
 <section id="air" class="tab">
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
-
 </section>
 
 <section id="fire" class="tab">
-
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
-
 </section>
 
 <section id="markets" class="tab">
@@ -96,14 +86,7 @@ Loading intelligence feeds...
 
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-{
-"colorTheme":"dark",
-"locale":"en",
-"width":"100%",
-"height":550
-}
-</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
 
 </div>
 
@@ -115,14 +98,7 @@ Loading intelligence feeds...
 
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-{
-"dataSource":"Crypto",
-"colorTheme":"dark",
-"width":"100%",
-"height":600
-}
-</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async></script>
 
 </div>
 
@@ -134,13 +110,7 @@ Loading intelligence feeds...
 
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-{
-"symbol":"BINANCE:BTCUSDT",
-"theme":"dark",
-"autosize":true
-}
-</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
 
 </div>
 
@@ -152,13 +122,7 @@ Loading intelligence feeds...
 
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-{
-"colorTheme":"dark",
-"width":"100%",
-"height":400
-}
-</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async></script>
 
 </div>
 
@@ -208,36 +172,38 @@ Loading intelligence feeds...
 </section>
 
 <footer>
-
 BlackSurvivalGear.com
-
 </footer>
 
 <script>
 
+/* TAB CONTROL */
+
 function showTab(id){
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 
-document.getElementById(id).classList.add("active");
+document.getElementById(id).classList.add("active")
 
-document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
-event.target.classList.add("active");
+event.target.classList.add("active")
 
 }
 
 
 
+/* MARKET TABS */
+
 function showMarket(id){
 
-document.querySelectorAll(".marketPanel").forEach(p=>p.classList.remove("active"));
+document.querySelectorAll(".marketPanel").forEach(p=>p.classList.remove("active"))
 
-document.getElementById(id).classList.add("active");
+document.getElementById(id).classList.add("active")
 
-document.querySelectorAll(".marketTabs button").forEach(b=>b.classList.remove("active"));
+document.querySelectorAll(".marketTabs button").forEach(b=>b.classList.remove("active"))
 
-event.target.classList.add("active");
+event.target.classList.add("active")
 
 }
 
@@ -275,60 +241,65 @@ for(const feed of feeds){
 
 try{
 
-const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url);
+const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url)
 
-const res=await fetch(proxy);
+const res=await fetch(proxy)
 
-const xml=await res.text();
+const xml=await res.text()
 
-const parser=new DOMParser();
+const parser=new DOMParser()
 
-const data=parser.parseFromString(xml,"text/xml");
+const data=parser.parseFromString(xml,"text/xml")
 
-const items=data.querySelectorAll("item");
+const items=data.querySelectorAll("item")
 
 items.forEach((item,i)=>{
 
-if(i>4)return;
+if(i>4)return
 
-const title=item.querySelector("title")?.textContent;
+const title=item.querySelector("title")?.textContent
 
-const link=item.querySelector("link")?.textContent;
+const link=item.querySelector("link")?.textContent
 
-let img="";
+let img=""
 
-/* media tag */
-const media=item.querySelector("media\\:content");
-if(media) img=media.getAttribute("url");
+/* media */
+const media=item.querySelector("media\\:content")
+if(media) img=media.getAttribute("url")
 
 /* enclosure */
 if(!img){
-const enclosure=item.querySelector("enclosure");
-if(enclosure) img=enclosure.getAttribute("url");
+const enclosure=item.querySelector("enclosure")
+if(enclosure) img=enclosure.getAttribute("url")
 }
 
-/* description */
+/* description extraction */
 if(!img){
-const desc=item.querySelector("description")?.textContent;
-const match=desc?.match(/<img.*?src="(.*?)"/);
-if(match) img=match[1];
+
+const desc=item.querySelector("description")?.textContent
+const match=desc?.match(/<img.*?src="(.*?)"/)
+
+if(match) img=match[1]
+
 }
 
+/* fallback */
+
 if(!img){
-img="https://picsum.photos/400/200";
+img="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800"
 }
 
 html+=`
 
 <div class="newsCard">
 
-<img src="${img}">
+<img src="${img}" loading="lazy">
 
 <div class="newsContent">
 
 <div class="newsSource">
 
-<img src="${feed.logo}">
+<img src="${feed.logo}" height="14">
 
 ${feed.name}
 
@@ -340,61 +311,62 @@ ${feed.name}
 
 </div>
 
-`;
+`
 
-});
+})
 
 }catch(e){
 
-console.log("feed error");
+console.log("Feed error")
 
 }
 
 }
 
-document.getElementById("newsFeed").innerHTML=html;
+document.getElementById("newsFeed").innerHTML=html
 
 }
 
 
 
-/* NEWS TICKER */
+/* TICKER */
 
 async function ticker(){
 
-const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
+const proxy="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml")
 
-const res=await fetch(proxy);
+const res=await fetch(proxy)
 
-const xml=await res.text();
+const xml=await res.text()
 
-const parser=new DOMParser();
+const parser=new DOMParser()
 
-const data=parser.parseFromString(xml,"text/xml");
+const data=parser.parseFromString(xml,"text/xml")
 
-const items=data.querySelectorAll("item");
+const items=data.querySelectorAll("item")
 
-let text="";
+let text=""
 
 items.forEach((item,i)=>{
 
-if(i<12){
+if(i<10){
 
-text+=item.querySelector("title").textContent+" ◆ ";
-
-}
-
-});
-
-document.getElementById("tickerText").innerText=text;
+text+=item.querySelector("title").textContent+" ◆ "
 
 }
 
+})
 
-loadNews();
-ticker();
+document.getElementById("tickerText").innerText=text
 
-setInterval(loadNews,300000);
+}
+
+
+
+loadNews()
+ticker()
+
+setInterval(loadNews,300000)
 
 </script>
 
