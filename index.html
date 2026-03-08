@@ -1,208 +1,116 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BSG Global Strategic Awareness OSINT</title>
+<title>BSG Strategic Awareness</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link rel="icon" href="BSG2.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<header>
-
-<video class="logoRadar" autoplay muted loop playsinline onclick="showTab('home')">
-<source src="RADAR2.mp4" type="video/mp4">
-</video>
-
-<h1>BSG Global Strategic Awareness OSINT</h1>
-
-<div class="threatPanel">
-
-<div class="threatLabel">
-GLOBAL THREAT LEVEL
-</div>
-
-<div class="threatScale">
-
-<span>NORMAL</span> <span>GUARDED</span> <span class="active">ELEVATED</span> <span>HIGH</span> <span>CRITICAL</span>
-
-</div>
-
-</div>
-
+<header class="topbar">
+    <h1>BSG Strategic Awareness</h1>
 </header>
 
-<div class="ticker">
-<span id="ticker">Loading global headlines...</span>
-</div>
-
-<nav>
-
-<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('cyber')">Cyber Attacks</button> <button onclick="showTab('bases')">Military Bases</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('live')">Live News</button> <button onclick="showTab('osint')">OSINT Monitor</button> <button onclick="showTab('command')">Command Overview</button>
-
+<nav class="tabs">
+<button class="tablink active" onclick="openTab(event,'home')">Home</button>
+<button class="tablink" onclick="openTab(event,'africa')">Africa</button>
+<button class="tablink" onclick="openTab(event,'world')">World</button>
+<button class="tablink" onclick="openTab(event,'economy')">Economy</button>
+<button class="tablink" onclick="openTab(event,'intel')">Intel</button>
 </nav>
 
-<section id="home" class="tab active">
+<div class="content">
 
-<h2>Strategic Awareness</h2>
+<section id="home" class="tabcontent active">
 
-<p class="introLead">
-Preparedness is no longer optional.
-</p>
+<h2>Strategic Overview</h2>
+
+<div class="video-container">
+<video autoplay muted loop>
+<source src="radar.mp4" type="video/mp4">
+</video>
+</div>
 
 <p>
-Across the modern world we are witnessing increasing geopolitical tension, economic instability, and expanding regional conflicts.
+BSG Strategic Awareness monitors global conflict,
+geopolitics, economic indicators and regional stability.
 </p>
 
-<p>
-History has shown that when systems fail — when borders close, currencies collapse, or violence erupts — the African diaspora is often the last to be protected and the first to be stranded.
-</p>
+</section>
 
-<p>
-Black Survival Gear was created to change that reality.
-</p>
 
-<p>
-BSG Global Strategic Awareness OSINT consolidates open-source intelligence from conflict monitoring, airspace activity, maritime tracking, cyber incidents, and geopolitical reporting into a single operational picture.
-</p>
+<section id="africa" class="tabcontent">
 
-<p class="closingStatement">
-Information is the first layer of defence.
-</p>
+<h2>Africa Monitoring</h2>
 
-<div class="homeLogoPanel">
-<img src="BSG2.png" class="homeLogo">
+<div class="widget">
+Africa regional security feeds will appear here.
 </div>
 
 </section>
 
-<section id="news" class="tab">
 
-<h2>Conflict Intelligence Feeds</h2>
+<section id="world" class="tabcontent">
 
-<div class="newsSources">
+<h2>Global Situation</h2>
 
-<button class="sourceTab active" onclick="openSource(event,'bbc')">BBC</button> <button class="sourceTab" onclick="openSource(event,'cnn')">CNN</button> <button class="sourceTab" onclick="openSource(event,'sky')">Sky</button> <button class="sourceTab" onclick="openSource(event,'aljazeera')">Al Jazeera</button> <button class="sourceTab" onclick="openSource(event,'reuters')">Reuters</button> <button class="sourceTab" onclick="openSource(event,'rt')">RT</button> <button class="sourceTab" onclick="openSource(event,'tass')">TASS</button> <button class="sourceTab" onclick="openSource(event,'wion')">WION</button> <button class="sourceTab" onclick="openSource(event,'africa')">Africa</button> <button class="sourceTab" onclick="openSource(event,'sputnik')">Sputnik</button>
-
-</div>
-
-<div id="newsGrid" class="newsGrid"></div>
-
-</section>
-
-<section id="map" class="tab">
-<iframe src="https://liveuamap.com"></iframe>
-</section>
-
-<section id="air" class="tab">
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-</section>
-
-<section id="marine" class="tab">
-
-<h2>Global Maritime Chokepoints</h2>
-
-<div class="subnav">
-
-<button onclick="focusChokepoint('global')">Global</button> <button onclick="focusChokepoint('suez')">Suez</button> <button onclick="focusChokepoint('hormuz')">Hormuz</button> <button onclick="focusChokepoint('bab')">Bab-el-Mandeb</button> <button onclick="focusChokepoint('malacca')">Malacca</button>
-
-</div>
-
-<iframe id="marineMap"
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
-</section>
-
-<section id="cyber" class="tab">
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-</section>
-
-<section id="bases" class="tab">
-<iframe src="https://umap.openstreetmap.fr/en/map/military-bases-around-the-world_510207"></iframe>
-</section>
-
-<section id="fire" class="tab">
-<iframe src="https://firms.modaps.eosdis.nasa.gov/map"></iframe>
-</section>
-
-<section id="live" class="tab">
-
-<h2>Global Live News Monitor</h2>
-
-<div class="tvWall">
-
-<div class="tvPanel">
-<div class="tvLabel">Sky News</div>
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-</div>
-
-<div class="tvPanel">
-<div class="tvLabel">Al Jazeera</div>
-<iframe src="https://www.youtube.com/embed/-upyPouRrB8"></iframe>
-</div>
-
-<div class="tvPanel">
-<div class="tvLabel">RT News</div>
-<iframe src="https://rumble.com/embed/v35waq4/?pub=4"></iframe>
-</div>
-
-<div class="tvPanel">
-<div class="tvLabel">WION</div>
-<iframe src="https://www.youtube.com/embed/wJ3OjqjDq4k"></iframe>
-</div>
-
+<div class="widget">
+Global conflict and geopolitical updates.
 </div>
 
 </section>
 
-<section id="osint" class="tab">
 
-<h2>Multi-OSINT Social Monitor</h2>
+<section id="economy" class="tabcontent">
 
-<div class="grid">
+<h2>Economic Indicators</h2>
 
-<iframe src="https://twitframe.com/show?url=https://twitter.com/sentdefender"></iframe>
-<iframe src="https://twitframe.com/show?url=https://twitter.com/intelcrab"></iframe>
-<iframe src="https://twitframe.com/show?url=https://twitter.com/WarMonitor3"></iframe>
-<iframe src="https://twitframe.com/show?url=https://twitter.com/MarineTraffic"></iframe>
-
+<div class="widget">
+Gold • Silver • Bitcoin • Markets
 </div>
 
 </section>
 
-<section id="command" class="tab">
 
-<div class="grid">
+<section id="intel" class="tabcontent">
 
-<iframe src="https://liveuamap.com"></iframe>
-<iframe src="https://globe.adsbexchange.com"></iframe>
-<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
-<iframe src="https://threatmap.checkpoint.com"></iframe>
+<h2>Intelligence Feed</h2>
 
+<div class="widget">
+Filtered strategic alerts.
 </div>
 
 </section>
 
-<footer>
 
-<a href="https://blacksurvivalgear.com" target="_blank" class="footerLink">
-BlackSurvivalGear.com
-</a>
+</div>
 
-</footer>
+<script>
 
-<script src="app.js"></script>
+function openTab(evt, tabName) {
+
+var i, tabcontent, tablinks;
+
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].classList.remove("active");
+}
+
+tablinks = document.getElementsByClassName("tablink");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].classList.remove("active");
+}
+
+document.getElementById(tabName).classList.add("active");
+evt.currentTarget.classList.add("active");
+
+}
+
+</script>
 
 </body>
 </html>
