@@ -15,7 +15,7 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- ===== HEADER ===== -->
 
 <header>
 
@@ -25,12 +25,12 @@
 
 <div class="threatBox">
 GLOBAL THREAT LEVEL
-<span id="threatLevel" class="threatLevel elevated">ELEVATED</span>
+<span class="threatLevel">ELEVATED</span>
 </div>
 
 </header>
 
-<!-- ================= NEWS TICKER ================= -->
+<!-- ===== NEWS TICKER ===== -->
 
 <div class="ticker">
 
@@ -38,7 +38,7 @@ GLOBAL THREAT LEVEL
 
 </div>
 
-<!-- ================= NAVIGATION ================= -->
+<!-- ===== NAVIGATION ===== -->
 
 <nav>
 
@@ -68,29 +68,23 @@ GLOBAL THREAT LEVEL
 
 </nav>
 
-<!-- ================= HOME TAB ================= -->
+<!-- ===== HOME ===== -->
 
 <section id="home" class="tab active">
 
-<h2>Welcome</h2>
+<h2>Strategic Awareness Dashboard</h2>
 
 <p>
 
-BSG Global Strategic Awareness monitors real-time global security indicators including:
-
-• Conflicts
-• Military aircraft
-• Naval traffic
-• Cyber attacks
-• Satellite fire detection
-• Markets
-• Military installations
+This platform monitors global security indicators including conflict zones,
+military aircraft, maritime activity, cyber threats, satellite fire detection,
+global markets and military installations.
 
 </p>
 
 </section>
 
-<!-- ================= CONFLICT NEWS ================= -->
+<!-- ===== CONFLICT NEWS ===== -->
 
 <section id="news" class="tab">
 
@@ -98,7 +92,7 @@ BSG Global Strategic Awareness monitors real-time global security indicators inc
 
 </section>
 
-<!-- ================= CONFLICT MAP ================= -->
+<!-- ===== CONFLICT MAP ===== -->
 
 <section id="map" class="tab">
 
@@ -106,7 +100,7 @@ BSG Global Strategic Awareness monitors real-time global security indicators inc
 
 </section>
 
-<!-- ================= AIRCRAFT WATCH ================= -->
+<!-- ===== AIRCRAFT WATCH ===== -->
 
 <section id="air" class="tab">
 
@@ -114,7 +108,7 @@ BSG Global Strategic Awareness monitors real-time global security indicators inc
 
 </section>
 
-<!-- ================= MISSILE ALERTS ================= -->
+<!-- ===== MISSILE ALERTS ===== -->
 
 <section id="alerts" class="tab">
 
@@ -124,15 +118,15 @@ BSG Global Strategic Awareness monitors real-time global security indicators inc
 
 </section>
 
-<!-- ================= MARINE WATCH ================= -->
+<!-- ===== MARINE WATCH ===== -->
 
 <section id="marine" class="tab">
 
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 
 </section>
 
-<!-- ================= FIRE MONITOR ================= -->
+<!-- ===== FIRE MONITOR ===== -->
 
 <section id="fire" class="tab">
 
@@ -140,7 +134,7 @@ BSG Global Strategic Awareness monitors real-time global security indicators inc
 
 </section>
 
-<!-- ================= CYBER ATTACK MAP ================= -->
+<!-- ===== CYBER ATTACK MAP ===== -->
 
 <section id="cyber" class="tab">
 
@@ -150,65 +144,35 @@ BSG Global Strategic Awareness monitors real-time global security indicators inc
 
 </section>
 
-<!-- ================= GLOBAL MILITARY BASE MAP ================= -->
+<!-- ===== GLOBAL MILITARY BASES ===== -->
 
 <section id="bases" class="tab">
 
 <h2>Global Military Installations</h2>
 
-<iframe src="https://storymaps.arcgis.com/stories/7f6bb3c7cb474ee7a0c9c6cfa11d63c1"></iframe>
+<iframe src="https://www.google.com/maps/d/embed?mid=1iGdDg9B0C9F0kT3jQH7y1qR0L3o"></iframe>
 
 </section>
 
-<!-- ================= MARKETS ================= -->
+<!-- ===== MARKETS ===== -->
 
 <section id="markets" class="tab">
 
-<div class="marketTabs">
-
-<button onclick="showMarket('market1')" class="active">Market Overview</button> <button onclick="showMarket('market2')">Crypto Heatmap</button> <button onclick="showMarket('market3')">BTC Chart</button> <button onclick="showMarket('market4')">Forex</button>
-
-</div>
-
-<div id="market1" class="marketPanel active">
+<div class="marketPanel">
 
 <div class="tradingview-widget-container">
+
 <div class="tradingview-widget-container__widget"></div>
+
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
-</div>
 
-</div>
-
-<div id="market2" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async></script>
-</div>
-
-</div>
-
-<div id="market3" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
-</div>
-
-</div>
-
-<div id="market4" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async></script>
 </div>
 
 </div>
 
 </section>
 
-<!-- ================= CURRENCY TAB ================= -->
+<!-- ===== CURRENCY ===== -->
 
 <section id="currency" class="tab">
 
@@ -232,15 +196,18 @@ BSG Global Strategic Awareness monitors real-time global security indicators inc
 
 </section>
 
-<!-- ================= COMMAND OVERVIEW ================= -->
+<!-- ===== COMMAND OVERVIEW ===== -->
 
 <section id="overview" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
+
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+
 <iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
+
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs"></iframe>
 
 </div>
@@ -255,6 +222,8 @@ BlackSurvivalGear.com
 
 <script>
 
+
+
 function showTab(tab){
 
 document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
@@ -268,18 +237,26 @@ event.target.classList.add("active")
 }
 
 
-/* ================= NEWS FEEDS ================= */
+
+/* ===== NEWS + TICKER ===== */
 
 async function loadNews(){
 
 const feeds=[
+
 "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
+
 "https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world"
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
+
 ]
 
 const container=document.getElementById("newsFeed")
+const ticker=document.getElementById("tickerText")
+
 container.innerHTML=""
+let headlines=[]
 
 for(const url of feeds){
 
@@ -288,7 +265,9 @@ try{
 const response=await fetch(url)
 const data=await response.json()
 
-data.items.slice(0,6).forEach(article=>{
+data.items.slice(0,4).forEach(article=>{
+
+headlines.push(article.title)
 
 const card=document.createElement("div")
 card.className="newsCard"
@@ -316,13 +295,22 @@ container.appendChild(card)
 
 }
 
+/* build ticker */
+
+ticker.textContent=headlines.join(" ◆ ")
+
 }
+
+document.addEventListener("DOMContentLoaded",function(){
 
 loadNews()
 
 setInterval(loadNews,300000)
 
+})
+
 </script>
 
 </body>
+
 </html>
