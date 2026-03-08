@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>BSG Strategic Awareness</title>
 
 <link rel="stylesheet" href="style.css">
@@ -11,77 +14,93 @@
 
 <body>
 
-<header class="topbar">
-    <h1>BSG Strategic Awareness</h1>
+<!-- Radar Background -->
+
+<video autoplay muted loop id="radarVideo">
+<source src="radar3.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+
+<header>
+
+<h1>BSG STRATEGIC AWARENESS</h1>
+
 </header>
 
+
 <nav class="tabs">
-<button class="tablink active" onclick="openTab(event,'home')">Home</button>
-<button class="tablink" onclick="openTab(event,'africa')">Africa</button>
-<button class="tablink" onclick="openTab(event,'world')">World</button>
-<button class="tablink" onclick="openTab(event,'economy')">Economy</button>
-<button class="tablink" onclick="openTab(event,'intel')">Intel</button>
+
+<button class="tab active" onclick="openTab(event,'home')">Home</button>
+<button class="tab" onclick="openTab(event,'africa')">Africa</button>
+<button class="tab" onclick="openTab(event,'world')">World</button>
+<button class="tab" onclick="openTab(event,'economy')">Economy</button>
+<button class="tab" onclick="openTab(event,'intel')">Intel</button>
+
 </nav>
 
-<div class="content">
+
+
+<div class="container">
+
 
 <section id="home" class="tabcontent active">
 
+<img src="BSG2.png" class="logo">
+
 <h2>Strategic Overview</h2>
 
-<div class="video-container">
-<video autoplay muted loop>
-<source src="radar.mp4" type="video/mp4">
-</video>
+<div class="panel">
+Global monitoring platform tracking conflict zones, geopolitical shifts and economic indicators.
 </div>
 
-<p>
-BSG Strategic Awareness monitors global conflict,
-geopolitics, economic indicators and regional stability.
-</p>
-
 </section>
+
 
 
 <section id="africa" class="tabcontent">
 
 <h2>Africa Monitoring</h2>
 
-<div class="widget">
-Africa regional security feeds will appear here.
+<div class="panel">
+Regional security and political intelligence feeds.
 </div>
 
 </section>
+
 
 
 <section id="world" class="tabcontent">
 
 <h2>Global Situation</h2>
 
-<div class="widget">
-Global conflict and geopolitical updates.
+<div class="panel">
+Major power conflicts and geopolitical developments.
 </div>
 
 </section>
+
 
 
 <section id="economy" class="tabcontent">
 
 <h2>Economic Indicators</h2>
 
-<div class="widget">
-Gold • Silver • Bitcoin • Markets
+<div class="panel">
+Gold • Silver • Bitcoin • Global Markets
 </div>
 
 </section>
+
 
 
 <section id="intel" class="tabcontent">
 
 <h2>Intelligence Feed</h2>
 
-<div class="widget">
-Filtered strategic alerts.
+<div class="panel">
+Strategic alerts and filtered intelligence monitoring.
 </div>
 
 </section>
@@ -89,28 +108,32 @@ Filtered strategic alerts.
 
 </div>
 
+
+
 <script>
 
 function openTab(evt, tabName) {
 
-var i, tabcontent, tablinks;
-
-tabcontent = document.getElementsByClassName("tabcontent");
-for (i = 0; i < tabcontent.length; i++) {
-tabcontent[i].classList.remove("active");
+let tabcontent = document.getElementsByClassName("tabcontent");
+for (let i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
 }
 
-tablinks = document.getElementsByClassName("tablink");
-for (i = 0; i < tablinks.length; i++) {
-tablinks[i].classList.remove("active");
+let tabs = document.getElementsByClassName("tab");
+for (let i = 0; i < tabs.length; i++) {
+tabs[i].classList.remove("active");
 }
 
-document.getElementById(tabName).classList.add("active");
+document.getElementById(tabName).style.display = "block";
 evt.currentTarget.classList.add("active");
 
 }
 
+document.getElementById("home").style.display="block";
+
 </script>
 
+
 </body>
+
 </html>
