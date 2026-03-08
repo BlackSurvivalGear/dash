@@ -45,7 +45,23 @@ GLOBAL THREAT LEVEL
 
 <nav>
 
-<button onclick="showTab('home')" class="active">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('cyber')">Cyber Attacks</button> <button onclick="showTab('bases')">Military Bases</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('command')">Command Overview</button>
+<button onclick="showTab('home')" class="active">Home</button>
+
+<button onclick="showTab('news')">Conflict News</button>
+
+<button onclick="showTab('map')">Conflict Map</button>
+
+<button onclick="showTab('air')">Aircraft Watch</button>
+
+<button onclick="showTab('marine')">Marine Watch</button>
+
+<button onclick="showTab('cyber')">Cyber Attacks</button>
+
+<button onclick="showTab('bases')">Military Bases</button>
+
+<button onclick="showTab('fire')">Fire Monitor</button>
+
+<button onclick="showTab('command')">Command Overview</button>
 
 </nav>
 
@@ -57,13 +73,13 @@ GLOBAL THREAT LEVEL
 
 Preparedness is no longer optional.
 
-Across the modern world we are witnessing increasing geopolitical tension, economic instability, and expanding regional conflicts.
+Across the modern world we are witnessing increasing geopolitical tension, economic instability, and expanding regional conflicts. In such an environment, access to reliable information and situational awareness becomes essential.
 
 History has shown that when systems fail — when borders close, currencies collapse, or violence erupts — the African diaspora is often the last to be protected and the first to be stranded.
 
 Black Survival Gear was built to change that reality.
 
-BSG Global Strategic Awareness OSINT is an open-source intelligence platform designed to monitor global developments in real time.
+BSG Global Strategic Awareness OSINT is an open-source intelligence platform designed to monitor global developments in real time. By consolidating conflict monitoring, airspace activity, maritime tracking, cyber incidents, and environmental alerts, the system provides the awareness needed to make informed decisions and remain prepared.
 
 Information is the first layer of defence.
 
@@ -72,17 +88,7 @@ Information is the first layer of defence.
 </section>
 
 <section id="news" class="tab">
-
-<h2>Conflict Intelligence Feeds</h2>
-
-<div class="newsSources">
-
-<button class="sourceTab active" onclick="openSource(event,'bbc')">BBC</button> <button class="sourceTab" onclick="openSource(event,'aljazeera')">Al Jazeera</button> <button class="sourceTab" onclick="openSource(event,'reuters')">Reuters</button> <button class="sourceTab" onclick="openSource(event,'rt')">RT</button>
-
-</div>
-
 <div id="newsGrid" class="newsGrid"></div>
-
 </section>
 
 <section id="map" class="tab">
@@ -94,29 +100,21 @@ Information is the first layer of defence.
 </section>
 
 <section id="marine" class="tab">
-
-<h2>Global Maritime Chokepoints</h2>
-
-<div class="subnav">
-
-<button onclick="focusChokepoint('global')" class="subactive">Global</button> <button onclick="focusChokepoint('suez')">Suez Canal</button> <button onclick="focusChokepoint('hormuz')">Hormuz</button> <button onclick="focusChokepoint('bab')">Bab-el-Mandeb</button> <button onclick="focusChokepoint('malacca')">Malacca</button>
-
-</div>
-
-<iframe id="marineMap"
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 <section id="cyber" class="tab">
+<h2>Global Cyber Attack Map</h2>
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 </section>
 
 <section id="bases" class="tab">
+<h2>Global Military Installations</h2>
 <iframe src="https://umap.openstreetmap.fr/en/map/military-bases-around-the-world_510207"></iframe>
 </section>
 
 <section id="fire" class="tab">
+<h2>Global Wildfire Monitor</h2>
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
 </section>
 
@@ -142,48 +140,64 @@ BlackSurvivalGear.com
 function showTab(id){
 
 document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"))
+
 document.getElementById(id).classList.add("active")
 
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+
 event.target.classList.add("active")
 
 }
 
 
-async function openSource(evt,source){
 
-document.querySelectorAll(".sourceTab").forEach(btn=>{
-btn.classList.remove("active")
-})
+async function loadNews(){
 
-evt.currentTarget.classList.add("active")
+const feeds=[
 
-const feeds={
+"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
 
-bbc:"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
 
-aljazeera:"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
 
-reuters:"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
+]
 
-rt:"https://api.rss2json.com/v1/api.json?rss_url=https://www.rt.com/rss/news/"
+let headlines=[]
+const container=document.getElementById("newsGrid")
 
-}
+container.innerHTML=""
 
-const grid=document.getElementById("newsGrid")
-grid.innerHTML="Loading..."
+for(const feed of feeds){
 
 try{
 
-const res=await fetch(feeds[source])
+const res=await fetch(feed)
 const data=await res.json()
-
-grid.innerHTML=""
 
 data.items.slice(0,10).forEach(article=>{
 
+headlines.push(article.title)
+
 const card=document.createElement("div")
 card.className="newsCard"
+
+const breakingWords=[
+"war","attack","missile","explosion",
+"killed","strike","assault","invasion"
+]
+
+let breaking=false
+
+breakingWords.forEach(word=>{
+if(article.title.toLowerCase().includes(word)){
+breaking=true
+}
+})
+
+if(breaking){
+card.classList.add("breaking")
+}
 
 card.innerHTML=`
 
@@ -201,45 +215,22 @@ card.innerHTML=`
 
 `
 
-grid.appendChild(card)
+container.appendChild(card)
 
 })
 
-}catch{
-
-grid.innerHTML="Feed unavailable"
+}catch(e){}
 
 }
 
-}
-
-
-function focusChokepoint(point){
-
-const map=document.getElementById("marineMap")
-
-const coords={
-
-global:"zoom:2",
-
-suez:"zoom:7/lat:30.0/lon:32.5",
-
-hormuz:"zoom:7/lat:26.5/lon:56.5",
-
-bab:"zoom:7/lat:12.7/lon:43.3",
-
-malacca:"zoom:6/lat:3.0/lon:101.0"
+document.getElementById("ticker").textContent=headlines.join(" ◆ ")
 
 }
 
-map.src="https://www.marinetraffic.com/en/ais/embed/"+coords[point]
+document.addEventListener("DOMContentLoaded",()=>{
 
-}
-
-
-document.addEventListener("DOMContentLoaded",function(){
-
-openSource({currentTarget:document.querySelector(".sourceTab.active")},"bbc")
+loadNews()
+setInterval(loadNews,60000)
 
 })
 
