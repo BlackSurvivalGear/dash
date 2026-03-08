@@ -1,45 +1,54 @@
 body{
 margin:0;
 font-family:Arial;
-background:black;
+background:#052b21;
 color:white;
-}
-
-/* radar */
-
-#radar{
-position:fixed;
-min-width:100%;
-min-height:100%;
-z-index:-2;
-}
-
-/* overlay */
-
-.overlay{
-position:fixed;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-z-index:-1;
 }
 
 /* header */
 
-.header{
-background:#000;
-border-bottom:3px solid #00ff9c;
-text-align:center;
-padding:20px;
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:#083c2e;
+border-bottom:2px solid #c8a23b;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo{
+width:60px;
+}
+
+.threat{
+text-align:right;
+}
+
+.levels button{
+background:#0d4c39;
+border:1px solid #355;
+color:white;
+padding:5px 10px;
+margin:2px;
+}
+
+.levels .active{
+border:2px solid gold;
 }
 
 /* ticker */
 
 .ticker{
-background:#00ff9c;
-color:black;
+background:#0f4f3b;
 overflow:hidden;
 white-space:nowrap;
+border-bottom:1px solid #c8a23b;
 }
 
 .ticker-track{
@@ -57,49 +66,43 @@ animation:scroll 25s linear infinite;
 
 .tabs{
 display:flex;
-background:#111;
+background:#0d3f31;
 }
 
 .tab{
 flex:1;
-padding:14px;
-background:#111;
+padding:12px;
 border:none;
-color:#aaa;
+background:#0d3f31;
+color:white;
 cursor:pointer;
 }
 
 .tab:hover{
-background:#222;
+background:#145743;
 }
 
 .tab.active{
-background:#00ff9c;
+background:#c8a23b;
 color:black;
 }
 
-/* dashboard */
+/* layout */
 
-.dashboard{
-padding:30px;
+.container{
+padding:20px;
 }
-
-/* panels */
 
 .panel{
-background:#141414;
-border:1px solid #333;
-padding:20px;
-margin-top:20px;
+background:#0b3b2e;
+border:1px solid #2c6b55;
+padding:15px;
 }
 
-/* logo */
-
-.logo{
-display:block;
-margin:auto;
-width:200px;
-margin-bottom:20px;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
 }
 
 /* tabs */
