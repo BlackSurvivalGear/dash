@@ -1,129 +1,109 @@
 body{
-
 margin:0;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial;
 background:black;
 color:white;
-
 }
 
-/* radar background */
+/* radar */
 
 #radar{
-
 position:fixed;
-right:0;
-bottom:0;
 min-width:100%;
 min-height:100%;
 z-index:-2;
-
 }
 
-/* dark overlay */
+/* overlay */
 
 .overlay{
-
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.85);
 z-index:-1;
-
 }
 
 /* header */
 
-header{
-
+.header{
+background:#000;
+border-bottom:3px solid #00ff9c;
 text-align:center;
 padding:20px;
-background:#0a0a0a;
-border-bottom:2px solid #00ff9c;
-
 }
 
-header h1{
+/* ticker */
 
-margin:0;
-letter-spacing:3px;
-
+.ticker{
+background:#00ff9c;
+color:black;
+overflow:hidden;
+white-space:nowrap;
 }
 
-/* navigation */
+.ticker-track{
+display:inline-block;
+padding-left:100%;
+animation:scroll 25s linear infinite;
+}
+
+@keyframes scroll{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+/* tabs */
 
 .tabs{
-
 display:flex;
-flex-wrap:wrap;
 background:#111;
-border-bottom:1px solid #333;
-
 }
 
 .tab{
-
 flex:1;
 padding:14px;
 background:#111;
 border:none;
-color:#bbb;
+color:#aaa;
 cursor:pointer;
-font-size:15px;
-
 }
 
 .tab:hover{
-
 background:#222;
-color:white;
-
 }
 
 .tab.active{
-
 background:#00ff9c;
 color:black;
-font-weight:bold;
-
 }
 
-/* container */
+/* dashboard */
 
-.container{
-
+.dashboard{
 padding:30px;
-
 }
 
-/* panel */
+/* panels */
 
 .panel{
-
 background:#141414;
 border:1px solid #333;
 padding:20px;
 margin-top:20px;
-
 }
 
 /* logo */
 
 .logo{
-
 display:block;
 margin:auto;
 width:200px;
 margin-bottom:20px;
-
 }
 
-/* tab sections */
+/* tabs */
 
 .tabcontent{
-
 display:none;
-
 }
