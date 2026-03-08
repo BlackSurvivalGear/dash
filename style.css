@@ -1,57 +1,57 @@
 body{
-background:#071e16;
-color:#d7e8df;
-font-family:Segoe UI;
 margin:0;
+background:#041f18;
+color:#e2f0e9;
+font-family:Segoe UI;
 }
 
 header{
 display:flex;
 align-items:center;
-gap:20px;
 padding:15px;
-border-bottom:1px solid #1e5a42;
+border-bottom:1px solid #1b4d3e;
 }
 
 .logo{
-height:90px;
+height:80px;
 cursor:pointer;
+margin-right:20px;
 }
 
-.threatBox{
+.threat{
 margin-left:auto;
 font-weight:bold;
 }
 
-.threatLevel{
+.level{
 background:#c6a55a;
-color:#071e16;
-padding:6px 14px;
+color:#041f18;
+padding:6px 12px;
 border-radius:4px;
 margin-left:10px;
 }
 
 nav{
 display:flex;
-background:#0b2f22;
+background:#062e24;
 }
 
 nav button{
 padding:14px 18px;
 border:none;
-background:#0b2f22;
+background:#062e24;
 color:white;
 cursor:pointer;
 }
 
 nav button.active{
 background:#c6a55a;
-color:#071e16;
+color:#041f18;
 }
 
 .ticker{
 background:#c6a55a;
-color:#071e16;
+color:#041f18;
 overflow:hidden;
 white-space:nowrap;
 padding:10px 0;
@@ -60,12 +60,15 @@ padding:10px 0;
 .ticker span{
 display:inline-block;
 padding-left:100%;
-animation:tickerMove 80s linear infinite;
+animation:scroll 80s linear infinite;
 }
 
-@keyframes tickerMove{
+@keyframes scroll{
+
 0%{transform:translateX(0)}
+
 100%{transform:translateX(-100%)}
+
 }
 
 .tab{
@@ -83,12 +86,6 @@ height:85vh;
 border:none;
 }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
 .newsGrid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -97,8 +94,8 @@ margin-top:20px;
 }
 
 .newsCard{
-background:#0b2f22;
-border:1px solid #1e5a42;
+background:#062e24;
+border:1px solid #1b4d3e;
 border-radius:6px;
 overflow:hidden;
 }
@@ -109,24 +106,24 @@ height:180px;
 object-fit:cover;
 }
 
-.newsContent{
-padding:14px;
+.newsText{
+padding:12px;
 }
 
-.newsSource{
+.source{
 color:#c6a55a;
 font-size:12px;
-margin-bottom:6px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
 footer{
 text-align:center;
-padding:12px;
-border-top:1px solid #1e5a42;
+padding:15px;
+border-top:1px solid #1b4d3e;
 margin-top:20px;
-}
-
-.currencyContainer{
-display:flex;
-justify-content:center;
 }
