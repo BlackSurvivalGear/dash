@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>BSG Strategic Awareness</title>
+<title>BSG Global Strategic Awareness</title>
 
 <style>
 
@@ -60,6 +60,7 @@ z-index:1;
 
 .logo{
 height:84px;
+cursor:pointer;
 }
 
 /* THREAT */
@@ -133,11 +134,26 @@ background:#174734;
 
 .section{
 display:none;
-padding:12px;
+padding:20px;
 }
 
 .section.active{
 display:block;
+}
+
+/* HOME PANEL */
+
+.homePanel{
+background:rgba(7,25,18,0.85);
+border:1px solid var(--bsg-border);
+border-radius:6px;
+padding:30px;
+max-width:900px;
+}
+
+.homePanel h2{
+color:var(--bsg-gold);
+margin-bottom:10px;
 }
 
 /* NEWS */
@@ -182,7 +198,7 @@ color:var(--bsg-gold);
 text-decoration:none;
 }
 
-/* AIRCRAFT CONTROLS */
+/* AIRCRAFT */
 
 .airControls{
 margin-bottom:10px;
@@ -205,7 +221,7 @@ background:var(--bsg-gold);
 color:#071e16;
 }
 
-/* MARINE CONTROLS */
+/* MARINE */
 
 .marineControls{
 margin-bottom:10px;
@@ -228,7 +244,7 @@ background:var(--bsg-gold);
 color:#071e16;
 }
 
-/* COMMAND OVERVIEW GRID */
+/* COMMAND OVERVIEW */
 
 .overviewGrid{
 display:grid;
@@ -240,7 +256,7 @@ height:90vh;
 
 .overviewPanel{
 background:#071e16;
-border:1px solid #1e5a42;
+border:1px solid var(--bsg-border);
 border-radius:6px;
 overflow:hidden;
 position:relative;
@@ -251,7 +267,7 @@ position:absolute;
 top:6px;
 left:10px;
 background:rgba(0,0,0,0.6);
-color:#c6a55a;
+color:var(--bsg-gold);
 padding:4px 8px;
 font-size:12px;
 border-radius:4px;
@@ -301,9 +317,9 @@ text-decoration:none;
 
 <div class="header">
 
-<img class="logo" src="bsg.jpg">
+<img class="logo" src="bsg.jpg" onclick="showTab('home')">
 
-BSG Strategic Awareness
+BSG Global Strategic Awareness
 
 <div class="threatBox">
 GLOBAL THREAT LEVEL
@@ -318,23 +334,47 @@ GLOBAL THREAT LEVEL
 
 <div class="tabs">
 
-<button class="active" onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('overview')">Command Overview</button>
+<button class="active" onclick="showTab('home')">Home</button> <button onclick="showTab('news')">Conflict News</button> <button onclick="showTab('map')">Conflict Map</button> <button onclick="showTab('air')">Aircraft Watch</button> <button onclick="showTab('marine')">Marine Watch</button> <button onclick="showTab('fire')">Fire Monitor</button> <button onclick="showTab('overview')">Command Overview</button>
+
+</div>
+
+<!-- HOME -->
+
+<div id="home" class="section active">
+
+<div class="homePanel">
+
+<h2>Welcome to BSG Global Strategic Awareness</h2>
+
+<p>
+This dashboard provides open-source intelligence monitoring tools for global strategic awareness.
+</p>
+
+<p>
+Use the navigation tabs to monitor conflict developments, military aircraft activity, maritime shipping routes, and satellite fire detections across the world.
+</p>
+
+<p>
+The Command Overview tab provides a multi-sensor operational display combining key monitoring feeds.
+</p>
+
+</div>
 
 </div>
 
 <!-- NEWS -->
 
-<div id="news" class="section active">
+<div id="news" class="section">
 <div class="feed" id="newsFeed">Loading intelligence feeds...</div>
 </div>
 
-<!-- CONFLICT MAP -->
+<!-- MAP -->
 
 <div id="map" class="section">
 <iframe src="https://liveuamap.com"></iframe>
 </div>
 
-<!-- AIRCRAFT -->
+<!-- AIR -->
 
 <div id="air" class="section">
 
@@ -354,9 +394,12 @@ GLOBAL THREAT LEVEL
 <div id="marine" class="section">
 
 <div class="marineControls">
-
-<button onclick="setMarine('global')" class="active">Global</button> <button onclick="setMarine('hormuz')">Hormuz</button> <button onclick="setMarine('mandeb')">Bab-el-Mandeb</button> <button onclick="setMarine('suez')">Suez</button> <button onclick="setMarine('bosporus')">Bosporus</button> <button onclick="setMarine('malacca')">Malacca</button>
-
+<button onclick="setMarine('global')" class="active">Global</button>
+<button onclick="setMarine('hormuz')">Hormuz</button>
+<button onclick="setMarine('mandeb')">Bab-el-Mandeb</button>
+<button onclick="setMarine('suez')">Suez</button>
+<button onclick="setMarine('bosporus')">Bosporus</button>
+<button onclick="setMarine('malacca')">Malacca</button>
 </div>
 
 <iframe id="marineMap"
@@ -365,7 +408,7 @@ src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/mapt
 
 </div>
 
-<!-- FIRE MONITOR -->
+<!-- FIRE -->
 
 <div id="fire" class="section">
 
@@ -462,124 +505,6 @@ document.getElementById("breakingNews").innerText=headlines.join("      ✦     
 
 loadBreakingNews();
 setInterval(loadBreakingNews,300000);
-
-/* AIRCRAFT FILTER */
-
-function setAirFilter(type){
-
-const map=document.getElementById("airMap");
-
-const urls={
-military:"https://globe.adsbexchange.com/?military=1",
-tankers:"https://globe.adsbexchange.com/?icaoType=K35R,K135",
-surveillance:"https://globe.adsbexchange.com/?icaoType=E3TF,E3CF,E8",
-all:"https://globe.adsbexchange.com/"
-};
-
-map.src=urls[type]||urls.all;
-
-}
-
-/* MARINE NAVIGATION */
-
-function setMarine(area){
-
-const map=document.getElementById("marineMap");
-
-const urls={
-
-global:"https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4",
-
-hormuz:"https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:26.6/centerx:56.3/maptype:4",
-
-mandeb:"https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:12.7/centerx:43.3/maptype:4",
-
-suez:"https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:30.2/centerx:32.5/maptype:4",
-
-bosporus:"https://www.marinetraffic.com/en/ais/embed/zoom:9/centery:41.1/centerx:29.0/maptype:4",
-
-malacca:"https://www.marinetraffic.com/en/ais/embed/zoom:6/centery:2.5/centerx:101.0/maptype:4"
-
-};
-
-map.src=urls[area]||urls.global;
-
-}
-
-/* NEWS FEED */
-
-function buildCard(title,link,date,img,source){
-
-if(!img)
-img="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg";
-
-return `
-<div class="card">
-<img class="thumb" src="${img}">
-<div>
-<div class="title">${title}</div>
-<div class="meta">${source} • ${date}</div>
-<a class="link" href="${link}" target="_blank">Open Source →</a>
-</div>
-</div>
-`;
-}
-
-function loadFeeds(){
-
-const feeds=[
-{url:"https://feeds.bbci.co.uk/news/world/rss.xml",name:"BBC"},
-{url:"https://www.reutersagency.com/feed/?best-topics=politics",name:"Reuters"},
-{url:"https://www.aljazeera.com/xml/rss/all.xml",name:"Al Jazeera"},
-{url:"https://apnews.com/rss/apf-topnews",name:"AP"},
-{url:"https://www.rt.com/rss/news/",name:"RT"}
-];
-
-const keywords=[
-"war","conflict","attack","missile","military",
-"troops","gaza","ukraine","russia","israel",
-"china","taiwan","strike","bomb"
-];
-
-const news=document.getElementById("newsFeed");
-news.innerHTML="";
-
-feeds.forEach(feed=>{
-
-fetch("https://api.allorigins.win/raw?url="+encodeURIComponent(feed.url))
-.then(r=>r.text())
-.then(str=>{
-
-const xml=new DOMParser().parseFromString(str,"text/xml");
-
-xml.querySelectorAll("item").forEach(item=>{
-
-const title=item.querySelector("title")?.textContent||"";
-const link=item.querySelector("link")?.textContent||"";
-const date=item.querySelector("pubDate")?.textContent||"";
-
-const lower=title.toLowerCase();
-
-if(!keywords.some(w=>lower.includes(w)))return;
-
-let img="";
-const desc=item.querySelector("description")?.textContent||"";
-const m=desc.match(/<img.*?src="(.*?)"/);
-
-if(m)img=m[1];
-
-news.innerHTML+=buildCard(title,link,date,img,feed.name);
-
-});
-
-});
-
-});
-
-}
-
-loadFeeds();
-setInterval(loadFeeds,300000);
 
 </script>
 
