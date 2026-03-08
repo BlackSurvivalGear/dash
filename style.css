@@ -1,103 +1,129 @@
 body{
+
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
 background:black;
 color:white;
+
 }
 
 /* radar background */
 
-#radarVideo{
+#radar{
+
 position:fixed;
 right:0;
 bottom:0;
 min-width:100%;
 min-height:100%;
 z-index:-2;
+
 }
 
-/* overlay */
+/* dark overlay */
 
 .overlay{
+
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
+background:rgba(0,0,0,0.85);
 z-index:-1;
+
 }
 
 /* header */
 
 header{
+
 text-align:center;
 padding:20px;
-background:#111;
+background:#0a0a0a;
 border-bottom:2px solid #00ff9c;
+
 }
 
 header h1{
+
 margin:0;
-letter-spacing:2px;
+letter-spacing:3px;
+
 }
 
-/* tabs */
+/* navigation */
 
 .tabs{
+
 display:flex;
 flex-wrap:wrap;
-background:#151515;
+background:#111;
 border-bottom:1px solid #333;
+
 }
 
 .tab{
+
 flex:1;
 padding:14px;
-background:#151515;
+background:#111;
 border:none;
-color:#aaa;
+color:#bbb;
 cursor:pointer;
 font-size:15px;
+
 }
 
 .tab:hover{
+
 background:#222;
 color:white;
+
 }
 
 .tab.active{
+
 background:#00ff9c;
 color:black;
 font-weight:bold;
+
 }
 
 /* container */
 
 .container{
+
 padding:30px;
+
 }
 
 /* panel */
 
 .panel{
-background:#151515;
+
+background:#141414;
 border:1px solid #333;
 padding:20px;
 margin-top:20px;
+
 }
 
 /* logo */
 
 .logo{
+
 display:block;
 margin:auto;
 width:200px;
 margin-bottom:20px;
+
 }
 
-/* tabs */
+/* tab sections */
 
 .tabcontent{
+
 display:none;
+
 }
