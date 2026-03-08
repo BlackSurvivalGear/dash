@@ -4,11 +4,137 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>BSG Global Strategic Awareness</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+body{
+background:#071e16;
+color:#d7e8df;
+font-family:Segoe UI;
+margin:0;
+}
+
+header{
+display:flex;
+align-items:center;
+gap:20px;
+padding:15px;
+border-bottom:1px solid #1e5a42;
+}
+
+.logo{
+height:90px;
+cursor:pointer;
+}
+
+.threat{
+margin-left:auto;
+font-size:14px;
+}
+
+.level{
+background:#c6a55a;
+color:#071e16;
+padding:6px 12px;
+margin-left:10px;
+}
+
+.ticker{
+background:#c6a55a;
+color:#071e16;
+padding:8px;
+font-weight:500;
+}
+
+nav{
+display:flex;
+background:#0b2f22;
+}
+
+nav button{
+padding:14px 18px;
+border:none;
+background:#0b2f22;
+color:#fff;
+cursor:pointer;
+font-size:15px;
+}
+
+nav button.active{
+background:#c6a55a;
+color:#071e16;
+}
+
+.tab{
+display:none;
+padding:20px;
+}
+
+.tab.active{
+display:block;
+}
+
+iframe{
+width:100%;
+height:80vh;
+border:none;
+}
+
+.marketTabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+
+.marketTabs button{
+padding:10px 15px;
+background:#0b2f22;
+border:1px solid #1e5a42;
+color:white;
+cursor:pointer;
+}
+
+.marketTabs button.active{
+background:#c6a55a;
+color:#071e16;
+}
+
+.marketPanel{
+display:none;
+}
+
+.marketPanel.active{
+display:block;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+footer{
+text-align:center;
+padding:12px;
+border-top:1px solid #1e5a42;
+margin-top:20px;
+}
+
+.converter input,
+.converter select,
+.converter button{
+width:100%;
+padding:10px;
+margin:10px 0;
+background:#111;
+color:white;
+border:1px solid #333;
+}
+
+</style>
 
 </head>
 
@@ -27,8 +153,8 @@ GLOBAL THREAT LEVEL
 
 </header>
 
-<div class="ticker">
-<span id="breakingNews">Loading intelligence feed...</span>
+<div class="ticker" id="ticker">
+Loading intelligence feed...
 </div>
 
 <nav>
@@ -37,33 +163,21 @@ GLOBAL THREAT LEVEL
 
 </nav>
 
-<!-- HOME -->
-
 <section id="home" class="tab active">
 
-<div class="panel">
-
-<h2>Welcome</h2>
+<h2>Welcome to BSG Global Strategic Awareness</h2>
 
 <p>
-BSG Global Strategic Awareness provides open-source monitoring of global conflict activity, military aircraft movements, maritime shipping routes, satellite fire detections, and global financial markets.
+This dashboard provides open-source intelligence monitoring tools for global strategic awareness.
 </p>
 
-</div>
-
 </section>
-
-<!-- NEWS -->
 
 <section id="news" class="tab">
 
-<div id="newsFeed" class="feed">
-Loading intelligence feeds...
-</div>
+<div id="newsFeed">Loading intelligence feeds...</div>
 
 </section>
-
-<!-- MAP -->
 
 <section id="map" class="tab">
 
@@ -71,15 +185,11 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- AIRCRAFT -->
-
 <section id="air" class="tab">
 
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 
 </section>
-
-<!-- MARINE -->
 
 <section id="marine" class="tab">
 
@@ -87,96 +197,65 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- FIRE -->
-
 <section id="fire" class="tab">
 
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
 
 </section>
 
-<!-- MARKETS -->
-
 <section id="markets" class="tab">
 
 <div class="marketTabs">
 
-<button class="mTab active" onclick="showMarket('overviewMarket')">Market Overview</button> <button class="mTab" onclick="showMarket('cryptoHeat')">Crypto Heatmap</button> <button class="mTab" onclick="showMarket('btcChart')">BTC Chart</button> <button class="mTab" onclick="showMarket('forexRates')">Forex</button> <button class="mTab" onclick="showMarket('econMap')">Economic Map</button>
+<button onclick="showMarket('market1')" class="active">Market Overview</button> <button onclick="showMarket('market2')">Crypto Heatmap</button> <button onclick="showMarket('market3')">BTC Chart</button> <button onclick="showMarket('market4')">Forex</button> <button onclick="showMarket('market5')">Economic Map</button>
 
 </div>
 
-<div id="overviewMarket" class="marketPanel active">
+<div id="market1" class="marketPanel active">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-{
-"colorTheme":"dark",
-"locale":"en",
-"width":"100%",
-"height":550
-}
-</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async></script>
 
 </div>
 
 </div>
 
-<div id="cryptoHeat" class="marketPanel">
+<div id="market2" class="marketPanel">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-{
-"dataSource":"Crypto",
-"colorTheme":"dark",
-"width":"100%",
-"height":600
-}
-</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async></script>
 
 </div>
 
 </div>
 
-<div id="btcChart" class="marketPanel">
-
-<div class="tradingview-widget-container">
-
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-{
-"symbol":"BINANCE:BTCUSDT",
-"theme":"dark",
-"autosize":true
-}
-</script>
-
-</div>
-
-</div>
-
-<div id="forexRates" class="marketPanel">
+<div id="market3" class="marketPanel">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-{
-"colorTheme":"dark",
-"width":"100%",
-"height":400
-}
-</script>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async></script>
 
 </div>
 
 </div>
 
-<div id="econMap" class="marketPanel">
+<div id="market4" class="marketPanel">
+
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async></script>
+
+</div>
+
+</div>
+
+<div id="market5" class="marketPanel">
 
 <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-economic-map.js"></script>
 
@@ -186,21 +265,19 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- CURRENCY -->
-
 <section id="currency" class="tab">
 
-<div class="currency">
+<div class="converter">
 
 <h2>African Currency Converter</h2>
 
-<input id="amount" placeholder="Enter amount">
+<input type="number" id="amount" placeholder="Enter amount">
 
-<select id="from"></select>
+<select id="from-currency"></select>
 
-<select id="to"></select>
+<select id="to-currency"></select>
 
-<button onclick="convert()">Convert</button>
+<button onclick="convertCurrency()">Convert</button>
 
 <div id="result"></div>
 
@@ -208,18 +285,13 @@ Loading intelligence feeds...
 
 </section>
 
-<!-- COMMAND OVERVIEW -->
-
 <section id="overview" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"></iframe>
-
 <iframe src="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@0,20,2z"></iframe>
 
 </div>
@@ -232,7 +304,90 @@ BlackSurvivalGear.com
 
 </footer>
 
-<script src="app.js"></script>
+<script>
+
+function showTab(id){
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+
+event.target.classList.add("active");
+
+}
+
+function showMarket(id){
+
+document.querySelectorAll(".marketPanel").forEach(p=>p.classList.remove("active"));
+
+document.getElementById(id).classList.add("active");
+
+document.querySelectorAll(".marketTabs button").forEach(b=>b.classList.remove("active"));
+
+event.target.classList.add("active");
+
+}
+
+async function loadNews(){
+
+const feed="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/world/rss.xml");
+
+const res=await fetch(feed);
+const xml=await res.text();
+
+const parser=new DOMParser();
+const data=parser.parseFromString(xml,"text/xml");
+
+const items=data.querySelectorAll("item");
+
+let html="";
+
+items.forEach((item,i)=>{
+
+if(i>10)return;
+
+const title=item.querySelector("title").textContent;
+const link=item.querySelector("link").textContent;
+
+html+=`<p><a href="${link}" target="_blank">${title}</a></p>`;
+
+});
+
+document.getElementById("newsFeed").innerHTML=html;
+
+}
+
+loadNews();
+
+async function ticker(){
+
+const feed="https://api.allorigins.win/raw?url="+encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml");
+
+const res=await fetch(feed);
+const xml=await res.text();
+
+const parser=new DOMParser();
+const data=parser.parseFromString(xml,"text/xml");
+
+const items=data.querySelectorAll("item");
+
+let text="";
+
+items.forEach((item,i)=>{
+
+if(i<8)text+=item.querySelector("title").textContent+" ◆ ";
+
+});
+
+document.getElementById("ticker").textContent=text;
+
+}
+
+ticker();
+
+</script>
 
 </body>
 </html>
