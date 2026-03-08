@@ -576,3 +576,17 @@ setInterval(loadNews,300000);
 
 </body>
 </html>
+
+function setThreat(level){
+
+const el=document.getElementById("threatLevel")
+
+el.className="threatLevel "+level
+
+el.innerText=level.toUpperCase()
+
+}
+
+/* Example trigger */
+
+setThreat("elevated")
