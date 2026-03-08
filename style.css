@@ -212,3 +212,20 @@ padding:12px;
 border-top:1px solid #1e5a42;
 margin-top:20px;
 }
+.threatBox{
+margin-left:auto;
+font-weight:bold;
+}
+
+.threatLevel{
+padding:6px 14px;
+margin-left:10px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.threatLevel.normal{background:#2ecc71;color:black}
+.threatLevel.guarded{background:#3498db;color:white}
+.threatLevel.elevated{background:#f1c40f;color:black}
+.threatLevel.high{background:#e67e22;color:white}
+.threatLevel.critical{background:#e74c3c;color:white}
