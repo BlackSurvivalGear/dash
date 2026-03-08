@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<html>
+
 <head>
 
 <meta charset="UTF-8">
@@ -20,27 +22,27 @@
 <h1>BSG Global Strategic Awareness</h1>
 
 <div class="threat">
+
+<div class="threatTitle">
 GLOBAL THREAT LEVEL
-<span class="level elevated">ELEVATED</span>
+<span class="level">ELEVATED</span>
+</div>
+
+<div class="threatIndex">
+NORMAL<br>
+GUARDED<br>
+ELEVATED<br>
+HIGH<br>
+CRITICAL
+</div>
+
 </div>
 
 </header>
 
-<!-- THREAT LEGEND -->
-
-<div class="threatLegend">
-
-<span class="legend normal">NORMAL</span> <span class="legend guarded">GUARDED</span> <span class="legend elevated">ELEVATED</span> <span class="legend high">HIGH</span> <span class="legend critical">CRITICAL</span>
-
-</div>
-
-<!-- NEWS TICKER -->
-
 <div class="ticker">
 <span id="ticker"></span>
 </div>
-
-<!-- NAVIGATION -->
 
 <nav>
 
@@ -50,19 +52,13 @@ GLOBAL THREAT LEVEL
 
 <button onclick="showTab('map')">Conflict Map</button>
 
-<button onclick="showTab('heatmap')">Conflict Heatmap</button>
-
 <button onclick="showTab('air')">Aircraft Watch</button>
 
 <button onclick="showTab('marine')">Marine Watch</button>
 
-<button onclick="showTab('fleet')">Naval Fleet</button>
-
 <button onclick="showTab('fire')">Fire Monitor</button>
 
 <button onclick="showTab('cyber')">Cyber Attacks</button>
-
-<button onclick="showTab('satellite')">Satellite Tracker</button>
 
 <button onclick="showTab('bases')">Military Bases</button>
 
@@ -74,21 +70,24 @@ GLOBAL THREAT LEVEL
 
 </nav>
 
-<!-- HOME -->
-
 <section id="home" class="tab active">
 
 <h2>Strategic Awareness Dashboard</h2>
 
 <p>
-Multi-domain intelligence console monitoring:
-conflicts, airspace activity, naval fleets, cyber warfare,
-satellite constellations, wildfires and military installations.
+
+Multi-domain monitoring console covering:
+
+Global conflicts
+Airspace activity
+Naval shipping
+Cyber warfare
+Wildfires
+Military installations
+
 </p>
 
 </section>
-
-<!-- CONFLICT NEWS -->
 
 <section id="news" class="tab">
 
@@ -96,25 +95,11 @@ satellite constellations, wildfires and military installations.
 
 </section>
 
-<!-- CONFLICT MAP -->
-
 <section id="map" class="tab">
 
 <iframe src="https://liveuamap.com"></iframe>
 
 </section>
-
-<!-- CONFLICT HEATMAP -->
-
-<section id="heatmap" class="tab">
-
-<h2>Global Conflict Heatmap</h2>
-
-<iframe src="https://acleddata.com/dashboard/#/dashboard"></iframe>
-
-</section>
-
-<!-- AIRCRAFT -->
 
 <section id="air" class="tab">
 
@@ -122,43 +107,11 @@ satellite constellations, wildfires and military installations.
 
 </section>
 
-<!-- MARINE -->
-
 <section id="marine" class="tab">
 
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 
 </section>
-
-<!-- NAVAL FLEET -->
-
-<section id="fleet" class="tab">
-
-<h2>Global Naval Fleet & Strategic Chokepoints</h2>
-
-<div class="mapWrapper">
-
-<iframe
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4"
-class="fleetMap">
-</iframe>
-
-<div class="chokepoints">
-
-<div class="point hormuz">Hormuz</div>
-<div class="point malacca">Malacca</div>
-<div class="point suez">Suez</div>
-<div class="point gibraltar">Gibraltar</div>
-<div class="point bab">Bab-el-Mandeb</div>
-<div class="point panama">Panama</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FIRE -->
 
 <section id="fire" class="tab">
 
@@ -168,8 +121,6 @@ class="fleetMap">
 
 </section>
 
-<!-- CYBER -->
-
 <section id="cyber" class="tab">
 
 <h2>Global Cyber Attack Map</h2>
@@ -177,18 +128,6 @@ class="fleetMap">
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 
 </section>
-
-<!-- SATELLITE -->
-
-<section id="satellite" class="tab">
-
-<h2>Satellite Constellation Tracker</h2>
-
-<iframe src="https://keeptrack.space"></iframe>
-
-</section>
-
-<!-- MILITARY BASES -->
 
 <section id="bases" class="tab">
 
@@ -198,33 +137,30 @@ class="fleetMap">
 
 </section>
 
-<!-- MARKETS -->
-
 <section id="markets" class="tab">
 
 <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview"></iframe>
 
 </section>
 
-<!-- CURRENCY -->
-
 <section id="currency" class="tab">
 
 <h2>African Currency Converter</h2>
 
-<p>Currency converter module placeholder</p>
+<p>Currency module placeholder</p>
 
 </section>
-
-<!-- COMMAND OVERVIEW -->
 
 <section id="command" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
+
 <iframe src="https://globe.adsbexchange.com"></iframe>
+
 <iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
+
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 
 </div>
@@ -252,7 +188,6 @@ event.target.classList.add("active")
 }
 
 
-/* NEWS + TICKER */
 
 async function loadNews(){
 
@@ -324,3 +259,4 @@ setInterval(loadNews,300000)
 </script>
 
 </body>
+</html>
