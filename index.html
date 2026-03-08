@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +9,22 @@
 
 <style>
 
+:root{
+--bsg-dark:#071e16;
+--bsg-green:#0b2f22;
+--bsg-panel:#0f3a2a;
+--bsg-border:#1e5a42;
+--bsg-gold:#c6a55a;
+--bsg-text:#d7e8df;
+}
+
 html,body{
 margin:0;
 padding:0;
 height:100%;
-background:#06150f;
+background:var(--bsg-dark);
 font-family:Segoe UI,Arial;
-color:#e6f2ec;
+color:var(--bsg-text);
 }
 
 /* WATERMARK */
@@ -32,7 +40,7 @@ height:900px;
 background-image:url("bsg.jpg");
 background-size:contain;
 background-repeat:no-repeat;
-opacity:0.05;
+opacity:0.035;
 pointer-events:none;
 z-index:0;
 }
@@ -42,40 +50,48 @@ z-index:0;
 .header{
 display:flex;
 align-items:center;
-gap:12px;
-padding:18px;
-font-size:26px;
-color:#9fd4b3;
-border-bottom:1px solid #1f4a35;
+gap:16px;
+padding:16px 22px;
+font-size:28px;
+color:var(--bsg-text);
+border-bottom:1px solid var(--bsg-border);
 position:relative;
 z-index:1;
 }
 
 .logo{
-height:42px;
+height:84px;
 }
 
 /* TABS */
 
 .tabs{
 display:flex;
-background:#081912;
-border-bottom:1px solid #1f4a35;
+background:var(--bsg-green);
+border-bottom:1px solid var(--bsg-border);
 position:relative;
 z-index:1;
 }
 
 .tabs button{
-padding:10px 16px;
-background:#0f2a1e;
+padding:12px 18px;
+background:var(--bsg-green);
 border:none;
-color:#e6f2ec;
+color:var(--bsg-text);
 cursor:pointer;
-border-right:1px solid #1f4a35;
+border-right:1px solid var(--bsg-border);
+font-weight:500;
 }
 
 .tabs button:hover{
 background:#174734;
+}
+
+.tabs button.active{
+background:var(--bsg-gold);
+color:var(--bsg-dark);
+font-weight:600;
+box-shadow:0 0 10px rgba(198,165,90,0.6);
 }
 
 /* PANELS */
@@ -94,18 +110,22 @@ display:block;
 /* NEWS FEED */
 
 .feed{
-height:60vh;
+height:70vh;
 overflow:auto;
-background:rgba(8,25,18,0.92);
+background:rgba(5,20,14,0.97);
 border-radius:6px;
-padding:10px;
+padding:12px;
+backdrop-filter:blur(2px);
 }
 
 .card{
 display:flex;
-gap:10px;
-padding:10px 0;
-border-bottom:1px solid #1f4a35;
+gap:12px;
+padding:12px;
+border-bottom:1px solid var(--bsg-border);
+background:rgba(7,25,18,0.85);
+border-radius:4px;
+margin-bottom:6px;
 }
 
 .thumb{
@@ -117,17 +137,17 @@ border-radius:4px;
 
 .title{
 font-size:15px;
-color:#9fd4b3;
+color:var(--bsg-text);
 }
 
 .meta{
 font-size:12px;
-color:#6fa98c;
+color:#8fb9a6;
 }
 
 .link{
 font-size:12px;
-color:#8bc5ff;
+color:var(--bsg-gold);
 text-decoration:none;
 }
 
@@ -138,6 +158,33 @@ width:100%;
 height:92vh;
 border:none;
 border-radius:6px;
+}
+
+/* FOOTER */
+
+footer{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:var(--bsg-dark);
+border-top:1px solid var(--bsg-border);
+text-align:center;
+padding:8px;
+font-size:14px;
+color:var(--bsg-gold);
+letter-spacing:1px;
+z-index:2;
+}
+
+footer a{
+color:var(--bsg-gold);
+text-decoration:none;
+font-weight:600;
+}
+
+footer a:hover{
+text-decoration:underline;
 }
 
 </style>
@@ -156,7 +203,7 @@ BSG Strategic Awareness
 
 <div class="tabs">
 
-<button onclick="showTab('news')">Conflict News</button>
+<button class="active" onclick="showTab('news')">Conflict News</button>
 <button onclick="showTab('map')">Conflict Map</button>
 <button onclick="showTab('air')">Aircraft Watch</button>
 <button onclick="showTab('marine')">Marine Watch</button>
@@ -194,10 +241,16 @@ src="https://globe.adsbexchange.com/">
 <div id="marine" class="section">
 
 <iframe
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4/shownames:false/mmsi:0/shipid:0/fleet:/fleet_id:/vtypes:0">
+src="https://www.marinetraffic.com/en/ais/embed/zoom:2/centery:20/centerx:0/maptype:4/shownames:false">
 </iframe>
 
 </div>
+
+<footer>
+<a href="https://blacksurvivalgear.com" target="_blank">
+BlackSurvivalGear.com
+</a>
+</footer>
 
 <script>
 
@@ -207,6 +260,12 @@ document.querySelectorAll(".section")
 .forEach(s=>s.classList.remove("active"));
 
 document.getElementById(id).classList.add("active");
+
+document.querySelectorAll(".tabs button")
+.forEach(btn=>btn.classList.remove("active"));
+
+document.querySelector(`[onclick="showTab('${id}')"]`)
+.classList.add("active");
 
 }
 
@@ -300,4 +359,3 @@ setInterval(loadFeeds,300000);
 
 </body>
 </html>
-```
