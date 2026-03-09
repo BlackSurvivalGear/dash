@@ -11,8 +11,6 @@ overflow-x:hidden;
 }
 
 
-/* HEADER */
-
 header{
 display:flex;
 align-items:center;
@@ -28,7 +26,6 @@ margin:0;
 }
 
 .radarLogo{
-position:relative;
 height:60px;
 width:60px;
 margin-right:18px;
@@ -42,8 +39,6 @@ height:100%;
 object-fit:cover;
 }
 
-
-/* NAV */
 
 nav{
 display:flex;
@@ -67,8 +62,6 @@ color:#041f18;
 }
 
 
-/* TICKER */
-
 .ticker{
 background:#021510;
 overflow:hidden;
@@ -90,8 +83,6 @@ font-size:15px;
 }
 
 
-/* TABS */
-
 .tab{
 display:none;
 padding:25px;
@@ -105,23 +96,18 @@ display:block;
 }
 
 
-/* HOME SECTION (RESTORED) */
-
 .homePanel{
 display:flex;
 align-items:center;
 gap:40px;
-max-width:1200px;
 }
 
 .homeBg{
 width:420px;
 max-width:40%;
-opacity:0.95;
 }
 
 .homeOverlay{
-position:relative;
 max-width:600px;
 }
 
@@ -131,30 +117,17 @@ line-height:1.7;
 }
 
 
-/* NEWS GRID */
-
-.newsGrid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:20px;
-}
-
-
-/* LIVE NAV */
-
 .liveNav{
-display:flex;
-gap:8px;
 margin-bottom:15px;
 }
 
 .liveNav button{
+padding:10px 14px;
 background:#0b3a2e;
 border:none;
 color:#e2f0e9;
-padding:10px 14px;
 cursor:pointer;
-font-weight:600;
+margin-right:6px;
 }
 
 .liveNav button:hover{
@@ -163,8 +136,6 @@ color:#041f18;
 }
 
 
-/* SINGLE LIVE PLAYER */
-
 .livePlayer iframe{
 width:100%;
 height:70vh;
@@ -172,8 +143,6 @@ border:none;
 border-radius:6px;
 }
 
-
-/* QUAD VIEW */
 
 .quadGrid{
 display:none;
@@ -189,8 +158,6 @@ border-radius:6px;
 }
 
 
-/* STANDARD IFRAME */
-
 iframe{
 width:100%;
 height:80vh;
@@ -199,16 +166,12 @@ border-radius:6px;
 }
 
 
-/* COMMAND GRID */
-
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
 }
 
-
-/* FOOTER */
 
 footer{
 text-align:center;
