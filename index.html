@@ -14,12 +14,14 @@
 
 </head>
 
+
 <body>
+
 
 
 <header>
 
-<div class="radarLogo" onclick="showTab(event,'home')">
+<div class="radarLogo">
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
@@ -50,16 +52,25 @@ Loading crypto market data...
 
 
 
+<!-- NAVIGATION -->
+
 <nav>
 
-<button onclick="showTab(event,'home')" class="active">Home</button>
-<button onclick="showTab(event,'live')">LIVE NEWS</button>
-<button onclick="showTab(event,'map')">Conflict Map</button>
-<button onclick="showTab(event,'air')">Aircraft Watch</button>
-<button onclick="showTab(event,'marine')">Marine Watch</button>
-<button onclick="showTab(event,'cyber')">Cyber Attacks</button>
-<button onclick="showTab(event,'command')">Overview</button>
-<button onclick="showTab(event,'gmap')">Map</button>
+<button data-tab="home" class="active">Home</button>
+
+<button data-tab="live">LIVE NEWS</button>
+
+<button data-tab="map">Conflict Map</button>
+
+<button data-tab="air">Aircraft Watch</button>
+
+<button data-tab="marine">Marine Watch</button>
+
+<button data-tab="cyber">Cyber Attacks</button>
+
+<button data-tab="command">Overview</button>
+
+<button data-tab="gmap">Map</button>
 
 </nav>
 
@@ -217,21 +228,35 @@ BlackSurvivalGear.com
 
 
 
-function showTab(evt,id){
+/* TAB SYSTEM */
 
-document.querySelectorAll(".tab").forEach(tab=>{
+document.addEventListener("DOMContentLoaded",function(){
+
+const buttons=document.querySelectorAll("nav button")
+const tabs=document.querySelectorAll(".tab")
+
+buttons.forEach(button=>{
+
+button.addEventListener("click",function(){
+
+const target=this.getAttribute("data-tab")
+
+tabs.forEach(tab=>{
 tab.classList.remove("active")
 })
 
-document.getElementById(id).classList.add("active")
-
-document.querySelectorAll("nav button").forEach(btn=>{
+buttons.forEach(btn=>{
 btn.classList.remove("active")
 })
 
-evt.target.classList.add("active")
+document.getElementById(target).classList.add("active")
+this.classList.add("active")
 
-}
+})
+
+})
+
+})
 
 
 
@@ -316,7 +341,7 @@ setInterval(loadCryptoTicker,30000)
 
 
 
-/* GOLD SILVER HEADER */
+/* GOLD SILVER */
 
 async function loadMetals(){
 
@@ -345,6 +370,7 @@ loadMetals()
 setInterval(loadMetals,60000)
 
 </script>
+
 
 </body>
 </html>
