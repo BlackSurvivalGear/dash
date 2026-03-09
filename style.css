@@ -5,6 +5,32 @@ background:#041f18;
 color:#e2f0e9;
 }
 
+
+/* RADAR BACKGROUND */
+
+.radarBackground{
+
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:900px;
+height:900px;
+opacity:0.05;
+pointer-events:none;
+z-index:-1;
+
+}
+
+.radarBackground video{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+
+/* HEADER */
+
 header{
 display:flex;
 align-items:center;
@@ -12,23 +38,64 @@ padding:10px;
 border-bottom:2px solid #c6a55a;
 }
 
-.logo img{
-height:55px;
-}
-
 header h1{
 margin-left:10px;
 font-size:24px;
 }
 
+
+/* RADAR LOGO */
+
+.radarLogo{
+position:relative;
+height:60px;
+width:60px;
+margin-right:15px;
+border-radius:50%;
+overflow:hidden;
+cursor:pointer;
+}
+
+.radarLogo video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+
+/* RADAR SWEEP */
+
+.radarSweep{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border-radius:50%;
+background:conic-gradient(rgba(198,165,90,0.6),transparent);
+animation:radarSpin 4s linear infinite;
+}
+
+@keyframes radarSpin{
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+}
+
+
+/* CLOCK */
+
 .clock{
 margin-left:auto;
 margin-right:15px;
+color:#c6a55a;
+font-size:14px;
 }
+
+
+/* THREAT PANEL */
 
 .threatPanel{
 margin-left:auto;
-text-align:right;
 margin-right:20px;
 }
 
@@ -52,6 +119,9 @@ border:1px solid #c6a55a;
 color:#c6a55a;
 }
 
+
+/* NAV */
+
 nav{
 display:flex;
 background:#0b3a2e;
@@ -70,6 +140,9 @@ background:#c6a55a;
 color:#041f18;
 }
 
+
+/* TABS */
+
 .tab{
 display:none;
 padding:20px;
@@ -79,11 +152,17 @@ padding:20px;
 display:block;
 }
 
+
+/* IFRAME */
+
 iframe{
 width:100%;
 height:600px;
 border:none;
 }
+
+
+/* NEWS */
 
 .newsGrid{
 display:grid;
@@ -107,17 +186,26 @@ object-fit:cover;
 padding:10px;
 }
 
+
+/* TICKER */
+
 .ticker{
 background:#062b21;
 padding:8px;
 font-size:14px;
 }
 
+
+/* GRID */
+
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:10px;
 }
+
+
+/* MARKET TABS */
 
 .marketTabs button{
 margin-right:8px;
@@ -140,6 +228,9 @@ display:none;
 .marketTab.active{
 display:block;
 }
+
+
+/* FOOTER */
 
 footer{
 text-align:center;
