@@ -9,7 +9,6 @@
 <title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
@@ -19,13 +18,10 @@
 <header>
 
 <div class="radarLogo" onclick="showTab('home')">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4" type="video/mp4">
 </video>
-
 <div class="radarSweep"></div>
-
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
@@ -49,10 +45,7 @@ Loading global headlines...
 <button onclick="showTab('marine')">Marine Watch</button>
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
-<button onclick="showTab('rt')">RT</button>
-<button onclick="showTab('aj')">Al Jazeera</button>
-<button onclick="showTab('wion')">WION</button>
-<button onclick="showTab('newswall')">News Wall</button>
+<button onclick="showTab('live')">LIVE NEWS</button>
 <button onclick="showTab('command')">Overview</button>
 
 </nav>
@@ -62,7 +55,7 @@ Loading global headlines...
 
 <div class="tabRadar">
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 </div>
 
@@ -88,101 +81,107 @@ Loading global headlines...
 
 This dashboard consolidates open-source intelligence monitoring tools into a single situational awareness interface.
 
-Political tensions, regional conflicts, cyber incidents, and environmental crises can emerge rapidly with little warning.
+Political tensions, regional conflicts, cyber incidents, environmental crises, and geopolitical competition can emerge rapidly and often with little warning.
 
-BSG OSINT provides a global monitoring platform designed to help users remain informed, aware, and prepared.
+The BSG OSINT dashboard provides an accessible global monitoring platform designed to help users stay informed and aware of developments across the world.
 
 </p>
 
 </div>
-
 </div>
 
 </section>
 
 
 <section id="news" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4"></video></div>
 <div id="newsGrid" class="newsGrid"></div>
 </section>
 
 
 <section id="map" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4"></video></div>
 <iframe src="https://liveuamap.com"></iframe>
 </section>
 
 
 <section id="air" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4"></video></div>
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 </section>
 
 
 <section id="marine" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4"></video></div>
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 
 <section id="cyber" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4"></video></div>
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 </section>
 
 
 <section id="fire" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4"></video></div>
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
 </section>
 
 
-<section id="rt" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-</section>
 
-
-<section id="aj" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
-<iframe src="https://www.youtube.com/embed/-upyPouRrB8"></iframe>
-</section>
-
-
-<section id="wion" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
-<iframe src="https://www.wionews.com/live-tv"></iframe>
-</section>
-
-
-<section id="newswall" class="tab">
+<section id="live" class="tab">
 
 <div class="tabRadar">
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 </div>
 
-<div class="newsWallGrid">
+<div class="liveNav">
+
+<button onclick="showLive('rt')" class="liveActive">RT</button>
+<button onclick="showLive('aj')">Al Jazeera</button>
+<button onclick="showLive('wion')">WION</button>
+<button onclick="showLive('fr24')">France24</button>
+<button onclick="showLive('sky')">Sky News</button>
+<button onclick="showLive('dw')">DW News</button>
+<button onclick="showLive('quad')">QUAD VIEW</button>
+
+</div>
+
+
+<div id="liveSingle" class="livePlayer">
+
+<iframe id="liveFrame"
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+allowfullscreen>
+</iframe>
+
+</div>
+
+
+<div id="quadView" class="quadGrid">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 
-<iframe src="https://www.youtube.com/embed/-upyPouRrB8"></iframe>
+<iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
 
-<iframe src="https://www.youtube.com/embed/riQ0K0C8WqA"></iframe>
+<iframe src="https://www.youtube.com/embed/jNhh-OLzWlE"></iframe>
 
-<iframe src="https://www.youtube.com/embed/BF2k9ISxH7E"></iframe>
+<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
 
 </div>
 
 </section>
+
 
 
 <section id="command" class="tab">
 
 <div class="tabRadar">
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 </div>
 
@@ -198,14 +197,13 @@ BSG OSINT provides a global monitoring platform designed to help users remain in
 </section>
 
 
+
 <footer>
 
 <div class="footerRadar">
-
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
@@ -215,52 +213,70 @@ BlackSurvivalGear.com
 </footer>
 
 
+
 <script>
 
 function showTab(id){
 
-const tabs=document.querySelectorAll(".tab")
-const buttons=document.querySelectorAll("nav button")
-
-tabs.forEach(tab=>{
+document.querySelectorAll(".tab").forEach(tab=>{
 tab.classList.remove("active")
 })
 
-buttons.forEach(btn=>{
+document.querySelectorAll("nav button").forEach(btn=>{
 btn.classList.remove("active")
 })
 
 document.getElementById(id).classList.add("active")
 
-const clicked=[...buttons].find(b=>b.getAttribute("onclick")?.includes(id))
+const clicked=[...document.querySelectorAll("nav button")]
+.find(b=>b.getAttribute("onclick")?.includes(id))
 
 if(clicked) clicked.classList.add("active")
 
 }
 
 
-function updateSituation(headlines){
 
-const list=document.getElementById("situationList")
-if(!list) return
+function showLive(channel){
 
-list.innerHTML=""
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("quadView")
 
-headlines.slice(0,3).forEach(h=>{
-const li=document.createElement("li")
-li.textContent=h
-list.appendChild(li)
-})
+const streams={
+
+rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
+aj:"https://www.youtube.com/embed/bNyUyrR0PHo",
+wion:"https://www.youtube.com/embed/riQ0K0C8WqA",
+fr24:"https://www.youtube.com/embed/jNhh-OLzWlE",
+sky:"https://www.youtube.com/embed/9Auq9mYxFEE",
+dw:"https://www.youtube.com/embed/NvqKZHpKs-g"
 
 }
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+return
+}
+
+quad.style.display="none"
+single.style.display="block"
+
+frame.src=streams[channel]
+
+}
+
 
 
 async function loadNews(){
 
 const feeds=[
+
 "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
 "https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
 "https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
+
 ]
 
 let headlines=[]
@@ -283,8 +299,6 @@ headlines.push(article.title)
 const ticker=document.getElementById("ticker")
 const text=headlines.join(" ◆ ")+" ◆ "
 ticker.innerHTML=text+text+text
-
-updateSituation(headlines)
 
 }
 
