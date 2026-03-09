@@ -48,13 +48,12 @@ animation:radarSpin 4s linear infinite;
 header h1{
 color:#718754;
 font-weight:600;
-font-size:22px;
 }
 
 nav{
 display:flex;
-flex-wrap:wrap;
 background:#0b3a2e;
+flex-wrap:wrap;
 }
 
 nav button{
@@ -74,7 +73,7 @@ color:#041f18;
 
 .tab{
 display:none;
-padding:20px;
+padding:25px;
 margin:15px;
 background:rgba(8,40,32,0.4);
 border-radius:8px;
@@ -90,14 +89,9 @@ line-height:1.7;
 max-width:900px;
 }
 
-.homeImage{
-text-align:center;
-}
-
 .homeImage img{
 width:60%;
 opacity:0.18;
-max-width:600px;
 }
 
 .newsGrid{
@@ -143,21 +137,6 @@ grid-template-columns:1fr 1fr;
 gap:15px;
 }
 
-.videoContainer{
-position:relative;
-padding-bottom:56.25%;
-height:0;
-overflow:hidden;
-}
-
-.videoContainer iframe{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-}
-
 footer{
 text-align:center;
 padding:15px;
@@ -168,31 +147,4 @@ border-top:1px solid #1b4d3e;
 color:#c6a55a;
 text-decoration:none;
 font-weight:600;
-}
-
-/* MOBILE */
-
-@media (max-width:768px){
-
-header h1{
-font-size:18px;
-}
-
-nav button{
-flex:1 1 45%;
-font-size:14px;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
-iframe{
-height:70vh;
-}
-
-.homeImage img{
-width:90%;
-}
-
 }
