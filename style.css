@@ -13,16 +13,43 @@ border-bottom:2px solid #c6a55a;
 }
 
 .logo img{
-width:60px;
+height:55px;
 }
 
 header h1{
 margin-left:10px;
-font-size:26px;
+font-size:24px;
 }
 
 .clock{
 margin-left:auto;
+margin-right:15px;
+}
+
+.threatPanel{
+margin-left:auto;
+text-align:right;
+margin-right:20px;
+}
+
+.threatLabel{
+font-size:11px;
+opacity:0.7;
+}
+
+.threatScale span{
+padding:4px 8px;
+margin-left:4px;
+border:1px solid rgba(255,255,255,0.3);
+border-radius:4px;
+font-size:12px;
+opacity:0.4;
+}
+
+.threatScale span.active{
+opacity:1;
+border:1px solid #c6a55a;
+color:#c6a55a;
 }
 
 nav{
@@ -34,7 +61,7 @@ nav button{
 padding:12px 18px;
 border:none;
 background:none;
-color:#fff;
+color:white;
 cursor:pointer;
 }
 
@@ -92,8 +119,37 @@ grid-template-columns:1fr 1fr;
 gap:10px;
 }
 
+.marketTabs button{
+margin-right:8px;
+padding:6px 12px;
+background:#0b3a2e;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+.marketTabs button.active{
+background:#c6a55a;
+color:#041f18;
+}
+
+.marketTab{
+display:none;
+}
+
+.marketTab.active{
+display:block;
+}
+
 footer{
 text-align:center;
-padding:15px;
+padding:20px;
 border-top:1px solid #1b4d3e;
+}
+
+.footerLogo{
+height:45px;
+display:block;
+margin:10px auto;
+opacity:0.6;
 }
