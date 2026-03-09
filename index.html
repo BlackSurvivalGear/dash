@@ -24,9 +24,9 @@
 
 <!-- HEADER -->
 
-<header>
+<header class="header">
 
-<div class="logoTitle">
+<div class="header-left">
 
 <img src="bsg2.jpg" class="logo">
 
@@ -34,7 +34,7 @@
 
 </div>
 
-<div class="threat">
+<div class="header-right">
 
 GLOBAL THREAT LEVEL  
 <span id="threatLevel">NORMAL</span>
@@ -46,9 +46,7 @@ GLOBAL THREAT LEVEL
 <!-- NEWS TICKER -->
 
 <div class="ticker">
-
 <div id="tickerText">Loading conflict headlines...</div>
-
 </div>
 
 <!-- NAVIGATION -->
@@ -56,30 +54,20 @@ GLOBAL THREAT LEVEL
 <nav>
 
 <button onclick="showTab('home')">Home</button>
-
 <button onclick="showTab('conflict')">Conflict News</button>
-
 <button onclick="showTab('conflictmap')">Conflict Map</button>
-
 <button onclick="showTab('aircraft')">Aircraft Watch</button>
-
 <button onclick="showTab('marine')">Marine Watch</button>
-
 <button onclick="showTab('cyber')">Cyber Attacks</button>
-
 <button onclick="showTab('fire')">Fire Monitor</button>
-
 <button onclick="showTab('markets')">Markets</button>
-
 <button onclick="showTab('charts')">Charts</button>
-
 <button onclick="showTab('worldmap')">World Map</button>
-
 <button onclick="showTab('overview')">Overview</button>
 
 </nav>
 
-<!-- HOME TAB -->
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -87,8 +75,10 @@ GLOBAL THREAT LEVEL
 
 <p>
 
-Strategic monitoring platform integrating conflict intelligence,
-environmental monitoring and financial indicators.
+The modern security environment is increasingly volatile and interconnected. Political tensions,
+regional conflicts, economic disruption, cyber incidents and environmental crises can emerge
+rapidly and often with little warning. Reliable information is the foundation of effective
+decision-making.
 
 </p>
 
@@ -111,9 +101,7 @@ environmental monitoring and financial indicators.
 <h2>Conflict Map</h2>
 
 <div class="placeholder">
-
 Conflict monitoring map will appear here.
-
 </div>
 
 </section>
@@ -125,9 +113,7 @@ Conflict monitoring map will appear here.
 <h2>Aircraft Watch</h2>
 
 <div class="placeholder">
-
-Live aircraft tracking dashboard placeholder.
-
+Aircraft monitoring dashboard placeholder.
 </div>
 
 </section>
@@ -139,9 +125,7 @@ Live aircraft tracking dashboard placeholder.
 <h2>Marine Watch</h2>
 
 <div class="placeholder">
-
-Global maritime monitoring placeholder.
-
+Maritime monitoring dashboard placeholder.
 </div>
 
 </section>
@@ -153,9 +137,7 @@ Global maritime monitoring placeholder.
 <h2>Cyber Attacks</h2>
 
 <div class="placeholder">
-
 Cyber threat monitoring placeholder.
-
 </div>
 
 </section>
@@ -167,9 +149,7 @@ Cyber threat monitoring placeholder.
 <h2>Fire Monitor</h2>
 
 <div class="placeholder">
-
 Global wildfire monitoring placeholder.
-
 </div>
 
 </section>
@@ -181,9 +161,7 @@ Global wildfire monitoring placeholder.
 <h2>Markets</h2>
 
 <div class="placeholder">
-
-Financial market monitoring dashboard placeholder.
-
+Financial market dashboard placeholder.
 </div>
 
 </section>
@@ -195,9 +173,7 @@ Financial market monitoring dashboard placeholder.
 <h2>Charts</h2>
 
 <div class="placeholder">
-
-Strategic financial charts placeholder.
-
+Financial charts placeholder.
 </div>
 
 </section>
@@ -209,9 +185,7 @@ Strategic financial charts placeholder.
 <h2>World Map</h2>
 
 <div class="placeholder">
-
-Global strategic awareness map placeholder.
-
+Global strategic map placeholder.
 </div>
 
 </section>
@@ -224,9 +198,8 @@ Global strategic awareness map placeholder.
 
 <p>
 
-BSG Global Strategic Awareness OSINT integrates multiple
-open-source intelligence feeds to provide situational awareness
-of global security developments.
+BSG Global Strategic Awareness OSINT consolidates open-source intelligence feeds
+to provide situational awareness of global security developments.
 
 </p>
 
@@ -237,14 +210,10 @@ of global security developments.
 <footer>
 
 <div class="footerURL">
-
 BlackSurvivalGear.com
-
 </div>
 
-<video class="footerRadar" autoplay muted loop>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
+<img src="bsg2.jpg" class="footer-logo">
 
 </footer>
 
@@ -265,5 +234,4 @@ document.getElementById(tab).classList.add("active")
 </script>
 
 </body>
-
 </html>
