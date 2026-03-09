@@ -14,17 +14,32 @@
 
 </head>
 
+
 <body>
+
+
 
 <header>
 
 <div class="radarLogo" onclick="showTab(event,'home')">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
+
 <h1>Global Strategic Awareness OSINT</h1>
+
+
+<div class="headerMarkets">
+
+<span id="goldPrice">GOLD $--</span>
+<span id="silverPrice">SILVER $--</span>
+
+</div>
+
 
 </header>
 
@@ -33,19 +48,11 @@
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
+
 <div id="marketTicker" class="ticker-content">
 Loading crypto market data...
 </div>
-</div>
 
-
-
-<!-- COMMODITIES TICKER -->
-
-<div class="ticker-bar-commodities">
-<div id="commoditiesTicker" class="ticker-content-commodities">
-Loading commodities data...
-</div>
 </div>
 
 
@@ -76,7 +83,9 @@ Loading commodities data...
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
 <p class="homeText">
+
 This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
+
 </p>
 
 </div>
@@ -127,17 +136,14 @@ allowfullscreen></iframe>
 </section>
 
 
-
 <section id="air" class="tab">
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 </section>
 
 
-
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
-
 
 
 <section id="cyber" class="tab">
@@ -177,9 +183,11 @@ allowfullscreen></iframe>
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
@@ -191,6 +199,7 @@ BlackSurvivalGear.com
 
 
 <script>
+
 
 
 function showTab(evt,id){
@@ -290,35 +299,33 @@ setInterval(loadCryptoTicker,30000)
 
 
 
-/* COMMODITIES TICKER */
+/* GOLD SILVER HEADER */
 
-async function loadCommoditiesTicker(){
+async function loadMetals(){
 
 try{
 
-const metals = await fetch("https://api.metals.live/v1/spot").then(r=>r.json())
+const data=await fetch("https://api.metals.live/v1/spot").then(r=>r.json())
 
-let gold = metals.find(m=>m.gold)?.gold
-let silver = metals.find(m=>m.silver)?.silver
+let gold=data.find(x=>x.gold)?.gold
+let silver=data.find(x=>x.silver)?.silver
 
-const ticker=document.getElementById("commoditiesTicker")
+document.getElementById("goldPrice").innerText="GOLD $"+gold
+document.getElementById("silverPrice").innerText="SILVER $"+silver
 
-ticker.innerHTML=`
-<span class="commodity">GOLD $${gold}</span>
-<span class="commodity">SILVER $${silver}</span>
-<span class="commodity">OIL $78</span>
-`
+}catch{
 
-}catch(e){
-
-document.getElementById("commoditiesTicker").innerText="Commodities unavailable"
+document.getElementById("goldPrice").innerText="GOLD --"
+document.getElementById("silverPrice").innerText="SILVER --"
 
 }
 
 }
 
-loadCommoditiesTicker()
-setInterval(loadCommoditiesTicker,60000)
+loadMetals()
+setInterval(loadMetals,60000)
+
+
 
 </script>
 
