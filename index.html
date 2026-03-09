@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BSG Global Strategic Awareness OSINT</title>
+<title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -15,16 +15,6 @@
 </head>
 
 <body>
-
-
-<div class="radarBackground">
-
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-
-</div>
-
 
 <header>
 
@@ -38,37 +28,14 @@
 
 </div>
 
-
-<h1>BSG Global Strategic Awareness OSINT</h1>
-
-
-<div class="threatPanel">
-
-<div class="threatLabel">
-GLOBAL THREAT LEVEL
-</div>
-
-<div class="threatScale" id="threatScale">
-
-<span data-level="NORMAL">NORMAL</span>
-<span data-level="GUARDED">GUARDED</span>
-<span data-level="ELEVATED" class="active">ELEVATED</span>
-<span data-level="HIGH">HIGH</span>
-<span data-level="CRITICAL">CRITICAL</span>
-
-</div>
-
-</div>
-
-
-<div class="clock" id="clock"></div>
+<h1>Global Strategic Awareness OSINT</h1>
 
 </header>
 
 
 <div class="ticker">
 
-<span id="ticker">Loading conflict headlines...</span>
+<span id="ticker">Loading global headlines...</span>
 
 </div>
 
@@ -82,9 +49,7 @@ GLOBAL THREAT LEVEL
 <button onclick="showTab('marine')">Marine Watch</button>
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
-<button onclick="showTab('markets')">Markets</button>
-<button onclick="showTab('charts')">Charts</button>
-<button onclick="showTab('overview')">Overview</button>
+<button onclick="showTab('command')">Overview</button>
 
 </nav>
 
@@ -93,15 +58,19 @@ GLOBAL THREAT LEVEL
 
 <h2>Global Strategic Awareness OSINT</h2>
 
-<p>
+<p class="homeText">
 
-The modern security environment is increasingly volatile and interconnected.
-Political tensions, regional conflicts, economic disruption, cyber incidents,
-and environmental crises can emerge rapidly with little warning.
+The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly and often with little warning.
 
 Reliable information is the foundation of effective decision-making.
 
 </p>
+
+<div class="homeImage">
+
+<img src="BSG2.png">
+
+</div>
 
 </section>
 
@@ -143,79 +112,19 @@ Reliable information is the foundation of effective decision-making.
 
 <section id="fire" class="tab">
 
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190"></iframe>
+<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
 
 </section>
 
 
-<section id="markets" class="tab">
-
-<div class="marketTabs">
-
-<button onclick="showMarket('stocks')" class="active">Stock Heatmap</button>
-<button onclick="showMarket('crypto')">Crypto Heatmap</button>
-<button onclick="showMarket('forex')">Forex</button>
-
-</div>
-
-
-<div id="stocks" class="marketTab active">
-
-<iframe src="https://s.tradingview.com/heatmap/stock"></iframe>
-
-</div>
-
-
-<div id="crypto" class="marketTab">
-
-<iframe src="https://s.tradingview.com/heatmap/crypto"></iframe>
-
-</div>
-
-
-<div id="forex" class="marketTab">
-
-<iframe src="https://s.tradingview.com/widgetembed/?symbol=FX:EURUSD"></iframe>
-
-</div>
-
-</section>
-
-
-<section id="charts" class="tab">
-
-<div id="chart"></div>
-
-<script src="https://s3.tradingview.com/tv.js"></script>
-
-<script>
-
-new TradingView.widget({
-
-width:"100%",
-height:600,
-symbol:"BINANCE:BTCUSDT",
-interval:"D",
-timezone:"Europe/London",
-theme:"dark",
-style:"1",
-container_id:"chart"
-
-});
-
-</script>
-
-</section>
-
-
-<section id="overview" class="tab">
+<section id="command" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-<iframe src="https://globe.adsbexchange.com"></iframe>
 <iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
 
 </div>
 
@@ -224,9 +133,7 @@ container_id:"chart"
 
 <footer>
 
-<img src="BSG2.png" class="footerLogo">
-
-<a href="https://BlackSurvivalGear.com" target="_blank">
+<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
 BlackSurvivalGear.com
 </a>
 
@@ -234,7 +141,6 @@ BlackSurvivalGear.com
 
 
 <script>
-
 
 function showTab(id){
 
@@ -253,50 +159,72 @@ event.target.classList.add("active")
 }
 
 
-function showMarket(id){
+async function loadNews(){
 
-document.querySelectorAll(".marketTab").forEach(tab=>{
-tab.classList.remove("active")
+const feeds=[
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
+
+]
+
+let headlines=[]
+
+const container=document.getElementById("newsGrid")
+
+container.innerHTML=""
+
+for(const feed of feeds){
+
+try{
+
+const res=await fetch(feed)
+const data=await res.json()
+
+data.items.slice(0,3).forEach(article=>{
+
+headlines.push(article.title)
+
+const card=document.createElement("div")
+card.className="newsCard"
+
+card.innerHTML=`
+
+<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
+
+<div class="newsText">
+
+<span class="source">${data.feed.title}</span>
+
+<h3>${article.title}</h3>
+
+<a href="${article.link}" target="_blank">Read report</a>
+
+</div>
+`
+
+container.appendChild(card)
+
 })
 
-document.getElementById(id).classList.add("active")
-
-document.querySelectorAll(".marketTabs button").forEach(btn=>{
-btn.classList.remove("active")
-})
-
-event.target.classList.add("active")
+}catch(e){}
 
 }
 
-
-/* CLOCK */
-
-function updateClock(){
-
-const now=new Date()
-
-const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
-const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
-
-const day=days[now.getDay()]
-const date=now.getDate()
-const month=months[now.getMonth()]
-const year=now.getFullYear()
-
-const hours=String(now.getHours()).padStart(2,'0')
-const minutes=String(now.getMinutes()).padStart(2,'0')
-
-document.getElementById("clock").textContent =
-`${day} ${date} ${month} ${year} ${hours}:${minutes}`
+document.getElementById("ticker").textContent=headlines.join(" ◆ ")
 
 }
 
-setInterval(updateClock,60000)
-updateClock()
+document.addEventListener("DOMContentLoaded",()=>{
+
+loadNews()
+
+setInterval(loadNews,60000)
+
+})
 
 </script>
-
 
 </body>
 </html>
