@@ -19,22 +19,15 @@
 <header>
 
 <div class="radarLogo" onclick="showTab('home')">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4" type="video/mp4">
 </video>
-
-<div class="radarSweep"></div>
-
 </div>
 
 <h1>BSG Global Strategic Awareness OSINT</h1>
 
 <div class="threatPanel">
-
-<div class="threatLabel">
-GLOBAL THREAT LEVEL
-</div>
+<div class="threatLabel">GLOBAL THREAT LEVEL</div>
 
 <div class="threatScale">
 <span>NORMAL</span>
@@ -50,7 +43,7 @@ GLOBAL THREAT LEVEL
 
 
 <div class="ticker">
-<div id="ticker">Loading global headlines...</div>
+<div id="ticker">Loading conflict headlines...</div>
 </div>
 
 
@@ -62,7 +55,6 @@ GLOBAL THREAT LEVEL
 <button onclick="showTab('air')">Aircraft Watch</button>
 <button onclick="showTab('marine')">Marine Watch</button>
 <button onclick="showTab('cyber')">Cyber Attacks</button>
-<button onclick="showTab('bases')">Military Bases</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
 <button onclick="showTab('command')">Command Overview</button>
 
@@ -73,21 +65,25 @@ GLOBAL THREAT LEVEL
 
 <h2>Global Strategic Awareness OSINT</h2>
 
-<p class="homeText">
-
-The global security environment is becoming increasingly unpredictable. Strategic competition between major powers, regional conflicts, economic instability, and information warfare are shaping a world where crises can develop rapidly and with little warning.
-
-</p>
-
-<p class="homeText">
-
-Black Survival Gear created the Global Strategic Awareness OSINT platform to provide real-time visibility of global developments affecting security, mobility, and stability.
-
-</p>
-
 <div class="homeImage">
 <img src="BSG2.png">
 </div>
+
+<p class="homeText">
+The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly and often with little warning.
+</p>
+
+<p class="homeText">
+Reliable information is the foundation of effective decision-making. Misinformation and fragmented reporting can obscure the true nature of developing events. Access to timely and credible data allows individuals and organizations to better understand risk and anticipate disruption.
+</p>
+
+<p class="homeText">
+The Global Strategic Awareness OSINT platform provides a consolidated view of global developments that may influence stability, mobility, and security.
+</p>
+
+<p class="homeText">
+In a rapidly changing world, situational awareness is no longer optional — it is essential for preparedness and informed decision-making.
+</p>
 
 </section>
 
@@ -114,11 +110,6 @@ Black Survival Gear created the Global Strategic Awareness OSINT platform to pro
 
 <section id="cyber" class="tab">
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-</section>
-
-
-<section id="bases" class="tab">
-<iframe src="https://umap.openstreetmap.fr/en/map/military-bases-around-the-world_510207"></iframe>
 </section>
 
 
@@ -179,10 +170,16 @@ const feeds=[
 
 ]
 
+const keywords=[
+
+"war","missile","strike","attack","invasion","battle","troops",
+"drone","airstrike","conflict","terror","clash","offensive",
+"security","cyber","sanctions","militant","explosion"
+
+]
+
 let headlines=[]
-
 const container=document.getElementById("newsGrid")
-
 container.innerHTML=""
 
 for(const feed of feeds){
@@ -192,18 +189,48 @@ try{
 const res=await fetch(feed)
 const data=await res.json()
 
-data.items.slice(0,10).forEach(article=>{
+data.items.forEach(article=>{
+
+const title=article.title.toLowerCase()
+
+const isConflict=keywords.some(word=>title.includes(word))
+if(!isConflict) return
+
+
+let category="escalation"
+let label="🟠 Military Escalation"
+
+if(title.includes("war") || title.includes("invasion"))
+{
+category="war"
+label="🔴 Active War"
+}
+
+else if(title.includes("terror") || title.includes("militant"))
+{
+category="terror"
+label="🟡 Security / Terror"
+}
+
+else if(title.includes("cyber"))
+{
+category="cyber"
+label="🔵 Cyber Conflict"
+}
+
 
 headlines.push(article.title)
 
 const card=document.createElement("div")
-card.className="newsCard"
+card.className=`newsCard ${category}`
 
 card.innerHTML=`
 
 <img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
 
 <div class="newsText">
+
+<span class="category">${label}</span>
 
 <span class="source">${data.feed.title}</span>
 
