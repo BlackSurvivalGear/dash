@@ -68,6 +68,32 @@ color:#c0c0c0;
 
 
 
+/* ALERT STRIP (V8.3 READY) */
+
+.alertStrip{
+width:100%;
+background:#2a0f0f;
+border-bottom:1px solid #ff4444;
+color:#ff8888;
+padding:6px 0;
+font-size:14px;
+white-space:nowrap;
+overflow:hidden;
+}
+
+.alertContent{
+display:inline-block;
+padding-left:100%;
+animation:alertScroll 40s linear infinite;
+}
+
+@keyframes alertScroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+
+
 /* CRYPTO TICKER */
 
 .ticker-bar{
@@ -195,7 +221,7 @@ color:#041f18;
 
 
 
-/* SINGLE PLAYER */
+/* SINGLE STREAM */
 
 .livePlayer iframe{
 width:100%;
@@ -211,8 +237,8 @@ border-radius:6px;
 .quadGrid{
 display:none;
 grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:10px;
+gap:12px;
+margin-top:12px;
 }
 
 .quadGrid iframe{
@@ -226,17 +252,7 @@ border-radius:6px;
 
 /* MAP PANELS */
 
-#map iframe{
-width:100%;
-height:75vh;
-border:none;
-border-radius:6px;
-}
-
-
-
-/* AIR / MARINE / CYBER */
-
+#map iframe,
 #air iframe,
 #marine iframe,
 #cyber iframe,
@@ -254,25 +270,42 @@ border-radius:6px;
 .grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin-top:10px;
+gap:12px;
+margin-top:12px;
+align-items:stretch;
 }
 
 .grid iframe{
 width:100%;
-height:30vh;
+height:34vh;
 border:none;
 border-radius:6px;
 }
 
+
+
+/* HEATMAP PANELS */
+
 .heatmap{
 width:100%;
-height:30vh;
+height:34vh;
 overflow:hidden;
 border-radius:6px;
+background:#000;
 }
 
-/* GENERAL IFRAME SAFETY */
+
+
+/* PANEL BORDERS */
+
+.grid iframe,
+.heatmap{
+border:1px solid #1b4d3e;
+}
+
+
+
+/* GENERAL IFRAME */
 
 iframe{
 max-width:100%;
