@@ -68,32 +68,6 @@ color:#c0c0c0;
 
 
 
-/* ALERT STRIP (V8.3 READY) */
-
-.alertStrip{
-width:100%;
-background:#2a0f0f;
-border-bottom:1px solid #ff4444;
-color:#ff8888;
-padding:6px 0;
-font-size:14px;
-white-space:nowrap;
-overflow:hidden;
-}
-
-.alertContent{
-display:inline-block;
-padding-left:100%;
-animation:alertScroll 40s linear infinite;
-}
-
-@keyframes alertScroll{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
-
-
-
 /* CRYPTO TICKER */
 
 .ticker-bar{
@@ -232,7 +206,7 @@ border-radius:6px;
 
 
 
-/* QUAD VIEW */
+/* QUAD VIEW NEWS */
 
 .quadGrid{
 display:none;
@@ -265,19 +239,23 @@ border-radius:6px;
 
 
 
-/* OVERVIEW COMMAND WALL */
+/* OVERVIEW COMMAND WALL (2x2 like quad news) */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-top:12px;
+grid-template-columns:1fr 1fr;
+gap:16px;
+margin-top:16px;
 align-items:stretch;
 }
 
+
+
+/* OVERVIEW PANELS */
+
 .grid iframe{
 width:100%;
-height:34vh;
+height:40vh;
 border:none;
 border-radius:6px;
 }
@@ -288,7 +266,7 @@ border-radius:6px;
 
 .heatmap{
 width:100%;
-height:34vh;
+height:40vh;
 overflow:hidden;
 border-radius:6px;
 background:#000;
@@ -296,11 +274,12 @@ background:#000;
 
 
 
-/* PANEL BORDERS */
+/* OSINT PANEL STYLE */
 
 .grid iframe,
 .heatmap{
 border:1px solid #1b4d3e;
+box-shadow:0 0 6px rgba(0,255,120,0.15);
 }
 
 
