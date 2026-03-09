@@ -1,6 +1,4 @@
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -9,7 +7,6 @@ color:#e2f0e9;
 background:#041f18;
 overflow-x:hidden;
 }
-
 
 header{
 display:flex;
@@ -22,7 +19,6 @@ border-bottom:2px solid #c6a55a;
 header h1{
 color:#718754;
 font-weight:600;
-margin:0;
 }
 
 .radarLogo{
@@ -38,7 +34,6 @@ width:100%;
 height:100%;
 object-fit:cover;
 }
-
 
 nav{
 display:flex;
@@ -61,7 +56,6 @@ background:#c6a55a;
 color:#041f18;
 }
 
-
 .ticker{
 background:#021510;
 overflow:hidden;
@@ -73,8 +67,6 @@ display:inline-block;
 padding-left:100%;
 animation:tickerMove 110s linear infinite;
 color:#c6a55a;
-font-weight:600;
-font-size:15px;
 }
 
 @keyframes tickerMove{
@@ -82,19 +74,29 @@ font-size:15px;
 100%{transform:translateX(-100%)}
 }
 
-
 .tab{
 display:none;
 padding:25px;
 margin:15px;
 background:rgba(8,40,32,0.45);
 border-radius:8px;
+position:relative;
+overflow:hidden;
 }
 
 .tab.active{
 display:block;
 }
 
+.tabRadar{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:500px;
+opacity:0.05;
+pointer-events:none;
+}
 
 .homePanel{
 display:flex;
@@ -107,27 +109,18 @@ width:420px;
 max-width:40%;
 }
 
-.homeOverlay{
-max-width:600px;
-}
-
 .homeText{
 font-size:20px;
 line-height:1.7;
 }
 
-
-.liveNav{
-margin-bottom:15px;
-}
-
 .liveNav button{
+margin-right:6px;
 padding:10px 14px;
 background:#0b3a2e;
 border:none;
 color:#e2f0e9;
 cursor:pointer;
-margin-right:6px;
 }
 
 .liveNav button:hover{
@@ -135,14 +128,12 @@ background:#c6a55a;
 color:#041f18;
 }
 
-
 .livePlayer iframe{
 width:100%;
 height:70vh;
 border:none;
 border-radius:6px;
 }
-
 
 .quadGrid{
 display:none;
@@ -157,7 +148,6 @@ border:none;
 border-radius:6px;
 }
 
-
 iframe{
 width:100%;
 height:80vh;
@@ -165,13 +155,21 @@ border:none;
 border-radius:6px;
 }
 
-
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
 }
 
+.footerRadar{
+width:60px;
+margin:10px auto;
+}
+
+.footerRadar video{
+width:100%;
+border-radius:50%;
+}
 
 footer{
 text-align:center;
