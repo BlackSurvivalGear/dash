@@ -1,222 +1,159 @@
-body{
+<!DOCTYPE html>
+<html lang="en">
 
-margin:0;
-font-family:Rajdhani, sans-serif;
-color:#e2f0e9;
-background:#041f18;
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BSG Strategic Awareness Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<video autoplay muted loop id="radarVideo">
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+<header>
+
+<h1>Global Strategic Awareness OSINT</h1>
+
+<nav>
+
+<button class="tabButton" onclick="openTab('home')">Home</button>
+<button class="tabButton" onclick="openTab('conflict')">Conflict News</button>
+<button class="tabButton" onclick="openTab('africa')">Africa News</button>
+<button class="tabButton" onclick="openTab('rt')">RT</button>
+
+</nav>
+
+</header>
+
+<div id="ticker">
+
+<marquee>
+
+OSINT Monitor • Global Conflict Tracking • Economic Indicators • Strategic Intelligence Dashboard • BlackSurvivalGear
+
+</marquee>
+
+</div>
+
+<main>
+
+<section id="home" class="tabContent active">
+
+<div class="homeContainer">
+
+<img src="BSG2.png" class="homeLogo">
+
+<div class="homeText">
+
+<h2>Strategic Intelligence Overview</h2>
+
+<p>
+The BSG Strategic Awareness Dashboard provides open-source intelligence monitoring across global conflict zones, economic indicators, and geopolitical developments.
+</p>
+
+<p>
+Use the command tabs above to access regional feeds, conflict monitoring platforms, and intelligence sources.
+</p>
+
+</div>
+
+</div>
+
+<div class="commandGrid">
+
+<div class="commandBox">
+<h3>Conflict Monitoring</h3>
+<p>ACLED • Live Conflict Map • War Updates</p>
+</div>
+
+<div class="commandBox">
+<h3>Africa Intelligence</h3>
+<p>Regional Security • Political Developments</p>
+</div>
+
+<div class="commandBox">
+<h3>Economic Signals</h3>
+<p>Gold • Bitcoin • Energy Markets</p>
+</div>
+
+<div class="commandBox">
+<h3>Strategic Alerts</h3>
+<p>Breaking geopolitical developments</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="conflict" class="tabContent">
+
+<h2>Conflict News</h2>
+
+<iframe src="https://news.google.com/search?q=conflict+war&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
+
+</section>
+
+<section id="africa" class="tabContent">
+
+<h2>Africa News</h2>
+
+<iframe src="https://news.google.com/search?q=africa+security&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
+
+</section>
+
+<section id="rt" class="tabContent">
+
+<h2>RT Live Feed</h2>
+
+<div class="videoContainer">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" frameborder="0" allowfullscreen></iframe>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+<a href="https://blacksurvivalgear.com" target="_blank">
+BlackSurvivalGear.com
+</a>
+</p>
+
+<video class="footerRadar" autoplay muted loop>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+</footer>
+
+<script>
+
+function openTab(tabName){
+
+var i;
+var tabs = document.getElementsByClassName("tabContent");
+
+for(i=0;i<tabs.length;i++){
+tabs[i].classList.remove("active");
+}
+
+document.getElementById(tabName).classList.add("active");
 
 }
 
-/* PREVENT IMAGE BREAKING */
+</script>
 
-img{
-max-width:100%;
-height:auto;
-}
+</body>
 
-/* LOCK LOGO SIZE */
-
-.logo{
-
-width:55px;
-height:55px;
-object-fit:contain;
-
-}
-
-/* HEADER */
-
-.header{
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:10px 20px;
-border-bottom:1px solid #b89b4a;
-
-}
-
-.header-left{
-
-display:flex;
-align-items:center;
-gap:15px;
-
-}
-
-.header h1{
-
-font-size:22px;
-margin:0;
-color:#d8c27a;
-
-}
-
-.header-right{
-
-font-size:12px;
-letter-spacing:1px;
-
-}
-
-#threatLevel{
-
-margin-left:5px;
-color:#9be29b;
-font-weight:bold;
-
-}
-
-/* NAV */
-
-nav{
-
-display:flex;
-flex-wrap:wrap;
-gap:8px;
-padding:8px 15px;
-border-bottom:1px solid #b89b4a;
-
-}
-
-nav button{
-
-background:none;
-border:none;
-color:#e2f0e9;
-cursor:pointer;
-font-size:14px;
-
-}
-
-/* TABS */
-
-.tab{
-
-display:none;
-padding:30px;
-
-}
-
-.tab.active{
-
-display:block;
-
-}
-
-/* NEWS GRID */
-
-.newsGrid{
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
-
-}
-
-.newsCard{
-
-background:#0b2a23;
-border-radius:6px;
-overflow:hidden;
-
-}
-
-.newsCard img{
-
-width:100%;
-height:180px;
-object-fit:cover;
-
-}
-
-.newsText{
-
-padding:10px;
-
-}
-
-.newsText h3{
-
-font-size:15px;
-
-}
-
-.source{
-
-font-size:12px;
-color:#d8c27a;
-
-}
-
-/* PLACEHOLDER */
-
-.placeholder{
-
-margin-top:30px;
-padding:40px;
-border:1px dashed #b89b4a;
-opacity:0.7;
-
-}
-
-/* TICKER */
-
-.ticker{
-
-border-bottom:1px solid #b89b4a;
-padding:6px 10px;
-font-size:13px;
-
-}
-
-/* RADAR BACKGROUND */
-
-#radarBG{
-
-position:fixed;
-right:0;
-bottom:0;
-min-width:100%;
-min-height:100%;
-z-index:-2;
-opacity:0.15;
-
-}
-
-.overlay{
-
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#041f18;
-opacity:0.85;
-z-index:-1;
-
-}
-
-/* FOOTER */
-
-footer{
-
-text-align:center;
-padding:40px 20px;
-border-top:1px solid #b89b4a;
-margin-top:60px;
-
-}
-
-.footerURL{
-
-margin-bottom:15px;
-
-}
-
-.footer-logo{
-
-width:120px;
-opacity:0.6;
-
-}
+</html>
