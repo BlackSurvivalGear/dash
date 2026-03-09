@@ -50,6 +50,8 @@ Loading global headlines...
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
 <button onclick="showTab('rt')">RT</button>
+<button onclick="showTab('aj')">Al Jazeera</button>
+<button onclick="showTab('wion')">WION</button>
 <button onclick="showTab('command')">Overview</button>
 
 </nav>
@@ -83,13 +85,13 @@ Loading global headlines...
 
 <p class="homeText">
 
-Welcome to the BSG Global Strategic Awareness OSINT platform. This dashboard brings together open-source intelligence, global monitoring tools, and real-time situational awareness feeds into a single command-style interface.
+Welcome to the BSG Global Strategic Awareness OSINT platform. This dashboard brings together open-source intelligence monitoring tools into a single situational awareness interface.
 
-The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, environmental crises, and strategic competition between major powers can emerge rapidly and often with little warning.
+Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly and often with little warning.
 
-For members of the African diaspora, maintaining awareness of global developments is increasingly important. Many diaspora communities maintain strong family, economic, and cultural connections across Africa, Europe, and North America.
+For members of the African diaspora and globally connected communities, maintaining awareness of global developments is increasingly important.
 
-Reliable information is the foundation of effective decision-making. BSG OSINT aims to provide a clear window into the global security landscape so users can remain informed, aware, and prepared.
+Reliable information is the foundation of effective decision-making. BSG OSINT provides a clear window into the evolving global security landscape.
 
 </p>
 
@@ -114,80 +116,50 @@ Reliable information is the foundation of effective decision-making. BSG OSINT a
 
 
 <section id="map" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-</div>
-
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
 
 
 <section id="air" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-</div>
-
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
 
 
 <section id="marine" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-</div>
-
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
 
 
 <section id="cyber" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-</div>
-
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
 
 
 <section id="fire" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-</div>
-
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
-
 </section>
 
 
 <section id="rt" class="tab">
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+</section>
 
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-</div>
 
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" allowfullscreen></iframe>
+<section id="aj" class="tab">
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<iframe src="https://www.aljazeera.com/video/live"></iframe>
+</section>
 
+
+<section id="wion" class="tab">
+<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4" type="video/mp4"></video></div>
+<iframe src="https://www.wionews.com/live-tv"></iframe>
 </section>
 
 
@@ -257,6 +229,7 @@ clicked.classList.add("active")
 
 }
 
+
 function updateSituation(headlines){
 
 const list=document.getElementById("situationList")
@@ -302,26 +275,6 @@ const data=await res.json()
 data.items.slice(0,3).forEach(article=>{
 
 headlines.push(article.title)
-
-const card=document.createElement("div")
-card.className="newsCard"
-
-card.innerHTML=`
-
-<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
-
-<div class="newsText">
-
-<span class="source">${data.feed.title}</span>
-
-<h3>${article.title}</h3>
-
-<a href="${article.link}" target="_blank">Read report</a>
-
-</div>
-`
-
-container.appendChild(card)
 
 })
 
