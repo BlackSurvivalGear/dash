@@ -1,26 +1,55 @@
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
-font-family:Rajdhani, sans-serif;
-background:#041f18;
+font-family:'Rajdhani',sans-serif;
 color:#e2f0e9;
+background:#041f18;
+overflow-x:hidden;
 }
+
+
+/* HEADER */
 
 header{
 display:flex;
 align-items:center;
-padding:10px 20px;
+padding:10px 15px;
 background:#06231c;
+border-bottom:2px solid #c6a55a;
+}
+
+header h1{
+color:#718754;
+font-weight:600;
+margin:0;
 }
 
 .radarLogo{
-width:60px;
+position:relative;
 height:60px;
-margin-right:15px;
+width:60px;
+margin-right:18px;
+border-radius:50%;
+overflow:hidden;
+cursor:pointer;
 }
 
+.radarLogo video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+
+
+/* NAVIGATION */
+
 nav{
-background:#0b3a2e;
 display:flex;
+background:#0b3a2e;
 flex-wrap:wrap;
 }
 
@@ -33,43 +62,108 @@ cursor:pointer;
 font-weight:600;
 }
 
+nav button.active,
 nav button:hover{
 background:#c6a55a;
 color:#041f18;
 }
 
+
+
+/* TICKER */
+
+.ticker{
+background:#021510;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.tickerTrack{
+display:inline-block;
+padding-left:100%;
+animation:tickerMove 110s linear infinite;
+color:#c6a55a;
+font-weight:600;
+font-size:15px;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+
+
+/* TAB PANELS */
+
 .tab{
 display:none;
-padding:20px;
+padding:25px;
+margin:15px;
+background:rgba(8,40,32,0.45);
+border-radius:8px;
 }
 
 .tab.active{
 display:block;
 }
 
-iframe{
-width:100%;
-height:80vh;
-border:none;
+
+
+/* HOME PANEL */
+
+.homePanel{
+position:relative;
+max-width:900px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
+.homeBg{
+width:60%;
+opacity:0.18;
 }
+
+.homeOverlay{
+position:absolute;
+top:0;
+left:0;
+padding:25px;
+width:100%;
+}
+
+.homeText{
+font-size:20px;
+line-height:1.7;
+max-width:700px;
+}
+
+
+
+/* NEWS GRID */
+
+.newsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:20px;
+}
+
+
+
+/* LIVE NEWS NAV */
 
 .liveNav{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
 margin-bottom:15px;
 }
 
 .liveNav button{
-margin-right:5px;
-padding:10px 14px;
 background:#0b3a2e;
-color:white;
 border:none;
+color:#e2f0e9;
+padding:10px 14px;
 cursor:pointer;
+font-weight:600;
 }
 
 .liveNav button:hover{
@@ -77,38 +171,67 @@ background:#c6a55a;
 color:#041f18;
 }
 
+
+
+/* SINGLE LIVE PLAYER */
+
 .livePlayer iframe{
-height:75vh;
+width:100%;
+height:70vh;
+border:none;
+border-radius:6px;
 }
+
+
+
+/* QUAD VIEW */
 
 .quadGrid{
 display:none;
 grid-template-columns:1fr 1fr;
-gap:10px;
+gap:12px;
 }
 
 .quadGrid iframe{
-height:40vh;
+width:100%;
+height:38vh;
+border:none;
+border-radius:6px;
 }
 
-.ticker{
-background:rgba(2,21,16,0.45);
-overflow:hidden;
-white-space:nowrap;
+
+
+/* STANDARD IFRAME PANELS */
+
+iframe{
+width:100%;
+height:80vh;
+border:none;
+border-radius:6px;
 }
 
-.tickerTrack{
-padding-left:100%;
-display:inline-block;
-animation:ticker 110s linear infinite;
+
+
+/* COMMAND GRID */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
 
-@keyframes ticker{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
+
+
+/* FOOTER */
 
 footer{
 text-align:center;
 padding:15px;
+border-top:1px solid #1b4d3e;
+}
+
+.footerLink{
+color:#c6a55a;
+text-decoration:none;
+font-weight:600;
 }
