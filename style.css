@@ -81,13 +81,35 @@ color:#041f18;
 display:none;
 padding:25px;
 margin:15px;
-background:rgba(8,40,32,0.4);
+background:rgba(8,40,32,0.55);
 border-radius:8px;
 width:100%;
+position:relative;
+overflow:hidden;
 }
 
 .tab.active{
 display:block;
+}
+
+.tabRadar{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:500px;
+opacity:0.05;
+pointer-events:none;
+z-index:0;
+}
+
+.tabRadar video{
+width:100%;
+}
+
+.tab>*:not(.tabRadar){
+position:relative;
+z-index:1;
 }
 
 .homeText{
@@ -151,12 +173,6 @@ padding:15px;
 border-top:1px solid #1b4d3e;
 }
 
-.footerLink{
-color:#c6a55a;
-text-decoration:none;
-font-weight:600;
-}
-
 .footerRadar{
 width:60px;
 height:60px;
@@ -171,7 +187,8 @@ object-fit:cover;
 border-radius:50%;
 }
 
-.footerRadar video{
-width:100%;
-border-radius:50%;
+.footerLink{
+color:#c6a55a;
+text-decoration:none;
+font-weight:600;
 }
