@@ -69,14 +69,28 @@ Loading global headlines...
 
 <div class="homeOverlay">
 
-<h2>Global Strategic Awareness OSINT</h2>
+<h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
+
+<div class="situationPanel">
+
+<h3>Global Situation Summary</h3>
+
+<ul id="situationList">
+<li>Loading global situation summary...</li>
+</ul>
+
+</div>
 
 <p class="homeText">
-The modern security environment is increasingly volatile and interconnected.
-Political tensions, regional conflicts, economic disruption, cyber incidents,
-and environmental crises can emerge rapidly and often with little warning.
 
-Reliable information is the foundation of effective decision-making.
+Welcome to the BSG Global Strategic Awareness OSINT platform. This dashboard brings together open-source intelligence, global monitoring tools, and real-time situational awareness feeds into a single command-style interface.
+
+The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, environmental crises, and strategic competition between major powers can emerge rapidly and often with little warning.
+
+For members of the African diaspora, maintaining awareness of global developments is increasingly important. Many diaspora communities maintain strong family, economic, and cultural connections across Africa, Europe, and North America.
+
+Reliable information is the foundation of effective decision-making. BSG OSINT aims to provide a clear window into the global security landscape so users can remain informed, aware, and prepared.
+
 </p>
 
 </div>
@@ -172,10 +186,7 @@ Reliable information is the foundation of effective decision-making.
 </video>
 </div>
 
-<iframe
-src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen>
-</iframe>
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" allowfullscreen></iframe>
 
 </section>
 
@@ -246,6 +257,24 @@ clicked.classList.add("active")
 
 }
 
+function updateSituation(headlines){
+
+const list=document.getElementById("situationList")
+
+if(!list) return
+
+list.innerHTML=""
+
+headlines.slice(0,3).forEach(h=>{
+
+const li=document.createElement("li")
+li.textContent=h
+list.appendChild(li)
+
+})
+
+}
+
 
 async function loadNews(){
 
@@ -303,6 +332,8 @@ container.appendChild(card)
 const ticker=document.getElementById("ticker")
 const text=headlines.join(" ◆ ")+" ◆ "
 ticker.innerHTML=text+text+text
+
+updateSituation(headlines)
 
 }
 
