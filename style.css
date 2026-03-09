@@ -8,6 +8,8 @@ background:#041f18;
 overflow-x:hidden;
 }
 
+/* HEADER */
+
 header{
 display:flex;
 align-items:center;
@@ -35,6 +37,48 @@ height:100%;
 object-fit:cover;
 }
 
+
+/* CRYPTO TICKER */
+
+.ticker-bar{
+width:100%;
+overflow:hidden;
+background:rgba(0,0,0,0.55);
+border-top:2px solid #c6a55a;
+border-bottom:2px solid #c6a55a;
+padding:14px 0;
+}
+
+.ticker-content{
+display:flex;
+align-items:center;
+white-space:nowrap;
+animation:tickerMove 65s linear infinite;
+padding-left:40px;
+}
+
+.ticker-item{
+margin-right:70px;
+font-size:20px;
+font-weight:600;
+letter-spacing:1px;
+color:#e6e6e6;
+}
+
+.ticker-symbol{
+color:#d4b15a;
+font-weight:700;
+margin-right:6px;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(100%)}
+100%{transform:translateX(-100%)}
+}
+
+
+/* NAV */
+
 nav{
 display:flex;
 background:#0b3a2e;
@@ -56,26 +100,8 @@ background:#c6a55a;
 color:#041f18;
 }
 
-.ticker{
-background:#021510;
-overflow:hidden;
-white-space:nowrap;
-border-top:1px solid #c6a55a;
-border-bottom:1px solid #c6a55a;
-}
 
-.tickerTrack{
-display:inline-block;
-padding-left:100%;
-animation:tickerMove 140s linear infinite;
-color:#c6a55a;
-font-weight:600;
-}
-
-@keyframes tickerMove{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
+/* TABS */
 
 .tab{
 display:none;
@@ -88,6 +114,9 @@ border-radius:8px;
 .tab.active{
 display:block;
 }
+
+
+/* HOME */
 
 .homePanel{
 display:flex;
@@ -104,6 +133,9 @@ max-width:40%;
 font-size:20px;
 line-height:1.7;
 }
+
+
+/* LIVE NEWS */
 
 .liveNav button{
 margin-right:6px;
@@ -139,6 +171,9 @@ border:none;
 border-radius:6px;
 }
 
+
+/* OTHER PANELS */
+
 iframe{
 width:100%;
 height:80vh;
@@ -151,6 +186,9 @@ display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
 }
+
+
+/* FOOTER */
 
 .footerRadar{
 width:60px;
