@@ -3,34 +3,6 @@ margin:0;
 font-family:'Rajdhani',sans-serif;
 color:#e2f0e9;
 background:#041f18;
-body{
-margin:0;
-font-family:'Rajdhani',sans-serif;
-color:#e2f0e9;
-background:#041f18;
-
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
-
-background-size:60px 60px;
-}
-
-
-/* WATERMARK */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url("bsg.jpg") center no-repeat;
-background-size:900px;
-opacity:0.15;
-pointer-events:none;
-z-index:-2;
 }
 
 
@@ -40,50 +12,12 @@ header{
 display:flex;
 align-items:center;
 padding:10px 15px;
-background:rgba(6,35,28,0.85);
+background:#06231c;
 border-bottom:2px solid #c6a55a;
 }
 
 header h1{
 color:#718754;
-font-weight:600;
-letter-spacing:1px;
-}
-
-
-.radarLogo{
-position:relative;
-height:60px;
-width:60px;
-margin-right:18px;
-border-radius:50%;
-overflow:hidden;
-cursor:pointer;
-}
-
-.radarLogo video{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-
-.threatPanel{
-margin-left:auto;
-text-align:right;
-}
-
-.threatScale span{
-padding:4px 10px;
-border:1px solid rgba(255,255,255,0.25);
-border-radius:4px;
-opacity:0.35;
-font-size:12px;
-}
-
-.threatScale .active{
-opacity:1;
-border:1px solid #c6a55a;
 }
 
 
@@ -93,13 +27,15 @@ border:1px solid #c6a55a;
 background:#06231c;
 overflow:hidden;
 white-space:nowrap;
-border-bottom:1px solid #1c4b3c;
+padding:12px 0;
 }
 
 #ticker{
 display:inline-block;
 padding-left:100%;
 animation:tickerMove 60s linear infinite;
+font-size:22px;
+font-weight:600;
 }
 
 @keyframes tickerMove{
@@ -148,7 +84,7 @@ display:block;
 }
 
 
-/* IFRAME MAPS */
+/* IFRAME */
 
 iframe{
 width:100%;
@@ -158,7 +94,7 @@ border-radius:6px;
 }
 
 
-/* COMMAND CENTER */
+/* COMMAND GRID */
 
 .grid{
 display:grid;
@@ -180,7 +116,7 @@ gap:20px;
 }
 
 .newsCard{
-background:rgba(10,45,35,0.45);
+background:#0d3329;
 border-radius:8px;
 overflow:hidden;
 }
@@ -195,245 +131,20 @@ object-fit:cover;
 padding:12px;
 }
 
-.source{
-font-size:11px;
-font-weight:700;
-padding:3px 8px;
-border-radius:4px;
-background:#c6a55a;
-color:#041f18;
-}
-
-
-/* HOME */
-
-.homeText{
-font-size:20px;
-line-height:1.7;
-max-width:700px;
-}
-
-.homeImage{
-margin-top:30px;
-}
-
-.homeImage img{
-width:420px;
-opacity:0.45;
-}
-
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:15px;
-border-top:1px solid #1b4d3e;
-}
-
-.footerLink{
-color:#c6a55a;
-text-decoration:none;
-font-weight:600;
-}
-
-.footerLink:hover{
-text-decoration:underline;
-color:#e2f0e9;
-}
-background-image:
-linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);
-
-background-size:60px 60px;
-}
-
-
-/* WATERMARK */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:url("bsg.jpg") center no-repeat;
-background-size:900px;
-opacity:0.15;
-pointer-events:none;
-z-index:-2;
-}
-
-
-/* HEADER */
-
-header{
-display:flex;
-align-items:center;
-padding:10px 15px;
-background:rgba(6,35,28,0.85);
-border-bottom:2px solid #c6a55a;
-}
-
-header h1{
-color:#718754;
-font-weight:600;
-letter-spacing:1px;
-}
-
-
-.radarLogo{
-position:relative;
-height:60px;
-width:60px;
-margin-right:18px;
-border-radius:50%;
-overflow:hidden;
-cursor:pointer;
-}
-
-.radarLogo video{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-
-.threatPanel{
-margin-left:auto;
-text-align:right;
-}
-
-.threatScale span{
-padding:4px 10px;
-border:1px solid rgba(255,255,255,0.25);
-border-radius:4px;
-opacity:0.35;
-font-size:12px;
-}
-
-.threatScale .active{
-opacity:1;
-border:1px solid #c6a55a;
-}
-
-
-/* TICKER */
-
-.ticker{
-background:#06231c;
-overflow:hidden;
-white-space:nowrap;
-border-bottom:1px solid #1c4b3c;
-}
-
-#ticker{
+.category{
 display:inline-block;
-padding-left:100%;
-animation:tickerMove 60s linear infinite;
-}
-
-@keyframes tickerMove{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
-
-
-/* NAV */
-
-nav{
-display:flex;
-background:#0b3a2e;
-flex-wrap:wrap;
-}
-
-nav button{
-padding:14px 18px;
-border:none;
-background:#0b3a2e;
-color:#e2f0e9;
-cursor:pointer;
-font-weight:600;
-}
-
-nav button:hover,
-nav button.active{
+padding:4px 8px;
+font-size:12px;
+margin-bottom:6px;
+border-radius:4px;
 background:#c6a55a;
 color:#041f18;
-}
-
-
-/* TABS */
-
-.tab{
-display:none;
-padding:20px;
-margin:15px;
-background:rgba(8,40,32,0.40);
-border-radius:8px;
-min-height:80vh;
-}
-
-.tab.active{
-display:block;
-}
-
-
-/* IFRAME MAPS */
-
-iframe{
-width:100%;
-height:80vh;
-border:none;
-border-radius:6px;
-}
-
-
-/* COMMAND CENTER */
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.grid iframe{
-height:45vh;
-}
-
-
-/* NEWS */
-
-.newsGrid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:20px;
-}
-
-.newsCard{
-background:rgba(10,45,35,0.45);
-border-radius:8px;
-overflow:hidden;
-}
-
-.newsCard img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.newsText{
-padding:12px;
 }
 
 .source{
 font-size:11px;
-font-weight:700;
-padding:3px 8px;
-border-radius:4px;
-background:#c6a55a;
-color:#041f18;
+margin-left:8px;
+color:#bbb;
 }
 
 
@@ -443,10 +154,6 @@ color:#041f18;
 font-size:20px;
 line-height:1.7;
 max-width:700px;
-}
-
-.homeImage{
-margin-top:30px;
 }
 
 .homeImage img{
@@ -470,6 +177,5 @@ font-weight:600;
 }
 
 .footerLink:hover{
-text-decoration:underline;
 color:#e2f0e9;
 }
