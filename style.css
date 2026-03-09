@@ -1,56 +1,23 @@
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
-background:#041f18;
 color:#e2f0e9;
+background:#041f18;
 }
-
-
-/* RADAR BACKGROUND */
-
-.radarBackground{
-
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:900px;
-height:900px;
-opacity:0.05;
-pointer-events:none;
-z-index:-1;
-
-}
-
-.radarBackground video{
-width:100%;
-height:100%;
-object-fit:contain;
-}
-
-
-/* HEADER */
 
 header{
 display:flex;
 align-items:center;
-padding:10px;
+padding:10px 15px;
+background:#06231c;
 border-bottom:2px solid #c6a55a;
 }
-
-header h1{
-margin-left:10px;
-font-size:24px;
-}
-
-
-/* RADAR LOGO */
 
 .radarLogo{
 position:relative;
 height:60px;
 width:60px;
-margin-right:15px;
+margin-right:18px;
 border-radius:50%;
 overflow:hidden;
 cursor:pointer;
@@ -61,9 +28,6 @@ width:100%;
 height:100%;
 object-fit:cover;
 }
-
-
-/* RADAR SWEEP */
 
 .radarSweep{
 position:absolute;
@@ -81,88 +45,54 @@ animation:radarSpin 4s linear infinite;
 100%{transform:rotate(360deg)}
 }
 
-
-/* CLOCK */
-
-.clock{
-margin-left:auto;
-margin-right:15px;
-color:#c6a55a;
-font-size:14px;
+header h1{
+color:#718754;
+font-weight:600;
 }
-
-
-/* THREAT PANEL */
-
-.threatPanel{
-margin-left:auto;
-margin-right:20px;
-}
-
-.threatLabel{
-font-size:11px;
-opacity:0.7;
-}
-
-.threatScale span{
-padding:4px 8px;
-margin-left:4px;
-border:1px solid rgba(255,255,255,0.3);
-border-radius:4px;
-font-size:12px;
-opacity:0.4;
-}
-
-.threatScale span.active{
-opacity:1;
-border:1px solid #c6a55a;
-color:#c6a55a;
-}
-
-
-/* NAV */
 
 nav{
 display:flex;
 background:#0b3a2e;
+flex-wrap:wrap;
 }
 
 nav button{
-padding:12px 18px;
+padding:14px 18px;
 border:none;
-background:none;
-color:white;
+background:#0b3a2e;
+color:#e2f0e9;
 cursor:pointer;
+font-weight:600;
 }
 
-nav button.active{
+nav button.active,
+nav button:hover{
 background:#c6a55a;
 color:#041f18;
 }
 
-
-/* TABS */
-
 .tab{
 display:none;
-padding:20px;
+padding:25px;
+margin:15px;
+background:rgba(8,40,32,0.4);
+border-radius:8px;
 }
 
 .tab.active{
 display:block;
 }
 
-
-/* IFRAME */
-
-iframe{
-width:100%;
-height:600px;
-border:none;
+.homeText{
+font-size:20px;
+line-height:1.7;
+max-width:900px;
 }
 
-
-/* NEWS */
+.homeImage img{
+width:60%;
+opacity:0.18;
+}
 
 .newsGrid{
 display:grid;
@@ -171,8 +101,8 @@ gap:20px;
 }
 
 .newsCard{
-background:#0b3a2e;
-border-radius:6px;
+background:#0d3329;
+border-radius:8px;
 overflow:hidden;
 }
 
@@ -183,64 +113,38 @@ object-fit:cover;
 }
 
 .newsText{
-padding:10px;
+padding:12px;
 }
 
-
-/* TICKER */
-
-.ticker{
-background:#062b21;
-padding:8px;
-font-size:14px;
-}
-
-
-/* GRID */
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-}
-
-
-/* MARKET TABS */
-
-.marketTabs button{
-margin-right:8px;
-padding:6px 12px;
-background:#0b3a2e;
-border:none;
-color:white;
-cursor:pointer;
-}
-
-.marketTabs button.active{
+.source{
+font-size:11px;
+font-weight:700;
+padding:3px 8px;
 background:#c6a55a;
 color:#041f18;
 }
 
-.marketTab{
-display:none;
+iframe{
+width:100%;
+height:80vh;
+border:none;
+border-radius:6px;
 }
 
-.marketTab.active{
-display:block;
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
 }
-
-
-/* FOOTER */
 
 footer{
 text-align:center;
-padding:20px;
+padding:15px;
 border-top:1px solid #1b4d3e;
 }
 
-.footerLogo{
-height:45px;
-display:block;
-margin:10px auto;
-opacity:0.6;
+.footerLink{
+color:#c6a55a;
+text-decoration:none;
+font-weight:600;
 }
