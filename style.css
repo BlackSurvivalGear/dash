@@ -1,6 +1,4 @@
-*{
-box-sizing:border-box
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -9,10 +7,6 @@ color:#e2f0e9;
 background:#041f18;
 overflow-x:hidden;
 }
-
-
-
-/* HEADER */
 
 header{
 display:flex;
@@ -28,10 +22,6 @@ font-weight:600;
 letter-spacing:1px;
 }
 
-
-
-/* RADAR LOGO */
-
 .radarLogo{
 height:60px;
 width:60px;
@@ -46,10 +36,6 @@ height:100%;
 object-fit:cover;
 }
 
-
-
-/* GOLD / SILVER */
-
 .headerMarkets{
 margin-left:auto;
 display:flex;
@@ -58,17 +44,8 @@ font-size:26px;
 font-weight:700;
 }
 
-#goldPrice{
-color:#ffd700;
-}
-
-#silverPrice{
-color:#c0c0c0;
-}
-
-
-
-/* CRYPTO TICKER */
+#goldPrice{color:#ffd700}
+#silverPrice{color:#c0c0c0}
 
 .ticker-bar{
 width:100%;
@@ -81,34 +58,15 @@ padding:14px 0;
 
 .ticker-content{
 display:flex;
-align-items:center;
 white-space:nowrap;
 animation:tickerMove 65s linear infinite;
 padding-left:40px;
-}
-
-.ticker-item{
-margin-right:70px;
-font-size:20px;
-font-weight:600;
-letter-spacing:1px;
-color:#e6e6e6;
-}
-
-.ticker-symbol{
-color:#d4b15a;
-font-weight:700;
-margin-right:6px;
 }
 
 @keyframes tickerMove{
 0%{transform:translateX(100%)}
 100%{transform:translateX(-100%)}
 }
-
-
-
-/* NAVIGATION */
 
 nav{
 display:flex;
@@ -124,7 +82,6 @@ background:#0b3a2e;
 color:#e2f0e9;
 cursor:pointer;
 font-weight:600;
-font-size:15px;
 }
 
 nav button.active,
@@ -132,10 +89,6 @@ nav button:hover{
 background:#c6a55a;
 color:#041f18;
 }
-
-
-
-/* TAB PANELS */
 
 .tab{
 display:none;
@@ -145,13 +98,7 @@ background:rgba(8,40,32,0.45);
 border-radius:8px;
 }
 
-.tab.active{
-display:block;
-}
-
-
-
-/* HOME PANEL */
+.tab.active{display:block}
 
 .homePanel{
 display:flex;
@@ -165,27 +112,19 @@ max-width:40%;
 border-radius:6px;
 }
 
-.homeText{
-font-size:20px;
-line-height:1.7;
-}
-
-
-
-/* LIVE NEWS */
-
 .liveNav{
 margin-bottom:10px;
+display:flex;
+flex-wrap:wrap;
+gap:6px;
 }
 
 .liveNav button{
-margin-right:6px;
 padding:10px 14px;
 background:#0b3a2e;
 border:none;
 color:#e2f0e9;
 cursor:pointer;
-font-weight:600;
 }
 
 .liveNav button:hover{
@@ -193,20 +132,12 @@ background:#c6a55a;
 color:#041f18;
 }
 
-
-
-/* SINGLE STREAM */
-
 .livePlayer iframe{
 width:100%;
 height:65vh;
 border:none;
 border-radius:6px;
 }
-
-
-
-/* QUAD VIEW NEWS */
 
 .quadGrid{
 display:none;
@@ -222,10 +153,6 @@ border:none;
 border-radius:6px;
 }
 
-
-
-/* MAP PANELS */
-
 #map iframe,
 #air iframe,
 #marine iframe,
@@ -237,21 +164,11 @@ border:none;
 border-radius:6px;
 }
 
-
-
-/* OVERVIEW COMMAND WALL (2x2 like quad news) */
-
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:16px;
-margin-top:16px;
-align-items:stretch;
 }
-
-
-
-/* OVERVIEW PANELS */
 
 .grid iframe{
 width:100%;
@@ -259,10 +176,6 @@ height:40vh;
 border:none;
 border-radius:6px;
 }
-
-
-
-/* HEATMAP PANELS */
 
 .heatmap{
 width:100%;
@@ -272,28 +185,11 @@ border-radius:6px;
 background:#000;
 }
 
-
-
-/* OSINT PANEL STYLE */
-
 .grid iframe,
 .heatmap{
 border:1px solid #1b4d3e;
 box-shadow:0 0 6px rgba(0,255,120,0.15);
 }
-
-
-
-/* GENERAL IFRAME */
-
-iframe{
-max-width:100%;
-display:block;
-}
-
-
-
-/* FOOTER */
 
 footer{
 text-align:center;
@@ -301,10 +197,6 @@ padding:20px;
 border-top:1px solid #1b4d3e;
 margin-top:30px;
 }
-
-
-
-/* FOOTER RADAR */
 
 .footerRadar{
 width:60px;
@@ -319,10 +211,6 @@ width:100%;
 height:100%;
 object-fit:cover;
 }
-
-
-
-/* FOOTER LINK */
 
 .footerLink{
 color:#c6a55a;
