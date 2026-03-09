@@ -6,13 +6,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BSG Strategic Awareness Dashboard</title>
+<title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
+
+<!-- Background Radar -->
 
 <video autoplay muted loop id="radarVideo">
 <source src="RADAR3.mp4" type="video/mp4">
@@ -27,6 +29,8 @@
 <button class="tabButton" onclick="openTab('home')">Home</button>
 <button class="tabButton" onclick="openTab('conflict')">Conflict News</button>
 <button class="tabButton" onclick="openTab('africa')">Africa News</button>
+
+<!-- NEW TAB -->
 <button class="tabButton" onclick="openTab('rt')">RT</button>
 
 </nav>
@@ -36,20 +40,20 @@
 <div id="ticker">
 
 <marquee>
-
 OSINT Monitor • Global Conflict Tracking • Economic Indicators • Strategic Intelligence Dashboard • BlackSurvivalGear
-
 </marquee>
 
 </div>
 
 <main>
 
+<!-- HOME TAB -->
+
 <section id="home" class="tabContent active">
 
 <div class="homeContainer">
 
-<img src="BSG2.png" class="homeLogo">
+<img src="BSG2.png" class="homeImage">
 
 <div class="homeText">
 
@@ -93,29 +97,33 @@ Use the command tabs above to access regional feeds, conflict monitoring platfor
 
 </section>
 
+<!-- CONFLICT NEWS -->
+
 <section id="conflict" class="tabContent">
 
-<h2>Conflict News</h2>
-
-<iframe src="https://news.google.com/search?q=conflict+war&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
+<iframe src="https://news.google.com/search?q=war+conflict&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
 
 </section>
 
-<section id="africa" class="tabContent">
+<!-- AFRICA NEWS -->
 
-<h2>Africa News</h2>
+<section id="africa" class="tabContent">
 
 <iframe src="https://news.google.com/search?q=africa+security&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
 
 </section>
 
-<section id="rt" class="tabContent">
+<!-- NEW RT TAB -->
 
-<h2>RT Live Feed</h2>
+<section id="rt" class="tabContent">
 
 <div class="videoContainer">
 
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" frameborder="0" allowfullscreen></iframe>
+<iframe
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+frameborder="0"
+allowfullscreen>
+</iframe>
 
 </div>
 
@@ -131,6 +139,8 @@ BlackSurvivalGear.com
 </a>
 </p>
 
+<!-- RADAR VIDEO IN FOOTER -->
+
 <video class="footerRadar" autoplay muted loop>
 <source src="RADAR3.mp4" type="video/mp4">
 </video>
@@ -141,10 +151,9 @@ BlackSurvivalGear.com
 
 function openTab(tabName){
 
-var i;
 var tabs = document.getElementsByClassName("tabContent");
 
-for(i=0;i<tabs.length;i++){
+for(var i=0;i<tabs.length;i++){
 tabs[i].classList.remove("active");
 }
 
