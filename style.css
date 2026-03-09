@@ -1,6 +1,4 @@
-*{
-box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
 margin:0;
@@ -50,11 +48,6 @@ animation:radarSpin 4s linear infinite;
 100%{transform:rotate(360deg)}
 }
 
-header h1{
-color:#718754;
-font-weight:600;
-}
-
 nav{
 display:flex;
 background:#0b3a2e;
@@ -78,19 +71,21 @@ color:#041f18;
 }
 
 .ticker{
-background:#021510;
+background:rgba(2,21,16,0.55);
 border-bottom:1px solid #c6a55a;
 overflow:hidden;
 white-space:nowrap;
+backdrop-filter:blur(2px);
 }
 
 .tickerTrack{
 display:inline-block;
 padding-left:100%;
-animation:tickerMove 40s linear infinite;
+animation:tickerMove 75s linear infinite;
 color:#c6a55a;
 font-weight:600;
 font-size:15px;
+opacity:0.75;
 }
 
 @keyframes tickerMove{
@@ -104,14 +99,11 @@ padding:25px;
 margin:15px;
 background:rgba(8,40,32,0.55);
 border-radius:8px;
-width:100%;
 position:relative;
 overflow:hidden;
 }
 
-.tab.active{
-display:block;
-}
+.tab.active{display:block}
 
 .tabRadar{
 position:absolute;
@@ -121,28 +113,11 @@ transform:translate(-50%,-50%);
 width:500px;
 opacity:0.05;
 pointer-events:none;
-z-index:0;
 }
 
-.tabRadar video{
-width:100%;
-}
+.homePanel{position:relative;max-width:900px}
 
-.tab>*:not(.tabRadar){
-position:relative;
-z-index:1;
-}
-
-.homePanel{
-position:relative;
-max-width:900px;
-}
-
-.homeBg{
-width:100%;
-opacity:0.18;
-display:block;
-}
+.homeBg{width:100%;opacity:0.18}
 
 .homeOverlay{
 position:absolute;
@@ -150,12 +125,6 @@ top:0;
 left:0;
 padding:25px;
 width:100%;
-}
-
-.homeText{
-font-size:20px;
-line-height:1.7;
-max-width:700px;
 }
 
 .situationPanel{
@@ -166,49 +135,10 @@ margin:20px 0;
 max-width:650px;
 }
 
-.situationPanel h3{
-margin-top:0;
-color:#c6a55a;
-font-size:18px;
-}
-
-.situationPanel ul{
-margin:0;
-padding-left:18px;
-}
-
-.situationPanel li{
-margin-bottom:6px;
-}
-
 .newsGrid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:20px;
-}
-
-.newsCard{
-background:#0d3329;
-border-radius:8px;
-overflow:hidden;
-}
-
-.newsCard img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.newsText{
-padding:12px;
-}
-
-.source{
-font-size:11px;
-font-weight:700;
-padding:3px 8px;
-background:#c6a55a;
-color:#041f18;
 }
 
 iframe{
