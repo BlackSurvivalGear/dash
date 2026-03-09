@@ -20,11 +20,9 @@
 <header>
 
 <div class="radarLogo" onclick="showTab('home')">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
@@ -59,66 +57,59 @@ Global monitoring feeds active • OSINT streams online • Strategic awareness 
 
 <section id="home" class="tab active">
 
+<div class="homePanel">
+
+<img src="BSG2.png" class="homeBg">
+
+<div class="homeOverlay">
+
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
-<p>
-
-This dashboard consolidates open-source intelligence monitoring tools into a single situational awareness interface.
-
-Political tensions, cyber incidents, environmental crises and geopolitical developments can emerge rapidly.
-
-BSG OSINT provides a monitoring platform designed to help users remain informed and aware.
-
+<p class="homeText">
+This dashboard consolidates open-source intelligence monitoring tools into a single global situational awareness interface.
+Political tensions, regional conflicts, cyber incidents and environmental crises can emerge rapidly with little warning.
 </p>
+
+</div>
+
+</div>
 
 </section>
 
 
 
 <section id="news" class="tab">
-
-<div id="newsGrid"></div>
-
+<div id="newsGrid" class="newsGrid"></div>
 </section>
 
 
 
 <section id="map" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
 
 
 
 <section id="air" class="tab">
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
 
 
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
 
 
 
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
 
 
 
 <section id="fire" class="tab">
-
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
-
 </section>
 
 
@@ -129,11 +120,12 @@ BSG OSINT provides a monitoring platform designed to help users remain informed 
 
 <button onclick="showLive('rt')">RT</button>
 <button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('bloomberg')">Bloomberg</button>
-<button onclick="showLive('nbc')">NBC</button>
+<button onclick="showLive('sky')">Sky News</button>
+<button onclick="showLive('reuters')">Reuters</button>
 <button onclick="showLive('quad')">QUAD VIEW</button>
 
 </div>
+
 
 
 <div id="liveSingle" class="livePlayer">
@@ -146,15 +138,16 @@ allowfullscreen>
 </div>
 
 
+
 <div id="quadView" class="quadGrid">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 
 <iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
 
-<iframe src="https://www.youtube.com/embed/d8hAQK7w6No"></iframe>
+<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
 
-<iframe src="https://www.youtube.com/embed/UCeY0bbntWw"></iframe>
+<iframe src="https://www.youtube.com/embed/hNTn1EOYPAg"></iframe>
 
 </div>
 
@@ -179,7 +172,7 @@ allowfullscreen>
 
 <footer>
 
-<a href="https://BlackSurvivalGear.com" target="_blank">
+<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
 BlackSurvivalGear.com
 </a>
 
@@ -188,7 +181,6 @@ BlackSurvivalGear.com
 
 
 <script>
-
 
 function showTab(id){
 
@@ -204,19 +196,19 @@ document.getElementById(id).classList.add("active")
 
 function showLive(channel){
 
-const frame = document.getElementById("liveFrame")
-const single = document.getElementById("liveSingle")
-const quad = document.getElementById("quadView")
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("quadView")
 
-const streams = {
+const streams={
 
 rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
 
 aj:"https://www.youtube.com/embed/bNyUyrR0PHo",
 
-bloomberg:"https://www.youtube.com/embed/d8hAQK7w6No",
+sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
 
-nbc:"https://www.youtube.com/embed/UCeY0bbntWw"
+reuters:"https://www.youtube.com/embed/hNTn1EOYPAg"
 
 }
 
