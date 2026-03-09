@@ -34,7 +34,9 @@
 
 
 <div class="ticker">
+<div class="tickerWrap">
 <span id="ticker">Loading global headlines...</span>
+</div>
 </div>
 
 
@@ -60,15 +62,24 @@
 </video>
 </div>
 
+<div class="homePanel">
+
+<img src="BSG2.png">
+
+<div class="homeOverlay">
+
 <h2>Global Strategic Awareness OSINT</h2>
 
 <p class="homeText">
-The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly and often with little warning.
+The modern security environment is increasingly volatile and interconnected.
+Political tensions, regional conflicts, economic disruption, cyber incidents,
+and environmental crises can emerge rapidly and often with little warning.
+
 Reliable information is the foundation of effective decision-making.
 </p>
 
-<div class="homeImage">
-<img src="BSG2.png">
+</div>
+
 </div>
 
 </section>
@@ -272,7 +283,8 @@ container.appendChild(card)
 
 }
 
-document.getElementById("ticker").textContent=headlines.join(" ◆ ")
+document.getElementById("ticker").innerHTML =
+headlines.join(" ◆ ") + " ◆ " + headlines.join(" ◆ ")
 
 }
 
