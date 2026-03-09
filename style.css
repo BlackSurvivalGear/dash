@@ -1,49 +1,29 @@
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
-color:#e2f0e9;
 background:#041f18;
+color:#e2f0e9;
 }
 
-
-/* HEADER */
-
 header{
-padding:10px 20px;
-background:#06231c;
+display:flex;
+align-items:center;
+padding:10px;
 border-bottom:2px solid #c6a55a;
 }
 
+.logo img{
+width:60px;
+}
+
 header h1{
-color:#7f9a64;
-margin:0;
+margin-left:10px;
+font-size:26px;
 }
 
-
-/* NEWS TICKER */
-
-.newsTicker{
-background:#06231c;
-overflow:hidden;
-white-space:nowrap;
-padding:6px 0;
-border-bottom:1px solid rgba(198,165,90,0.4);
+.clock{
+margin-left:auto;
 }
-
-#ticker{
-display:inline-block;
-padding-left:100%;
-animation:scrollNews 60s linear infinite;
-font-size:14px;
-}
-
-@keyframes scrollNews{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
-
-
-/* NAV */
 
 nav{
 display:flex;
@@ -51,38 +31,32 @@ background:#0b3a2e;
 }
 
 nav button{
-padding:14px 18px;
+padding:12px 18px;
 border:none;
-background:#0b3a2e;
-color:#e2f0e9;
+background:none;
+color:#fff;
 cursor:pointer;
-font-weight:600;
 }
 
-nav button.active,
-nav button:hover{
+nav button.active{
 background:#c6a55a;
 color:#041f18;
 }
 
-
-/* TABS */
-
 .tab{
 display:none;
 padding:20px;
-margin:15px;
-background:rgba(8,40,32,0.40);
-border-radius:8px;
-min-height:80vh;
 }
 
 .tab.active{
 display:block;
 }
 
-
-/* NEWS GRID */
+iframe{
+width:100%;
+height:600px;
+border:none;
+}
 
 .newsGrid{
 display:grid;
@@ -90,13 +64,11 @@ grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:20px;
 }
 
-
 .newsCard{
-background:#0d3329;
-border-radius:8px;
+background:#0b3a2e;
+border-radius:6px;
 overflow:hidden;
 }
-
 
 .newsCard img{
 width:100%;
@@ -104,31 +76,24 @@ height:180px;
 object-fit:cover;
 }
 
-
 .newsText{
-padding:14px;
+padding:10px;
 }
 
-
-.newsText a{
-color:#8fd8b8;
-font-weight:600;
-text-decoration:none;
+.ticker{
+background:#062b21;
+padding:8px;
+font-size:14px;
 }
-
-
-/* MAPS */
-
-iframe{
-width:100%;
-height:80vh;
-border:none;
-border-radius:6px;
-}
-
 
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:15px;
+gap:10px;
+}
+
+footer{
+text-align:center;
+padding:15px;
+border-top:1px solid #1b4d3e;
 }
