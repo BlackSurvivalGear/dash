@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -38,13 +37,11 @@ GLOBAL THREAT LEVEL
 </div>
 
 <div class="threatScale">
-
 <span>NORMAL</span>
 <span>GUARDED</span>
 <span class="active">ELEVATED</span>
 <span>HIGH</span>
 <span>CRITICAL</span>
-
 </div>
 
 </div>
@@ -53,7 +50,7 @@ GLOBAL THREAT LEVEL
 
 
 <div class="ticker">
-<span id="ticker">Loading global headlines...</span>
+<div id="ticker">Loading global headlines...</div>
 </div>
 
 
@@ -78,13 +75,13 @@ GLOBAL THREAT LEVEL
 
 <p class="homeText">
 
-The global security environment is becoming increasingly unpredictable. Strategic competition between major powers, regional conflicts, economic instability, and information warfare are shaping a world where crises can develop rapidly and with little warning. In such an environment, situational awareness is no longer a luxury — it is a necessity.
+The global security environment is becoming increasingly unpredictable. Strategic competition between major powers, regional conflicts, economic instability, and information warfare are shaping a world where crises can develop rapidly and with little warning.
 
 </p>
 
 <p class="homeText">
 
-Black Survival Gear created the Global Strategic Awareness OSINT platform to provide real-time visibility of global developments that may affect security, mobility, and stability. By monitoring conflict zones, military air activity, maritime movements, cyber incidents, and environmental events, this system brings together multiple intelligence streams into a single operational picture. Access to timely information enables better judgement, better planning, and greater preparedness.
+Black Survival Gear created the Global Strategic Awareness OSINT platform to provide real-time visibility of global developments affecting security, mobility, and stability.
 
 </p>
 
@@ -116,19 +113,16 @@ Black Survival Gear created the Global Strategic Awareness OSINT platform to pro
 
 
 <section id="cyber" class="tab">
-<h2>Global Cyber Attack Map</h2>
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 </section>
 
 
 <section id="bases" class="tab">
-<h2>Global Military Installations</h2>
 <iframe src="https://umap.openstreetmap.fr/en/map/military-bases-around-the-world_510207"></iframe>
 </section>
 
 
 <section id="fire" class="tab">
-<h2>Global Wildfire Monitor</h2>
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
 </section>
 
@@ -204,20 +198,6 @@ headlines.push(article.title)
 
 const card=document.createElement("div")
 card.className="newsCard"
-
-const breakingWords=["war","attack","missile","explosion","strike"]
-
-let breaking=false
-
-breakingWords.forEach(word=>{
-if(article.title.toLowerCase().includes(word)){
-breaking=true
-}
-})
-
-if(breaking){
-card.classList.add("breaking")
-}
 
 card.innerHTML=`
 
