@@ -1,237 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BSG Global Strategic Awareness OSINT</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<!-- RADAR BACKGROUND -->
-
-<video autoplay muted loop id="radarBG">
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-
-<div class="overlay"></div>
-
-<!-- HEADER -->
-
-<header class="header">
-
-<div class="header-left">
-
-<img src="bsg2.jpg" class="logo">
-
-<h1>BSG Global Strategic Awareness OSINT</h1>
-
-</div>
-
-<div class="header-right">
-
-GLOBAL THREAT LEVEL  
-<span id="threatLevel">NORMAL</span>
-
-</div>
-
-</header>
-
-<!-- NEWS TICKER -->
-
-<div class="ticker">
-<div id="tickerText">Loading conflict headlines...</div>
-</div>
-
-<!-- NAVIGATION -->
-
-<nav>
-
-<button onclick="showTab('home')">Home</button>
-<button onclick="showTab('conflict')">Conflict News</button>
-<button onclick="showTab('conflictmap')">Conflict Map</button>
-<button onclick="showTab('aircraft')">Aircraft Watch</button>
-<button onclick="showTab('marine')">Marine Watch</button>
-<button onclick="showTab('cyber')">Cyber Attacks</button>
-<button onclick="showTab('fire')">Fire Monitor</button>
-<button onclick="showTab('markets')">Markets</button>
-<button onclick="showTab('charts')">Charts</button>
-<button onclick="showTab('worldmap')">World Map</button>
-<button onclick="showTab('overview')">Overview</button>
-
-</nav>
-
-<!-- HOME -->
-
-<section id="home" class="tab active">
-
-<h2>Global Strategic Awareness OSINT</h2>
-
-<p>
-
-The modern security environment is increasingly volatile and interconnected. Political tensions,
-regional conflicts, economic disruption, cyber incidents and environmental crises can emerge
-rapidly and often with little warning. Reliable information is the foundation of effective
-decision-making.
-
-</p>
-
-</section>
-
-<!-- CONFLICT NEWS -->
-
-<section id="conflict" class="tab">
-
-<h2>Conflict News</h2>
-
-<div id="newsGrid"></div>
-
-</section>
-
-<!-- CONFLICT MAP -->
-
-<section id="conflictmap" class="tab">
-
-<h2>Conflict Map</h2>
-
-<div class="placeholder">
-Conflict monitoring map will appear here.
-</div>
-
-</section>
-
-<!-- AIRCRAFT -->
-
-<section id="aircraft" class="tab">
-
-<h2>Aircraft Watch</h2>
-
-<div class="placeholder">
-Aircraft monitoring dashboard placeholder.
-</div>
-
-</section>
-
-<!-- MARINE -->
-
-<section id="marine" class="tab">
-
-<h2>Marine Watch</h2>
-
-<div class="placeholder">
-Maritime monitoring dashboard placeholder.
-</div>
-
-</section>
-
-<!-- CYBER -->
-
-<section id="cyber" class="tab">
-
-<h2>Cyber Attacks</h2>
-
-<div class="placeholder">
-Cyber threat monitoring placeholder.
-</div>
-
-</section>
-
-<!-- FIRE -->
-
-<section id="fire" class="tab">
-
-<h2>Fire Monitor</h2>
-
-<div class="placeholder">
-Global wildfire monitoring placeholder.
-</div>
-
-</section>
-
-<!-- MARKETS -->
-
-<section id="markets" class="tab">
-
-<h2>Markets</h2>
-
-<div class="placeholder">
-Financial market dashboard placeholder.
-</div>
-
-</section>
-
-<!-- CHARTS -->
-
-<section id="charts" class="tab">
-
-<h2>Charts</h2>
-
-<div class="placeholder">
-Financial charts placeholder.
-</div>
-
-</section>
-
-<!-- WORLD MAP -->
-
-<section id="worldmap" class="tab">
-
-<h2>World Map</h2>
-
-<div class="placeholder">
-Global strategic map placeholder.
-</div>
-
-</section>
-
-<!-- OVERVIEW -->
-
-<section id="overview" class="tab">
-
-<h2>Overview</h2>
-
-<p>
-
-BSG Global Strategic Awareness OSINT consolidates open-source intelligence feeds
-to provide situational awareness of global security developments.
-
-</p>
-
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="footerURL">
-BlackSurvivalGear.com
-</div>
-
-<img src="bsg2.jpg" class="footer-logo">
-
-</footer>
-
-<!-- TAB SCRIPT -->
-
-<script>
-
-function showTab(tab){
-
-document.querySelectorAll(".tab").forEach(t=>{
-t.classList.remove("active")
-})
-
-document.getElementById(tab).classList.add("active")
+body{
+
+margin:0;
+font-family:Rajdhani, sans-serif;
+color:#e2f0e9;
+background:#041f18;
 
 }
 
-</script>
+/* PREVENT IMAGE BREAKING */
 
-</body>
-</html>
+img{
+max-width:100%;
+height:auto;
+}
+
+/* LOCK LOGO SIZE */
+
+.logo{
+
+width:55px;
+height:55px;
+object-fit:contain;
+
+}
+
+/* HEADER */
+
+.header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 20px;
+border-bottom:1px solid #b89b4a;
+
+}
+
+.header-left{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+}
+
+.header h1{
+
+font-size:22px;
+margin:0;
+color:#d8c27a;
+
+}
+
+.header-right{
+
+font-size:12px;
+letter-spacing:1px;
+
+}
+
+#threatLevel{
+
+margin-left:5px;
+color:#9be29b;
+font-weight:bold;
+
+}
+
+/* NAV */
+
+nav{
+
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+padding:8px 15px;
+border-bottom:1px solid #b89b4a;
+
+}
+
+nav button{
+
+background:none;
+border:none;
+color:#e2f0e9;
+cursor:pointer;
+font-size:14px;
+
+}
+
+/* TABS */
+
+.tab{
+
+display:none;
+padding:30px;
+
+}
+
+.tab.active{
+
+display:block;
+
+}
+
+/* NEWS GRID */
+
+.newsGrid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+
+}
+
+.newsCard{
+
+background:#0b2a23;
+border-radius:6px;
+overflow:hidden;
+
+}
+
+.newsCard img{
+
+width:100%;
+height:180px;
+object-fit:cover;
+
+}
+
+.newsText{
+
+padding:10px;
+
+}
+
+.newsText h3{
+
+font-size:15px;
+
+}
+
+.source{
+
+font-size:12px;
+color:#d8c27a;
+
+}
+
+/* PLACEHOLDER */
+
+.placeholder{
+
+margin-top:30px;
+padding:40px;
+border:1px dashed #b89b4a;
+opacity:0.7;
+
+}
+
+/* TICKER */
+
+.ticker{
+
+border-bottom:1px solid #b89b4a;
+padding:6px 10px;
+font-size:13px;
+
+}
+
+/* RADAR BACKGROUND */
+
+#radarBG{
+
+position:fixed;
+right:0;
+bottom:0;
+min-width:100%;
+min-height:100%;
+z-index:-2;
+opacity:0.15;
+
+}
+
+.overlay{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:#041f18;
+opacity:0.85;
+z-index:-1;
+
+}
+
+/* FOOTER */
+
+footer{
+
+text-align:center;
+padding:40px 20px;
+border-top:1px solid #b89b4a;
+margin-top:60px;
+
+}
+
+.footerURL{
+
+margin-bottom:15px;
+
+}
+
+.footer-logo{
+
+width:120px;
+opacity:0.6;
+
+}
