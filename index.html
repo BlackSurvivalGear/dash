@@ -16,6 +16,14 @@
 
 <body>
 
+
+<div class="radarWatermark">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+
 <header>
 
 <div class="radarLogo" onclick="showTab('home')">
@@ -70,25 +78,33 @@
 
 <h2>Global Strategic Awareness OSINT</h2>
 
+<div class="homeLayout">
+
 <div class="homeImage">
 <img src="BSG2.png">
 </div>
 
-<p class="homeText">
+<div class="homeText">
+
+<p>
 The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly and often with little warning.
 </p>
 
-<p class="homeText">
+<p>
 Reliable information is the foundation of effective decision-making. Misinformation and fragmented reporting can obscure the true nature of developing events.
 </p>
 
-<p class="homeText">
+<p>
 The Global Strategic Awareness OSINT platform provides a consolidated view of global developments that may influence stability, mobility, and security.
 </p>
 
-<p class="homeText">
+<p>
 In a rapidly changing world, situational awareness is essential for preparedness and informed decision-making.
 </p>
+
+</div>
+
+</div>
 
 </section>
 
@@ -145,6 +161,12 @@ In a rapidly changing world, situational awareness is essential for preparedness
 BlackSurvivalGear.com
 </a>
 
+<div class="footerRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
 </footer>
 
 
@@ -195,7 +217,9 @@ const feeds=[
 
 "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
 "https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
+"https://api.rss2json.com/v1/api.json?rss_url=https://sputniknews.com/export/rss2/archive/index.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.theguardian.com/world/rss"
 
 ]
 
@@ -249,7 +273,7 @@ container.appendChild(card)
 
 count++
 
-if(count>=3) break
+if(count>=4) break
 
 }
 
