@@ -165,6 +165,47 @@ grid-template-columns:1fr 1fr;
 gap:15px;
 }
 
+.newsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:20px;
+}
+
+.newsCard{
+background:#0d3329;
+border-radius:8px;
+overflow:hidden;
+}
+
+.newsCard img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.newsText{
+padding:12px;
+}
+
+.newsText h3{
+font-size:16px;
+margin:8px 0;
+}
+
+.source{
+font-size:11px;
+font-weight:700;
+padding:3px 8px;
+background:#c6a55a;
+color:#041f18;
+}
+
+.newsText a{
+color:#c6a55a;
+text-decoration:none;
+font-weight:600;
+}
+
 .footerRadar{
 width:60px;
 height:60px;
