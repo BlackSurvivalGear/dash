@@ -12,19 +12,12 @@ overflow-x:hidden;
 
 
 
-/* HEADER */
-
 header{
-
 display:flex;
 align-items:center;
-
 padding:12px 18px;
-
 background:#06231c;
-
 border-bottom:2px solid #c6a55a;
-
 }
 
 header h1{
@@ -33,8 +26,6 @@ font-weight:600;
 }
 
 
-
-/* RADAR */
 
 .radarLogo{
 height:60px;
@@ -52,36 +43,22 @@ object-fit:cover;
 
 
 
-/* HEADER MARKETS */
+/* MARKETS */
 
 .headerMarkets{
-
 margin-left:auto;
-
 display:flex;
 gap:40px;
-
-font-size:22px;
+font-size:26px;
 font-weight:700;
-
-letter-spacing:1px;
-
-align-items:center;
-
 }
 
 #goldPrice{
-
 color:#ffd700;
-font-size:26px;
-
 }
 
 #silverPrice{
-
 color:#c0c0c0;
-font-size:26px;
-
 }
 
 
@@ -89,60 +66,39 @@ font-size:26px;
 /* CRYPTO TICKER */
 
 .ticker-bar{
-
 width:100%;
 overflow:hidden;
-
 background:rgba(0,0,0,0.55);
-
 border-top:2px solid #c6a55a;
 border-bottom:2px solid #c6a55a;
-
-padding:16px 0;
-
+padding:14px 0;
 }
 
 .ticker-content{
-
 display:flex;
 align-items:center;
-
 white-space:nowrap;
-
 animation:tickerMove 65s linear infinite;
-
 padding-left:40px;
-
 }
 
 .ticker-item{
-
 margin-right:70px;
-
 font-size:20px;
 font-weight:600;
-
 letter-spacing:1px;
-
 color:#e6e6e6;
-
 }
 
 .ticker-symbol{
-
 color:#d4b15a;
-
 font-weight:700;
-
 margin-right:6px;
-
 }
 
 @keyframes tickerMove{
-
 0%{transform:translateX(100%)}
 100%{transform:translateX(-100%)}
-
 }
 
 
@@ -156,27 +112,18 @@ flex-wrap:wrap;
 }
 
 nav button{
-
 padding:14px 18px;
-
 border:none;
-
 background:#0b3a2e;
-
 color:#e2f0e9;
-
 cursor:pointer;
-
 font-weight:600;
-
 }
 
 nav button.active,
 nav button:hover{
-
 background:#c6a55a;
 color:#041f18;
-
 }
 
 
@@ -184,17 +131,11 @@ color:#041f18;
 /* TABS */
 
 .tab{
-
 display:none;
-
 padding:25px;
-
 margin:15px;
-
 background:rgba(8,40,32,0.45);
-
 border-radius:8px;
-
 }
 
 .tab.active{
@@ -206,12 +147,9 @@ display:block;
 /* HOME */
 
 .homePanel{
-
 display:flex;
 align-items:center;
-
 gap:40px;
-
 }
 
 .homeBg{
@@ -226,43 +164,85 @@ line-height:1.7;
 
 
 
+/* LIVE NEWS */
+
+.liveNav button{
+margin-right:6px;
+padding:10px 14px;
+background:#0b3a2e;
+border:none;
+color:#e2f0e9;
+cursor:pointer;
+}
+
+.liveNav button:hover{
+background:#c6a55a;
+color:#041f18;
+}
+
+.livePlayer iframe{
+width:100%;
+height:70vh;
+border:none;
+border-radius:6px;
+}
+
+.quadGrid{
+display:none;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.quadGrid iframe{
+width:100%;
+height:38vh;
+border:none;
+border-radius:6px;
+}
+
+
+
+/* OTHER PANELS */
+
+iframe{
+width:100%;
+height:80vh;
+border:none;
+border-radius:6px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+
+
 /* FOOTER */
 
 .footerRadar{
-
 width:60px;
 height:60px;
-
 margin:10px auto;
-
 border-radius:50%;
 overflow:hidden;
-
 }
 
 .footerRadar video{
-
 width:100%;
 height:100%;
-
 object-fit:cover;
-
 }
 
 footer{
-
 text-align:center;
 padding:15px;
-
 border-top:1px solid #1b4d3e;
-
 }
 
 .footerLink{
-
 color:#c6a55a;
 text-decoration:none;
-
 font-weight:600;
-
 }
