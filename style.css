@@ -84,21 +84,18 @@ overflow:hidden;
 white-space:nowrap;
 }
 
-.tickerWrap{
+.tickerTrack{
 display:inline-block;
 padding-left:100%;
-animation:tickerScroll 45s linear infinite;
-}
-
-@keyframes tickerScroll{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
-
-#ticker{
+animation:tickerMove 40s linear infinite;
 color:#c6a55a;
 font-weight:600;
 font-size:15px;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
 }
 
 .tab{
@@ -141,26 +138,24 @@ position:relative;
 max-width:900px;
 }
 
-.homePanel img{
+.homeBg{
 width:100%;
 opacity:0.18;
+display:block;
 }
 
 .homeOverlay{
 position:absolute;
 top:0;
 left:0;
-padding:20px;
+padding:25px;
 width:100%;
-}
-
-.homeOverlay h2{
-margin-top:0;
 }
 
 .homeText{
 font-size:20px;
 line-height:1.7;
+max-width:700px;
 }
 
 .newsGrid{
@@ -198,7 +193,6 @@ width:100%;
 height:80vh;
 border:none;
 border-radius:6px;
-max-width:100%;
 }
 
 .grid{
