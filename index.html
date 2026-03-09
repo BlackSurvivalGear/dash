@@ -41,21 +41,27 @@ Global monitoring feeds active • OSINT streams online • Strategic awareness 
 
 <nav>
 
-<button onclick="showTab('home')" class="active">Home</button>
-<button onclick="showTab('news')">Conflict News</button>
-<button onclick="showTab('map')">Conflict Map</button>
-<button onclick="showTab('air')">Aircraft Watch</button>
-<button onclick="showTab('marine')">Marine Watch</button>
-<button onclick="showTab('cyber')">Cyber Attacks</button>
-<button onclick="showTab('fire')">Fire Monitor</button>
-<button onclick="showTab('live')">LIVE NEWS</button>
-<button onclick="showTab('command')">Overview</button>
+<button onclick="showTab(event,'home')" class="active">Home</button>
+<button onclick="showTab(event,'news')">Conflict News</button>
+<button onclick="showTab(event,'map')">Conflict Map</button>
+<button onclick="showTab(event,'air')">Aircraft Watch</button>
+<button onclick="showTab(event,'marine')">Marine Watch</button>
+<button onclick="showTab(event,'cyber')">Cyber Attacks</button>
+<button onclick="showTab(event,'fire')">Fire Monitor</button>
+<button onclick="showTab(event,'live')">LIVE NEWS</button>
+<button onclick="showTab(event,'command')">Overview</button>
 
 </nav>
 
 
 
 <section id="home" class="tab active">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
 
 <div class="homePanel">
 
@@ -67,7 +73,6 @@ Global monitoring feeds active • OSINT streams online • Strategic awareness 
 
 <p class="homeText">
 This dashboard consolidates open-source intelligence monitoring tools into a single global situational awareness interface.
-Political tensions, regional conflicts, cyber incidents and environmental crises can emerge rapidly with little warning.
 </p>
 
 </div>
@@ -79,42 +84,97 @@ Political tensions, regional conflicts, cyber incidents and environmental crises
 
 
 <section id="news" class="tab">
-<div id="newsGrid" class="newsGrid"></div>
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
+<div id="newsGrid"></div>
+
 </section>
 
 
 
 <section id="map" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 <iframe src="https://liveuamap.com"></iframe>
+
 </section>
 
 
 
 <section id="air" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+
 </section>
 
 
 
 <section id="marine" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
 </section>
 
 
 
 <section id="cyber" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 <iframe src="https://threatmap.checkpoint.com"></iframe>
+
 </section>
 
 
 
 <section id="fire" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+
 </section>
 
 
 
 <section id="live" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 
 <div class="liveNav">
 
@@ -142,11 +202,8 @@ allowfullscreen>
 <div id="quadView" class="quadGrid">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-
 <iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-
 <iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-
 <iframe src="https://www.youtube.com/embed/hNTn1EOYPAg"></iframe>
 
 </div>
@@ -156,6 +213,12 @@ allowfullscreen>
 
 
 <section id="command" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
 
 <div class="grid">
 
@@ -172,6 +235,12 @@ allowfullscreen>
 
 <footer>
 
+<div class="footerRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
 BlackSurvivalGear.com
 </a>
@@ -182,13 +251,20 @@ BlackSurvivalGear.com
 
 <script>
 
-function showTab(id){
+
+function showTab(evt,id){
 
 document.querySelectorAll(".tab").forEach(tab=>{
 tab.classList.remove("active")
 })
 
 document.getElementById(id).classList.add("active")
+
+document.querySelectorAll("nav button").forEach(btn=>{
+btn.classList.remove("active")
+})
+
+evt.target.classList.add("active")
 
 }
 
@@ -203,11 +279,8 @@ const quad=document.getElementById("quadView")
 const streams={
 
 rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
-
 aj:"https://www.youtube.com/embed/bNyUyrR0PHo",
-
 sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
-
 reuters:"https://www.youtube.com/embed/hNTn1EOYPAg"
 
 }
@@ -216,6 +289,11 @@ if(channel==="quad"){
 
 single.style.display="none"
 quad.style.display="grid"
+
+if(!document.fullscreenElement){
+quad.requestFullscreen()
+}
+
 return
 
 }
@@ -228,7 +306,6 @@ frame.src=streams[channel]
 }
 
 </script>
-
 
 </body>
 </html>
