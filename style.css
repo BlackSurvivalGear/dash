@@ -1,5 +1,245 @@
-DXY (Dollar index)
-S&P Futures
-Nikkei
-Shanghai
-VIX fear index
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:'Rajdhani',sans-serif;
+color:#e2f0e9;
+background:#041f18;
+overflow-x:hidden;
+}
+
+header{
+display:flex;
+align-items:center;
+padding:10px 15px;
+background:#06231c;
+border-bottom:2px solid #c6a55a;
+}
+
+header h1{
+color:#718754;
+font-weight:600;
+}
+
+.radarLogo{
+height:60px;
+width:60px;
+margin-right:18px;
+border-radius:50%;
+overflow:hidden;
+}
+
+.radarLogo video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+nav{
+display:flex;
+background:#0b3a2e;
+flex-wrap:wrap;
+}
+
+nav button{
+padding:14px 18px;
+border:none;
+background:#0b3a2e;
+color:#e2f0e9;
+cursor:pointer;
+font-weight:600;
+}
+
+nav button.active,
+nav button:hover{
+background:#c6a55a;
+color:#041f18;
+}
+
+.ticker{
+background:#021510;
+overflow:hidden;
+white-space:nowrap;
+border-top:1px solid #c6a55a;
+border-bottom:1px solid #c6a55a;
+}
+
+.tickerTrack{
+display:inline-block;
+padding-left:100%;
+animation:tickerMove 160s linear infinite;
+color:#c6a55a;
+font-weight:600;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+.tab{
+display:none;
+padding:25px;
+margin:15px;
+background:rgba(8,40,32,0.45);
+border-radius:8px;
+position:relative;
+overflow:hidden;
+}
+
+.tab.active{
+display:block;
+}
+
+.tabRadar{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:500px;
+opacity:0.05;
+pointer-events:none;
+}
+
+.tabRadar video{
+width:100%;
+}
+
+.homePanel{
+display:flex;
+align-items:center;
+gap:40px;
+}
+
+.homeBg{
+width:420px;
+max-width:40%;
+}
+
+.homeText{
+font-size:20px;
+line-height:1.7;
+}
+
+.liveNav button{
+margin-right:6px;
+padding:10px 14px;
+background:#0b3a2e;
+border:none;
+color:#e2f0e9;
+cursor:pointer;
+}
+
+.liveNav button:hover{
+background:#c6a55a;
+color:#041f18;
+}
+
+.livePlayer iframe{
+width:100%;
+height:70vh;
+border:none;
+border-radius:6px;
+}
+
+.quadGrid{
+display:none;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.quadGrid iframe{
+width:100%;
+height:38vh;
+border:none;
+border-radius:6px;
+}
+
+iframe{
+width:100%;
+height:80vh;
+border:none;
+border-radius:6px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.newsGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:20px;
+align-items:start;
+}
+
+.newsCard{
+background:#0d3329;
+border-radius:8px;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+border:1px solid rgba(198,165,90,0.2);
+}
+
+.newsCard img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.newsText{
+padding:12px;
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.newsText h3{
+font-size:16px;
+margin:0;
+line-height:1.3;
+}
+
+.source{
+font-size:11px;
+font-weight:700;
+padding:3px 8px;
+background:#c6a55a;
+color:#041f18;
+width:max-content;
+}
+
+.newsText a{
+color:#c6a55a;
+text-decoration:none;
+font-weight:600;
+}
+
+.footerRadar{
+width:60px;
+height:60px;
+margin:10px auto;
+border-radius:50%;
+overflow:hidden;
+}
+
+.footerRadar video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+footer{
+text-align:center;
+padding:15px;
+border-top:1px solid #1b4d3e;
+}
+
+.footerLink{
+color:#c6a55a;
+text-decoration:none;
+font-weight:600;
+}
