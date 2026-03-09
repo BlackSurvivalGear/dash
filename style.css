@@ -15,14 +15,6 @@ padding:10px 15px;
 background:#06231c;
 }
 
-.radarLogo{
-height:60px;
-width:60px;
-border-radius:50%;
-overflow:hidden;
-margin-right:18px;
-}
-
 nav{
 display:flex;
 background:#0b3a2e;
@@ -38,7 +30,6 @@ font-weight:600;
 cursor:pointer;
 }
 
-nav button.active,
 nav button:hover{
 background:#c6a55a;
 color:#041f18;
@@ -72,33 +63,6 @@ position:relative;
 }
 
 .tab.active{display:block}
-
-.tabRadar{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:500px;
-opacity:0.05;
-}
-
-.homePanel{position:relative;max-width:900px}
-
-.homeBg{width:100%;opacity:0.18}
-
-.homeOverlay{
-position:absolute;
-top:0;
-left:0;
-padding:25px;
-width:100%;
-}
-
-.newsGrid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:20px;
-}
 
 .liveNav{
 display:flex;
@@ -139,12 +103,6 @@ width:100%;
 height:80vh;
 border:none;
 border-radius:6px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-gap:15px;
 }
 
 .footerRadar{
