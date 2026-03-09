@@ -1,161 +1,315 @@
-body{
-
-background:#0a0a0a;
-color:white;
-font-family:Arial, Helvetica, sans-serif;
-margin:0;
-
+*{
+box-sizing:border-box
 }
 
+body{
+margin:0;
+font-family:'Rajdhani',sans-serif;
+color:#e2f0e9;
+background:#041f18;
+overflow-x:hidden;
+}
+
+
+
+/* HEADER */
 
 header{
-
 display:flex;
 align-items:center;
-padding:10px 20px;
-background:#111;
-
+padding:12px 18px;
+background:#06231c;
+border-bottom:2px solid #c6a55a;
 }
-
-
-.logo video{
-
-height:60px;
-margin-right:15px;
-
-}
-
 
 header h1{
-
-font-size:20px;
-color:#00ffcc;
-
+color:#718754;
+font-weight:600;
+letter-spacing:1px;
 }
 
 
-nav{
 
-background:#000;
-display:flex;
-flex-wrap:wrap;
-border-bottom:1px solid #222;
+/* RADAR LOGO */
 
+.radarLogo{
+height:60px;
+width:60px;
+margin-right:18px;
+border-radius:50%;
+overflow:hidden;
 }
 
-
-nav button{
-
-background:none;
-border:none;
-color:#ccc;
-padding:12px 16px;
-cursor:pointer;
-font-size:15px;
-
-}
-
-
-nav button:hover{
-
-color:white;
-
-}
-
-
-nav button.active{
-
-color:#00ffcc;
-border-bottom:2px solid #00ffcc;
-
-}
-
-
-.tabcontent{
-
-display:none;
-padding:15px;
-
-}
-
-
-.tabcontent.active{
-
-display:block;
-
-}
-
-
-iframe{
-
+.radarLogo video{
 width:100%;
-height:80vh;
-border:none;
-
+height:100%;
+object-fit:cover;
 }
 
 
-.home-container{
 
+/* GOLD / SILVER */
+
+.headerMarkets{
+margin-left:auto;
+display:flex;
+gap:40px;
+font-size:26px;
+font-weight:700;
+}
+
+#goldPrice{
+color:#ffd700;
+}
+
+#silverPrice{
+color:#c0c0c0;
+}
+
+
+
+/* CRYPTO TICKER */
+
+.ticker-bar{
+width:100%;
+overflow:hidden;
+background:rgba(0,0,0,0.55);
+border-top:2px solid #c6a55a;
+border-bottom:2px solid #c6a55a;
+padding:14px 0;
+}
+
+.ticker-content{
 display:flex;
 align-items:center;
-justify-content:center;
-gap:40px;
+white-space:nowrap;
+animation:tickerMove 65s linear infinite;
+padding-left:40px;
+}
+
+.ticker-item{
+margin-right:70px;
+font-size:20px;
+font-weight:600;
+letter-spacing:1px;
+color:#e6e6e6;
+}
+
+.ticker-symbol{
+color:#d4b15a;
+font-weight:700;
+margin-right:6px;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(100%)}
+100%{transform:translateX(-100%)}
+}
+
+
+
+/* NAVIGATION */
+
+nav{
+display:flex;
+background:#0b3a2e;
 flex-wrap:wrap;
+border-bottom:2px solid #c6a55a;
+}
 
+nav button{
+padding:14px 18px;
+border:none;
+background:#0b3a2e;
+color:#e2f0e9;
+cursor:pointer;
+font-weight:600;
+font-size:15px;
+}
+
+nav button.active,
+nav button:hover{
+background:#c6a55a;
+color:#041f18;
 }
 
 
-.home-image{
 
+/* TAB PANELS */
+
+.tab{
+display:none;
+padding:25px;
+margin:15px;
+background:rgba(8,40,32,0.45);
+border-radius:8px;
+}
+
+.tab.active{
+display:block;
+}
+
+
+
+/* HOME PANEL */
+
+.homePanel{
+display:flex;
+align-items:center;
+gap:40px;
+}
+
+.homeBg{
 width:420px;
-opacity:0.5;
+max-width:40%;
+border-radius:6px;
+}
 
+.homeText{
+font-size:20px;
+line-height:1.7;
 }
 
 
-.home-text{
 
-max-width:600px;
+/* LIVE NEWS */
 
+.liveNav{
+margin-bottom:10px;
+}
+
+.liveNav button{
+margin-right:6px;
+padding:10px 14px;
+background:#0b3a2e;
+border:none;
+color:#e2f0e9;
+cursor:pointer;
+font-weight:600;
+}
+
+.liveNav button:hover{
+background:#c6a55a;
+color:#041f18;
 }
 
 
-.news-grid{
 
-display:grid;
+/* SINGLE PLAYER */
+
+.livePlayer iframe{
+width:100%;
+height:65vh;
+border:none;
+border-radius:6px;
+}
+
+
+
+/* QUAD VIEW */
+
+.quadGrid{
+display:none;
 grid-template-columns:1fr 1fr;
 gap:10px;
+margin-top:10px;
+}
 
+.quadGrid iframe{
+width:100%;
+height:35vh;
+border:none;
+border-radius:6px;
 }
 
 
-.news-grid iframe{
 
-height:420px;
+/* MAP PANELS */
 
+#map iframe{
+width:100%;
+height:75vh;
+border:none;
+border-radius:6px;
 }
 
+
+
+/* AIR / MARINE / CYBER */
+
+#air iframe,
+#marine iframe,
+#cyber iframe,
+#gmap iframe{
+width:100%;
+height:75vh;
+border:none;
+border-radius:6px;
+}
+
+
+
+/* OVERVIEW COMMAND WALL */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:10px;
+}
+
+.grid iframe{
+width:100%;
+height:30vh;
+border:none;
+border-radius:6px;
+}
+
+
+
+/* GENERAL IFRAME SAFETY */
+
+iframe{
+max-width:100%;
+display:block;
+}
+
+
+
+/* FOOTER */
 
 footer{
-
-background:#000;
 text-align:center;
-padding:10px;
-
+padding:20px;
+border-top:1px solid #1b4d3e;
+margin-top:30px;
 }
 
 
-footer video{
 
-height:50px;
+/* FOOTER RADAR */
 
+.footerRadar{
+width:60px;
+height:60px;
+margin:10px auto;
+border-radius:50%;
+overflow:hidden;
+}
+
+.footerRadar video{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
 
-footer a{
 
-color:#00ffcc;
+/* FOOTER LINK */
+
+.footerLink{
+color:#c6a55a;
 text-decoration:none;
-
+font-weight:600;
+font-size:18px;
 }
