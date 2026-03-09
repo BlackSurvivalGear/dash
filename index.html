@@ -28,7 +28,7 @@
 
 <div class="radarLogo" onclick="showTab('home')">
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 </div>
 
@@ -55,8 +55,8 @@
 </header>
 
 
-<div class="ticker">
-<div id="ticker">Loading conflict headlines...</div>
+<div class="newsTicker">
+<span id="ticker">Loading conflict headlines...</span>
 </div>
 
 
@@ -65,7 +65,7 @@
 <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
 
 <tv-ticker-tape
-symbols='BITSTAMP:BTCUSD,BITSTAMP:ETHUSD,CMCMARKETS:GOLD,FX_IDC:USDEUR,FX_IDC:USDGBP,FX_IDC:USDNGN,FX_IDC:GBPNGN,NYMEX:CL1!'
+symbols='BITSTAMP:BTCUSD,BITSTAMP:ETHUSD,CMCMARKETS:GOLD,FX_IDC:EURUSD,FX_IDC:GBPUSD,FX_IDC:USDNGN,FX_IDC:GBPNGN,NYMEX:CL1!'
 item-size="compact"
 hover-type="chart"
 show-hover
@@ -84,6 +84,7 @@ theme="dark">
 <button onclick="showTab('marine')">Marine Watch</button>
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
+<button onclick="showTab('markets')">Markets</button>
 <button onclick="showTab('charts')">Charts</button>
 <button onclick="showTab('command')">Overview</button>
 
@@ -91,37 +92,8 @@ theme="dark">
 
 
 <section id="home" class="tab active">
-
 <h2>Global Strategic Awareness OSINT</h2>
-
-<div class="homeLayout">
-
-<div class="homeImage">
-<img src="BSG2.png">
-</div>
-
-<div class="homeText">
-
-<p>
-The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly and often with little warning.
-</p>
-
-<p>
-Reliable information is the foundation of effective decision-making. Misinformation and fragmented reporting can obscure the true nature of developing events.
-</p>
-
-<p>
-The Global Strategic Awareness OSINT platform provides a consolidated view of global developments that may influence stability, mobility, and security.
-</p>
-
-<p>
-In a rapidly changing world, situational awareness is essential for preparedness and informed decision-making.
-</p>
-
-</div>
-
-</div>
-
+<p>Strategic monitoring platform integrating conflict intelligence, environmental monitoring and financial indicators.</p>
 </section>
 
 
@@ -151,7 +123,24 @@ In a rapidly changing world, situational awareness is essential for preparedness
 
 
 <section id="fire" class="tab">
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190"></iframe>
+</section>
+
+
+<section id="markets" class="tab">
+
+<div class="marketSubNav">
+
+<button onclick="showMarket('stocks')" class="active">Stock Heatmap</button>
+<button onclick="showMarket('crypto')">Crypto Heatmap</button>
+<button onclick="showMarket('forex')">Forex</button>
+
+</div>
+
+<div id="stocks" class="marketTab active"></div>
+<div id="crypto" class="marketTab"></div>
+<div id="forex" class="marketTab"></div>
+
 </section>
 
 
@@ -162,15 +151,12 @@ In a rapidly changing world, situational awareness is essential for preparedness
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
 {
-"allow_symbol_change": true,
-"symbol": "BINANCE:BTCUSDT",
-"interval": "D",
-"theme": "dark",
-"timezone": "Europe/London",
-"backgroundColor": "#0F0F0F",
-"autosize": true
+"symbol":"BINANCE:BTCUSDT",
+"interval":"D",
+"theme":"dark",
+"autosize":true
 }
 </script>
 
@@ -204,8 +190,8 @@ BlackSurvivalGear.com
 </a>
 
 <div class="footerRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<video autoplay muted loop>
+<source src="RADAR3.mp4">
 </video>
 </div>
 
@@ -216,26 +202,47 @@ BlackSurvivalGear.com
 
 function showTab(tabId){
 
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
+document.querySelectorAll('.tab').forEach(tab=>{
+tab.style.display='none'
 })
 
-document.querySelectorAll("nav button").forEach(btn=>{
-btn.classList.remove("active")
+document.querySelectorAll('nav button').forEach(btn=>{
+btn.classList.remove('active')
 })
 
-document.getElementById(tabId).classList.add("active")
+document.getElementById(tabId).style.display='block'
 
-event.target.classList.add("active")
+event.target.classList.add('active')
 
 }
+
+function showMarket(tab){
+
+document.querySelectorAll('.marketTab').forEach(t=>{
+t.style.display='none'
+})
+
+document.querySelectorAll('.marketSubNav button').forEach(b=>{
+b.classList.remove('active')
+})
+
+document.getElementById(tab).style.display='block'
+
+event.target.classList.add('active')
+
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+document.getElementById("home").style.display="block"
+document.getElementById("stocks").style.display="block"
+})
 
 
 function updateClock(){
 
-const now = new Date()
+const now=new Date()
 
-const options = {
+const options={
 year:'numeric',
 month:'short',
 day:'numeric',
@@ -243,8 +250,8 @@ hour:'2-digit',
 minute:'2-digit'
 }
 
-document.getElementById("datetime").textContent =
-now.toLocaleString(undefined, options)
+document.getElementById("datetime").textContent=
+now.toLocaleString(undefined,options)
 
 }
 
