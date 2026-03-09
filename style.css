@@ -1,23 +1,26 @@
-*{box-sizing:border-box}
-
 body{
 margin:0;
-font-family:'Rajdhani',sans-serif;
-color:#e2f0e9;
+font-family:Rajdhani, sans-serif;
 background:#041f18;
-overflow-x:hidden;
+color:#e2f0e9;
 }
 
 header{
 display:flex;
 align-items:center;
-padding:10px 15px;
+padding:10px 20px;
 background:#06231c;
 }
 
+.radarLogo{
+width:60px;
+height:60px;
+margin-right:15px;
+}
+
 nav{
-display:flex;
 background:#0b3a2e;
+display:flex;
 flex-wrap:wrap;
 }
 
@@ -26,13 +29,66 @@ padding:14px 18px;
 border:none;
 background:#0b3a2e;
 color:#e2f0e9;
-font-weight:600;
 cursor:pointer;
+font-weight:600;
 }
 
 nav button:hover{
 background:#c6a55a;
 color:#041f18;
+}
+
+.tab{
+display:none;
+padding:20px;
+}
+
+.tab.active{
+display:block;
+}
+
+iframe{
+width:100%;
+height:80vh;
+border:none;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.liveNav{
+margin-bottom:15px;
+}
+
+.liveNav button{
+margin-right:5px;
+padding:10px 14px;
+background:#0b3a2e;
+color:white;
+border:none;
+cursor:pointer;
+}
+
+.liveNav button:hover{
+background:#c6a55a;
+color:#041f18;
+}
+
+.livePlayer iframe{
+height:75vh;
+}
+
+.quadGrid{
+display:none;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.quadGrid iframe{
+height:40vh;
 }
 
 .ticker{
@@ -42,75 +98,17 @@ white-space:nowrap;
 }
 
 .tickerTrack{
-display:inline-block;
 padding-left:100%;
-animation:tickerMove 110s linear infinite;
-color:#c6a55a;
+display:inline-block;
+animation:ticker 110s linear infinite;
 }
 
-@keyframes tickerMove{
+@keyframes ticker{
 0%{transform:translateX(0)}
 100%{transform:translateX(-100%)}
 }
 
-.tab{
-display:none;
-padding:25px;
-margin:15px;
-background:rgba(8,40,32,0.55);
-border-radius:8px;
-position:relative;
-}
-
-.tab.active{display:block}
-
-.liveNav{
-display:flex;
-gap:6px;
-margin-bottom:15px;
-}
-
-.liveNav button{
-background:#0b3a2e;
-border:none;
-color:#e2f0e9;
-padding:10px 14px;
-cursor:pointer;
-}
-
-.livePlayer iframe{
-width:100%;
-height:75vh;
-border:none;
-border-radius:6px;
-}
-
-.quadGrid{
-display:none;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
-
-.quadGrid iframe{
-width:100%;
-height:42vh;
-border:none;
-border-radius:6px;
-}
-
-iframe{
-width:100%;
-height:80vh;
-border:none;
-border-radius:6px;
-}
-
-.footerRadar{
-width:60px;
-margin:10px auto;
-}
-
-.footerRadar video{
-width:100%;
-border-radius:50%;
+footer{
+text-align:center;
+padding:15px;
 }
