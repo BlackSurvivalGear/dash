@@ -33,7 +33,7 @@
 
 <div class="ticker">
 <div class="tickerTrack" id="marketTicker">
-Loading market feeds...
+Loading crypto market data...
 </div>
 </div>
 
@@ -43,7 +43,6 @@ Loading market feeds...
 
 <button onclick="showTab(event,'home')" class="active">Home</button>
 <button onclick="showTab(event,'live')">LIVE NEWS</button>
-<button onclick="showTab(event,'news')">Conflict News</button>
 <button onclick="showTab(event,'map')">Conflict Map</button>
 <button onclick="showTab(event,'air')">Aircraft Watch</button>
 <button onclick="showTab(event,'marine')">Marine Watch</button>
@@ -55,15 +54,7 @@ Loading market feeds...
 
 
 
-<!-- HOME -->
-
 <section id="home" class="tab active">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
 
 <div class="homePanel">
 
@@ -84,8 +75,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 </section>
 
 
-
-<!-- LIVE NEWS -->
 
 <section id="live" class="tab">
 
@@ -122,18 +111,6 @@ allowfullscreen></iframe>
 
 
 
-<!-- CONFLICT NEWS -->
-
-<section id="news" class="tab">
-
-<div id="newsGrid" class="newsGrid"></div>
-
-</section>
-
-
-
-<!-- CONFLICT MAP -->
-
 <section id="map" class="tab">
 
 <iframe src="https://liveuamap.com"></iframe>
@@ -141,8 +118,6 @@ allowfullscreen></iframe>
 </section>
 
 
-
-<!-- AIRCRAFT -->
 
 <section id="air" class="tab">
 
@@ -152,8 +127,6 @@ allowfullscreen></iframe>
 
 
 
-<!-- MARINE -->
-
 <section id="marine" class="tab">
 
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
@@ -162,8 +135,6 @@ allowfullscreen></iframe>
 
 
 
-<!-- CYBER -->
-
 <section id="cyber" class="tab">
 
 <iframe src="https://threatmap.checkpoint.com"></iframe>
@@ -171,8 +142,6 @@ allowfullscreen></iframe>
 </section>
 
 
-
-<!-- OVERVIEW -->
 
 <section id="command" class="tab">
 
@@ -189,15 +158,13 @@ allowfullscreen></iframe>
 
 
 
-<!-- GOOGLE MAP PLACEHOLDER -->
-
 <section id="gmap" class="tab">
 
 <div style="padding:40px;text-align:center">
 
-<h2>Global Map Module</h2>
+<h2>Google Map Integration Placeholder</h2>
 
-<p>Placeholder for Google Maps OSINT integration.</p>
+<p>Future OSINT map layer will be added here.</p>
 
 </div>
 
@@ -242,7 +209,7 @@ evt.target.classList.add("active")
 
 
 
-/* LIVE CHANNELS */
+/* LIVE STREAMS */
 
 function showLive(channel){
 
@@ -281,42 +248,47 @@ frame.src=streams[channel]
 
 
 
-/* MARKET TICKER */
+/* CRYPTO TICKER */
 
-async function loadMarkets(){
+async function loadCrypto(){
 
 try{
 
-const btc = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT").then(r=>r.json())
-const eth = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT").then(r=>r.json())
+const coins={
 
-const metals = await fetch("https://api.metals.live/v1/spot").then(r=>r.json())
+BTC:"BTCUSDT",
+ETH:"ETHUSDT",
+SOL:"SOLUSDT",
+AVAX:"AVAXUSDT",
+BNB:"BNBUSDT",
+XRP:"XRPUSDT",
+RENDER:"RENDERUSDT"
 
-let gold = metals.find(m=>m.gold)?.gold
-let silver = metals.find(m=>m.silver)?.silver
+}
 
-const oil = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT").then(r=>r.json())
+let ticker=""
 
-const ticker=document.getElementById("marketTicker")
+for(const coin in coins){
 
-ticker.innerHTML =
-`BTC $${parseFloat(btc.price).toFixed(0)} ◆
-ETH $${parseFloat(eth.price).toFixed(0)} ◆
-GOLD $${gold} ◆
-SILVER $${silver} ◆
-OIL $${parseFloat(oil.price).toFixed(0)}`
+const res=await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${coins[coin]}`)
+const data=await res.json()
+
+ticker+=`${coin} $${parseFloat(data.price).toFixed(2)} ◆ `
+
+}
+
+document.getElementById("marketTicker").innerHTML=ticker
 
 }catch(err){
 
-console.log("ticker error")
+console.log("crypto ticker error")
 
 }
 
 }
 
-loadMarkets()
-
-setInterval(loadMarkets,30000)
+loadCrypto()
+setInterval(loadCrypto,20000)
 
 </script>
 
