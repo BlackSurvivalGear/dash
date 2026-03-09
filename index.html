@@ -1,251 +1,351 @@
-*{
-box-sizing:border-box;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Global Strategic Awareness OSINT</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="radarLogo" onclick="showTab('home')">
+
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+<div class="radarSweep"></div>
+
+</div>
+
+<h1>Global Strategic Awareness OSINT</h1>
+
+</header>
+
+
+<div class="ticker">
+<div class="tickerTrack" id="ticker">
+Loading global headlines...
+</div>
+</div>
+
+
+<nav>
+
+<button onclick="showTab('home')" class="active">Home</button>
+<button onclick="showTab('news')">Conflict News</button>
+<button onclick="showTab('map')">Conflict Map</button>
+<button onclick="showTab('air')">Aircraft Watch</button>
+<button onclick="showTab('marine')">Marine Watch</button>
+<button onclick="showTab('cyber')">Cyber Attacks</button>
+<button onclick="showTab('fire')">Fire Monitor</button>
+<button onclick="showTab('rt')">RT</button>
+<button onclick="showTab('command')">Overview</button>
+
+</nav>
+
+
+<section id="home" class="tab active">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="homePanel">
+
+<img src="BSG2.png" class="homeBg">
+
+<div class="homeOverlay">
+
+<h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
+
+<div class="situationPanel">
+
+<h3>Global Situation Summary</h3>
+
+<ul id="situationList">
+<li>Loading global situation summary...</li>
+</ul>
+
+</div>
+
+<p class="homeText">
+
+Welcome to the BSG Global Strategic Awareness OSINT platform. This dashboard brings together open-source intelligence, global monitoring tools, and real-time situational awareness feeds into a single command-style interface.
+
+The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, environmental crises, and strategic competition between major powers can emerge rapidly and often with little warning.
+
+For members of the African diaspora, maintaining awareness of global developments is increasingly important. Many diaspora communities maintain strong family, economic, and cultural connections across Africa, Europe, and North America.
+
+Reliable information is the foundation of effective decision-making. BSG OSINT aims to provide a clear window into the global security landscape so users can remain informed, aware, and prepared.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="news" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<div id="newsGrid" class="newsGrid"></div>
+
+</section>
+
+
+<section id="map" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<iframe src="https://liveuamap.com"></iframe>
+
+</section>
+
+
+<section id="air" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+
+</section>
+
+
+<section id="marine" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+</section>
+
+
+<section id="cyber" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<iframe src="https://threatmap.checkpoint.com"></iframe>
+
+</section>
+
+
+<section id="fire" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+
+</section>
+
+
+<section id="rt" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" allowfullscreen></iframe>
+
+</section>
+
+
+<section id="command" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="grid">
+
+<iframe src="https://liveuamap.com"></iframe>
+<iframe src="https://threatmap.checkpoint.com"></iframe>
+<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footerRadar">
+
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+</div>
+
+<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
+BlackSurvivalGear.com
+</a>
+
+</footer>
+
+
+<script>
+
+function showTab(id){
+
+const tabs=document.querySelectorAll(".tab")
+const buttons=document.querySelectorAll("nav button")
+
+tabs.forEach(tab=>{
+tab.classList.remove("active")
+})
+
+buttons.forEach(btn=>{
+btn.classList.remove("active")
+})
+
+const target=document.getElementById(id)
+
+if(target){
+target.classList.add("active")
 }
 
-body{
-margin:0;
-font-family:'Rajdhani',sans-serif;
-color:#e2f0e9;
-background:#041f18;
-overflow-x:hidden;
+const clicked=[...buttons].find(b=>b.getAttribute("onclick")?.includes(id))
+
+if(clicked){
+clicked.classList.add("active")
 }
 
-header{
-display:flex;
-align-items:center;
-padding:10px 15px;
-background:#06231c;
-border-bottom:2px solid #c6a55a;
 }
 
-.radarLogo{
-position:relative;
-height:60px;
-width:60px;
-margin-right:18px;
-border-radius:50%;
-overflow:hidden;
-cursor:pointer;
+function updateSituation(headlines){
+
+const list=document.getElementById("situationList")
+
+if(!list) return
+
+list.innerHTML=""
+
+headlines.slice(0,3).forEach(h=>{
+
+const li=document.createElement("li")
+li.textContent=h
+list.appendChild(li)
+
+})
+
 }
 
-.radarLogo video{
-width:100%;
-height:100%;
-object-fit:cover;
+
+async function loadNews(){
+
+const feeds=[
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
+
+]
+
+let headlines=[]
+
+const container=document.getElementById("newsGrid")
+
+container.innerHTML=""
+
+for(const feed of feeds){
+
+try{
+
+const res=await fetch(feed)
+const data=await res.json()
+
+data.items.slice(0,3).forEach(article=>{
+
+headlines.push(article.title)
+
+const card=document.createElement("div")
+card.className="newsCard"
+
+card.innerHTML=`
+
+<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
+
+<div class="newsText">
+
+<span class="source">${data.feed.title}</span>
+
+<h3>${article.title}</h3>
+
+<a href="${article.link}" target="_blank">Read report</a>
+
+</div>
+`
+
+container.appendChild(card)
+
+})
+
+}catch(e){}
+
 }
 
-.radarSweep{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-border-radius:50%;
-background:conic-gradient(rgba(198,165,90,0.6),transparent);
-animation:radarSpin 4s linear infinite;
+const ticker=document.getElementById("ticker")
+const text=headlines.join(" ◆ ")+" ◆ "
+ticker.innerHTML=text+text+text
+
+updateSituation(headlines)
+
 }
 
-@keyframes radarSpin{
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
-}
+document.addEventListener("DOMContentLoaded",()=>{
 
-header h1{
-color:#718754;
-font-weight:600;
-}
+loadNews()
 
-nav{
-display:flex;
-background:#0b3a2e;
-flex-wrap:wrap;
-gap:2px;
-}
+setInterval(loadNews,60000)
 
-nav button{
-padding:14px 18px;
-border:none;
-background:#0b3a2e;
-color:#e2f0e9;
-cursor:pointer;
-font-weight:600;
-}
+})
 
-nav button.active,
-nav button:hover{
-background:#c6a55a;
-color:#041f18;
-}
+</script>
 
-.ticker{
-background:#021510;
-border-bottom:1px solid #c6a55a;
-overflow:hidden;
-white-space:nowrap;
-}
-
-.tickerTrack{
-display:inline-block;
-padding-left:100%;
-animation:tickerMove 40s linear infinite;
-color:#c6a55a;
-font-weight:600;
-font-size:15px;
-}
-
-@keyframes tickerMove{
-0%{transform:translateX(0)}
-100%{transform:translateX(-100%)}
-}
-
-.tab{
-display:none;
-padding:25px;
-margin:15px;
-background:rgba(8,40,32,0.55);
-border-radius:8px;
-width:100%;
-position:relative;
-overflow:hidden;
-}
-
-.tab.active{
-display:block;
-}
-
-.tabRadar{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:500px;
-opacity:0.05;
-pointer-events:none;
-z-index:0;
-}
-
-.tabRadar video{
-width:100%;
-}
-
-.tab>*:not(.tabRadar){
-position:relative;
-z-index:1;
-}
-
-.homePanel{
-position:relative;
-max-width:900px;
-}
-
-.homeBg{
-width:100%;
-opacity:0.18;
-display:block;
-}
-
-.homeOverlay{
-position:absolute;
-top:0;
-left:0;
-padding:25px;
-width:100%;
-}
-
-.homeText{
-font-size:20px;
-line-height:1.7;
-max-width:700px;
-}
-
-.situationPanel{
-background:rgba(0,0,0,0.45);
-border-left:4px solid #c6a55a;
-padding:12px 16px;
-margin:20px 0;
-max-width:650px;
-}
-
-.situationPanel h3{
-margin-top:0;
-color:#c6a55a;
-font-size:18px;
-}
-
-.situationPanel ul{
-margin:0;
-padding-left:18px;
-}
-
-.situationPanel li{
-margin-bottom:6px;
-}
-
-.newsGrid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:20px;
-}
-
-.newsCard{
-background:#0d3329;
-border-radius:8px;
-overflow:hidden;
-}
-
-.newsCard img{
-width:100%;
-height:180px;
-object-fit:cover;
-}
-
-.newsText{
-padding:12px;
-}
-
-.source{
-font-size:11px;
-font-weight:700;
-padding:3px 8px;
-background:#c6a55a;
-color:#041f18;
-}
-
-iframe{
-width:100%;
-height:80vh;
-border:none;
-border-radius:6px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-gap:15px;
-}
-
-footer{
-text-align:center;
-padding:15px;
-border-top:1px solid #1b4d3e;
-}
-
-.footerRadar{
-width:60px;
-height:60px;
-margin:10px auto;
-opacity:0.7;
-}
-
-.footerRadar video{
-width:100%;
-height:100%;
-object-fit:cover;
-border-radius:50%;
-}
-
-.footerLink{
-color:#c6a55a;
-text-decoration:none;
-font-weight:600;
-}
+</body>
+</html>
