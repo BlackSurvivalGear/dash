@@ -10,24 +10,27 @@
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-
 <header>
+
+<div class="logo">
+<img src="BSG.png">
+</div>
 
 <h1>BSG Global Strategic Awareness OSINT</h1>
 
+<div class="clock" id="clock"></div>
+
 </header>
 
-
-<div class="newsTicker">
+<div class="ticker">
 <span id="ticker">Loading conflict headlines...</span>
 </div>
-
 
 <nav>
 
@@ -38,111 +41,146 @@
 <button onclick="showTab('marine')">Marine Watch</button>
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
+<button onclick="showTab('markets')">Markets</button>
+<button onclick="showTab('charts')">Charts</button>
 <button onclick="showTab('overview')">Overview</button>
 
 </nav>
-
 
 <section id="home" class="tab active">
 
 <h2>Global Strategic Awareness OSINT</h2>
 
 <p>
+
 Strategic monitoring platform integrating conflict intelligence, environmental monitoring and financial indicators.
+
 </p>
 
 </section>
 
-
-
 <section id="news" class="tab">
-
 <div id="newsGrid" class="newsGrid"></div>
-
 </section>
-
-
 
 <section id="map" class="tab">
 <iframe src="https://liveuamap.com"></iframe>
 </section>
 
-
 <section id="air" class="tab">
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 </section>
-
 
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
-
 <section id="cyber" class="tab">
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 </section>
 
-
 <section id="fire" class="tab">
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190"></iframe>
+<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
 </section>
 
+<section id="markets" class="tab">
+
+<iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview&symbol=FOREXCOM%3AUS30&interval=D&hidesidetoolbar=1"></iframe>
+
+</section>
+
+<section id="charts" class="tab">
+
+<div class="chartHolder">
+
+<div class="tradingview-widget-container">
+<div id="tradingview_chart"></div>
+
+<script src="https://s3.tradingview.com/tv.js"></script>
+
+<script>
+new TradingView.widget({
+width:"100%",
+height:600,
+symbol:"BINANCE:BTCUSDT",
+interval:"D",
+timezone:"Europe/London",
+theme:"dark",
+style:"1",
+locale:"en",
+container_id:"tradingview_chart"
+});
+</script>
+
+</div>
+
+</div>
+
+</section>
 
 <section id="overview" class="tab">
 
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
+
 <iframe src="https://threatmap.checkpoint.com"></iframe>
+
+<iframe src="https://globe.adsbexchange.com"></iframe>
+
+<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
 
 </div>
 
 </section>
 
+<footer>
 
+<a href="https://BlackSurvivalGear.com" target="_blank">
+
+BlackSurvivalGear.com
+
+</a>
+
+</footer>
 
 <script>
 
+function showTab(id){
 
-function showTab(tabId){
+document.querySelectorAll(".tab").forEach(tab=>{
 
-document.querySelectorAll('.tab').forEach(tab=>{
-tab.style.display='none'
+tab.classList.remove("active")
+
 })
 
-document.querySelectorAll('nav button').forEach(btn=>{
-btn.classList.remove('active')
+document.getElementById(id).classList.add("active")
+
+document.querySelectorAll("nav button").forEach(btn=>{
+
+btn.classList.remove("active")
+
 })
 
-document.getElementById(tabId).style.display='block'
-
-event.target.classList.add('active')
+event.target.classList.add("active")
 
 }
-
-
 
 async function loadNews(){
 
 const feeds=[
 
 "https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
-
 "https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://sputnikglobe.com/export/rss2/archive/index.xml"
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
 
 ]
 
+let headlines=[]
 
 const container=document.getElementById("newsGrid")
 
 container.innerHTML=""
-
-let headlines=[]
-
 
 for(const feed of feeds){
 
@@ -152,16 +190,13 @@ const res=await fetch(feed)
 
 const data=await res.json()
 
-
-data.items.slice(0,3).forEach(article=>{
+data.items.slice(0,4).forEach(article=>{
 
 headlines.push(article.title)
-
 
 const card=document.createElement("div")
 
 card.className="newsCard"
-
 
 card.innerHTML=`
 
@@ -187,24 +222,34 @@ container.appendChild(card)
 
 }
 
-
 document.getElementById("ticker").textContent=headlines.join(" ◆ ")
 
 }
 
+function updateClock(){
 
+const now=new Date()
+
+document.getElementById("clock").innerText=
+
+now.toLocaleString()
+
+}
+
+setInterval(updateClock,60000)
 
 document.addEventListener("DOMContentLoaded",()=>{
 
 loadNews()
 
+updateClock()
+
 setInterval(loadNews,60000)
 
 })
 
-
 </script>
 
-
 </body>
+
 </html>
