@@ -12,7 +12,7 @@ background-size:60px 60px;
 }
 
 
-/* watermark */
+/* WATERMARK */
 
 body::before{
 content:"";
@@ -23,35 +23,13 @@ width:100%;
 height:100%;
 background:url("bsg.jpg") center no-repeat;
 background-size:900px;
-opacity:0.14;
-filter:grayscale(100%) brightness(1.2);
+opacity:0.15;
 pointer-events:none;
 z-index:-2;
 }
 
 
-/* radar rings */
-
-body::after{
-content:"";
-position:fixed;
-top:50%;
-left:50%;
-width:900px;
-height:900px;
-transform:translate(-50%,-50%);
-border-radius:50%;
-background:radial-gradient(circle,rgba(198,165,90,0.15) 2px,transparent 2px);
-animation:radarPulse 8s linear infinite;
-pointer-events:none;
-z-index:-1;
-}
-
-@keyframes radarPulse{
-0%{transform:translate(-50%,-50%) scale(0.8)}
-100%{transform:translate(-50%,-50%) scale(1.3)}
-}
-
+/* HEADER */
 
 header{
 display:flex;
@@ -59,6 +37,12 @@ align-items:center;
 padding:10px 15px;
 background:rgba(6,35,28,0.85);
 border-bottom:2px solid #c6a55a;
+}
+
+header h1{
+color:#718754;
+font-weight:600;
+letter-spacing:1px;
 }
 
 
@@ -70,42 +54,12 @@ margin-right:18px;
 border-radius:50%;
 overflow:hidden;
 cursor:pointer;
-background:#041f18;
-box-shadow:0 0 8px rgba(198,165,90,0.35), inset 0 0 15px rgba(0,0,0,0.7);
 }
 
 .radarLogo video{
-position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100%;
 object-fit:cover;
-}
-
-.radarSweep{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-border-radius:50%;
-background:conic-gradient(rgba(198,165,90,0.6), rgba(198,165,90,0.15), transparent 60%);
-animation:radarSpin 4s linear infinite;
-mix-blend-mode:screen;
-}
-
-@keyframes radarSpin{
-0%{transform:rotate(0deg)}
-100%{transform:rotate(360deg)}
-}
-
-
-header h1{
-color:#718754;
-font-weight:600;
-letter-spacing:1px;
-font-size:26px;
 }
 
 
@@ -120,7 +74,6 @@ border:1px solid rgba(255,255,255,0.25);
 border-radius:4px;
 opacity:0.35;
 font-size:12px;
-margin-left:5px;
 }
 
 .threatScale .active{
@@ -128,6 +81,29 @@ opacity:1;
 border:1px solid #c6a55a;
 }
 
+
+/* TICKER */
+
+.ticker{
+background:#06231c;
+overflow:hidden;
+white-space:nowrap;
+border-bottom:1px solid #1c4b3c;
+}
+
+#ticker{
+display:inline-block;
+padding-left:100%;
+animation:tickerMove 60s linear infinite;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+
+/* NAV */
 
 nav{
 display:flex;
@@ -142,7 +118,6 @@ background:#0b3a2e;
 color:#e2f0e9;
 cursor:pointer;
 font-weight:600;
-font-size:15px;
 }
 
 nav button:hover,
@@ -152,13 +127,15 @@ color:#041f18;
 }
 
 
+/* TABS */
+
 .tab{
 display:none;
-padding:30px;
+padding:20px;
+margin:15px;
 background:rgba(8,40,32,0.40);
 border-radius:8px;
-margin:15px;
-min-height:600px;
+min-height:80vh;
 }
 
 .tab.active{
@@ -166,33 +143,26 @@ display:block;
 }
 
 
-/* HOME PAGE LAYOUT */
+/* IFRAME MAPS */
 
-#home{
-max-width:1200px;
-margin:auto;
-}
-
-.homeText{
-font-size:20px;
-line-height:1.7;
-max-width:650px;
-color:#d7e7df;
-}
-
-
-.homeImage{
-float:right;
-width:40%;
-max-width:420px;
-margin-left:30px;
-margin-top:10px;
-}
-
-.homeImage img{
+iframe{
 width:100%;
-opacity:0.50;
-filter:grayscale(100%) brightness(1.2);
+height:80vh;
+border:none;
+border-radius:6px;
+}
+
+
+/* COMMAND CENTER */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.grid iframe{
+height:45vh;
 }
 
 
@@ -208,7 +178,6 @@ gap:20px;
 background:rgba(10,45,35,0.45);
 border-radius:8px;
 overflow:hidden;
-border:1px solid rgba(255,255,255,0.08);
 }
 
 .newsCard img{
@@ -231,37 +200,21 @@ color:#041f18;
 }
 
 
-.newsCard a{
-color:#c6a55a;
-text-decoration:none;
+/* HOME */
+
+.homeText{
+font-size:20px;
+line-height:1.7;
+max-width:700px;
 }
 
-.newsCard a:hover{
-text-decoration:underline;
+.homeImage{
+margin-top:30px;
 }
 
-
-/* MAP / IFRAME PANELS */
-
-iframe{
-width:100%;
-height:650px;
-border:none;
-border-radius:6px;
-background:black;
-}
-
-
-/* COMMAND GRID */
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.grid iframe{
-height:420px;
+.homeImage img{
+width:420px;
+opacity:0.45;
 }
 
 
@@ -271,14 +224,12 @@ footer{
 text-align:center;
 padding:15px;
 border-top:1px solid #1b4d3e;
-margin-top:20px;
 }
 
 .footerLink{
 color:#c6a55a;
 text-decoration:none;
 font-weight:600;
-font-size:16px;
 }
 
 .footerLink:hover{
