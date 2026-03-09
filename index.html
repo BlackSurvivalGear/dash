@@ -30,29 +30,25 @@
 </header>
 
 
-
 <div class="ticker">
-<div class="tickerTrack">
-Global monitoring feeds active • OSINT streams online • Strategic awareness dashboard operational
+<div class="tickerTrack" id="marketTicker">
+Loading global market data...
 </div>
 </div>
-
 
 
 <nav>
 
 <button onclick="showTab(event,'home')" class="active">Home</button>
+<button onclick="showTab(event,'live')">LIVE NEWS</button>
 <button onclick="showTab(event,'news')">Conflict News</button>
 <button onclick="showTab(event,'map')">Conflict Map</button>
 <button onclick="showTab(event,'air')">Aircraft Watch</button>
 <button onclick="showTab(event,'marine')">Marine Watch</button>
 <button onclick="showTab(event,'cyber')">Cyber Attacks</button>
-<button onclick="showTab(event,'fire')">Fire Monitor</button>
-<button onclick="showTab(event,'live')">LIVE NEWS</button>
 <button onclick="showTab(event,'command')">Overview</button>
 
 </nav>
-
 
 
 <section id="home" class="tab active">
@@ -82,7 +78,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </section>
 
 
-
 <section id="news" class="tab">
 
 <div class="tabRadar">
@@ -94,7 +89,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 <div id="newsGrid" class="newsGrid"></div>
 
 </section>
-
 
 
 <section id="map" class="tab">
@@ -110,7 +104,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </section>
 
 
-
 <section id="air" class="tab">
 
 <div class="tabRadar">
@@ -122,7 +115,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 
 </section>
-
 
 
 <section id="marine" class="tab">
@@ -138,7 +130,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </section>
 
 
-
 <section id="cyber" class="tab">
 
 <div class="tabRadar">
@@ -150,21 +141,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 
 </section>
-
-
-
-<section id="fire" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
-
-</section>
-
 
 
 <section id="live" class="tab">
@@ -187,7 +163,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </div>
 
 
-
 <div id="liveSingle" class="livePlayer">
 
 <iframe id="liveFrame"
@@ -196,7 +171,6 @@ allowfullscreen>
 </iframe>
 
 </div>
-
 
 
 <div id="quadView" class="quadGrid">
@@ -209,7 +183,6 @@ allowfullscreen>
 </div>
 
 </section>
-
 
 
 <section id="command" class="tab">
@@ -232,7 +205,6 @@ allowfullscreen>
 </section>
 
 
-
 <footer>
 
 <div class="footerRadar">
@@ -246,7 +218,6 @@ BlackSurvivalGear.com
 </a>
 
 </footer>
-
 
 
 <script>
@@ -267,7 +238,6 @@ btn.classList.remove("active")
 evt.target.classList.add("active")
 
 }
-
 
 
 function showLive(channel){
@@ -307,68 +277,46 @@ frame.src=streams[channel]
 
 
 
-/* NEWS LOADER */
+/* MARKET TICKER */
 
-async function loadNews(){
-
-const feeds=[
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.theguardian.com/world/rss",
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.defensenews.com/arc/outboundfeeds/rss/"
-]
-
-const container=document.getElementById("newsGrid")
-
-container.innerHTML=""
-
-for(const feed of feeds){
+async function loadMarkets(){
 
 try{
 
-const res=await fetch(feed)
-const data=await res.json()
+const btc=await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT").then(r=>r.json())
+const eth=await fetch("https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT").then(r=>r.json())
 
-data.items.slice(0,3).forEach(article=>{
+const metals=await fetch("https://query1.finance.yahoo.com/v7/finance/quote?symbols=GC=F,SI=F,CL=F")
+.then(r=>r.json())
 
-const card=document.createElement("div")
-card.className="newsCard"
+const gold=metals.quoteResponse.result[0].regularMarketPrice
+const silver=metals.quoteResponse.result[1].regularMarketPrice
+const oil=metals.quoteResponse.result[2].regularMarketPrice
 
-card.innerHTML=`
+const ticker=document.getElementById("marketTicker")
 
-<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
-
-<div class="newsText">
-
-<span class="source">${data.feed.title}</span>
-
-<h3>${article.title}</h3>
-
-<a href="${article.link}" target="_blank">Read report</a>
-
-</div>
+ticker.innerHTML=`
+BTC $${parseFloat(btc.price).toFixed(0)} ◆
+ETH $${parseFloat(eth.price).toFixed(0)} ◆
+GOLD $${gold} ◆
+SILVER $${silver} ◆
+OIL $${oil} ◆
+Global monitoring feeds active ◆ OSINT dashboard operational
 `
 
-container.appendChild(card)
+}catch(e){
 
-})
-
-}catch(e){}
+console.log("Market feed error")
 
 }
 
 }
 
-document.addEventListener("DOMContentLoaded",loadNews)
+loadMarkets()
+setInterval(loadMarkets,30000)
+
 
 </script>
-
 
 </body>
 </html>
