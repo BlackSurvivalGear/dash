@@ -27,6 +27,7 @@
 <h1>BSG Global Strategic Awareness OSINT</h1>
 
 <div class="threatPanel">
+
 <div class="threatLabel">GLOBAL THREAT LEVEL</div>
 
 <div class="threatScale">
@@ -37,6 +38,10 @@
 <span>CRITICAL</span>
 </div>
 
+</div>
+
+<div class="clock">
+<span id="datetime"></span>
 </div>
 
 </header>
@@ -56,7 +61,7 @@
 <button onclick="showTab('marine')">Marine Watch</button>
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
-<button onclick="showTab('command')">Command Overview</button>
+<button onclick="showTab('command')">Overview</button>
 
 </nav>
 
@@ -74,7 +79,7 @@ The modern security environment is increasingly volatile and interconnected. Pol
 </p>
 
 <p class="homeText">
-Reliable information is the foundation of effective decision-making. Misinformation and fragmented reporting can obscure the true nature of developing events. Access to timely and credible data allows individuals and organizations to better understand risk and anticipate disruption.
+Reliable information is the foundation of effective decision-making. Misinformation and fragmented reporting can obscure the true nature of developing events.
 </p>
 
 <p class="homeText">
@@ -82,7 +87,7 @@ The Global Strategic Awareness OSINT platform provides a consolidated view of gl
 </p>
 
 <p class="homeText">
-In a rapidly changing world, situational awareness is no longer optional — it is essential for preparedness and informed decision-making.
+In a rapidly changing world, situational awareness is essential for preparedness and informed decision-making.
 </p>
 
 </section>
@@ -119,6 +124,8 @@ In a rapidly changing world, situational awareness is no longer optional — it 
 
 
 <section id="command" class="tab">
+
+<h2>Global Overview</h2>
 
 <div class="grid">
 
@@ -160,6 +167,28 @@ document.querySelector(`nav button[onclick="showTab('${id}')"]`).classList.add("
 }
 
 
+function updateClock(){
+
+const now = new Date()
+
+const options = {
+year:'numeric',
+month:'short',
+day:'numeric',
+hour:'2-digit',
+minute:'2-digit',
+second:'2-digit'
+}
+
+document.getElementById("datetime").textContent =
+now.toLocaleString(undefined, options)
+
+}
+
+setInterval(updateClock,1000)
+updateClock()
+
+
 async function loadNews(){
 
 const feeds=[
@@ -171,11 +200,9 @@ const feeds=[
 ]
 
 const keywords=[
-
 "war","missile","strike","attack","invasion","battle","troops",
 "drone","airstrike","conflict","terror","clash","offensive",
 "security","cyber","sanctions","militant","explosion"
-
 ]
 
 let headlines=[]
@@ -189,48 +216,25 @@ try{
 const res=await fetch(feed)
 const data=await res.json()
 
-data.items.forEach(article=>{
+let count=0
+
+for(const article of data.items){
 
 const title=article.title.toLowerCase()
 
 const isConflict=keywords.some(word=>title.includes(word))
-if(!isConflict) return
-
-
-let category="escalation"
-let label="🟠 Military Escalation"
-
-if(title.includes("war") || title.includes("invasion"))
-{
-category="war"
-label="🔴 Active War"
-}
-
-else if(title.includes("terror") || title.includes("militant"))
-{
-category="terror"
-label="🟡 Security / Terror"
-}
-
-else if(title.includes("cyber"))
-{
-category="cyber"
-label="🔵 Cyber Conflict"
-}
-
+if(!isConflict) continue
 
 headlines.push(article.title)
 
 const card=document.createElement("div")
-card.className=`newsCard ${category}`
+card.className="newsCard"
 
 card.innerHTML=`
 
 <img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
 
 <div class="newsText">
-
-<span class="category">${label}</span>
 
 <span class="source">${data.feed.title}</span>
 
@@ -243,7 +247,11 @@ card.innerHTML=`
 
 container.appendChild(card)
 
-})
+count++
+
+if(count>=3) break
+
+}
 
 }catch(e){}
 
