@@ -64,7 +64,13 @@
 
 <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
 
-<tv-ticker-tape symbols='BITSTAMP:BTCUSD,BITSTAMP:ETHUSD,CMCMARKETS:GOLD,FX_IDC:USDEUR,FX_IDC:USDGBP,FX_IDC:USDNGN,FX_IDC:GBPNGN,NYMEX:CL1!'></tv-ticker-tape>
+<tv-ticker-tape
+symbols='BITSTAMP:BTCUSD,BITSTAMP:ETHUSD,CMCMARKETS:GOLD,FX_IDC:USDEUR,FX_IDC:USDGBP,FX_IDC:USDNGN,FX_IDC:GBPNGN,NYMEX:CL1!'
+item-size="compact"
+hover-type="chart"
+show-hover
+theme="dark">
+</tv-ticker-tape>
 
 </div>
 
@@ -208,19 +214,19 @@ BlackSurvivalGear.com
 
 <script>
 
-function showTab(id){
+function showTab(tabId){
 
 document.querySelectorAll(".tab").forEach(tab=>{
 tab.classList.remove("active")
 })
 
-document.getElementById(id).classList.add("active")
-
 document.querySelectorAll("nav button").forEach(btn=>{
 btn.classList.remove("active")
 })
 
-document.querySelector(`nav button[onclick="showTab('${id}')"]`).classList.add("active")
+document.getElementById(tabId).classList.add("active")
+
+event.target.classList.add("active")
 
 }
 
@@ -244,7 +250,6 @@ now.toLocaleString(undefined, options)
 
 setInterval(updateClock,60000)
 updateClock()
-
 
 </script>
 
