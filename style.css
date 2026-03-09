@@ -77,6 +77,30 @@ background:#c6a55a;
 color:#041f18;
 }
 
+.ticker{
+background:#021510;
+border-bottom:1px solid #c6a55a;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.tickerWrap{
+display:inline-block;
+padding-left:100%;
+animation:tickerScroll 45s linear infinite;
+}
+
+@keyframes tickerScroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-100%)}
+}
+
+#ticker{
+color:#c6a55a;
+font-weight:600;
+font-size:15px;
+}
+
 .tab{
 display:none;
 padding:25px;
@@ -112,15 +136,31 @@ position:relative;
 z-index:1;
 }
 
-.homeText{
-font-size:20px;
-line-height:1.7;
+.homePanel{
+position:relative;
 max-width:900px;
 }
 
-.homeImage img{
-width:60%;
+.homePanel img{
+width:100%;
 opacity:0.18;
+}
+
+.homeOverlay{
+position:absolute;
+top:0;
+left:0;
+padding:20px;
+width:100%;
+}
+
+.homeOverlay h2{
+margin-top:0;
+}
+
+.homeText{
+font-size:20px;
+line-height:1.7;
 }
 
 .newsGrid{
