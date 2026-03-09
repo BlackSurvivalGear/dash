@@ -6,225 +6,264 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Global Strategic Awareness OSINT</title>
+<title>BSG Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<header>
+<!-- RADAR BACKGROUND -->
 
-<div class="radarLogo" onclick="showTab('home')">
-
-<video autoplay muted loop playsinline>
+<video autoplay muted loop id="radarBG">
 <source src="RADAR3.mp4" type="video/mp4">
 </video>
 
-<div class="radarSweep"></div>
+<div class="overlay"></div>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logoTitle">
+
+<img src="bsg2.jpg" class="logo">
+
+<h1>BSG Global Strategic Awareness OSINT</h1>
 
 </div>
 
-<h1>Global Strategic Awareness OSINT</h1>
+<div class="threat">
+
+GLOBAL THREAT LEVEL  
+<span id="threatLevel">NORMAL</span>
+
+</div>
 
 </header>
 
+<!-- NEWS TICKER -->
 
 <div class="ticker">
 
-<span id="ticker">Loading global headlines...</span>
+<div id="tickerText">Loading conflict headlines...</div>
 
 </div>
 
+<!-- NAVIGATION -->
 
 <nav>
 
-<button onclick="showTab('home')" class="active">Home</button>
-<button onclick="showTab('news')">Conflict News</button>
-<button onclick="showTab('map')">Conflict Map</button>
-<button onclick="showTab('air')">Aircraft Watch</button>
+<button onclick="showTab('home')">Home</button>
+
+<button onclick="showTab('conflict')">Conflict News</button>
+
+<button onclick="showTab('conflictmap')">Conflict Map</button>
+
+<button onclick="showTab('aircraft')">Aircraft Watch</button>
+
 <button onclick="showTab('marine')">Marine Watch</button>
+
 <button onclick="showTab('cyber')">Cyber Attacks</button>
+
 <button onclick="showTab('fire')">Fire Monitor</button>
-<button onclick="showTab('command')">Overview</button>
+
+<button onclick="showTab('markets')">Markets</button>
+
+<button onclick="showTab('charts')">Charts</button>
+
+<button onclick="showTab('worldmap')">World Map</button>
+
+<button onclick="showTab('overview')">Overview</button>
 
 </nav>
 
+<!-- HOME TAB -->
 
 <section id="home" class="tab active">
 
 <h2>Global Strategic Awareness OSINT</h2>
 
-<p class="homeText">
+<p>
 
-The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly and often with little warning.
-
-Reliable information is the foundation of effective decision-making.
+Strategic monitoring platform integrating conflict intelligence,
+environmental monitoring and financial indicators.
 
 </p>
 
-<div class="homeImage">
+</section>
 
-<img src="BSG2.png">
+<!-- CONFLICT NEWS -->
+
+<section id="conflict" class="tab">
+
+<h2>Conflict News</h2>
+
+<div id="newsGrid"></div>
+
+</section>
+
+<!-- CONFLICT MAP -->
+
+<section id="conflictmap" class="tab">
+
+<h2>Conflict Map</h2>
+
+<div class="placeholder">
+
+Conflict monitoring map will appear here.
 
 </div>
 
 </section>
 
+<!-- AIRCRAFT -->
 
-<section id="news" class="tab">
+<section id="aircraft" class="tab">
 
-<div id="newsGrid" class="newsGrid"></div>
+<h2>Aircraft Watch</h2>
 
-</section>
+<div class="placeholder">
 
+Live aircraft tracking dashboard placeholder.
 
-<section id="map" class="tab">
-
-<iframe src="https://liveuamap.com"></iframe>
-
-</section>
-
-
-<section id="air" class="tab">
-
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+</div>
 
 </section>
 
+<!-- MARINE -->
 
 <section id="marine" class="tab">
 
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+<h2>Marine Watch</h2>
+
+<div class="placeholder">
+
+Global maritime monitoring placeholder.
+
+</div>
 
 </section>
 
+<!-- CYBER -->
 
 <section id="cyber" class="tab">
 
-<iframe src="https://threatmap.checkpoint.com"></iframe>
+<h2>Cyber Attacks</h2>
+
+<div class="placeholder">
+
+Cyber threat monitoring placeholder.
+
+</div>
 
 </section>
 
+<!-- FIRE -->
 
 <section id="fire" class="tab">
 
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+<h2>Fire Monitor</h2>
 
-</section>
+<div class="placeholder">
 
-
-<section id="command" class="tab">
-
-<div class="grid">
-
-<iframe src="https://liveuamap.com"></iframe>
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
-<iframe src="https://globe.adsbexchange.com"></iframe>
+Global wildfire monitoring placeholder.
 
 </div>
 
 </section>
 
+<!-- MARKETS -->
+
+<section id="markets" class="tab">
+
+<h2>Markets</h2>
+
+<div class="placeholder">
+
+Financial market monitoring dashboard placeholder.
+
+</div>
+
+</section>
+
+<!-- CHARTS -->
+
+<section id="charts" class="tab">
+
+<h2>Charts</h2>
+
+<div class="placeholder">
+
+Strategic financial charts placeholder.
+
+</div>
+
+</section>
+
+<!-- WORLD MAP -->
+
+<section id="worldmap" class="tab">
+
+<h2>World Map</h2>
+
+<div class="placeholder">
+
+Global strategic awareness map placeholder.
+
+</div>
+
+</section>
+
+<!-- OVERVIEW -->
+
+<section id="overview" class="tab">
+
+<h2>Overview</h2>
+
+<p>
+
+BSG Global Strategic Awareness OSINT integrates multiple
+open-source intelligence feeds to provide situational awareness
+of global security developments.
+
+</p>
+
+</section>
+
+<!-- FOOTER -->
 
 <footer>
 
-<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
+<div class="footerURL">
+
 BlackSurvivalGear.com
-</a>
+
+</div>
+
+<video class="footerRadar" autoplay muted loop>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
 
 </footer>
 
+<!-- TAB SCRIPT -->
 
 <script>
 
-function showTab(id){
+function showTab(tab){
 
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
+document.querySelectorAll(".tab").forEach(t=>{
+t.classList.remove("active")
 })
 
-document.getElementById(id).classList.add("active")
-
-document.querySelectorAll("nav button").forEach(btn=>{
-btn.classList.remove("active")
-})
-
-event.target.classList.add("active")
+document.getElementById(tab).classList.add("active")
 
 }
-
-
-async function loadNews(){
-
-const feeds=[
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
-
-]
-
-let headlines=[]
-
-const container=document.getElementById("newsGrid")
-
-container.innerHTML=""
-
-for(const feed of feeds){
-
-try{
-
-const res=await fetch(feed)
-const data=await res.json()
-
-data.items.slice(0,3).forEach(article=>{
-
-headlines.push(article.title)
-
-const card=document.createElement("div")
-card.className="newsCard"
-
-card.innerHTML=`
-
-<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
-
-<div class="newsText">
-
-<span class="source">${data.feed.title}</span>
-
-<h3>${article.title}</h3>
-
-<a href="${article.link}" target="_blank">Read report</a>
-
-</div>
-`
-
-container.appendChild(card)
-
-})
-
-}catch(e){}
-
-}
-
-document.getElementById("ticker").textContent=headlines.join(" ◆ ")
-
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-loadNews()
-
-setInterval(loadNews,60000)
-
-})
 
 </script>
 
 </body>
+
 </html>
