@@ -34,9 +34,7 @@
 
 
 <div class="ticker">
-
 <span id="ticker">Loading global headlines...</span>
-
 </div>
 
 
@@ -67,53 +65,39 @@ Reliable information is the foundation of effective decision-making.
 </p>
 
 <div class="homeImage">
-
 <img src="BSG2.png">
-
 </div>
 
 </section>
 
 
 <section id="news" class="tab">
-
 <div id="newsGrid" class="newsGrid"></div>
-
 </section>
 
 
 <section id="map" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
 
 
 <section id="air" class="tab">
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
 
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
 
 
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
 
 
 <section id="fire" class="tab">
-
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
-
 </section>
 
 
@@ -133,6 +117,14 @@ Reliable information is the foundation of effective decision-making.
 
 <footer>
 
+<div class="footerRadar">
+
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+</div>
+
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
 BlackSurvivalGear.com
 </a>
@@ -144,17 +136,28 @@ BlackSurvivalGear.com
 
 function showTab(id){
 
-document.querySelectorAll(".tab").forEach(tab=>{
+const tabs=document.querySelectorAll(".tab")
+const buttons=document.querySelectorAll("nav button")
+
+tabs.forEach(tab=>{
 tab.classList.remove("active")
 })
 
-document.getElementById(id).classList.add("active")
-
-document.querySelectorAll("nav button").forEach(btn=>{
+buttons.forEach(btn=>{
 btn.classList.remove("active")
 })
 
-event.target.classList.add("active")
+const target=document.getElementById(id)
+
+if(target){
+target.classList.add("active")
+}
+
+const clicked=[...buttons].find(b=>b.getAttribute("onclick")?.includes(id))
+
+if(clicked){
+clicked.classList.add("active")
+}
 
 }
 
