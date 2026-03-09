@@ -17,11 +17,27 @@
 <body>
 
 
+<div class="radarBackground">
+
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+</div>
+
+
 <header>
 
-<div class="logo">
-<img src="BSG2.png">
+<div class="radarLogo" onclick="showTab('home')">
+
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+<div class="radarSweep"></div>
+
 </div>
+
 
 <h1>BSG Global Strategic Awareness OSINT</h1>
 
@@ -44,10 +60,10 @@ GLOBAL THREAT LEVEL
 
 </div>
 
+
 <div class="clock" id="clock"></div>
 
 </header>
-
 
 
 <div class="ticker">
@@ -55,7 +71,6 @@ GLOBAL THREAT LEVEL
 <span id="ticker">Loading conflict headlines...</span>
 
 </div>
-
 
 
 <nav>
@@ -74,21 +89,21 @@ GLOBAL THREAT LEVEL
 </nav>
 
 
-
 <section id="home" class="tab active">
 
 <h2>Global Strategic Awareness OSINT</h2>
 
 <p>
 
-The modern security environment is increasingly volatile and interconnected. Political tensions, regional conflicts, economic disruption, cyber incidents, and environmental crises can emerge rapidly with little warning.
+The modern security environment is increasingly volatile and interconnected.
+Political tensions, regional conflicts, economic disruption, cyber incidents,
+and environmental crises can emerge rapidly with little warning.
 
-Reliable information is the foundation of effective decision-making. The Global Strategic Awareness OSINT platform consolidates open-source intelligence streams into a single operational view.
+Reliable information is the foundation of effective decision-making.
 
 </p>
 
 </section>
-
 
 
 <section id="news" class="tab">
@@ -98,13 +113,11 @@ Reliable information is the foundation of effective decision-making. The Global 
 </section>
 
 
-
 <section id="map" class="tab">
 
 <iframe src="https://liveuamap.com"></iframe>
 
 </section>
-
 
 
 <section id="air" class="tab">
@@ -114,13 +127,11 @@ Reliable information is the foundation of effective decision-making. The Global 
 </section>
 
 
-
 <section id="marine" class="tab">
 
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 
 </section>
-
 
 
 <section id="cyber" class="tab">
@@ -130,13 +141,11 @@ Reliable information is the foundation of effective decision-making. The Global 
 </section>
 
 
-
 <section id="fire" class="tab">
 
-<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+<iframe src="https://livingatlas.arcgis.com/wayback/#active=28190"></iframe>
 
 </section>
-
 
 
 <section id="markets" class="tab">
@@ -149,17 +158,20 @@ Reliable information is the foundation of effective decision-making. The Global 
 
 </div>
 
+
 <div id="stocks" class="marketTab active">
 
 <iframe src="https://s.tradingview.com/heatmap/stock"></iframe>
 
 </div>
 
+
 <div id="crypto" class="marketTab">
 
 <iframe src="https://s.tradingview.com/heatmap/crypto"></iframe>
 
 </div>
+
 
 <div id="forex" class="marketTab">
 
@@ -168,7 +180,6 @@ Reliable information is the foundation of effective decision-making. The Global 
 </div>
 
 </section>
-
 
 
 <section id="charts" class="tab">
@@ -197,7 +208,6 @@ container_id:"chart"
 </section>
 
 
-
 <section id="overview" class="tab">
 
 <div class="grid">
@@ -212,23 +222,18 @@ container_id:"chart"
 </section>
 
 
-
 <footer>
 
 <img src="BSG2.png" class="footerLogo">
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
-
 BlackSurvivalGear.com
-
 </a>
 
 </footer>
 
 
-
 <script>
-
 
 
 function showTab(id){
@@ -248,7 +253,6 @@ event.target.classList.add("active")
 }
 
 
-
 function showMarket(id){
 
 document.querySelectorAll(".marketTab").forEach(tab=>{
@@ -266,135 +270,30 @@ event.target.classList.add("active")
 }
 
 
-
-async function loadNews(){
-
-const feeds=[
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
-
-]
-
-let headlines=[]
-
-const container=document.getElementById("newsGrid")
-
-container.innerHTML=""
-
-for(const feed of feeds){
-
-try{
-
-const res=await fetch(feed)
-const data=await res.json()
-
-data.items.slice(0,5).forEach(article=>{
-
-headlines.push(article.title)
-
-const card=document.createElement("div")
-
-card.className="newsCard"
-
-card.innerHTML=`
-
-<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
-
-<div class="newsText">
-
-<span class="source">${data.feed.title}</span>
-
-<h3>${article.title}</h3>
-
-<a href="${article.link}" target="_blank">Read report</a>
-
-</div>
-`
-
-container.appendChild(card)
-
-})
-
-}catch(e){}
-
-}
-
-document.getElementById("ticker").textContent=headlines.join(" ◆ ")
-
-evaluateThreat(headlines)
-
-}
-
-
+/* CLOCK */
 
 function updateClock(){
 
 const now=new Date()
 
-document.getElementById("clock").innerText=
+const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
+const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
 
-now.toLocaleString(undefined,{hour:'2-digit',minute:'2-digit'})
+const day=days[now.getDay()]
+const date=now.getDate()
+const month=months[now.getMonth()]
+const year=now.getFullYear()
 
-}
+const hours=String(now.getHours()).padStart(2,'0')
+const minutes=String(now.getMinutes()).padStart(2,'0')
 
-
-
-function setThreat(level){
-
-document.querySelectorAll("#threatScale span").forEach(el=>{
-el.classList.remove("active")
-})
-
-const target=document.querySelector(`#threatScale span[data-level="${level}"]`)
-
-if(target) target.classList.add("active")
+document.getElementById("clock").textContent =
+`${day} ${date} ${month} ${year} ${hours}:${minutes}`
 
 }
-
-
-
-function evaluateThreat(headlines){
-
-let score=0
-
-headlines.forEach(h=>{
-
-let t=h.toLowerCase()
-
-if(t.includes("war")) score+=5
-if(t.includes("missile")) score+=5
-if(t.includes("strike")) score+=4
-if(t.includes("attack")) score+=3
-if(t.includes("military")) score+=2
-
-})
-
-let level="NORMAL"
-
-if(score>30) level="CRITICAL"
-else if(score>18) level="HIGH"
-else if(score>10) level="ELEVATED"
-else if(score>5) level="GUARDED"
-
-setThreat(level)
-
-}
-
-
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-loadNews()
-
-updateClock()
-
-setInterval(loadNews,60000)
 
 setInterval(updateClock,60000)
-
-})
+updateClock()
 
 </script>
 
