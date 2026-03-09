@@ -34,21 +34,26 @@
 
 
 <div class="ticker">
+
 <span id="ticker">Loading global headlines...</span>
+
 </div>
 
 
 <nav>
 
-<button onclick="showTab('home',event)" class="active">Home</button>
-<button onclick="showTab('news',event)">Conflict News</button>
-<button onclick="showTab('map',event)">Conflict Map</button>
-<button onclick="showTab('air',event)">Aircraft Watch</button>
-<button onclick="showTab('marine',event)">Marine Watch</button>
-<button onclick="showTab('cyber',event)">Cyber Attacks</button>
-<button onclick="showTab('fire',event)">Fire Monitor</button>
-<button onclick="showTab('rt',event)">RT</button>
-<button onclick="showTab('command',event)">Overview</button>
+<button onclick="showTab('home')" class="active">Home</button>
+<button onclick="showTab('news')">Conflict News</button>
+<button onclick="showTab('map')">Conflict Map</button>
+<button onclick="showTab('air')">Aircraft Watch</button>
+<button onclick="showTab('marine')">Marine Watch</button>
+<button onclick="showTab('cyber')">Cyber Attacks</button>
+<button onclick="showTab('fire')">Fire Monitor</button>
+
+<!-- NEW TAB -->
+<button onclick="showTab('rt')">RT</button>
+
+<button onclick="showTab('command')">Overview</button>
 
 </nav>
 
@@ -66,53 +71,65 @@ Reliable information is the foundation of effective decision-making.
 </p>
 
 <div class="homeImage">
+
 <img src="BSG2.png">
+
 </div>
 
 </section>
 
 
 <section id="news" class="tab">
+
 <div id="newsGrid" class="newsGrid"></div>
+
 </section>
 
 
 <section id="map" class="tab">
+
 <iframe src="https://liveuamap.com"></iframe>
+
 </section>
 
 
 <section id="air" class="tab">
+
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+
 </section>
 
 
 <section id="marine" class="tab">
+
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
 </section>
 
 
 <section id="cyber" class="tab">
+
 <iframe src="https://threatmap.checkpoint.com"></iframe>
+
 </section>
 
 
 <section id="fire" class="tab">
+
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+
 </section>
 
 
+<!-- RT TAB -->
+
 <section id="rt" class="tab">
 
-<div class="videoContainer">
-
-<iframe 
+<iframe
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen
-loading="lazy">
+style="width:100%;height:80vh;border:none;border-radius:6px;"
+allowfullscreen>
 </iframe>
-
-</div>
 
 </section>
 
@@ -142,7 +159,7 @@ BlackSurvivalGear.com
 
 <script>
 
-function showTab(id,event){
+function showTab(id){
 
 document.querySelectorAll(".tab").forEach(tab=>{
 tab.classList.remove("active")
@@ -154,9 +171,7 @@ document.querySelectorAll("nav button").forEach(btn=>{
 btn.classList.remove("active")
 })
 
-if(event){
 event.target.classList.add("active")
-}
 
 }
 
