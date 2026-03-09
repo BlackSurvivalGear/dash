@@ -9,19 +9,24 @@
 <title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
+
 <header>
 
 <div class="radarLogo" onclick="showTab('home')">
+
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
+
 <div class="radarSweep"></div>
+
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
@@ -49,6 +54,7 @@ Loading global headlines...
 <button onclick="showTab('command')">Overview</button>
 
 </nav>
+
 
 
 <section id="home" class="tab active">
@@ -79,11 +85,11 @@ Loading global headlines...
 
 <p class="homeText">
 
-This dashboard consolidates open-source intelligence monitoring tools into a single situational awareness interface.
+This dashboard consolidates open-source intelligence monitoring tools into a single global situational awareness interface.
 
-Political tensions, regional conflicts, cyber incidents, environmental crises, and geopolitical competition can emerge rapidly and often with little warning.
+Political tensions, regional conflicts, cyber incidents, environmental crises, and geopolitical competition can emerge rapidly with little warning.
 
-The BSG OSINT dashboard provides an accessible global monitoring platform designed to help users stay informed and aware of developments across the world.
+BSG OSINT provides a monitoring platform designed to help users remain informed, aware, and prepared.
 
 </p>
 
@@ -93,10 +99,19 @@ The BSG OSINT dashboard provides an accessible global monitoring platform design
 </section>
 
 
+
 <section id="news" class="tab">
-<div class="tabRadar"><video autoplay muted loop playsinline><source src="RADAR3.mp4"></video></div>
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
 <div id="newsGrid" class="newsGrid"></div>
+
 </section>
+
 
 
 <section id="map" class="tab">
@@ -138,17 +153,17 @@ The BSG OSINT dashboard provides an accessible global monitoring platform design
 </video>
 </div>
 
+
 <div class="liveNav">
 
 <button onclick="showLive('rt')" class="liveActive">RT</button>
 <button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('wion')">WION</button>
 <button onclick="showLive('fr24')">France24</button>
-<button onclick="showLive('sky')">Sky News</button>
 <button onclick="showLive('dw')">DW News</button>
 <button onclick="showLive('quad')">QUAD VIEW</button>
 
 </div>
+
 
 
 <div id="liveSingle" class="livePlayer">
@@ -161,6 +176,7 @@ allowfullscreen>
 </div>
 
 
+
 <div id="quadView" class="quadGrid">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
@@ -169,7 +185,7 @@ allowfullscreen>
 
 <iframe src="https://www.youtube.com/embed/jNhh-OLzWlE"></iframe>
 
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
+<iframe src="https://www.youtube.com/embed/NvqKZHpKs-g"></iframe>
 
 </div>
 
@@ -201,9 +217,11 @@ allowfullscreen>
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
@@ -228,11 +246,6 @@ btn.classList.remove("active")
 
 document.getElementById(id).classList.add("active")
 
-const clicked=[...document.querySelectorAll("nav button")]
-.find(b=>b.getAttribute("onclick")?.includes(id))
-
-if(clicked) clicked.classList.add("active")
-
 }
 
 
@@ -247,9 +260,7 @@ const streams={
 
 rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
 aj:"https://www.youtube.com/embed/bNyUyrR0PHo",
-wion:"https://www.youtube.com/embed/riQ0K0C8WqA",
 fr24:"https://www.youtube.com/embed/jNhh-OLzWlE",
-sky:"https://www.youtube.com/embed/9Auq9mYxFEE",
 dw:"https://www.youtube.com/embed/NvqKZHpKs-g"
 
 }
@@ -266,46 +277,6 @@ single.style.display="block"
 frame.src=streams[channel]
 
 }
-
-
-
-async function loadNews(){
-
-const feeds=[
-
-"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
-"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best"
-
-]
-
-let headlines=[]
-
-for(const feed of feeds){
-
-try{
-
-const res=await fetch(feed)
-const data=await res.json()
-
-data.items.slice(0,3).forEach(article=>{
-headlines.push(article.title)
-})
-
-}catch(e){}
-
-}
-
-const ticker=document.getElementById("ticker")
-const text=headlines.join(" ◆ ")+" ◆ "
-ticker.innerHTML=text+text+text
-
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-loadNews()
-setInterval(loadNews,60000)
-})
 
 </script>
 
