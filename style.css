@@ -38,6 +38,7 @@ object-fit:cover;
 }
 
 
+
 /* CRYPTO TICKER */
 
 .ticker-bar{
@@ -77,6 +78,39 @@ margin-right:6px;
 }
 
 
+
+/* COMMODITIES TICKER */
+
+.ticker-bar-commodities{
+width:100%;
+overflow:hidden;
+background:rgba(0,0,0,0.45);
+border-bottom:2px solid #c6a55a;
+padding:10px 0;
+}
+
+.ticker-content-commodities{
+display:flex;
+align-items:center;
+white-space:nowrap;
+animation:tickerRight 70s linear infinite;
+padding-right:40px;
+font-size:18px;
+font-weight:600;
+}
+
+.commodity{
+margin-left:80px;
+color:#d4b15a;
+}
+
+@keyframes tickerRight{
+0%{transform:translateX(-100%)}
+100%{transform:translateX(100%)}
+}
+
+
+
 /* NAV */
 
 nav{
@@ -101,6 +135,7 @@ color:#041f18;
 }
 
 
+
 /* TABS */
 
 .tab{
@@ -114,6 +149,7 @@ border-radius:8px;
 .tab.active{
 display:block;
 }
+
 
 
 /* HOME */
@@ -133,6 +169,7 @@ max-width:40%;
 font-size:20px;
 line-height:1.7;
 }
+
 
 
 /* LIVE NEWS */
@@ -172,6 +209,7 @@ border-radius:6px;
 }
 
 
+
 /* OTHER PANELS */
 
 iframe{
@@ -186,6 +224,7 @@ display:grid;
 grid-template-columns:1fr 1fr;
 gap:15px;
 }
+
 
 
 /* FOOTER */
