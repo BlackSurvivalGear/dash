@@ -16,6 +16,7 @@
 
 <body>
 
+
 <header>
 
 <div class="radarLogo" onclick="showTab(event,'home')">
@@ -90,7 +91,7 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </video>
 </div>
 
-<div id="newsGrid"></div>
+<div id="newsGrid" class="newsGrid"></div>
 
 </section>
 
@@ -174,6 +175,7 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </video>
 </div>
 
+
 <div class="liveNav">
 
 <button onclick="showLive('rt')">RT</button>
@@ -249,6 +251,7 @@ BlackSurvivalGear.com
 
 <script>
 
+
 function showTab(evt,id){
 
 document.querySelectorAll(".tab").forEach(tab=>{
@@ -264,6 +267,7 @@ btn.classList.remove("active")
 evt.target.classList.add("active")
 
 }
+
 
 
 function showLive(channel){
@@ -301,7 +305,70 @@ frame.src=streams[channel]
 
 }
 
+
+
+/* NEWS LOADER */
+
+async function loadNews(){
+
+const feeds=[
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://feeds.bbci.co.uk/news/world/rss.xml",
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.aljazeera.com/xml/rss/all.xml",
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.reutersagency.com/feed/?best-topics=world&post_type=best",
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.theguardian.com/world/rss",
+
+"https://api.rss2json.com/v1/api.json?rss_url=https://www.defensenews.com/arc/outboundfeeds/rss/"
+]
+
+const container=document.getElementById("newsGrid")
+
+container.innerHTML=""
+
+for(const feed of feeds){
+
+try{
+
+const res=await fetch(feed)
+const data=await res.json()
+
+data.items.slice(0,3).forEach(article=>{
+
+const card=document.createElement("div")
+card.className="newsCard"
+
+card.innerHTML=`
+
+<img src="${article.thumbnail || 'https://picsum.photos/600/300'}">
+
+<div class="newsText">
+
+<span class="source">${data.feed.title}</span>
+
+<h3>${article.title}</h3>
+
+<a href="${article.link}" target="_blank">Read report</a>
+
+</div>
+`
+
+container.appendChild(card)
+
+})
+
+}catch(e){}
+
+}
+
+}
+
+document.addEventListener("DOMContentLoaded",loadNews)
+
 </script>
+
 
 </body>
 </html>
