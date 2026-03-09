@@ -1,8 +1,13 @@
+*{
+box-sizing:border-box;
+}
+
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
 color:#e2f0e9;
 background:#041f18;
+overflow-x:hidden;
 }
 
 header{
@@ -54,6 +59,7 @@ nav{
 display:flex;
 background:#0b3a2e;
 flex-wrap:wrap;
+gap:2px;
 }
 
 nav button{
@@ -77,6 +83,7 @@ padding:25px;
 margin:15px;
 background:rgba(8,40,32,0.4);
 border-radius:8px;
+width:100%;
 }
 
 .tab.active{
@@ -129,11 +136,12 @@ width:100%;
 height:80vh;
 border:none;
 border-radius:6px;
+max-width:100%;
 }
 
 .grid{
 display:grid;
-grid-template-columns:1fr 1fr;
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
 gap:15px;
 }
 
@@ -147,4 +155,15 @@ border-top:1px solid #1b4d3e;
 color:#c6a55a;
 text-decoration:none;
 font-weight:600;
+}
+
+.footerRadar{
+width:80px;
+margin:10px auto;
+opacity:0.6;
+}
+
+.footerRadar video{
+width:100%;
+border-radius:50%;
 }
