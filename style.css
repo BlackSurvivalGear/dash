@@ -6,7 +6,7 @@ background:#041f18;
 }
 
 
-/* RADAR WATERMARK */
+/* WATERMARK */
 
 .radarWatermark{
 position:fixed;
@@ -38,8 +38,8 @@ border-bottom:2px solid #c6a55a;
 }
 
 .radarLogo{
-width:70px;
-height:70px;
+width:60px;
+height:60px;
 margin-right:18px;
 border-radius:50%;
 overflow:hidden;
@@ -52,7 +52,7 @@ object-fit:cover;
 }
 
 header h1{
-color:#718754;
+color:#7f9a64;
 font-size:26px;
 margin:0;
 }
@@ -63,21 +63,12 @@ font-size:14px;
 color:#c6a55a;
 }
 
+
+/* THREAT */
+
 .threatPanel{
 margin-left:auto;
 text-align:right;
-}
-
-.threatLabel{
-color:#c6a55a;
-font-weight:600;
-margin-bottom:4px;
-}
-
-.threatScale{
-display:flex;
-gap:6px;
-justify-content:flex-end;
 }
 
 .threatScale span{
@@ -92,40 +83,37 @@ font-size:11px;
 opacity:1;
 border:1px solid #c6a55a;
 color:#c6a55a;
-background:rgba(198,165,90,0.1);
 }
 
 
 /* NEWS TICKER */
 
-.ticker{
+.newsTicker{
 background:#06231c;
 overflow:hidden;
 white-space:nowrap;
 padding:6px 0;
-border-bottom:1px solid rgba(198,165,90,0.3);
+border-bottom:1px solid rgba(198,165,90,0.4);
 }
 
 #ticker{
 display:inline-block;
 padding-left:100%;
-animation:tickerMove 60s linear infinite;
+animation:scrollNews 60s linear infinite;
 font-size:14px;
-color:#cfe6dc;
 }
 
-@keyframes tickerMove{
+@keyframes scrollNews{
 0%{transform:translateX(0)}
 100%{transform:translateX(-100%)}
 }
 
 
-/* MARKET TICKER */
+/* MARKET STRIP */
 
 .marketTicker{
 background:#041f18;
 border-bottom:1px solid rgba(198,165,90,0.25);
-padding:3px 0;
 }
 
 
@@ -146,8 +134,8 @@ cursor:pointer;
 font-weight:600;
 }
 
-nav button:hover,
-nav button.active{
+nav button.active,
+nav button:hover{
 background:#c6a55a;
 color:#041f18;
 }
@@ -164,42 +152,31 @@ border-radius:8px;
 min-height:80vh;
 }
 
-.tab.active{
-display:block;
-}
 
+/* MARKETS */
 
-/* HOME */
-
-.homeLayout{
+.marketSubNav{
 display:flex;
-gap:40px;
-flex-wrap:wrap;
+gap:10px;
+margin-bottom:15px;
 }
 
-.homeImage{
-flex:0 0 420px;
+.marketSubNav button{
+background:#0b3a2e;
+border:none;
+padding:10px 16px;
+color:#e2f0e9;
+cursor:pointer;
 }
 
-.homeImage img{
-width:100%;
-border-radius:6px;
+.marketSubNav button.active{
+background:#c6a55a;
+color:#041f18;
 }
 
-.homeText{
-flex:1;
-font-size:20px;
-line-height:1.8;
-}
-
-
-/* NEWS */
-
-.newsGrid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:20px;
-padding:20px;
+.marketTab{
+display:none;
+height:80vh;
 }
 
 
@@ -245,7 +222,6 @@ border-top:1px solid #1b4d3e;
 .footerLink{
 color:#c6a55a;
 text-decoration:none;
-font-weight:600;
 }
 
 .footerRadar video{
