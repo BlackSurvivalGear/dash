@@ -2,20 +2,16 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-
 
 <header>
 
@@ -30,9 +26,10 @@
 </header>
 
 
+<!-- CRYPTO MARKET TICKER -->
 
-<div class="ticker">
-<div class="tickerTrack" id="marketTicker">
+<div class="ticker-bar">
+<div id="marketTicker" class="ticker-content">
 Loading crypto market data...
 </div>
 </div>
@@ -112,35 +109,23 @@ allowfullscreen></iframe>
 
 
 <section id="map" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
-
 
 
 <section id="air" class="tab">
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
-
 
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
-
 
 
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
-
 
 
 <section id="command" class="tab">
@@ -163,8 +148,7 @@ allowfullscreen></iframe>
 <div style="padding:40px;text-align:center">
 
 <h2>Google Map Integration Placeholder</h2>
-
-<p>Future OSINT map layer will be added here.</p>
+<p>Future OSINT map module.</p>
 
 </div>
 
@@ -209,8 +193,6 @@ evt.target.classList.add("active")
 
 
 
-/* LIVE STREAMS */
-
 function showLive(channel){
 
 const frame=document.getElementById("liveFrame")
@@ -236,7 +218,6 @@ quad.requestFullscreen()
 }
 
 return
-
 }
 
 quad.style.display="none"
@@ -248,47 +229,52 @@ frame.src=streams[channel]
 
 
 
-/* CRYPTO TICKER */
+/* TOP-20 CRYPTO TICKER */
 
-async function loadCrypto(){
+async function loadCryptoTicker(){
+
+const url="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false"
 
 try{
 
-const coins={
-
-BTC:"BTCUSDT",
-ETH:"ETHUSDT",
-SOL:"SOLUSDT",
-AVAX:"AVAXUSDT",
-BNB:"BNBUSDT",
-XRP:"XRPUSDT",
-RENDER:"RENDERUSDT"
-
-}
-
-let ticker=""
-
-for(const coin in coins){
-
-const res=await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${coins[coin]}`)
+const res=await fetch(url)
 const data=await res.json()
 
-ticker+=`${coin} $${parseFloat(data.price).toFixed(2)} ◆ `
+const ticker=document.getElementById("marketTicker")
+ticker.innerHTML=""
+
+data.forEach(coin=>{
+
+const change=coin.price_change_percentage_24h||0
+const color=change>=0?"#00ff88":"#ff4d4d"
+const arrow=change>=0?"▲":"▼"
+
+const item=document.createElement("span")
+
+item.className="ticker-item"
+
+item.innerHTML=`
+<span class="ticker-symbol">${coin.symbol.toUpperCase()}</span>
+$${coin.current_price.toLocaleString()}
+<span style="color:${color}">
+${arrow} ${change.toFixed(2)}%
+</span>
+`
+
+ticker.appendChild(item)
+
+})
+
+}catch(e){
+
+document.getElementById("marketTicker").innerText="Crypto market unavailable"
 
 }
 
-document.getElementById("marketTicker").innerHTML=ticker
-
-}catch(err){
-
-console.log("crypto ticker error")
-
 }
 
-}
-
-loadCrypto()
-setInterval(loadCrypto,20000)
+loadCryptoTicker()
+setInterval(loadCryptoTicker,30000)
 
 </script>
 
