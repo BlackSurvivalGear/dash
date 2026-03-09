@@ -34,8 +34,8 @@
 
 
 <div class="ticker">
-<div class="tickerWrap">
-<span id="ticker">Loading global headlines...</span>
+<div class="tickerTrack" id="ticker">
+Loading global headlines...
 </div>
 </div>
 
@@ -49,6 +49,7 @@
 <button onclick="showTab('marine')">Marine Watch</button>
 <button onclick="showTab('cyber')">Cyber Attacks</button>
 <button onclick="showTab('fire')">Fire Monitor</button>
+<button onclick="showTab('rt')">RT</button>
 <button onclick="showTab('command')">Overview</button>
 
 </nav>
@@ -64,7 +65,7 @@
 
 <div class="homePanel">
 
-<img src="BSG2.png">
+<img src="BSG2.png" class="homeBg">
 
 <div class="homeOverlay">
 
@@ -159,6 +160,22 @@ Reliable information is the foundation of effective decision-making.
 </div>
 
 <iframe src="https://livingatlas.arcgis.com/wayback/#active=28190&mapCenter=0,0,2"></iframe>
+
+</section>
+
+
+<section id="rt" class="tab">
+
+<div class="tabRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<iframe
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+allowfullscreen>
+</iframe>
 
 </section>
 
@@ -283,8 +300,9 @@ container.appendChild(card)
 
 }
 
-document.getElementById("ticker").innerHTML =
-headlines.join(" ◆ ") + " ◆ " + headlines.join(" ◆ ")
+const ticker=document.getElementById("ticker")
+const text=headlines.join(" ◆ ")+" ◆ "
+ticker.innerHTML=text+text+text
 
 }
 
