@@ -16,10 +16,9 @@
 
 <body>
 
-
 <header>
 
-<div class="radarLogo" onclick="showTab('home')">
+<div class="radarLogo" onclick="showTab(event,'home')">
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
@@ -175,7 +174,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </video>
 </div>
 
-
 <div class="liveNav">
 
 <button onclick="showLive('rt')">RT</button>
@@ -251,7 +249,6 @@ BlackSurvivalGear.com
 
 <script>
 
-
 function showTab(evt,id){
 
 document.querySelectorAll(".tab").forEach(tab=>{
@@ -267,7 +264,6 @@ btn.classList.remove("active")
 evt.target.classList.add("active")
 
 }
-
 
 
 function showLive(channel){
