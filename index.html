@@ -30,11 +30,13 @@
 </header>
 
 
+
 <div class="ticker">
 <div class="tickerTrack" id="marketTicker">
-Loading global market data...
+Loading market feeds...
 </div>
 </div>
+
 
 
 <nav>
@@ -47,9 +49,13 @@ Loading global market data...
 <button onclick="showTab(event,'marine')">Marine Watch</button>
 <button onclick="showTab(event,'cyber')">Cyber Attacks</button>
 <button onclick="showTab(event,'command')">Overview</button>
+<button onclick="showTab(event,'gmap')">Map</button>
 
 </nav>
 
+
+
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -68,7 +74,7 @@ Loading global market data...
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
 <p class="homeText">
-This dashboard consolidates open-source intelligence monitoring tools into a single global situational awareness interface.
+This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
 </p>
 
 </div>
@@ -78,79 +84,10 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 </section>
 
 
-<section id="news" class="tab">
 
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<div id="newsGrid" class="newsGrid"></div>
-
-</section>
-
-
-<section id="map" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<iframe src="https://liveuamap.com"></iframe>
-
-</section>
-
-
-<section id="air" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
-</section>
-
-
-<section id="marine" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
-</section>
-
-
-<section id="cyber" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-
-</section>
-
+<!-- LIVE NEWS -->
 
 <section id="live" class="tab">
-
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
 
 <div class="liveNav">
 
@@ -167,8 +104,7 @@ This dashboard consolidates open-source intelligence monitoring tools into a sin
 
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen>
-</iframe>
+allowfullscreen></iframe>
 
 </div>
 
@@ -185,13 +121,60 @@ allowfullscreen>
 </section>
 
 
-<section id="command" class="tab">
 
-<div class="tabRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
+<!-- CONFLICT NEWS -->
+
+<section id="news" class="tab">
+
+<div id="newsGrid" class="newsGrid"></div>
+
+</section>
+
+
+
+<!-- CONFLICT MAP -->
+
+<section id="map" class="tab">
+
+<iframe src="https://liveuamap.com"></iframe>
+
+</section>
+
+
+
+<!-- AIRCRAFT -->
+
+<section id="air" class="tab">
+
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+
+</section>
+
+
+
+<!-- MARINE -->
+
+<section id="marine" class="tab">
+
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+</section>
+
+
+
+<!-- CYBER -->
+
+<section id="cyber" class="tab">
+
+<iframe src="https://threatmap.checkpoint.com"></iframe>
+
+</section>
+
+
+
+<!-- OVERVIEW -->
+
+<section id="command" class="tab">
 
 <div class="grid">
 
@@ -203,6 +186,23 @@ allowfullscreen>
 </div>
 
 </section>
+
+
+
+<!-- GOOGLE MAP PLACEHOLDER -->
+
+<section id="gmap" class="tab">
+
+<div style="padding:40px;text-align:center">
+
+<h2>Global Map Module</h2>
+
+<p>Placeholder for Google Maps OSINT integration.</p>
+
+</div>
+
+</section>
+
 
 
 <footer>
@@ -218,6 +218,7 @@ BlackSurvivalGear.com
 </a>
 
 </footer>
+
 
 
 <script>
@@ -239,6 +240,9 @@ evt.target.classList.add("active")
 
 }
 
+
+
+/* LIVE CHANNELS */
 
 function showLive(channel){
 
@@ -283,38 +287,36 @@ async function loadMarkets(){
 
 try{
 
-const btc=await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT").then(r=>r.json())
-const eth=await fetch("https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT").then(r=>r.json())
+const btc = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT").then(r=>r.json())
+const eth = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT").then(r=>r.json())
 
-const metals=await fetch("https://query1.finance.yahoo.com/v7/finance/quote?symbols=GC=F,SI=F,CL=F")
-.then(r=>r.json())
+const metals = await fetch("https://api.metals.live/v1/spot").then(r=>r.json())
 
-const gold=metals.quoteResponse.result[0].regularMarketPrice
-const silver=metals.quoteResponse.result[1].regularMarketPrice
-const oil=metals.quoteResponse.result[2].regularMarketPrice
+let gold = metals.find(m=>m.gold)?.gold
+let silver = metals.find(m=>m.silver)?.silver
+
+const oil = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDT").then(r=>r.json())
 
 const ticker=document.getElementById("marketTicker")
 
-ticker.innerHTML=`
-BTC $${parseFloat(btc.price).toFixed(0)} ◆
+ticker.innerHTML =
+`BTC $${parseFloat(btc.price).toFixed(0)} ◆
 ETH $${parseFloat(eth.price).toFixed(0)} ◆
 GOLD $${gold} ◆
 SILVER $${silver} ◆
-OIL $${oil} ◆
-Global monitoring feeds active ◆ OSINT dashboard operational
-`
+OIL $${parseFloat(oil.price).toFixed(0)}`
 
-}catch(e){
+}catch(err){
 
-console.log("Market feed error")
+console.log("ticker error")
 
 }
 
 }
 
 loadMarkets()
-setInterval(loadMarkets,30000)
 
+setInterval(loadMarkets,30000)
 
 </script>
 
