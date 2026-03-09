@@ -13,7 +13,6 @@ display:flex;
 align-items:center;
 padding:10px 15px;
 background:#06231c;
-border-bottom:2px solid #c6a55a;
 }
 
 .radarLogo{
@@ -23,7 +22,6 @@ width:60px;
 margin-right:18px;
 border-radius:50%;
 overflow:hidden;
-cursor:pointer;
 }
 
 .radarLogo video{
@@ -71,17 +69,15 @@ color:#041f18;
 }
 
 .ticker{
-background:rgba(2,21,16,0.55);
-border-bottom:1px solid #c6a55a;
+background:rgba(2,21,16,0.45);
 overflow:hidden;
 white-space:nowrap;
-backdrop-filter:blur(2px);
 }
 
 .tickerTrack{
 display:inline-block;
 padding-left:100%;
-animation:tickerMove 75s linear infinite;
+animation:tickerMove 110s linear infinite;
 color:#c6a55a;
 font-weight:600;
 font-size:15px;
@@ -141,6 +137,19 @@ grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:20px;
 }
 
+.newsWallGrid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.newsWallGrid iframe{
+width:100%;
+height:45vh;
+border:none;
+border-radius:6px;
+}
+
 iframe{
 width:100%;
 height:80vh;
@@ -157,7 +166,6 @@ gap:15px;
 footer{
 text-align:center;
 padding:15px;
-border-top:1px solid #1b4d3e;
 }
 
 .footerRadar{
