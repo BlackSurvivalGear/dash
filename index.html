@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
@@ -21,33 +24,28 @@
 
 <h1>Global Strategic Awareness OSINT</h1>
 
-<div class="metals">
-<span id="gold">Gold</span>
-<span id="silver">Silver</span>
-</div>
-
 </header>
+
 
 <nav>
 
-<button class="tablink" onclick="openTab(event,'home')">Home</button>
-<button class="tablink" onclick="openTab(event,'command')">Command View</button>
+<button class="tablink active" onclick="openTab(event,'home')">Home</button>
 <button class="tablink" onclick="openTab(event,'conflict')">Conflict News</button>
 <button class="tablink" onclick="openTab(event,'global')">Global News</button>
 <button class="tablink" onclick="openTab(event,'africa')">African News</button>
-<button class="tablink" onclick="openTab(event,'rt')">RT</button>
-<button class="tablink" onclick="openTab(event,'overview')">Overview</button>
 <button class="tablink" onclick="openTab(event,'cyber')">Cyber</button>
 <button class="tablink" onclick="openTab(event,'crypto')">Crypto</button>
 <button class="tablink" onclick="openTab(event,'markets')">Markets</button>
+<button class="tablink" onclick="openTab(event,'rt')">RT</button>
 
 </nav>
+
 
 <!-- HOME -->
 
 <section id="home" class="tabcontent active">
 
-<div class="home-wrapper">
+<div class="home-container">
 
 <img src="BSG2.png" class="home-image">
 
@@ -56,13 +54,14 @@
 <h2>Strategic Awareness Platform</h2>
 
 <p>
-The BSG Strategic Awareness dashboard provides real-time OSINT monitoring of
-global conflict, cyber threats, geopolitical developments, and market signals.
+The BSG Strategic Awareness dashboard aggregates global OSINT feeds to
+provide real-time visibility into conflict zones, cyber activity,
+financial markets, and geopolitical developments.
 </p>
 
 <p>
-The platform aggregates intelligence feeds, financial indicators, and global
-news streams into a unified operational picture.
+Designed as a monitoring console, the platform allows rapid access to
+critical intelligence streams and global situational awareness.
 </p>
 
 </div>
@@ -71,39 +70,15 @@ news streams into a unified operational picture.
 
 </section>
 
-<!-- COMMAND VIEW -->
-
-<section id="command" class="tabcontent">
-
-<div class="command-grid">
-
-<div class="panel">
-<iframe src="https://acleddata.com/conflict-index/" loading="lazy"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://cybermap.kaspersky.com/" loading="lazy"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://coin360.com/" loading="lazy"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://finviz.com/map.ashx" loading="lazy"></iframe>
-</div>
-
-</div>
-
-</section>
 
 <!-- CONFLICT NEWS -->
 
 <section id="conflict" class="tabcontent">
 
-<iframe src="https://news.google.com/search?q=conflict%20war&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
+<iframe src="https://news.google.com/search?q=war%20conflict&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
 
 </section>
+
 
 <!-- GLOBAL NEWS -->
 
@@ -112,6 +87,7 @@ news streams into a unified operational picture.
 <iframe src="https://news.google.com/topstories?hl=en-GB&gl=GB&ceid=GB:en"></iframe>
 
 </section>
+
 
 <!-- AFRICAN NEWS -->
 
@@ -128,26 +104,6 @@ news streams into a unified operational picture.
 
 </section>
 
-<!-- RT -->
-
-<section id="rt" class="tabcontent">
-
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-width="100%"
-height="600"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</section>
-
-<!-- OVERVIEW -->
-
-<section id="overview" class="tabcontent">
-
-<iframe src="https://www.gdeltproject.org/"></iframe>
-
-</section>
 
 <!-- CYBER -->
 
@@ -157,6 +113,7 @@ allowfullscreen>
 
 </section>
 
+
 <!-- CRYPTO -->
 
 <section id="crypto" class="tabcontent">
@@ -165,6 +122,7 @@ allowfullscreen>
 
 </section>
 
+
 <!-- MARKETS -->
 
 <section id="markets" class="tabcontent">
@@ -172,6 +130,22 @@ allowfullscreen>
 <iframe src="https://finviz.com/map.ashx"></iframe>
 
 </section>
+
+
+<!-- RT STREAM -->
+
+<section id="rt" class="tabcontent">
+
+<iframe
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+width="100%"
+height="650"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</section>
+
 
 <footer>
 
@@ -185,24 +159,27 @@ allowfullscreen>
 
 </footer>
 
+
 <script>
 
 function openTab(evt, tabName) {
 
-let i, tabcontent, tablinks;
+var i, tabcontent, tablinks;
 
 tabcontent = document.getElementsByClassName("tabcontent");
+
 for (i = 0; i < tabcontent.length; i++) {
 tabcontent[i].style.display = "none";
 }
 
 tablinks = document.getElementsByClassName("tablink");
+
 for (i = 0; i < tablinks.length; i++) {
-tablinks[i].classList.remove("active");
+tablinks[i].className = tablinks[i].className.replace(" active", "");
 }
 
 document.getElementById(tabName).style.display = "block";
-evt.currentTarget.classList.add("active");
+evt.currentTarget.className += " active";
 
 }
 
