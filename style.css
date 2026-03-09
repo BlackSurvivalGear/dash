@@ -1,45 +1,50 @@
-body {
+body{
 
-background:#0b0b0b;
+background:#0a0a0a;
 color:white;
-font-family:Arial, sans-serif;
+font-family:Arial, Helvetica, sans-serif;
 margin:0;
 
 }
 
-header {
+
+header{
 
 display:flex;
 align-items:center;
-justify-content:space-between;
 padding:10px 20px;
 background:#111;
 
 }
 
-.logo video {
+
+.logo video{
 
 height:60px;
+margin-right:15px;
 
 }
 
-.metals span {
 
-margin-left:15px;
-font-weight:bold;
-color:gold;
+header h1{
+
+font-size:20px;
+color:#00ffcc;
 
 }
 
-nav {
+
+nav{
 
 background:#000;
 display:flex;
 flex-wrap:wrap;
+border-bottom:1px solid #222;
 
 }
 
-nav button {
+
+nav button{
 
 background:none;
 border:none;
@@ -50,32 +55,38 @@ font-size:15px;
 
 }
 
-nav button:hover {
 
-color:#fff;
+nav button:hover{
+
+color:white;
 
 }
 
-nav button.active {
+
+nav button.active{
 
 color:#00ffcc;
+border-bottom:2px solid #00ffcc;
 
 }
 
-.tabcontent {
+
+.tabcontent{
 
 display:none;
-padding:20px;
+padding:15px;
 
 }
 
-.tabcontent.active {
+
+.tabcontent.active{
 
 display:block;
 
 }
 
-iframe {
+
+iframe{
 
 width:100%;
 height:80vh;
@@ -83,60 +94,50 @@ border:none;
 
 }
 
-.command-grid {
 
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-gap:15px;
-
-}
-
-.panel {
-
-border:1px solid rgba(0,255,200,0.3);
-box-shadow:0 0 10px rgba(0,255,200,0.2);
-height:40vh;
-overflow:hidden;
-
-}
-
-.panel iframe {
-
-height:100%;
-
-}
-
-.news-grid {
-
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-gap:10px;
-
-}
-
-.home-wrapper {
+.home-container{
 
 display:flex;
 align-items:center;
 justify-content:center;
 gap:40px;
+flex-wrap:wrap;
 
 }
 
-.home-image {
 
-width:400px;
+.home-image{
+
+width:420px;
 opacity:0.5;
 
 }
 
-.home-text {
+
+.home-text{
 
 max-width:600px;
 
 }
 
-footer {
+
+.news-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+
+}
+
+
+.news-grid iframe{
+
+height:420px;
+
+}
+
+
+footer{
 
 background:#000;
 text-align:center;
@@ -144,13 +145,15 @@ padding:10px;
 
 }
 
-footer video {
+
+footer video{
 
 height:50px;
 
 }
 
-footer a {
+
+footer a{
 
 color:#00ffcc;
 text-decoration:none;
