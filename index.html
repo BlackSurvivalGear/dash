@@ -1,76 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-
 <header>
 
-<div class="radarLogo">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
+<div class="logo">
+<video autoplay muted loop>
+<source src="RADAR3.mp4" type="video/mp4">
 </video>
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
-<div class="headerMarkets">
-<span id="goldPrice">GOLD --</span>
-<span id="silverPrice">SILVER --</span>
+<div class="metals">
+<span id="gold">Gold</span>
+<span id="silver">Silver</span>
 </div>
 
 </header>
 
-
-
-<div class="ticker-bar">
-<div id="marketTicker" class="ticker-content">
-Loading crypto market data...
-</div>
-</div>
-
-
-
 <nav>
 
-<button data-tab="home" class="active">Home</button>
-<button data-tab="live">LIVE NEWS</button>
-<button data-tab="map">Conflict Map</button>
-<button data-tab="air">Aircraft Watch</button>
-<button data-tab="marine">Marine Watch</button>
-<button data-tab="cyber">Cyber Attacks</button>
-<button data-tab="command">Overview</button>
-<button data-tab="gmap">Map</button>
+<button class="tablink" onclick="openTab(event,'home')">Home</button>
+<button class="tablink" onclick="openTab(event,'command')">Command View</button>
+<button class="tablink" onclick="openTab(event,'conflict')">Conflict News</button>
+<button class="tablink" onclick="openTab(event,'global')">Global News</button>
+<button class="tablink" onclick="openTab(event,'africa')">African News</button>
+<button class="tablink" onclick="openTab(event,'rt')">RT</button>
+<button class="tablink" onclick="openTab(event,'overview')">Overview</button>
+<button class="tablink" onclick="openTab(event,'cyber')">Cyber</button>
+<button class="tablink" onclick="openTab(event,'crypto')">Crypto</button>
+<button class="tablink" onclick="openTab(event,'markets')">Markets</button>
 
 </nav>
 
+<!-- HOME -->
 
+<section id="home" class="tabcontent active">
 
-<section id="home" class="tab active">
+<div class="home-wrapper">
 
-<div class="homePanel">
+<img src="BSG2.png" class="home-image">
 
-<img src="BSG2.png" class="homeBg">
+<div class="home-text">
 
-<div class="homeOverlay">
+<h2>Strategic Awareness Platform</h2>
 
-<h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
+<p>
+The BSG Strategic Awareness dashboard provides real-time OSINT monitoring of
+global conflict, cyber threats, geopolitical developments, and market signals.
+</p>
 
-<p class="homeText">
-This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
+<p>
+The platform aggregates intelligence feeds, financial indicators, and global
+news streams into a unified operational picture.
 </p>
 
 </div>
@@ -79,208 +71,138 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 
 </section>
 
+<!-- COMMAND VIEW -->
 
+<section id="command" class="tabcontent">
 
-<section id="live" class="tab">
+<div class="command-grid">
 
-
-<div class="liveNav">
-
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky News</button>
-<button onclick="showLive('reuters')">Reuters</button>
-
-<button onclick="showLive('africanews')">Africanews</button>
-<button onclick="showLive('channels')">Channels TV</button>
-<button onclick="showLive('enca')">eNCA</button>
-<button onclick="showLive('ntv')">NTV Kenya</button>
-
-<button onclick="showLive('globalwall')">GLOBAL NEWS WALL</button>
-<button onclick="showLive('africawall')">AFRICAN NEWS WALL</button>
-
-<button onclick="showLive('quad')">QUAD VIEW</button>
-
+<div class="panel">
+<iframe src="https://acleddata.com/conflict-index/" loading="lazy"></iframe>
 </div>
 
-
-
-<div id="liveSingle" class="livePlayer">
-
-<iframe id="liveFrame"
-src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen></iframe>
-
+<div class="panel">
+<iframe src="https://cybermap.kaspersky.com/" loading="lazy"></iframe>
 </div>
 
-
-
-<div id="quadView" class="quadGrid">
-
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-<iframe src="https://www.youtube.com/embed/hNTn1EOYPAg"></iframe>
-
+<div class="panel">
+<iframe src="https://coin360.com/" loading="lazy"></iframe>
 </div>
 
-
-
-<div id="globalWall" class="quadGrid">
-
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-<iframe src="https://www.youtube.com/embed/hNTn1EOYPAg"></iframe>
-
-</div>
-
-
-
-<div id="africaWall" class="quadGrid">
-
-<iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-<iframe src="https://www.youtube.com/embed/2N9sXKqJ0s0"></iframe>
-<iframe src="https://www.youtube.com/embed/-L6P3Q1c8aM"></iframe>
-<iframe src="https://www.youtube.com/embed/Qsx1xJ0PzS0"></iframe>
-
-</div>
-
-</section>
-
-
-
-<section id="map" class="tab">
-<iframe src="https://liveuamap.com"></iframe>
-</section>
-
-
-<section id="air" class="tab">
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-</section>
-
-
-<section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-</section>
-
-
-<section id="cyber" class="tab">
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-</section>
-
-
-
-<section id="command" class="tab">
-
-<div class="grid">
-
-<iframe src="https://liveuamap.com"></iframe>
-
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-
-<div class="heatmap">
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-{"dataSource":"Crypto","blockSize":"market_cap_calc","blockColor":"change","locale":"en","colorTheme":"dark","width":"100%","height":"100%"}
-</script>
-</div>
-
-<div class="heatmap">
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-{"dataSource":"SPX500","blockSize":"market_cap_basic","blockColor":"change","grouping":"sector","locale":"en","colorTheme":"dark","width":"100%","height":"100%"}
-</script>
+<div class="panel">
+<iframe src="https://finviz.com/map.ashx" loading="lazy"></iframe>
 </div>
 
 </div>
 
 </section>
 
+<!-- CONFLICT NEWS -->
 
+<section id="conflict" class="tabcontent">
 
-<section id="gmap" class="tab">
-
-<iframe src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed"></iframe>
+<iframe src="https://news.google.com/search?q=conflict%20war&hl=en-GB&gl=GB&ceid=GB:en"></iframe>
 
 </section>
 
+<!-- GLOBAL NEWS -->
 
+<section id="global" class="tabcontent">
+
+<iframe src="https://news.google.com/topstories?hl=en-GB&gl=GB&ceid=GB:en"></iframe>
+
+</section>
+
+<!-- AFRICAN NEWS -->
+
+<section id="africa" class="tabcontent">
+
+<div class="news-grid">
+
+<iframe src="https://www.africanews.com"></iframe>
+<iframe src="https://www.cgtn.com/africa"></iframe>
+<iframe src="https://www.channelstv.com"></iframe>
+<iframe src="https://www.enca.com"></iframe>
+
+</div>
+
+</section>
+
+<!-- RT -->
+
+<section id="rt" class="tabcontent">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+width="100%"
+height="600"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</section>
+
+<!-- OVERVIEW -->
+
+<section id="overview" class="tabcontent">
+
+<iframe src="https://www.gdeltproject.org/"></iframe>
+
+</section>
+
+<!-- CYBER -->
+
+<section id="cyber" class="tabcontent">
+
+<iframe src="https://cybermap.kaspersky.com/"></iframe>
+
+</section>
+
+<!-- CRYPTO -->
+
+<section id="crypto" class="tabcontent">
+
+<iframe src="https://coin360.com/"></iframe>
+
+</section>
+
+<!-- MARKETS -->
+
+<section id="markets" class="tabcontent">
+
+<iframe src="https://finviz.com/map.ashx"></iframe>
+
+</section>
 
 <footer>
 
-<div class="footerRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
+<video autoplay muted loop>
+<source src="RADAR3.mp4" type="video/mp4">
 </video>
-</div>
 
-<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
-BlackSurvivalGear.com
-</a>
+<p>
+<a href="https://blacksurvivalgear.com">BlackSurvivalGear.com</a>
+</p>
 
 </footer>
 
-
-
 <script>
 
+function openTab(evt, tabName) {
 
-document.addEventListener("DOMContentLoaded",function(){
+let i, tabcontent, tablinks;
 
-const buttons=document.querySelectorAll("nav button")
-const tabs=document.querySelectorAll(".tab")
-
-buttons.forEach(button=>{
-button.addEventListener("click",function(){
-
-const target=this.getAttribute("data-tab")
-
-tabs.forEach(tab=>tab.classList.remove("active"))
-buttons.forEach(btn=>btn.classList.remove("active"))
-
-document.getElementById(target).classList.add("active")
-this.classList.add("active")
-
-})
-})
-
-})
-
-
-
-function showLive(channel){
-
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-
-const quad=document.getElementById("quadView")
-const global=document.getElementById("globalWall")
-const africa=document.getElementById("africaWall")
-
-single.style.display="none"
-quad.style.display="none"
-global.style.display="none"
-africa.style.display="none"
-
-const streams={
-
-rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
-aj:"https://www.youtube.com/embed/bNyUyrR0PHo",
-sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
-reuters:"https://www.youtube.com/embed/hNTn1EOYPAg",
-
-africanews:"https://www.youtube.com/embed/NQjabLGdP5g",
-channels:"https://www.youtube.com/embed/2N9sXKqJ0s0",
-enca:"https://www.youtube.com/embed/-L6P3Q1c8aM",
-ntv:"https://www.youtube.com/embed/Qsx1xJ0PzS0"
-
+tabcontent = document.getElementsByClassName("tabcontent");
+for (i = 0; i < tabcontent.length; i++) {
+tabcontent[i].style.display = "none";
 }
 
-if(channel==="quad"){quad.style.display="grid";return}
-if(channel==="globalwall"){global.style.display="grid";return}
-if(channel==="africawall"){africa.style.display="grid";return}
+tablinks = document.getElementsByClassName("tablink");
+for (i = 0; i < tablinks.length; i++) {
+tablinks[i].classList.remove("active");
+}
 
-single.style.display="block"
-frame.src=streams[channel]
+document.getElementById(tabName).style.display = "block";
+evt.currentTarget.classList.add("active");
 
 }
 
