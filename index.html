@@ -27,14 +27,8 @@
 </video>
 
 <div class="bootText">
-
 <span id="bootMessage"></span>
 <span class="cursor">|</span>
-
-</div>
-
-<div class="bootProgress">
-<div id="bootBar"></div>
 </div>
 
 </div>
@@ -174,7 +168,6 @@ allowfullscreen></iframe>
 
 <section id="markets" class="tab">
 
-
 <div class="marketsNav">
 
 <button onclick="showMarketPanel('news')" class="active">News</button>
@@ -227,7 +220,6 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 <div class="macroContainer">
 
 <div class="tradingview-widget-container">
-
 <div class="tradingview-widget-container__widget"></div>
 
 <script type="text/javascript"
@@ -256,7 +248,6 @@ async>
 <div class="cryptoContainer">
 
 <div class="tradingview-widget-container">
-
 <div class="tradingview-widget-container__widget"></div>
 
 <script type="text/javascript"
@@ -297,7 +288,6 @@ OPEN CRYPTOBUBBLES HEATMAP
 <div class="forexContainer">
 
 <div class="tradingview-widget-container">
-
 <div class="tradingview-widget-container__widget"></div>
 
 <script type="text/javascript"
@@ -389,7 +379,7 @@ BlackSurvivalGear.com
 </a>
 
 <div class="versionTag">
-BSG Strategic Awareness OSINT — v1.2
+BSG Strategic Awareness OSINT — v1.0
 </div>
 
 </footer>
@@ -399,7 +389,8 @@ BSG Strategic Awareness OSINT — v1.2
 <script>
 
 
-/* NAV TABS */
+
+/* MAIN NAVIGATION */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 btn.addEventListener("click",function(){
@@ -446,92 +437,7 @@ quad.style.display="grid"
 
 
 
-/* MARKETS SWITCH */
-
-function showMarketPanel(panel){
-
-/* hide all panels */
-
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.style.display="none"
-})
-
-
-/* remove active button state */
-
-document.querySelectorAll(".marketsNav button").forEach(btn=>{
-btn.classList.remove("active")
-})
-
-
-/* show correct panel */
-
-if(panel==="news"){
-document.getElementById("marketNews").style.display="block"
-document.querySelector('.marketsNav button:nth-child(1)').classList.add("active")
-}
-
-if(panel==="macro"){
-document.getElementById("marketMacro").style.display="block"
-document.querySelector('.marketsNav button:nth-child(2)').classList.add("active")
-}
-
-if(panel==="crypto"){
-document.getElementById("marketCrypto").style.display="block"
-document.querySelector('.marketsNav button:nth-child(3)').classList.add("active")
-}
-
-if(panel==="forex"){
-document.getElementById("marketForex").style.display="block"
-document.querySelector('.marketsNav button:nth-child(4)').classList.add("active")
-}
-
-}
-
-
-/* BOOT TERMINAL TEXT */
-
-const bootLines = [
-"INITIALIZING RADAR SYSTEM...",
-"GLOBAL STRATEGIC AWARENESS OSINT...",
-"LOADING INTELLIGENCE MODULES...",
-"CONNECTING GLOBAL DATA FEEDS...",
-"SYSTEM ONLINE"
-];
-
-let lineIndex = 0;
-let charIndex = 0;
-
-const message = document.getElementById("bootMessage");
-
-function typeBoot(){
-
-if(lineIndex < bootLines.length){
-
-if(charIndex < bootLines[lineIndex].length){
-
-message.textContent += bootLines[lineIndex].charAt(charIndex);
-charIndex++;
-setTimeout(typeBoot,40);
-
-}else{
-
-message.textContent += "\n";
-lineIndex++;
-charIndex = 0;
-setTimeout(typeBoot,400);
-
-}
-
-}
-
-}
-
-typeBoot();
-
-/* ===============================
-MARKET NEWS VIDEO SWITCH
-=============================== */
+/* MARKET NEWS SWITCH */
 
 function showMarkets(channel){
 
@@ -542,21 +448,10 @@ const quad=document.getElementById("marketsQuad")
 single.style.display="block"
 quad.style.display="none"
 
-if(channel==="c1"){
-frame.src="https://www.youtube.com/embed/I8EEKdYZL34"
-}
-
-if(channel==="c2"){
-frame.src="https://www.youtube.com/embed/iEpJwprxDdk"
-}
-
-if(channel==="c3"){
-frame.src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"
-}
-
-if(channel==="c4"){
-frame.src="https://www.youtube.com/embed/KQp-e_XQnDE"
-}
+if(channel==="c1"){frame.src="https://www.youtube.com/embed/I8EEKdYZL34"}
+if(channel==="c2"){frame.src="https://www.youtube.com/embed/iEpJwprxDdk"}
+if(channel==="c3"){frame.src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"}
+if(channel==="c4"){frame.src="https://www.youtube.com/embed/KQp-e_XQnDE"}
 
 if(channel==="quad"){
 single.style.display="none"
@@ -565,42 +460,79 @@ quad.style.display="grid"
 
 }
 
-/* SPLASH EXIT */
 
-window.addEventListener("load",function(){
 
+/* MARKETS PANEL SWITCH */
+
+function showMarketPanel(panel){
+
+document.querySelectorAll(".marketPanel").forEach(p=>{
+p.style.display="none"
+})
+
+if(panel==="news"){document.getElementById("marketNews").style.display="block"}
+if(panel==="macro"){document.getElementById("marketMacro").style.display="block"}
+if(panel==="crypto"){document.getElementById("marketCrypto").style.display="block"}
+if(panel==="forex"){document.getElementById("marketForex").style.display="block"}
+
+}
+
+
+
+/* BOOT TERMINAL TEXT */
+
+const bootLines=[
+"INITIALIZING RADAR SYSTEM...",
+"GLOBAL STRATEGIC AWARENESS OSINT...",
+"LOADING INTELLIGENCE MODULES...",
+"CONNECTING GLOBAL DATA FEEDS...",
+"SYSTEM ONLINE"
+]
+
+let lineIndex=0
+let charIndex=0
+
+const message=document.getElementById("bootMessage")
 const splash=document.getElementById("introRadar")
-const bar=document.getElementById("bootBar")
 
-let progress=0
+function typeBoot(){
 
-const boot=setInterval(function(){
+if(lineIndex<bootLines.length){
 
-progress+=12
-bar.style.width=progress+"%"
+if(charIndex<bootLines[lineIndex].length){
 
-},60)
+message.textContent+=bootLines[lineIndex].charAt(charIndex)
+charIndex++
+setTimeout(typeBoot,35)
+
+}else{
+
+message.textContent+="\n"
+lineIndex++
+charIndex=0
+setTimeout(typeBoot,300)
+
+}
+
+}else{
 
 setTimeout(function(){
-
-clearInterval(boot)
-
-bar.style.width="100%"
 
 splash.style.opacity="0"
 
 setTimeout(function(){
 splash.style.display="none"
-},800)
+},700)
 
-},2600)
+},600)
 
-})
+}
 
+}
+
+typeBoot()
 
 </script>
 
 </body>
 </html>
-
-
