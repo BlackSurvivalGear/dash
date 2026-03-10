@@ -46,6 +46,7 @@ font-size:20px;
 letter-spacing:2px;
 text-shadow:0 0 10px #00ffaa;
 line-height:1.6;
+white-space:pre-line;
 }
 
 .bootProgress{
@@ -61,6 +62,23 @@ width:0%;
 height:100%;
 background:#00ffaa;
 box-shadow:0 0 10px #00ffaa;
+}
+
+
+
+/* ===============================
+BOOT CURSOR
+=============================== */
+
+.cursor{
+margin-left:6px;
+animation:blink 1s infinite;
+}
+
+@keyframes blink{
+0%{opacity:1}
+50%{opacity:0}
+100%{opacity:1}
 }
 
 
@@ -423,13 +441,13 @@ box-shadow:0 0 10px #00ffaa;
 
 
 /* ===============================
-PLACEHOLDER PANELS
+FOREX PANEL
 =============================== */
 
-.placeholderPanel{
-text-align:center;
-padding-top:120px;
-opacity:.8;
+.forexContainer{
+width:100%;
+max-width:1200px;
+margin:auto;
 }
 
 
