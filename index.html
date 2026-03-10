@@ -17,6 +17,7 @@
 <body>
 
 
+
 <!-- SPLASH SCREEN -->
 
 <div id="introRadar">
@@ -26,11 +27,10 @@
 </video>
 
 <div class="bootText">
-<div>INITIALIZING...</div>
-<div>GLOBAL STRATEGIC AWARENESS OSINT...</div>
-<div>LOADING MODULES...</div>
-<div>CONNECTING FEEDS...</div>
-<div>STANDBY BROTHER...</div>
+
+<span id="bootMessage"></span>
+<span class="cursor">|</span>
+
 </div>
 
 <div class="bootProgress">
@@ -56,17 +56,21 @@
 <header class="mainHeader">
 
 <div class="headerVideo">
+
 <video autoplay muted loop playsinline>
 <source src="HEADER3.mp4">
 </video>
+
 </div>
 
 <div class="headerContent">
 
 <div class="radarLogo">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
@@ -199,8 +203,7 @@ allowfullscreen></iframe>
 <div id="marketsSingle" class="livePlayer">
 
 <iframe id="marketsFrame"
-src="https://www.youtube.com/embed/I8EEKdYZL34">
-</iframe>
+src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 
 </div>
 
@@ -234,35 +237,7 @@ async>
 "colorTheme": "dark",
 "locale": "en",
 "width": "100%",
-"height": 650,
-"symbolsGroups": [
-{
-"name": "Indices",
-"symbols": [
-{"name": "FOREXCOM:SPXUSD","displayName": "S&P 500"},
-{"name": "FOREXCOM:NSXUSD","displayName": "NASDAQ 100"},
-{"name": "FOREXCOM:DJI","displayName": "Dow Jones"},
-{"name": "INDEX:NKY","displayName": "Japan 225"},
-{"name": "INDEX:DEU40","displayName": "DAX"},
-{"name": "FOREXCOM:UKXGBP","displayName": "FTSE 100"}
-]
-},
-{
-"name": "Futures",
-"symbols": [
-{"name": "CMCMARKETS:GOLD","displayName": "Gold"},
-{"name": "PYTH:WTI3!","displayName": "WTI Crude"}
-]
-},
-{
-"name": "Forex",
-"symbols": [
-{"name": "FX:EURUSD","displayName": "EUR/USD"},
-{"name": "FX:GBPUSD","displayName": "GBP/USD"},
-{"name": "FX:USDJPY","displayName": "USD/JPY"}
-]
-}
-]
+"height": 650
 }
 </script>
 
@@ -315,14 +290,32 @@ OPEN CRYPTOBUBBLES HEATMAP
 
 
 
-<!-- FOREX PLACEHOLDER -->
+<!-- FOREX PANEL -->
 
 <div id="marketForex" class="marketPanel">
 
-<div class="placeholderPanel">
+<div class="forexContainer">
 
-<h2>FOREX MARKETS</h2>
-<p>Currency monitoring panel will be added here.</p>
+<div class="tradingview-widget-container">
+
+<div class="tradingview-widget-container__widget"></div>
+
+<script type="text/javascript"
+src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js"
+async>
+{
+"colorTheme": "dark",
+"isTransparent": false,
+"locale": "en",
+"currencies": [
+"EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY"
+],
+"width": "100%",
+"height": 500
+}
+</script>
+
+</div>
 
 </div>
 
@@ -406,6 +399,8 @@ BSG Strategic Awareness OSINT — v1.2
 <script>
 
 
+/* NAV TABS */
+
 document.querySelectorAll("nav button").forEach(btn=>{
 btn.addEventListener("click",function(){
 
@@ -424,6 +419,9 @@ document.getElementById(this.dataset.tab).classList.add("active")
 })
 })
 
+
+
+/* LIVE SWITCH */
 
 function showLive(channel){
 
@@ -447,6 +445,9 @@ quad.style.display="grid"
 }
 
 
+
+/* MARKETS SWITCH */
+
 function showMarketPanel(panel){
 
 document.querySelectorAll(".marketPanel").forEach(p=>{
@@ -459,6 +460,83 @@ if(panel==="crypto"){document.getElementById("marketCrypto").style.display="bloc
 if(panel==="forex"){document.getElementById("marketForex").style.display="block"}
 
 }
+
+
+
+/* BOOT TERMINAL TEXT */
+
+const bootLines = [
+"INITIALIZING RADAR SYSTEM...",
+"GLOBAL STRATEGIC AWARENESS OSINT...",
+"LOADING INTELLIGENCE MODULES...",
+"CONNECTING GLOBAL DATA FEEDS...",
+"SYSTEM ONLINE"
+];
+
+let lineIndex = 0;
+let charIndex = 0;
+
+const message = document.getElementById("bootMessage");
+
+function typeBoot(){
+
+if(lineIndex < bootLines.length){
+
+if(charIndex < bootLines[lineIndex].length){
+
+message.textContent += bootLines[lineIndex].charAt(charIndex);
+charIndex++;
+setTimeout(typeBoot,40);
+
+}else{
+
+message.textContent += "\n";
+lineIndex++;
+charIndex = 0;
+setTimeout(typeBoot,400);
+
+}
+
+}
+
+}
+
+typeBoot();
+
+
+
+/* SPLASH EXIT */
+
+window.addEventListener("load",function(){
+
+const splash=document.getElementById("introRadar")
+const bar=document.getElementById("bootBar")
+
+let progress=0
+
+const boot=setInterval(function(){
+
+progress+=12
+bar.style.width=progress+"%"
+
+},60)
+
+setTimeout(function(){
+
+clearInterval(boot)
+
+bar.style.width="100%"
+
+splash.style.opacity="0"
+
+setTimeout(function(){
+splash.style.display="none"
+},800)
+
+},2600)
+
+})
+
 
 </script>
 
