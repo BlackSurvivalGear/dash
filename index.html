@@ -450,17 +450,43 @@ quad.style.display="grid"
 
 function showMarketPanel(panel){
 
+/* hide all panels */
+
 document.querySelectorAll(".marketPanel").forEach(p=>{
 p.style.display="none"
 })
 
-if(panel==="news"){document.getElementById("marketNews").style.display="block"}
-if(panel==="macro"){document.getElementById("marketMacro").style.display="block"}
-if(panel==="crypto"){document.getElementById("marketCrypto").style.display="block"}
-if(panel==="forex"){document.getElementById("marketForex").style.display="block"}
 
+/* remove active button state */
+
+document.querySelectorAll(".marketsNav button").forEach(btn=>{
+btn.classList.remove("active")
+})
+
+
+/* show correct panel */
+
+if(panel==="news"){
+document.getElementById("marketNews").style.display="block"
+document.querySelector('.marketsNav button:nth-child(1)').classList.add("active")
 }
 
+if(panel==="macro"){
+document.getElementById("marketMacro").style.display="block"
+document.querySelector('.marketsNav button:nth-child(2)').classList.add("active")
+}
+
+if(panel==="crypto"){
+document.getElementById("marketCrypto").style.display="block"
+document.querySelector('.marketsNav button:nth-child(3)').classList.add("active")
+}
+
+if(panel==="forex"){
+document.getElementById("marketForex").style.display="block"
+document.querySelector('.marketsNav button:nth-child(4)').classList.add("active")
+}
+
+}
 
 
 /* BOOT TERMINAL TEXT */
@@ -542,3 +568,4 @@ splash.style.display="none"
 
 </body>
 </html>
+
