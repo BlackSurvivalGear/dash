@@ -1,19 +1,20 @@
-/* ===============================
-GLOBAL RESET
-=============================== */
+/* ================================
+GLOBAL
+================================ */
 
 body{
 margin:0;
-background:#020606;
 font-family:'Rajdhani',sans-serif;
+background:#020606;
 color:white;
 overflow-x:hidden;
 }
 
 
-/* ===============================
+
+/* ================================
 SPLASH SCREEN
-=============================== */
+================================ */
 
 #introRadar{
 position:fixed;
@@ -22,18 +23,18 @@ left:0;
 width:100%;
 height:100%;
 background:black;
-z-index:9999;
 display:flex;
 align-items:center;
 justify-content:center;
 flex-direction:column;
+z-index:9999;
 transition:opacity 1s;
 }
 
 #introRadar video{
-width:80%;
-height:80%;
-object-fit:contain;
+width:70%;
+max-width:900px;
+opacity:.9;
 }
 
 .bootText{
@@ -42,35 +43,31 @@ bottom:120px;
 text-align:center;
 color:#00ffaa;
 font-size:20px;
-text-shadow:0 0 10px #00ffaa;
-line-height:1.8;
 letter-spacing:2px;
-}
-
-.bootLine{
-opacity:0;
-white-space:pre;
+text-shadow:0 0 10px #00ffaa;
+line-height:1.6;
 }
 
 .bootProgress{
 position:absolute;
-bottom:60px;
-width:300px;
+bottom:70px;
+width:320px;
 height:4px;
-background:#002222;
+background:#003333;
 }
 
 #bootBar{
-height:100%;
 width:0%;
+height:100%;
 background:#00ffaa;
 box-shadow:0 0 10px #00ffaa;
 }
 
 
-/* ===============================
+
+/* ================================
 RADAR BACKGROUND
-=============================== */
+================================ */
 
 .siteRadar{
 position:fixed;
@@ -78,8 +75,9 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-opacity:.05;
+opacity:.08;
 z-index:-1;
+pointer-events:none;
 }
 
 .siteRadar video{
@@ -89,14 +87,15 @@ object-fit:cover;
 }
 
 
-/* ===============================
+
+/* ================================
 HEADER
-=============================== */
+================================ */
 
 .mainHeader{
 position:relative;
-height:80px;
-border-bottom:1px solid #00ffaa55;
+height:90px;
+border-bottom:1px solid #00ffaa44;
 }
 
 .headerVideo{
@@ -118,81 +117,70 @@ object-fit:cover;
 display:grid;
 grid-template-columns:80px 1fr 200px;
 align-items:center;
-height:80px;
+height:90px;
 padding:0 20px;
-position:relative;
 }
 
 header h1{
 color:#00ffaa;
+font-size:36px;
 text-align:center;
-font-size:34px;
-text-shadow:0 0 12px #00ffaa;
 margin:0;
+text-shadow:0 0 15px #00ffaa;
 }
 
 
-/* ===============================
-LOGO
-=============================== */
 
-.radarLogo video{
+/* ================================
+LOGO
+================================ */
+
+.radarLogo img{
 width:60px;
 }
 
 
-/* ===============================
-MARKET DISPLAY
-=============================== */
+
+/* ================================
+MARKETS
+================================ */
 
 .headerMarkets{
 display:flex;
 justify-content:flex-end;
-gap:12px;
-font-size:14px;
+gap:14px;
+font-size:15px;
 color:#00ffaa;
 }
 
 
-/* ===============================
+
+/* ================================
 CRYPTO TICKER
-=============================== */
+================================ */
 
 .ticker-bar{
 background:black;
 border-bottom:1px solid #00ffaa33;
 height:32px;
-overflow:hidden;
 display:flex;
 align-items:center;
-}
-
-.ticker-content{
-display:flex;
-gap:40px;
-white-space:nowrap;
-animation:tickerMove 80s linear infinite;
-}
-
-.ticker-item{
+padding-left:10px;
 font-size:14px;
-}
-
-@keyframes tickerMove{
-0%{transform:translateX(100%)}
-100%{transform:translateX(-100%)}
+color:#aaa;
 }
 
 
-/* ===============================
+
+/* ================================
 NAVIGATION
-=============================== */
+================================ */
 
 nav{
 display:flex;
 justify-content:center;
 gap:12px;
-padding:10px;
+padding:12px;
 border-bottom:1px solid #00ffaa33;
 }
 
@@ -201,9 +189,9 @@ background:transparent;
 border:1px solid #00ffaa55;
 color:#00ffaa;
 padding:6px 16px;
-cursor:pointer;
 font-size:14px;
-transition:.25s;
+cursor:pointer;
+transition:.2s;
 }
 
 nav button:hover{
@@ -217,9 +205,10 @@ box-shadow:0 0 12px #00ffaa;
 }
 
 
-/* ===============================
+
+/* ================================
 TAB SYSTEM
-=============================== */
+================================ */
 
 .tab{
 display:none;
@@ -231,33 +220,44 @@ display:block;
 }
 
 
-/* ===============================
+
+/* ================================
 HOME PANEL
-=============================== */
+================================ */
 
 .homePanel{
 max-width:900px;
 margin:auto;
 text-align:center;
-padding:40px 0;
+padding:30px 0;
+}
+
+.homePanel h2{
+font-size:24px;
+}
+
+.homePanel p{
+opacity:.7;
 }
 
 .homeBg{
-width:320px;
-opacity:.7;
+max-width:420px;
+width:60%;
 margin-top:20px;
+opacity:.75;
 }
 
 
-/* ===============================
+
+/* ================================
 LIVE / BUSINESS BUTTONS
-=============================== */
+================================ */
 
 .liveNav{
 display:flex;
 justify-content:center;
 gap:12px;
-margin:12px 0;
+margin:16px 0;
 }
 
 .liveNav button{
@@ -266,7 +266,7 @@ border:1px solid #00ffaa55;
 color:#00ffaa;
 padding:6px 16px;
 cursor:pointer;
-transition:.25s;
+transition:.2s;
 }
 
 .liveNav button:hover{
@@ -276,25 +276,28 @@ box-shadow:0 0 12px #00ffaa;
 
 .liveNav button.active{
 background:#00ffaa22;
-box-shadow:0 0 10px #00ffaa;
+box-shadow:0 0 12px #00ffaa;
 }
 
 
-/* ===============================
+
+/* ================================
 VIDEO PLAYER
-=============================== */
+================================ */
 
 .livePlayer iframe{
 width:100%;
 height:70vh;
 border:1px solid #00ffaa44;
 box-shadow:0 0 10px #00ffaa22;
+background:black;
 }
 
 
-/* ===============================
+
+/* ================================
 QUAD GRID
-=============================== */
+================================ */
 
 .quadGrid{
 display:none;
@@ -307,27 +310,29 @@ height:80vh;
 .quadGrid iframe{
 width:100%;
 height:100%;
-border:1px solid #00ffaa55;
+border:1px solid #00ffaa44;
 box-shadow:0 0 10px #00ffaa22;
 }
 
 
-/* ===============================
-GLOBAL IFRAME STYLE
-=============================== */
+
+/* ================================
+MAPS & TRACKERS
+================================ */
 
 section iframe{
 width:100%;
-height:80vh;
+height:85vh;
 border:1px solid #00ffaa44;
-box-shadow:0 0 8px #00ffaa22;
+box-shadow:0 0 10px #00ffaa22;
 background:black;
 }
 
 
-/* ===============================
+
+/* ================================
 COMMAND WALL
-=============================== */
+================================ */
 
 .grid{
 display:grid;
@@ -340,37 +345,37 @@ height:85vh;
 .grid iframe{
 width:100%;
 height:100%;
-border:1px solid #00ffaa55;
+border:1px solid #00ffaa44;
 box-shadow:0 0 10px #00ffaa22;
 }
 
 
-/* ===============================
+
+/* ================================
 FOOTER
-=============================== */
+================================ */
 
 footer{
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:center;
-padding:25px 0;
+padding:30px 0;
 border-top:1px solid #00ffaa33;
 margin-top:30px;
 }
 
-.footerRadar video{
+.footerLogo{
 width:70px;
-opacity:.7;
 margin-bottom:10px;
+opacity:.8;
 }
 
-.footerLink{
+footer a{
 color:#00ffaa;
 text-decoration:none;
 font-size:14px;
 }
 
-.footerLink:hover{
+footer a:hover{
 text-decoration:underline;
 }
