@@ -1,6 +1,6 @@
-/* =========================
+/* ===============================
 GLOBAL
-========================= */
+=============================== */
 
 body{
 margin:0;
@@ -12,9 +12,9 @@ overflow-x:hidden;
 
 
 
-/* =========================
+/* ===============================
 SPLASH SCREEN
-========================= */
+=============================== */
 
 #introRadar{
 position:fixed;
@@ -65,9 +65,9 @@ box-shadow:0 0 10px #00ffaa;
 
 
 
-/* =========================
+/* ===============================
 RADAR BACKGROUND
-========================= */
+=============================== */
 
 .siteRadar{
 position:fixed;
@@ -88,9 +88,9 @@ object-fit:cover;
 
 
 
-/* =========================
+/* ===============================
 HEADER
-========================= */
+=============================== */
 
 .mainHeader{
 position:relative;
@@ -131,9 +131,9 @@ text-shadow:0 0 15px #00ffaa;
 
 
 
-/* =========================
+/* ===============================
 RADAR LOGO
-========================= */
+=============================== */
 
 .radarLogo video{
 width:60px;
@@ -141,9 +141,9 @@ width:60px;
 
 
 
-/* =========================
-MARKET PRICES
-========================= */
+/* ===============================
+HEADER MARKET PRICES
+=============================== */
 
 .headerMarkets{
 display:flex;
@@ -155,9 +155,9 @@ color:#00ffaa;
 
 
 
-/* =========================
+/* ===============================
 CRYPTO TICKER
-========================= */
+=============================== */
 
 .ticker-bar{
 background:black;
@@ -186,9 +186,9 @@ animation:tickerMove 60s linear infinite;
 
 
 
-/* =========================
+/* ===============================
 NAVIGATION
-========================= */
+=============================== */
 
 nav{
 display:flex;
@@ -221,9 +221,9 @@ box-shadow:0 0 12px #00ffaa;
 
 
 
-/* =========================
+/* ===============================
 TAB SYSTEM
-========================= */
+=============================== */
 
 .tab{
 display:none;
@@ -236,9 +236,9 @@ display:block;
 
 
 
-/* =========================
+/* ===============================
 HOME PANEL
-========================= */
+=============================== */
 
 .homePanel{
 max-width:900px;
@@ -264,9 +264,9 @@ opacity:.75;
 
 
 
-/* =========================
+/* ===============================
 LIVE / MARKETS BUTTONS
-========================= */
+=============================== */
 
 .liveNav{
 display:flex;
@@ -297,9 +297,55 @@ box-shadow:0 0 12px #00ffaa;
 
 
 
-/* =========================
+/* ===============================
+MARKETS SUB NAV
+=============================== */
+
+.marketsNav{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+
+.marketsNav button{
+background:transparent;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:6px 16px;
+cursor:pointer;
+}
+
+.marketsNav button:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
+}
+
+.marketsNav button.active{
+background:#00ffaa22;
+box-shadow:0 0 12px #00ffaa;
+}
+
+
+
+/* ===============================
+MARKET PANELS
+=============================== */
+
+.marketPanel{
+display:none;
+}
+
+.marketPanel.active{
+display:block;
+}
+
+
+
+/* ===============================
 VIDEO PLAYER
-========================= */
+=============================== */
 
 .livePlayer iframe{
 width:100%;
@@ -311,9 +357,9 @@ background:black;
 
 
 
-/* =========================
+/* ===============================
 QUAD GRID
-========================= */
+=============================== */
 
 .quadGrid{
 display:none;
@@ -332,9 +378,43 @@ box-shadow:0 0 10px #00ffaa22;
 
 
 
-/* =========================
+/* ===============================
+GLOBAL MARKETS GRID
+=============================== */
+
+.macroGrid{
+display:grid;
+grid-template-columns:1fr 1fr 1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:10px;
+height:85vh;
+}
+
+.macroGrid iframe{
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+background:black;
+}
+
+
+
+/* ===============================
+PLACEHOLDER PANELS
+=============================== */
+
+.placeholderPanel{
+text-align:center;
+padding-top:120px;
+opacity:.8;
+}
+
+
+
+/* ===============================
 MAP PANELS
-========================= */
+=============================== */
 
 section iframe{
 width:100%;
@@ -346,9 +426,9 @@ background:black;
 
 
 
-/* =========================
+/* ===============================
 COMMAND WALL
-========================= */
+=============================== */
 
 .grid{
 display:grid;
@@ -367,9 +447,9 @@ box-shadow:0 0 10px #00ffaa22;
 
 
 
-/* =========================
+/* ===============================
 FOOTER
-========================= */
+=============================== */
 
 footer{
 display:flex;
