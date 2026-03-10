@@ -27,13 +27,11 @@
 </video>
 
 <div class="bootText">
-
 <div>INITIALIZING...</div>
 <div>GLOBAL STRATEGIC AWARENESS OSINT...</div>
 <div>LOADING MODULES...</div>
 <div>CONNECTING FEEDS...</div>
 <div>STANDBY BROTHER...</div>
-
 </div>
 
 <div class="bootProgress">
@@ -47,9 +45,11 @@
 <!-- RADAR BACKGROUND -->
 
 <div class="siteRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 
@@ -57,17 +57,21 @@
 <header class="mainHeader">
 
 <div class="headerVideo">
+
 <video autoplay muted loop playsinline>
 <source src="HEADER3.mp4">
 </video>
+
 </div>
 
 <div class="headerContent">
 
 <div class="radarLogo">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
@@ -118,9 +122,7 @@
 
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
-<p>
-This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
-</p>
+<p>This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.</p>
 
 <img src="BSG2.png" class="homeBg">
 
@@ -169,6 +171,25 @@ allowfullscreen></iframe>
 
 <section id="markets" class="tab">
 
+
+
+<!-- MARKETS SUB NAV -->
+
+<div class="marketsNav">
+
+<button onclick="showMarketPanel(event,'news')" class="active">News</button>
+<button onclick="showMarketPanel(event,'macro')">Global Markets</button>
+<button onclick="showMarketPanel(event,'crypto')">Crypto</button>
+<button onclick="showMarketPanel(event,'forex')">Forex</button>
+
+</div>
+
+
+
+<!-- MARKETS NEWS -->
+
+<div id="marketNews" class="marketPanel active">
+
 <div class="liveNav">
 
 <button onclick="showMarkets(event,'c1')">Channel 1</button>
@@ -194,6 +215,62 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 <iframe src="https://www.youtube.com/embed/KQp-e_XQnDE"></iframe>
 
 </div>
+
+</div>
+
+
+
+<!-- GLOBAL MARKETS PANEL -->
+
+<div id="marketMacro" class="marketPanel">
+
+<div class="macroGrid">
+
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=SP:SPX&theme=dark"></iframe>
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=NASDAQ:IXIC&theme=dark"></iframe>
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=BINANCE:BTCUSDT&theme=dark"></iframe>
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC:GOLD&theme=dark"></iframe>
+
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC:SILVER&theme=dark"></iframe>
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC:USOIL&theme=dark"></iframe>
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=TVC:DXY&theme=dark"></iframe>
+<iframe src="https://s.tradingview.com/widgetembed/?symbol=CBOE:VIX&theme=dark"></iframe>
+
+</div>
+
+</div>
+
+
+
+<!-- CRYPTO PLACEHOLDER -->
+
+<div id="marketCrypto" class="marketPanel">
+
+<div class="placeholderPanel">
+
+<h2>CRYPTO MARKETS</h2>
+<p>Crypto intelligence panel will be added here.</p>
+
+</div>
+
+</div>
+
+
+
+<!-- FOREX PLACEHOLDER -->
+
+<div id="marketForex" class="marketPanel">
+
+<div class="placeholderPanel">
+
+<h2>FOREX MARKETS</h2>
+<p>Currency monitoring panel will be added here.</p>
+
+</div>
+
+</div>
+
+
 
 </section>
 
@@ -227,8 +304,7 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 
 <section id="cyber" class="tab">
 
-<iframe
-src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
+<iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
 style="width:100%;height:85vh;border:0;">
 </iframe>
 
@@ -256,9 +332,11 @@ style="width:100%;height:85vh;border:0;">
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -270,6 +348,8 @@ BlackSurvivalGear.com
 
 
 <script>
+
+
 
 /* TAB SWITCHING */
 
@@ -286,6 +366,7 @@ b.classList.remove("active")
 })
 
 this.classList.add("active")
+
 document.getElementById(this.dataset.tab).classList.add("active")
 
 })
@@ -294,163 +375,27 @@ document.getElementById(this.dataset.tab).classList.add("active")
 
 
 
-/* LIVE NEWS */
+/* MARKETS SUB NAV */
 
-function showLive(event,channel){
+function showMarketPanel(event,panel){
 
-document.querySelectorAll("#live .liveNav button").forEach(btn=>{
-btn.classList.remove("active")
+document.querySelectorAll(".marketPanel").forEach(p=>{
+p.style.display="none"
 })
+
+document.querySelectorAll(".marketsNav button").forEach(b=>{
+b.classList.remove("active")
+})
+
+document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).style.display="block"
 
 event.target.classList.add("active")
 
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("liveQuad")
-
-const streams={
-rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
-aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
-sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
-wion:"https://www.youtube.com/embed/vfszY1JYbMc"
-}
-
-if(channel==="quad"){
-
-single.style.display="none"
-quad.style.display="grid"
-
-if(!document.fullscreenElement){
-quad.requestFullscreen()
-}
-
-return
-
-}
-
-quad.style.display="none"
-single.style.display="block"
-
-frame.src=streams[channel]
-
 }
 
 
 
-/* MARKETS */
-
-function showMarkets(event,channel){
-
-document.querySelectorAll("#markets .liveNav button").forEach(btn=>{
-btn.classList.remove("active")
-})
-
-event.target.classList.add("active")
-
-const frame=document.getElementById("marketsFrame")
-const single=document.getElementById("marketsSingle")
-const quad=document.getElementById("marketsQuad")
-
-const streams={
-c1:"https://www.youtube.com/embed/I8EEKdYZL34",
-c2:"https://www.youtube.com/embed/iEpJwprxDdk",
-c3:"https://www.youtube.com/embed/0TzJ5Ov-_Vs",
-c4:"https://www.youtube.com/embed/KQp-e_XQnDE"
-}
-
-if(channel==="quad"){
-
-single.style.display="none"
-quad.style.display="grid"
-
-if(!document.fullscreenElement){
-quad.requestFullscreen()
-}
-
-return
-
-}
-
-quad.style.display="none"
-single.style.display="block"
-
-frame.src=streams[channel]
-
-}
-
-
-
-/* CRYPTO TICKER */
-
-async function loadTicker(){
-
-const ticker=document.getElementById("marketTicker")
-
-try{
-
-const r=await fetch("https://api.coincap.io/v2/assets?limit=10")
-const data=await r.json()
-
-ticker.innerHTML=""
-
-data.data.forEach(c=>{
-
-const price=parseFloat(c.priceUsd).toFixed(2)
-const change=parseFloat(c.changePercent24Hr).toFixed(2)
-
-const color=change>0?"#00ffaa":"#ff4c4c"
-
-ticker.innerHTML+=`
-<span style="margin-right:35px;color:${color}">
-${c.symbol} $${price} (${change}%)
-</span>
-`
-
-})
-
-}catch{
-
-ticker.innerHTML="Market data unavailable"
-
-}
-
-}
-
-loadTicker()
-setInterval(loadTicker,60000)
-
-
-
-/* GOLD SILVER */
-
-async function loadMetals(){
-
-try{
-
-const goldRes = await fetch("https://api.gold-api.com/price/XAU")
-const gold = await goldRes.json()
-
-const silverRes = await fetch("https://api.gold-api.com/price/XAG")
-const silver = await silverRes.json()
-
-document.getElementById("goldPrice").innerText="GOLD $" + Math.round(gold.price)
-document.getElementById("silverPrice").innerText="SILVER $" + silver.price.toFixed(2)
-
-}catch{
-
-document.getElementById("goldPrice").innerText="GOLD --"
-document.getElementById("silverPrice").innerText="SILVER --"
-
-}
-
-}
-
-loadMetals()
-setInterval(loadMetals,60000)
-
-
-
-/* SPLASH BOOT */
+/* SPLASH */
 
 window.addEventListener("load",function(){
 
@@ -481,10 +426,6 @@ splash.style.display="none"
 }
 
 },120)
-
-setTimeout(()=>{
-splash.style.display="none"
-},8000)
 
 })
 
