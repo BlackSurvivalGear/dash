@@ -17,7 +17,7 @@
 <body>
 
 
-<!-- BOOT SCREEN -->
+<!-- BOOT SPLASH SCREEN -->
 
 <div id="introRadar">
 
@@ -42,7 +42,7 @@
 </div>
 
 
-<!-- RADAR BACKGROUND -->
+<!-- RADAR WATERMARK BACKGROUND -->
 
 <div class="siteRadar">
 <video autoplay muted loop playsinline>
@@ -117,7 +117,9 @@ Loading crypto market data...
 
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
-<p>This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.</p>
+<p>
+This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
+</p>
 
 </div>
 
@@ -168,13 +170,13 @@ allowfullscreen></iframe>
 
 <div class="marketBar">
 
-<div id="spx">SPX --</div>
-<div id="nasdaq">NASDAQ --</div>
-<div id="dow">DOW --</div>
-<div id="vix">VIX --</div>
-<div id="gold">GOLD --</div>
-<div id="btc">BTC --</div>
-<div id="oil">OIL --</div>
+<div>SPX</div>
+<div>NASDAQ</div>
+<div>DOW</div>
+<div>VIX</div>
+<div>GOLD</div>
+<div>BTC</div>
+<div>OIL</div>
 
 </div>
 
@@ -205,6 +207,34 @@ allowfullscreen></iframe>
 
 </div>
 
+</section>
+
+
+<!-- CONFLICT MAP -->
+
+<section id="map" class="tab">
+<iframe src="https://liveuamap.com"></iframe>
+</section>
+
+
+<!-- AIRCRAFT -->
+
+<section id="air" class="tab">
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+</section>
+
+
+<!-- MARINE -->
+
+<section id="marine" class="tab">
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+</section>
+
+
+<!-- CYBER -->
+
+<section id="cyber" class="tab">
+<iframe src="https://threatmap.checkpoint.com"></iframe>
 </section>
 
 
@@ -244,10 +274,9 @@ BlackSurvivalGear.com
 
 <script>
 
-/* TAB SYSTEM */
+/* TAB NAVIGATION */
 
 document.querySelectorAll("nav button").forEach(button=>{
-
 button.addEventListener("click",function(){
 
 const target=this.getAttribute("data-tab")
@@ -264,6 +293,88 @@ document.getElementById(target).classList.add("active")
 this.classList.add("active")
 
 })
+})
+
+
+/* TYPEWRITER BOOT */
+
+function typeBootSequence(){
+
+const lines=document.querySelectorAll(".bootLine")
+let lineIndex=0
+
+function typeLine(){
+
+if(lineIndex>=lines.length) return
+
+const line=lines[lineIndex]
+const text=line.getAttribute("data-text")
+
+let charIndex=0
+
+line.style.opacity=1
+
+function typeChar(){
+
+if(charIndex<text.length){
+
+line.textContent+=text.charAt(charIndex)
+charIndex++
+
+setTimeout(typeChar,35)
+
+}else{
+
+lineIndex++
+setTimeout(typeLine,400)
+
+}
+
+}
+
+typeChar()
+
+}
+
+typeLine()
+
+}
+
+
+/* BOOT PROGRESS + EXIT */
+
+window.addEventListener("load",function(){
+
+typeBootSequence()
+
+let progress=0
+const bar=document.getElementById("bootBar")
+
+const bootInterval=setInterval(()=>{
+
+progress+=5
+bar.style.width=progress+"%"
+
+if(progress>=100){
+
+clearInterval(bootInterval)
+
+setTimeout(()=>{
+
+const intro=document.getElementById("introRadar")
+
+intro.style.transition="opacity 1.5s"
+intro.style.opacity="0"
+
+setTimeout(()=>{
+intro.style.display="none"
+},1500)
+
+},700)
+
+}
+
+},200)
 
 })
 
