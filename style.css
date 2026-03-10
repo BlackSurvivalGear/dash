@@ -1,11 +1,11 @@
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
-background:#05080c;
+background:#040808;
 color:white;
 }
 
-/* RADAR BACKGROUND */
+/* RADAR WATERMARK */
 
 .siteRadar{
 position:fixed;
@@ -13,9 +13,8 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-overflow:hidden;
 z-index:-1;
-opacity:0.08;
+opacity:.08;
 pointer-events:none;
 }
 
@@ -27,29 +26,54 @@ object-fit:cover;
 
 /* HEADER */
 
-header{
+.mainHeader{
+position:relative;
+height:70px;
+overflow:hidden;
+border-bottom:1px solid #00ffaa55;
+}
+
+.headerVideo{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:.45;
+z-index:0;
+}
+
+.headerVideo video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.headerContent{
+position:relative;
+z-index:2;
 display:flex;
 align-items:center;
 justify-content:space-between;
-padding:10px 25px;
-background:rgba(0,0,0,0.75);
-border-bottom:1px solid #00ffaa55;
-box-shadow:0 0 12px #00ffaa33;
+height:70px;
+padding:0 20px;
 }
 
 header h1{
-font-size:22px;
+font-size:20px;
 color:#00ffaa;
 letter-spacing:2px;
+text-shadow:0 0 8px #00ffaa66;
+margin:auto;
 }
 
 /* RADAR LOGO */
 
 .radarLogo video{
-width:70px;
+width:60px;
 }
 
-/* MARKETS */
+/* GOLD SILVER */
 
 .headerMarkets{
 font-size:14px;
@@ -57,27 +81,33 @@ display:flex;
 gap:15px;
 }
 
-/* TICKER */
+/* CRYPTO TICKER */
 
 .ticker-bar{
 overflow:hidden;
 background:#000;
 border-bottom:1px solid #00ffaa33;
+height:32px;
+display:flex;
+align-items:center;
 }
 
 .ticker-content{
+display:flex;
+gap:40px;
 white-space:nowrap;
-display:inline-block;
-animation:ticker 30s linear infinite;
+animation:tickerMove 45s linear infinite;
 }
 
 .ticker-item{
-margin-right:35px;
+font-size:14px;
 }
 
-@keyframes ticker{
+@keyframes tickerMove{
+
 0%{transform:translateX(100%)}
 100%{transform:translateX(-100%)}
+
 }
 
 /* NAV */
@@ -87,7 +117,7 @@ display:flex;
 justify-content:center;
 gap:12px;
 padding:10px;
-background:#05080c;
+background:#040808;
 border-bottom:1px solid #00ffaa33;
 }
 
@@ -98,18 +128,25 @@ color:#00ffaa;
 padding:6px 14px;
 cursor:pointer;
 font-size:14px;
+font-family:'Rajdhani',sans-serif;
+transition:.25s;
 }
 
 nav button.active{
 background:#00ffaa22;
-box-shadow:0 0 6px #00ffaa;
+box-shadow:0 0 8px #00ffaa;
+}
+
+nav button:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
 }
 
 /* TABS */
 
 .tab{
 display:none;
-padding:15px;
+padding:20px;
 }
 
 .tab.active{
@@ -119,57 +156,80 @@ display:block;
 /* HOME */
 
 .homePanel{
-position:relative;
+display:flex;
+flex-direction:column;
+align-items:center;
 text-align:center;
-}
-
-.homeBg{
-width:300px;
-opacity:0.45;
+padding:40px 0;
 }
 
 .homeOverlay{
 max-width:700px;
-margin:auto;
+margin-bottom:25px;
 }
 
-/* LIVE */
+.homeBg{
+width:300px;
+opacity:.6;
+}
+
+/* LIVE NEWS NAV */
 
 .liveNav{
+display:flex;
+justify-content:center;
+gap:10px;
 margin-bottom:10px;
-text-align:center;
 }
 
 .liveNav button{
-margin:4px;
+background:transparent;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:6px 14px;
+cursor:pointer;
+font-family:'Rajdhani',sans-serif;
+transition:.25s;
 }
+
+.liveNav button:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
+}
+
+/* LIVE PLAYER */
 
 .livePlayer iframe{
 width:100%;
 height:70vh;
 border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
 }
+
+/* QUAD VIEW */
 
 .quadGrid{
 display:none;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:6px;
+gap:8px;
 height:80vh;
 }
 
 .quadGrid iframe{
 width:100%;
 height:100%;
-border:1px solid #00ffaa33;
+border:1px solid #00ffaa55;
+box-shadow:0 0 10px #00ffaa22;
 }
 
-/* MAPS */
+/* GLOBAL IFRAME STYLE */
 
 section iframe{
 width:100%;
 height:80vh;
-border:1px solid #00ffaa33;
+border:1px solid #00ffaa44;
+box-shadow:0 0 8px #00ffaa22;
 }
 
 /* COMMAND GRID */
@@ -178,36 +238,37 @@ border:1px solid #00ffaa33;
 display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:8px;
+gap:10px;
 height:80vh;
 }
 
 .grid iframe{
 width:100%;
 height:100%;
-border:1px solid #00ffaa33;
 }
 
 /* FOOTER */
 
 footer{
 display:flex;
-justify-content:center;
+flex-direction:column;
 align-items:center;
-gap:10px;
-padding:10px;
+justify-content:center;
+padding:20px 0;
 background:#000;
 border-top:1px solid #00ffaa33;
 }
 
 .footerRadar video{
-width:60px;
-opacity:0.6;
+width:70px;
+opacity:.7;
+margin-bottom:8px;
 }
 
 .footerLink{
 color:#00ffaa;
 text-decoration:none;
+font-size:14px;
 }
 
 .footerLink:hover{
