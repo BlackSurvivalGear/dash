@@ -124,7 +124,7 @@ object-fit:cover;
 
 .headerContent{
 display:grid;
-grid-template-columns:80px 1fr 200px;
+grid-template-columns:80px 1fr 220px;
 align-items:center;
 height:90px;
 padding:0 20px;
@@ -151,21 +151,25 @@ width:60px;
 
 
 /* ===============================
-HEADER MARKET PRICES
+HEADER CLOCK
 =============================== */
 
 .headerMarkets{
 display:flex;
 justify-content:flex-end;
-gap:14px;
 font-size:15px;
+color:#00ffaa;
+letter-spacing:1px;
+}
+
+#dateTime{
 color:#00ffaa;
 }
 
 
 
 /* ===============================
-CRYPTO TICKER
+BREAKING NEWS TICKER
 =============================== */
 
 .ticker-bar{
@@ -176,11 +180,11 @@ display:flex;
 align-items:center;
 padding-left:10px;
 font-size:14px;
-color:#aaa;
+color:#ccc;
 overflow:hidden;
 }
 
-#marketTicker{
+#newsTicker{
 white-space:nowrap;
 animation:tickerMove 60s linear infinite;
 }
@@ -264,11 +268,26 @@ font-size:24px;
 opacity:.7;
 }
 
+
+
+/* ===============================
+HOME IMAGE
+=============================== */
+
 .homeBg{
 max-width:420px;
 width:60%;
 margin-top:20px;
-opacity:.75;
+
+/* transparency */
+opacity:.45;
+
+/* smooth edge fade */
+mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+-webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+
+/* subtle glow */
+filter: drop-shadow(0 0 10px rgba(0,255,170,.3));
 }
 
 
