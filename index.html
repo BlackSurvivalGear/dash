@@ -16,6 +16,7 @@
 
 <body>
 
+
 <!-- RADAR BOOT SCREEN -->
 
 <div id="introRadar">
@@ -28,8 +29,10 @@
 
 <div>INITIALIZING...</div>
 <div>GLOBAL STRATEGIC AWARENESS OSINT...</div>
+<div>LOADING MODULES...</div>
+<div>CONNECTING FEEDS</div>
 <div>STANDBY BROTHER...</div>
-  
+
 </div>
 
 </div>
@@ -65,10 +68,8 @@
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
-
 <span id="goldPrice">GOLD --</span>
 <span id="silverPrice">SILVER --</span>
-
 </div>
 
 </div>
@@ -124,7 +125,69 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 </section>
 
 
-<!-- OVERVIEW COMMAND WALL -->
+<!-- LIVE NEWS -->
+
+<section id="live" class="tab">
+
+<div class="liveNav">
+
+<button onclick="showLive('rt')">RT</button>
+<button onclick="showLive('aj')">Al Jazeera</button>
+<button onclick="showLive('sky')">Sky News</button>
+<button onclick="showLive('wion')">WION</button>
+<button onclick="showLive('quad')">QUAD VIEW</button>
+
+</div>
+
+<div id="liveSingle" class="livePlayer">
+
+<iframe id="liveFrame"
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+allowfullscreen></iframe>
+
+</div>
+
+<div id="quadView" class="quadGrid">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
+<iframe src="https://www.youtube.com/embed/vfszY1JYbMc"></iframe>
+
+</div>
+
+</section>
+
+
+<!-- CONFLICT MAP -->
+
+<section id="map" class="tab">
+<iframe src="https://liveuamap.com"></iframe>
+</section>
+
+
+<!-- AIRCRAFT WATCH -->
+
+<section id="air" class="tab">
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+</section>
+
+
+<!-- MARINE WATCH -->
+
+<section id="marine" class="tab">
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+</section>
+
+
+<!-- CYBER ATTACKS -->
+
+<section id="cyber" class="tab">
+<iframe src="https://threatmap.checkpoint.com"></iframe>
+</section>
+
+
+<!-- COMMAND WALL -->
 
 <section id="command" class="tab">
 
@@ -139,6 +202,17 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 <iframe src="https://s.tradingview.com/embed-widget/stock-heatmap/?locale=en&colorTheme=dark"></iframe>
 
 </div>
+
+</section>
+
+
+<!-- MAP -->
+
+<section id="gmap" class="tab">
+
+<iframe
+src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
+</iframe>
 
 </section>
 
@@ -162,6 +236,7 @@ BlackSurvivalGear.com
 
 <script>
 
+
 /* RADAR BOOT SCREEN */
 
 window.addEventListener("load",function(){
@@ -174,9 +249,7 @@ intro.style.transition="opacity 1.5s"
 intro.style.opacity="0"
 
 setTimeout(function(){
-
 intro.style.display="none"
-
 },1500)
 
 },4000)
@@ -208,6 +281,40 @@ this.classList.add("active")
 })
 
 
+/* LIVE NEWS SWITCH */
+
+function showLive(channel){
+
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("quadView")
+
+const streams={
+
+rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
+aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
+sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
+wion:"https://www.youtube.com/embed/vfszY1JYbMc"
+
+}
+
+if(channel==="quad"){
+
+single.style.display="none"
+quad.style.display="grid"
+
+return
+
+}
+
+quad.style.display="none"
+single.style.display="block"
+
+frame.src=streams[channel]
+
+}
+
+
 /* CRYPTO TICKER */
 
 async function loadCryptoTicker(){
@@ -233,7 +340,9 @@ item.className="ticker-item"
 
 item.innerHTML=`
 ${coin.symbol.toUpperCase()} $${coin.current_price}
-<span style="color:${color}">${arrow} ${change.toFixed(2)}%</span>
+<span style="color:${color}">
+${arrow} ${change.toFixed(2)}%
+</span>
 `
 
 ticker.appendChild(item)
@@ -276,7 +385,6 @@ setInterval(loadMetals,60000)
 
 </script>
 
+
 </body>
 </html>
-
-
