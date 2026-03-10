@@ -249,3 +249,23 @@ footer a{
 color:#00ffaa;
 text-decoration:none;
 }
+
+/* ===============================
+CRYPTO PANEL
+=============================== */
+
+.cryptoPanel{
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+height:85vh;
+}
+
+.cryptoPanel iframe{
+width:95%;
+height:95%;
+border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+background:black;
+}
