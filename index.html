@@ -239,8 +239,7 @@ src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
 
 <section id="cyber" class="tab">
 
-<iframe
-src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
+<iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
 style="width:100%;height:85vh;border:0;">
 </iframe>
 
@@ -285,7 +284,8 @@ BlackSurvivalGear.com
 
 <script>
 
-/* TAB SWITCHING */
+
+/* TAB SYSTEM */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -336,6 +336,11 @@ if(channel==="quad"){
 
 single.style.display="none"
 quad.style.display="grid"
+
+if(!document.fullscreenElement){
+quad.requestFullscreen()
+}
+
 return
 
 }
@@ -376,6 +381,11 @@ if(channel==="quad"){
 
 single.style.display="none"
 quad.style.display="grid"
+
+if(!document.fullscreenElement){
+quad.requestFullscreen()
+}
+
 return
 
 }
@@ -432,30 +442,30 @@ setInterval(loadTicker,60000)
 
 /* GOLD SILVER */
 
-async function metals(){
+async function loadMetals(){
 
 try{
 
-const r=await fetch("https://api.metals.live/v1/spot")
-const data=await r.json()
+const goldRes = await fetch("https://api.gold-api.com/price/XAU")
+const gold = await goldRes.json()
 
-let gold=data.find(x=>x.gold)
-let silver=data.find(x=>x.silver)
+const silverRes = await fetch("https://api.gold-api.com/price/XAG")
+const silver = await silverRes.json()
 
-document.getElementById("goldPrice").innerHTML="GOLD $"+gold.gold
-document.getElementById("silverPrice").innerHTML="SILVER $"+silver.silver
+document.getElementById("goldPrice").innerText="GOLD $" + Math.round(gold.price)
+document.getElementById("silverPrice").innerText="SILVER $" + silver.price.toFixed(2)
 
 }catch{
 
-document.getElementById("goldPrice").innerHTML="GOLD --"
-document.getElementById("silverPrice").innerHTML="SILVER --"
+document.getElementById("goldPrice").innerText="GOLD --"
+document.getElementById("silverPrice").innerText="SILVER --"
 
 }
 
 }
 
-metals()
-setInterval(metals,60000)
+loadMetals()
+setInterval(loadMetals,60000)
 
 
 
@@ -490,8 +500,6 @@ splash.style.display="none"
 }
 
 },120)
-
-/* failsafe */
 
 setTimeout(()=>{
 splash.style.display="none"
