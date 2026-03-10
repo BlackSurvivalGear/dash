@@ -17,31 +17,41 @@
 <body>
 
 
-<!-- RADAR BOOT SCREEN -->
+<!-- BOOT SCREEN -->
 
 <div id="introRadar">
 
 <video autoplay muted playsinline id="introVideo">
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 
 <div class="bootText">
 
-<div>INITIALIZING...</div>
-<div>GLOBAL STRATEGIC AWARENESS OSINT...</div>
-<div>STANDBY BROTHER...</div>
+<div class="bootLine" data-text="INITIALIZING..."></div>
+<div class="bootLine" data-text="GLOBAL STRATEGIC AWARENESS OSINT..."></div>
+<div class="bootLine" data-text="LOADING MODULES..."></div>
+<div class="bootLine" data-text="CONNECTING FEEDS"></div>
+<div class="bootLine" data-text="STANDBY BROTHER..."></div>
+
+</div>
+
+<div class="bootProgress">
+
+<div id="bootBar"></div>
 
 </div>
 
 </div>
 
 
-<!-- RADAR BACKGROUND -->
+<!-- RADAR WATERMARK -->
 
 <div class="siteRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 
@@ -50,24 +60,30 @@
 <header class="mainHeader">
 
 <div class="headerVideo">
+
 <video autoplay muted loop playsinline>
 <source src="HEADER3.mp4">
 </video>
+
 </div>
 
 <div class="headerContent">
 
 <div class="radarLogo">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
+
 <span id="goldPrice">GOLD --</span>
 <span id="silverPrice">SILVER --</span>
+
 </div>
 
 </div>
@@ -78,9 +94,11 @@
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
+
 <div id="marketTicker" class="ticker-content">
 Loading crypto market data...
 </div>
+
 </div>
 
 
@@ -164,21 +182,21 @@ allowfullscreen></iframe>
 </section>
 
 
-<!-- AIRCRAFT WATCH -->
+<!-- AIRCRAFT -->
 
 <section id="air" class="tab">
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 </section>
 
 
-<!-- MARINE WATCH -->
+<!-- MARINE -->
 
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 
-<!-- CYBER ATTACKS -->
+<!-- CYBER -->
 
 <section id="cyber" class="tab">
 <iframe src="https://threatmap.checkpoint.com"></iframe>
@@ -204,12 +222,11 @@ allowfullscreen></iframe>
 </section>
 
 
-<!-- MAP -->
+<!-- GOOGLE MAP -->
 
 <section id="gmap" class="tab">
 
-<iframe
-src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
+<iframe src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
 </section>
@@ -220,9 +237,11 @@ src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
@@ -233,27 +252,6 @@ BlackSurvivalGear.com
 
 
 <script>
-
-
-/* RADAR BOOT SCREEN */
-
-window.addEventListener("load",function(){
-
-setTimeout(function(){
-
-const intro=document.getElementById("introRadar")
-
-intro.style.transition="opacity 1.5s"
-intro.style.opacity="0"
-
-setTimeout(function(){
-intro.style.display="none"
-},1500)
-
-},4000)
-
-})
-
 
 /* TAB SYSTEM */
 
@@ -279,7 +277,7 @@ this.classList.add("active")
 })
 
 
-/* LIVE NEWS SWITCH */
+/* LIVE NEWS */
 
 function showLive(channel){
 
@@ -288,26 +286,20 @@ const single=document.getElementById("liveSingle")
 const quad=document.getElementById("quadView")
 
 const streams={
-
 rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
 aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
 sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
 wion:"https://www.youtube.com/embed/vfszY1JYbMc"
-
 }
 
 if(channel==="quad"){
-
 single.style.display="none"
 quad.style.display="grid"
-
 return
-
 }
 
 quad.style.display="none"
 single.style.display="block"
-
 frame.src=streams[channel]
 
 }
@@ -359,17 +351,16 @@ async function loadMetals(){
 
 try{
 
-const goldRes = await fetch("https://api.gold-api.com/price/XAU")
-const gold = await goldRes.json()
+const goldRes=await fetch("https://api.gold-api.com/price/XAU")
+const gold=await goldRes.json()
 
-const silverRes = await fetch("https://api.gold-api.com/price/XAG")
-const silver = await silverRes.json()
+const silverRes=await fetch("https://api.gold-api.com/price/XAG")
+const silver=await silverRes.json()
 
-document.getElementById("goldPrice").innerText="GOLD $" + Math.round(gold.price)
-document.getElementById("silverPrice").innerText="SILVER $" + silver.price.toFixed(2)
+document.getElementById("goldPrice").innerText="GOLD $"+Math.round(gold.price)
+document.getElementById("silverPrice").innerText="SILVER $"+silver.price.toFixed(2)
 
-}
-catch{
+}catch{
 
 document.getElementById("goldPrice").innerText="GOLD N/A"
 document.getElementById("silverPrice").innerText="SILVER N/A"
@@ -381,9 +372,84 @@ document.getElementById("silverPrice").innerText="SILVER N/A"
 loadMetals()
 setInterval(loadMetals,60000)
 
-</script>
 
+/* BOOT TYPEWRITER */
+
+function typeBootSequence(){
+
+const lines=document.querySelectorAll(".bootLine")
+let lineIndex=0
+
+function typeLine(){
+
+if(lineIndex>=lines.length) return
+
+const line=lines[lineIndex]
+const text=line.getAttribute("data-text")
+
+let charIndex=0
+
+line.style.opacity=1
+
+function typeChar(){
+
+if(charIndex<text.length){
+
+line.textContent+=text.charAt(charIndex)
+charIndex++
+setTimeout(typeChar,35)
+
+}else{
+
+lineIndex++
+setTimeout(typeLine,500)
+
+}
+
+}
+
+typeChar()
+
+}
+
+typeLine()
+
+}
+
+typeBootSequence()
+
+
+/* BOOT PROGRESS */
+
+let progress=0
+const bar=document.getElementById("bootBar")
+
+const bootInterval=setInterval(()=>{
+
+progress+=5
+bar.style.width=progress+"%"
+
+if(progress>=100){
+
+clearInterval(bootInterval)
+
+setTimeout(()=>{
+
+const intro=document.getElementById("introRadar")
+
+intro.style.opacity="0"
+
+setTimeout(()=>{
+intro.style.display="none"
+},1500)
+
+},600)
+
+}
+
+},200)
+
+</script>
 
 </body>
 </html>
-
