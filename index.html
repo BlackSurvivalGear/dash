@@ -529,7 +529,41 @@ setTimeout(typeBoot,400);
 
 typeBoot();
 
+/* ===============================
+MARKET NEWS VIDEO SWITCH
+=============================== */
 
+function showMarkets(channel){
+
+const frame=document.getElementById("marketsFrame")
+const single=document.getElementById("marketsSingle")
+const quad=document.getElementById("marketsQuad")
+
+single.style.display="block"
+quad.style.display="none"
+
+if(channel==="c1"){
+frame.src="https://www.youtube.com/embed/I8EEKdYZL34"
+}
+
+if(channel==="c2"){
+frame.src="https://www.youtube.com/embed/iEpJwprxDdk"
+}
+
+if(channel==="c3"){
+frame.src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"
+}
+
+if(channel==="c4"){
+frame.src="https://www.youtube.com/embed/KQp-e_XQnDE"
+}
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
+
+}
 
 /* SPLASH EXIT */
 
@@ -568,4 +602,5 @@ splash.style.display="none"
 
 </body>
 </html>
+
 
