@@ -21,7 +21,7 @@
 
 <div id="introRadar">
 
-<video autoplay muted playsinline id="introVideo">
+<video autoplay muted playsinline>
 <source src="RADAR3.mp4">
 </video>
 
@@ -29,27 +29,25 @@
 
 <div class="bootLine" data-text="INITIALIZING..."></div>
 <div class="bootLine" data-text="GLOBAL STRATEGIC AWARENESS OSINT..."></div>
+<div class="bootLine" data-text="LOADING MODULES..."></div>
+<div class="bootLine" data-text="CONNECTING FEEDS"></div>
 <div class="bootLine" data-text="STANDBY BROTHER..."></div>
 
 </div>
 
 <div class="bootProgress">
-
 <div id="bootBar"></div>
-
 </div>
 
 </div>
 
 
-<!-- RADAR WATERMARK -->
+<!-- RADAR BACKGROUND -->
 
 <div class="siteRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 
@@ -58,30 +56,24 @@
 <header class="mainHeader">
 
 <div class="headerVideo">
-
 <video autoplay muted loop playsinline>
 <source src="HEADER3.mp4">
 </video>
-
 </div>
 
 <div class="headerContent">
 
 <div class="radarLogo">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
-
 <span id="goldPrice">GOLD --</span>
 <span id="silverPrice">SILVER --</span>
-
 </div>
 
 </div>
@@ -92,11 +84,9 @@
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
-
 <div id="marketTicker" class="ticker-content">
 Loading crypto market data...
 </div>
-
 </div>
 
 
@@ -106,6 +96,7 @@ Loading crypto market data...
 
 <button data-tab="home" class="active">Home</button>
 <button data-tab="live">LIVE NEWS</button>
+<button data-tab="business">BUSINESS NEWS</button>
 <button data-tab="map">Conflict Map</button>
 <button data-tab="air">Aircraft Watch</button>
 <button data-tab="marine">Marine Watch</button>
@@ -126,9 +117,7 @@ Loading crypto market data...
 
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
-<p class="homeText">
-This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
-</p>
+<p>This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.</p>
 
 </div>
 
@@ -173,31 +162,49 @@ allowfullscreen></iframe>
 </section>
 
 
-<!-- CONFLICT MAP -->
+<!-- BUSINESS NEWS -->
 
-<section id="map" class="tab">
-<iframe src="https://liveuamap.com"></iframe>
-</section>
+<section id="business" class="tab">
 
+<div class="marketBar">
 
-<!-- AIRCRAFT -->
+<div id="spx">SPX --</div>
+<div id="nasdaq">NASDAQ --</div>
+<div id="dow">DOW --</div>
+<div id="vix">VIX --</div>
+<div id="gold">GOLD --</div>
+<div id="btc">BTC --</div>
+<div id="oil">OIL --</div>
 
-<section id="air" class="tab">
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-</section>
+</div>
 
+<div class="liveNav">
 
-<!-- MARINE -->
+<button onclick="showBusiness('bloomberg')">Bloomberg</button>
+<button onclick="showBusiness('cnbc')">CNBC</button>
+<button onclick="showBusiness('td')">TD Ameritrade</button>
+<button onclick="showBusiness('reuters')">Reuters</button>
+<button onclick="showBusiness('quad')">QUAD VIEW</button>
 
-<section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-</section>
+</div>
 
+<div id="businessSingle" class="livePlayer">
 
-<!-- CYBER -->
+<iframe id="businessFrame"
+src="https://www.youtube.com/embed/dp8PhLsUcFE"
+allowfullscreen></iframe>
 
-<section id="cyber" class="tab">
-<iframe src="https://threatmap.checkpoint.com"></iframe>
+</div>
+
+<div id="businessQuad" class="quadGrid">
+
+<iframe src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
+<iframe src="https://www.youtube.com/embed/9NyxcX3rhQs"></iframe>
+<iframe src="https://www.youtube.com/embed/8yYJp1E6J2E"></iframe>
+<iframe src="https://www.youtube.com/embed/8TGHu1JHf6Y"></iframe>
+
+</div>
+
 </section>
 
 
@@ -220,26 +227,12 @@ allowfullscreen></iframe>
 </section>
 
 
-<!-- GOOGLE MAP -->
-
-<section id="gmap" class="tab">
-
-<iframe src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
-</iframe>
-
-</section>
-
-
-<!-- FOOTER -->
-
 <footer>
 
 <div class="footerRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
@@ -275,19 +268,19 @@ this.classList.add("active")
 })
 
 
-/* LIVE NEWS */
+/* BUSINESS CHANNEL SWITCH */
 
-function showLive(channel){
+function showBusiness(channel){
 
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("quadView")
+const frame=document.getElementById("businessFrame")
+const single=document.getElementById("businessSingle")
+const quad=document.getElementById("businessQuad")
 
 const streams={
-rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
-aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
-sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
-wion:"https://www.youtube.com/embed/vfszY1JYbMc"
+bloomberg:"https://www.youtube.com/embed/dp8PhLsUcFE",
+cnbc:"https://www.youtube.com/embed/9NyxcX3rhQs",
+td:"https://www.youtube.com/embed/8yYJp1E6J2E",
+reuters:"https://www.youtube.com/embed/8TGHu1JHf6Y"
 }
 
 if(channel==="quad"){
@@ -298,157 +291,12 @@ return
 
 quad.style.display="none"
 single.style.display="block"
+
 frame.src=streams[channel]
 
 }
-
-
-/* CRYPTO TICKER */
-
-async function loadCryptoTicker(){
-
-const url="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1"
-
-const res=await fetch(url)
-const data=await res.json()
-
-const ticker=document.getElementById("marketTicker")
-
-ticker.innerHTML=""
-
-data.forEach(coin=>{
-
-const change=coin.price_change_percentage_24h||0
-const color=change>=0?"#00ff88":"#ff4d4d"
-const arrow=change>=0?"▲":"▼"
-
-const item=document.createElement("span")
-
-item.className="ticker-item"
-
-item.innerHTML=`
-${coin.symbol.toUpperCase()} $${coin.current_price}
-<span style="color:${color}">
-${arrow} ${change.toFixed(2)}%
-</span>
-`
-
-ticker.appendChild(item)
-
-})
-
-}
-
-loadCryptoTicker()
-setInterval(loadCryptoTicker,30000)
-
-
-/* GOLD SILVER */
-
-async function loadMetals(){
-
-try{
-
-const goldRes=await fetch("https://api.gold-api.com/price/XAU")
-const gold=await goldRes.json()
-
-const silverRes=await fetch("https://api.gold-api.com/price/XAG")
-const silver=await silverRes.json()
-
-document.getElementById("goldPrice").innerText="GOLD $"+Math.round(gold.price)
-document.getElementById("silverPrice").innerText="SILVER $"+silver.price.toFixed(2)
-
-}catch{
-
-document.getElementById("goldPrice").innerText="GOLD N/A"
-document.getElementById("silverPrice").innerText="SILVER N/A"
-
-}
-
-}
-
-loadMetals()
-setInterval(loadMetals,60000)
-
-
-/* BOOT TYPEWRITER */
-
-function typeBootSequence(){
-
-const lines=document.querySelectorAll(".bootLine")
-let lineIndex=0
-
-function typeLine(){
-
-if(lineIndex>=lines.length) return
-
-const line=lines[lineIndex]
-const text=line.getAttribute("data-text")
-
-let charIndex=0
-
-line.style.opacity=1
-
-function typeChar(){
-
-if(charIndex<text.length){
-
-line.textContent+=text.charAt(charIndex)
-charIndex++
-setTimeout(typeChar,35)
-
-}else{
-
-lineIndex++
-setTimeout(typeLine,500)
-
-}
-
-}
-
-typeChar()
-
-}
-
-typeLine()
-
-}
-
-typeBootSequence()
-
-
-/* BOOT PROGRESS */
-
-let progress=0
-const bar=document.getElementById("bootBar")
-
-const bootInterval=setInterval(()=>{
-
-progress+=5
-bar.style.width=progress+"%"
-
-if(progress>=100){
-
-clearInterval(bootInterval)
-
-setTimeout(()=>{
-
-const intro=document.getElementById("introRadar")
-
-intro.style.opacity="0"
-
-setTimeout(()=>{
-intro.style.display="none"
-},1500)
-
-},600)
-
-}
-
-},200)
 
 </script>
 
 </body>
 </html>
-
