@@ -22,17 +22,17 @@
 
 <div id="introRadar">
 
-<video autoplay muted loop playsinline preload="metadata">
+<video autoplay muted playsinline>
 <source src="RADAR3.mp4">
 </video>
 
 <div class="bootText">
 
-<div class="bootLine" data-text="INITIALIZING..."></div>
-<div class="bootLine" data-text="GLOBAL STRATEGIC AWARENESS OSINT..."></div>
-<div class="bootLine" data-text="LOADING MODULES..."></div>
-<div class="bootLine" data-text="CONNECTING FEEDS..."></div>
-<div class="bootLine" data-text="STANDBY BROTHER..."></div>
+<div>INITIALIZING...</div>
+<div>GLOBAL STRATEGIC AWARENESS OSINT...</div>
+<div>LOADING MODULES...</div>
+<div>CONNECTING FEEDS...</div>
+<div>STANDBY BROTHER...</div>
 
 </div>
 
@@ -65,16 +65,16 @@
 <div class="headerContent">
 
 <div class="radarLogo">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
+<img src="BSG.png">
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
+
 <span id="goldPrice">GOLD --</span>
 <span id="silverPrice">SILVER --</span>
+
 </div>
 
 </div>
@@ -83,12 +83,8 @@
 
 
 
-<!-- CRYPTO TICKER -->
-
 <div class="ticker-bar">
-<div id="marketTicker" class="ticker-content">
-Loading crypto market data...
-</div>
+<div id="marketTicker">Loading crypto market data...</div>
 </div>
 
 
@@ -100,9 +96,10 @@ Loading crypto market data...
 <button data-tab="home" class="active">Home</button>
 <button data-tab="live">LIVE NEWS</button>
 <button data-tab="business">BUSINESS NEWS</button>
-<button data-tab="map">Conflict Map</button>
-<button data-tab="air">Aircraft Watch</button>
-<button data-tab="command">Overview</button>
+<button data-tab="conflict">Conflict Map</button>
+<button data-tab="aircraft">Aircraft Watch</button>
+<button data-tab="marine">Marine Watch</button>
+<button data-tab="overview">Overview</button>
 
 </nav>
 
@@ -142,7 +139,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 
 </div>
 
-
 <div id="liveSingle" class="livePlayer">
 
 <iframe id="liveFrame"
@@ -151,8 +147,7 @@ allowfullscreen></iframe>
 
 </div>
 
-
-<div id="quadView" class="quadGrid">
+<div id="liveQuad" class="quadGrid">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
@@ -179,21 +174,19 @@ allowfullscreen></iframe>
 
 </div>
 
-
 <div id="bizSingle" class="livePlayer">
 
 <iframe id="bizFrame"
-src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
+src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
 
 </div>
 
-
 <div id="bizQuad" class="quadGrid">
 
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
+<iframe src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
 <iframe src="https://www.youtube.com/embed/9NyxcX3rhQs"></iframe>
 <iframe src="https://www.youtube.com/embed/nK0H37V9h6c"></iframe>
-<iframe src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
+<iframe src="https://www.youtube.com/embed/8RjXHXIVL9g"></iframe>
 
 </div>
 
@@ -203,7 +196,7 @@ src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 <!-- CONFLICT MAP -->
 
-<section id="map" class="tab">
+<section id="conflict" class="tab">
 
 <iframe src="https://liveuamap.com"></iframe>
 
@@ -213,7 +206,7 @@ src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 <!-- AIRCRAFT -->
 
-<section id="air" class="tab">
+<section id="aircraft" class="tab">
 
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 
@@ -221,9 +214,19 @@ src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 
 
-<!-- COMMAND WALL -->
+<!-- MARINE -->
 
-<section id="command" class="tab">
+<section id="marine" class="tab">
+
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+</section>
+
+
+
+<!-- OVERVIEW COMMAND WALL -->
+
+<section id="overview" class="tab">
 
 <div class="grid">
 
@@ -240,15 +243,9 @@ src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 <footer>
 
-<div class="footerRadar">
+<img src="BSG.png" class="footerLogo">
 
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-
-</div>
-
-<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
+<a href="https://BlackSurvivalGear.com" target="_blank">
 BlackSurvivalGear.com
 </a>
 
@@ -258,17 +255,24 @@ BlackSurvivalGear.com
 
 <script>
 
+
 /* TAB SYSTEM */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
 btn.addEventListener("click",function(){
 
-document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"))
-document.getElementById(this.dataset.tab).classList.add("active")
+document.querySelectorAll(".tab").forEach(tab=>{
+tab.classList.remove("active")
+})
 
-document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+document.querySelectorAll("nav button").forEach(b=>{
+b.classList.remove("active")
+})
+
 this.classList.add("active")
+
+document.getElementById(this.dataset.tab).classList.add("active")
 
 })
 
@@ -288,7 +292,7 @@ event.target.classList.add("active")
 
 const frame=document.getElementById("liveFrame")
 const single=document.getElementById("liveSingle")
-const quad=document.getElementById("quadView")
+const quad=document.getElementById("liveQuad")
 
 const streams={
 
@@ -332,15 +336,10 @@ const quad=document.getElementById("bizQuad")
 
 const streams={
 
-<button onclick="showBiz(event,'bloomberg')">Bloomberg</button>
-
-<button onclick="showBiz(event,'cnbc')">CNBC</button>
-
-<button onclick="showBiz(event,'reuters')">Reuters</button>
-
-<button onclick="showBiz(event,'yahoo')">Yahoo Finance</button>
-
-<button onclick="showBiz(event,'quad')">QUAD VIEW</button>
+bloomberg:"https://www.youtube.com/embed/dp8PhLsUcFE",
+cnbc:"https://www.youtube.com/embed/9NyxcX3rhQs",
+reuters:"https://www.youtube.com/embed/nK0H37V9h6c",
+yahoo:"https://www.youtube.com/embed/8RjXHXIVL9g"
 
 }
 
@@ -361,7 +360,7 @@ frame.src=streams[channel]
 
 
 
-/* BOOT SEQUENCE */
+/* SPLASH BOOT */
 
 window.addEventListener("load",function(){
 
@@ -372,7 +371,7 @@ let progress=0
 
 const boot=setInterval(function(){
 
-progress+=4
+progress+=5
 bar.style.width=progress+"%"
 
 if(progress>=100){
@@ -383,21 +382,21 @@ setTimeout(function(){
 
 splash.style.opacity="0"
 
-setTimeout(()=>{
+setTimeout(function(){
 splash.style.display="none"
 },1200)
 
-},1200)
+},1000)
 
 }
 
 },120)
 
-/* failsafe */
+/* failsafe exit */
 
-setTimeout(()=>{
+setTimeout(function(){
 splash.style.display="none"
-},9000)
+},8000)
 
 })
 
@@ -405,4 +404,3 @@ splash.style.display="none"
 
 </body>
 </html>
-
