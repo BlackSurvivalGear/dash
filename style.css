@@ -1,3 +1,7 @@
+/* ===============================
+GLOBAL RESET
+=============================== */
+
 body{
 margin:0;
 background:#020606;
@@ -7,7 +11,9 @@ overflow-x:hidden;
 }
 
 
-/* SPLASH */
+/* ===============================
+SPLASH SCREEN
+=============================== */
 
 #introRadar{
 position:fixed;
@@ -37,6 +43,13 @@ text-align:center;
 color:#00ffaa;
 font-size:20px;
 text-shadow:0 0 10px #00ffaa;
+line-height:1.8;
+letter-spacing:2px;
+}
+
+.bootLine{
+opacity:0;
+white-space:pre;
 }
 
 .bootProgress{
@@ -51,10 +64,13 @@ background:#002222;
 height:100%;
 width:0%;
 background:#00ffaa;
+box-shadow:0 0 10px #00ffaa;
 }
 
 
-/* RADAR BACKGROUND */
+/* ===============================
+RADAR BACKGROUND
+=============================== */
 
 .siteRadar{
 position:fixed;
@@ -73,7 +89,9 @@ object-fit:cover;
 }
 
 
-/* HEADER */
+/* ===============================
+HEADER
+=============================== */
 
 .mainHeader{
 position:relative;
@@ -83,6 +101,8 @@ border-bottom:1px solid #00ffaa55;
 
 .headerVideo{
 position:absolute;
+top:0;
+left:0;
 width:100%;
 height:100%;
 opacity:.25;
@@ -108,14 +128,65 @@ color:#00ffaa;
 text-align:center;
 font-size:34px;
 text-shadow:0 0 12px #00ffaa;
+margin:0;
 }
+
+
+/* ===============================
+LOGO
+=============================== */
 
 .radarLogo video{
 width:60px;
 }
 
 
-/* NAV */
+/* ===============================
+MARKET DISPLAY
+=============================== */
+
+.headerMarkets{
+display:flex;
+justify-content:flex-end;
+gap:12px;
+font-size:14px;
+color:#00ffaa;
+}
+
+
+/* ===============================
+CRYPTO TICKER
+=============================== */
+
+.ticker-bar{
+background:black;
+border-bottom:1px solid #00ffaa33;
+height:32px;
+overflow:hidden;
+display:flex;
+align-items:center;
+}
+
+.ticker-content{
+display:flex;
+gap:40px;
+white-space:nowrap;
+animation:tickerMove 80s linear infinite;
+}
+
+.ticker-item{
+font-size:14px;
+}
+
+@keyframes tickerMove{
+0%{transform:translateX(100%)}
+100%{transform:translateX(-100%)}
+}
+
+
+/* ===============================
+NAVIGATION
+=============================== */
 
 nav{
 display:flex;
@@ -131,15 +202,24 @@ border:1px solid #00ffaa55;
 color:#00ffaa;
 padding:6px 16px;
 cursor:pointer;
+font-size:14px;
+transition:.25s;
 }
 
-nav button.active{
+nav button:hover{
 background:#00ffaa22;
 box-shadow:0 0 10px #00ffaa;
 }
 
+nav button.active{
+background:#00ffaa22;
+box-shadow:0 0 12px #00ffaa;
+}
 
-/* TABS */
+
+/* ===============================
+TAB SYSTEM
+=============================== */
 
 .tab{
 display:none;
@@ -151,16 +231,70 @@ display:block;
 }
 
 
-/* VIDEO */
+/* ===============================
+HOME PANEL
+=============================== */
+
+.homePanel{
+max-width:900px;
+margin:auto;
+text-align:center;
+padding:40px 0;
+}
+
+.homeBg{
+width:320px;
+opacity:.7;
+margin-top:20px;
+}
+
+
+/* ===============================
+LIVE / BUSINESS BUTTONS
+=============================== */
+
+.liveNav{
+display:flex;
+justify-content:center;
+gap:12px;
+margin:12px 0;
+}
+
+.liveNav button{
+background:transparent;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:6px 16px;
+cursor:pointer;
+transition:.25s;
+}
+
+.liveNav button:hover{
+background:#00ffaa22;
+box-shadow:0 0 12px #00ffaa;
+}
+
+.liveNav button.active{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
+}
+
+
+/* ===============================
+VIDEO PLAYER
+=============================== */
 
 .livePlayer iframe{
 width:100%;
 height:70vh;
 border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
 }
 
 
-/* QUAD */
+/* ===============================
+QUAD GRID
+=============================== */
 
 .quadGrid{
 display:none;
@@ -173,11 +307,27 @@ height:80vh;
 .quadGrid iframe{
 width:100%;
 height:100%;
-border:1px solid #00ffaa44;
+border:1px solid #00ffaa55;
+box-shadow:0 0 10px #00ffaa22;
 }
 
 
-/* COMMAND WALL */
+/* ===============================
+GLOBAL IFRAME STYLE
+=============================== */
+
+section iframe{
+width:100%;
+height:80vh;
+border:1px solid #00ffaa44;
+box-shadow:0 0 8px #00ffaa22;
+background:black;
+}
+
+
+/* ===============================
+COMMAND WALL
+=============================== */
 
 .grid{
 display:grid;
@@ -190,24 +340,37 @@ height:85vh;
 .grid iframe{
 width:100%;
 height:100%;
-border:1px solid #00ffaa44;
+border:1px solid #00ffaa55;
+box-shadow:0 0 10px #00ffaa22;
 }
 
 
-/* FOOTER */
+/* ===============================
+FOOTER
+=============================== */
 
 footer{
-text-align:center;
-padding:25px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:25px 0;
 border-top:1px solid #00ffaa33;
+margin-top:30px;
 }
 
 .footerRadar video{
 width:70px;
+opacity:.7;
 margin-bottom:10px;
 }
 
 .footerLink{
 color:#00ffaa;
 text-decoration:none;
+font-size:14px;
+}
+
+.footerLink:hover{
+text-decoration:underline;
 }
