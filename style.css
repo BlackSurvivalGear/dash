@@ -1,3 +1,7 @@
+/* ===============================
+GLOBAL
+=============================== */
+
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
@@ -7,7 +11,10 @@ overflow-x:hidden;
 }
 
 
-/* SPLASH */
+
+/* ===============================
+SPLASH SCREEN
+=============================== */
 
 #introRadar{
 position:fixed;
@@ -38,6 +45,7 @@ color:#00ffaa;
 font-size:20px;
 letter-spacing:2px;
 text-shadow:0 0 10px #00ffaa;
+line-height:1.6;
 }
 
 .bootProgress{
@@ -56,7 +64,10 @@ box-shadow:0 0 10px #00ffaa;
 }
 
 
-/* RADAR BACKGROUND */
+
+/* ===============================
+RADAR BACKGROUND
+=============================== */
 
 .siteRadar{
 position:fixed;
@@ -66,6 +77,7 @@ width:100%;
 height:100%;
 opacity:.08;
 z-index:-1;
+pointer-events:none;
 }
 
 .siteRadar video{
@@ -75,7 +87,10 @@ object-fit:cover;
 }
 
 
-/* HEADER */
+
+/* ===============================
+HEADER
+=============================== */
 
 .mainHeader{
 position:relative;
@@ -85,6 +100,8 @@ border-bottom:1px solid #00ffaa44;
 
 .headerVideo{
 position:absolute;
+top:0;
+left:0;
 width:100%;
 height:100%;
 opacity:.25;
@@ -113,7 +130,65 @@ text-shadow:0 0 15px #00ffaa;
 }
 
 
-/* NAV */
+
+/* ===============================
+RADAR LOGO
+=============================== */
+
+.radarLogo video{
+width:60px;
+}
+
+
+
+/* ===============================
+HEADER MARKET PRICES
+=============================== */
+
+.headerMarkets{
+display:flex;
+justify-content:flex-end;
+gap:14px;
+font-size:15px;
+color:#00ffaa;
+}
+
+
+
+/* ===============================
+CRYPTO TICKER
+=============================== */
+
+.ticker-bar{
+background:black;
+border-bottom:1px solid #00ffaa33;
+height:32px;
+display:flex;
+align-items:center;
+padding-left:10px;
+font-size:14px;
+color:#aaa;
+overflow:hidden;
+}
+
+#marketTicker{
+white-space:nowrap;
+animation:tickerMove 60s linear infinite;
+}
+
+@keyframes tickerMove{
+
+0%{transform:translateX(100%)}
+
+100%{transform:translateX(-100%)}
+
+}
+
+
+
+/* ===============================
+NAVIGATION
+=============================== */
 
 nav{
 display:flex;
@@ -129,7 +204,14 @@ background:transparent;
 border:1px solid #00ffaa55;
 color:#00ffaa;
 padding:6px 16px;
+font-size:14px;
 cursor:pointer;
+transition:.2s;
+}
+
+nav button:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
 }
 
 nav button.active{
@@ -138,7 +220,10 @@ box-shadow:0 0 12px #00ffaa;
 }
 
 
-/* TAB SYSTEM */
+
+/* ===============================
+TAB SYSTEM
+=============================== */
 
 .tab{
 display:none;
@@ -150,32 +235,131 @@ display:block;
 }
 
 
-/* HOME */
+
+/* ===============================
+HOME PANEL
+=============================== */
 
 .homePanel{
 max-width:900px;
 margin:auto;
 text-align:center;
+padding:30px 0;
+}
+
+.homePanel h2{
+font-size:24px;
+}
+
+.homePanel p{
+opacity:.7;
 }
 
 .homeBg{
 max-width:420px;
 width:60%;
 margin-top:20px;
-opacity:.7;
+opacity:.75;
 }
 
 
-/* PLAYER */
+
+/* ===============================
+LIVE / MARKETS BUTTONS
+=============================== */
+
+.liveNav{
+display:flex;
+justify-content:center;
+gap:12px;
+margin:16px 0;
+flex-wrap:wrap;
+}
+
+.liveNav button{
+background:transparent;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:6px 16px;
+cursor:pointer;
+transition:.2s;
+}
+
+.liveNav button:hover{
+background:#00ffaa22;
+box-shadow:0 0 12px #00ffaa;
+}
+
+.liveNav button.active{
+background:#00ffaa22;
+box-shadow:0 0 12px #00ffaa;
+}
+
+
+
+/* ===============================
+MARKETS SUB NAV
+=============================== */
+
+.marketsNav{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-bottom:20px;
+flex-wrap:wrap;
+}
+
+.marketsNav button{
+background:transparent;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:6px 16px;
+cursor:pointer;
+}
+
+.marketsNav button:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
+}
+
+.marketsNav button.active{
+background:#00ffaa22;
+box-shadow:0 0 12px #00ffaa;
+}
+
+
+
+/* ===============================
+MARKET PANELS
+=============================== */
+
+.marketPanel{
+display:none;
+}
+
+.marketPanel.active{
+display:block;
+}
+
+
+
+/* ===============================
+VIDEO PLAYER
+=============================== */
 
 .livePlayer iframe{
 width:100%;
 height:70vh;
 border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+background:black;
 }
 
 
-/* QUAD GRID */
+
+/* ===============================
+QUAD GRID
+=============================== */
 
 .quadGrid{
 display:none;
@@ -189,10 +373,14 @@ height:80vh;
 width:100%;
 height:100%;
 border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
 }
 
 
-/* MARKETS GRID */
+
+/* ===============================
+GLOBAL MARKETS GRID
+=============================== */
 
 .macroGrid{
 display:grid;
@@ -206,49 +394,11 @@ height:85vh;
 width:100%;
 height:100%;
 border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+background:black;
 }
 
 
-/* MAP PANELS */
-
-section iframe{
-width:100%;
-height:85vh;
-border:1px solid #00ffaa44;
-}
-
-
-/* OVERVIEW GRID */
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:10px;
-height:85vh;
-}
-
-
-/* FOOTER */
-
-footer{
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:30px 0;
-border-top:1px solid #00ffaa33;
-margin-top:30px;
-}
-
-.footerRadar video{
-width:70px;
-margin-bottom:10px;
-}
-
-footer a{
-color:#00ffaa;
-text-decoration:none;
-}
 
 /* ===============================
 CRYPTO PANEL
@@ -268,4 +418,95 @@ height:100%;
 border:1px solid #00ffaa44;
 box-shadow:0 0 10px #00ffaa22;
 background:black;
+}
+
+
+
+/* ===============================
+PLACEHOLDER PANELS
+=============================== */
+
+.placeholderPanel{
+text-align:center;
+padding-top:120px;
+opacity:.8;
+}
+
+
+
+/* ===============================
+MAP PANELS
+=============================== */
+
+section iframe{
+width:100%;
+height:85vh;
+border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+background:black;
+}
+
+
+
+/* ===============================
+COMMAND WALL
+=============================== */
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:10px;
+height:85vh;
+}
+
+.grid iframe{
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+}
+
+
+
+/* ===============================
+FOOTER
+=============================== */
+
+footer{
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:30px 0;
+border-top:1px solid #00ffaa33;
+margin-top:30px;
+}
+
+.footerRadar video{
+width:70px;
+margin-bottom:10px;
+opacity:.8;
+}
+
+footer a{
+color:#00ffaa;
+text-decoration:none;
+font-size:14px;
+}
+
+footer a:hover{
+text-decoration:underline;
+}
+
+
+
+/* ===============================
+VERSION TAG
+=============================== */
+
+.versionTag{
+font-size:11px;
+opacity:.55;
+margin-top:6px;
+letter-spacing:1px;
 }
