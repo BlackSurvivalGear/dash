@@ -1,3 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Global Strategic Awareness OSINT</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<!-- RADAR BACKGROUND -->
+
+<div class="siteRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+
+<!-- HEADER -->
+
 <header class="mainHeader">
 
 <div class="headerVideo">
@@ -17,10 +48,344 @@
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
+
 <span id="goldPrice">GOLD --</span>
 <span id="silverPrice">SILVER --</span>
+
 </div>
 
 </div>
 
 </header>
+
+
+
+<!-- CRYPTO TICKER -->
+
+<div class="ticker-bar">
+
+<div id="marketTicker" class="ticker-content">
+Loading crypto market data...
+</div>
+
+</div>
+
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button data-tab="home" class="active">Home</button>
+<button data-tab="live">LIVE NEWS</button>
+<button data-tab="map">Conflict Map</button>
+<button data-tab="air">Aircraft Watch</button>
+<button data-tab="marine">Marine Watch</button>
+<button data-tab="cyber">Cyber Attacks</button>
+<button data-tab="command">Overview</button>
+<button data-tab="gmap">Map</button>
+
+</nav>
+
+
+
+<!-- HOME -->
+
+<section id="home" class="tab active">
+
+<div class="homePanel">
+
+<div class="homeOverlay">
+
+<h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
+
+<p class="homeText">
+This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
+</p>
+
+</div>
+
+<img src="BSG2.png" class="homeBg">
+
+</div>
+
+</section>
+
+
+
+<!-- LIVE NEWS -->
+
+<section id="live" class="tab">
+
+<div class="liveNav">
+
+<button onclick="showLive('rt')">RT</button>
+<button onclick="showLive('aj')">Al Jazeera</button>
+<button onclick="showLive('sky')">Sky News</button>
+<button onclick="showLive('wion')">WION</button>
+<button onclick="showLive('quad')">QUAD VIEW</button>
+
+</div>
+
+<div id="liveSingle" class="livePlayer">
+
+<iframe id="liveFrame"
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+allowfullscreen></iframe>
+
+</div>
+
+<div id="quadView" class="quadGrid">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
+<iframe src="https://www.youtube.com/embed/vfszY1JYbMc"></iframe>
+
+</div>
+
+</section>
+
+
+
+<!-- CONFLICT MAP -->
+
+<section id="map" class="tab">
+
+<iframe src="https://liveuamap.com"></iframe>
+
+</section>
+
+
+
+<!-- AIRCRAFT -->
+
+<section id="air" class="tab">
+
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+
+</section>
+
+
+
+<!-- MARINE -->
+
+<section id="marine" class="tab">
+
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+</section>
+
+
+
+<!-- CYBER -->
+
+<section id="cyber" class="tab">
+
+<iframe src="https://threatmap.checkpoint.com"></iframe>
+
+</section>
+
+
+
+<!-- COMMAND WALL -->
+
+<section id="command" class="tab">
+
+<div class="grid">
+
+<iframe src="https://liveuamap.com"></iframe>
+<iframe src="https://threatmap.checkpoint.com"></iframe>
+<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
+
+</div>
+
+</section>
+
+
+
+<!-- GOOGLE MAP -->
+
+<section id="gmap" class="tab">
+
+<iframe
+src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
+</iframe>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footerRadar">
+
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+
+</div>
+
+<a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
+BlackSurvivalGear.com
+</a>
+
+</footer>
+
+
+
+<script>
+
+
+
+/* TAB SYSTEM */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const buttons=document.querySelectorAll("nav button")
+const tabs=document.querySelectorAll(".tab")
+
+buttons.forEach(button=>{
+
+button.addEventListener("click",function(){
+
+const target=this.getAttribute("data-tab")
+
+tabs.forEach(tab=>{
+tab.classList.remove("active")
+})
+
+buttons.forEach(btn=>{
+btn.classList.remove("active")
+})
+
+document.getElementById(target).classList.add("active")
+this.classList.add("active")
+
+})
+
+})
+
+})
+
+
+
+/* LIVE NEWS SWITCH */
+
+function showLive(channel){
+
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("quadView")
+
+const streams={
+
+rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
+aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
+sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
+wion:"https://www.youtube.com/embed/vfszY1JYbMc"
+
+}
+
+if(channel==="quad"){
+
+single.style.display="none"
+quad.style.display="grid"
+
+if(!document.fullscreenElement){
+quad.requestFullscreen().catch(()=>{})
+}
+
+return
+
+}
+
+quad.style.display="none"
+single.style.display="block"
+
+frame.src=streams[channel]
+
+}
+
+
+
+/* CRYPTO TICKER */
+
+async function loadCryptoTicker(){
+
+const url="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false"
+
+const res=await fetch(url)
+const data=await res.json()
+
+const ticker=document.getElementById("marketTicker")
+
+ticker.innerHTML=""
+
+data.forEach(coin=>{
+
+const change=coin.price_change_percentage_24h||0
+const color=change>=0?"#00ff88":"#ff4d4d"
+const arrow=change>=0?"▲":"▼"
+
+const item=document.createElement("span")
+
+item.className="ticker-item"
+
+item.innerHTML=`
+<span class="ticker-symbol">${coin.symbol.toUpperCase()}</span>
+$${coin.current_price.toLocaleString()}
+<span style="color:${color}">
+${arrow} ${change.toFixed(2)}%
+</span>
+`
+
+ticker.appendChild(item)
+
+})
+
+}
+
+loadCryptoTicker()
+setInterval(loadCryptoTicker,30000)
+
+
+
+/* GOLD SILVER */
+
+async function loadMetals(){
+
+try{
+
+const goldRes = await fetch("https://api.gold-api.com/price/XAU")
+const gold = await goldRes.json()
+
+const silverRes = await fetch("https://api.gold-api.com/price/XAG")
+const silver = await silverRes.json()
+
+document.getElementById("goldPrice").innerText="GOLD $" + Math.round(gold.price).toLocaleString()
+document.getElementById("silverPrice").innerText="SILVER $" + Number(silver.price).toFixed(2)
+
+}
+catch{
+
+document.getElementById("goldPrice").innerText="GOLD N/A"
+document.getElementById("silverPrice").innerText="SILVER N/A"
+
+}
+
+}
+
+loadMetals()
+setInterval(loadMetals,60000)
+
+
+
+</script>
+
+
+</body>
+</html>
