@@ -18,90 +18,22 @@
 
 
 
-<script>
+<!-- SPLASH SCREEN -->
 
-/* ===============================
-BOOT TERMINAL SPLASH
-=============================== */
+<div id="introRadar">
 
-document.addEventListener("DOMContentLoaded", function(){
+<video autoplay muted playsinline>
+<source src="RADAR3.mp4">
+</video>
 
-const splash = document.getElementById("introRadar");
-const message = document.getElementById("bootMessage");
+<div class="bootText">
+<span id="bootMessage"></span>
+<span class="cursor">|</span>
+</div>
 
-const bootLines = [
-"INITIALIZING RADAR SYSTEM...",
-"GLOBAL STRATEGIC AWARENESS OSINT...",
-"LOADING INTELLIGENCE MODULES...",
-"CONNECTING GLOBAL DATA FEEDS...",
-"SYSTEM ONLINE"
-];
+</div>
 
-let lineIndex = 0;
-let charIndex = 0;
 
-function typeBoot(){
-
-if(lineIndex < bootLines.length){
-
-if(charIndex < bootLines[lineIndex].length){
-
-message.textContent += bootLines[lineIndex].charAt(charIndex);
-charIndex++;
-
-setTimeout(typeBoot,35);
-
-}else{
-
-message.textContent += "\n";
-lineIndex++;
-charIndex = 0;
-
-setTimeout(typeBoot,300);
-
-}
-
-}else{
-
-setTimeout(function(){
-
-splash.style.opacity = "0";
-
-setTimeout(function(){
-splash.style.display = "none";
-},700);
-
-},600);
-
-}
-
-}
-
-typeBoot();
-
-});
-
-</script>
-
-/* EXIT SPLASH AFTER TEXT FINISHES */
-
-setTimeout(function(){
-
-splash.style.opacity = "0";
-
-setTimeout(function(){
-splash.style.display = "none";
-},700);
-
-},600);
-
-}
-
-}
-
-typeBoot();
-
-});
 
 <!-- RADAR BACKGROUND -->
 
@@ -285,10 +217,10 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
 {
-"colorTheme": "dark",
-"locale": "en",
-"width": "100%",
-"height": 650
+"colorTheme":"dark",
+"locale":"en",
+"width":"100%",
+"height":650
 }
 </script>
 
@@ -311,25 +243,23 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
 {
-"defaultColumn": "overview",
-"screener_type": "crypto_mkt",
-"displayCurrency": "USD",
-"colorTheme": "dark",
-"isTransparent": true,
-"locale": "en",
-"width": "100%",
-"height": 550
+"defaultColumn":"overview",
+"screener_type":"crypto_mkt",
+"displayCurrency":"USD",
+"colorTheme":"dark",
+"isTransparent":true,
+"locale":"en",
+"width":"100%",
+"height":550
 }
 </script>
 
 </div>
 
 <div class="cryptoLaunch">
-
 <a href="https://cryptobubbles.net" target="_blank" class="cryptoButton">
 OPEN CRYPTOBUBBLES HEATMAP
 </a>
-
 </div>
 
 </div>
@@ -349,12 +279,10 @@ OPEN CRYPTOBUBBLES HEATMAP
 
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
 {
-"colorTheme": "dark",
-"isTransparent": false,
-"locale": "en",
-"currencies":[
-"EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY"
-],
+"colorTheme":"dark",
+"isTransparent":false,
+"locale":"en",
+"currencies":["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY"],
 "width":"100%",
 "height":500
 }
@@ -363,55 +291,6 @@ OPEN CRYPTOBUBBLES HEATMAP
 </div>
 
 </div>
-
-</div>
-
-</section>
-
-
-
-<!-- CONFLICT MAP -->
-
-<section id="conflict" class="tab">
-<iframe src="https://liveuamap.com"></iframe>
-</section>
-
-
-
-<!-- AIRCRAFT -->
-
-<section id="aircraft" class="tab">
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-</section>
-
-
-
-<!-- MARINE -->
-
-<section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-</section>
-
-
-
-<!-- CYBER -->
-
-<section id="cyber" class="tab">
-<iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"></iframe>
-</section>
-
-
-
-<!-- OVERVIEW -->
-
-<section id="overview" class="tab">
-
-<div class="grid">
-
-<iframe src="https://liveuamap.com"></iframe>
-<iframe src="https://globe.adsbexchange.com"></iframe>
-<iframe src="https://coin360.com"></iframe>
-<iframe src="https://www.tradingview.com/markets/stocks-worldwide/heatmap/"></iframe>
 
 </div>
 
@@ -477,47 +356,66 @@ updateClock()
 
 
 
-/* BREAKING NEWS RSS */
+/* ===============================
+BOOT TERMINAL SPLASH
+=============================== */
 
-async function loadNewsTicker(){
+document.addEventListener("DOMContentLoaded",function(){
 
-const rss="https://api.allorigins.win/get?url="+
-encodeURIComponent("https://rss.nytimes.com/services/xml/rss/nyt/World.xml")
+const splash=document.getElementById("introRadar")
+const message=document.getElementById("bootMessage")
 
-try{
+const bootLines=[
+"INITIALIZING RADAR SYSTEM...",
+"GLOBAL STRATEGIC AWARENESS OSINT...",
+"LOADING INTELLIGENCE MODULES...",
+"CONNECTING GLOBAL DATA FEEDS...",
+"SYSTEM ONLINE"
+]
 
-const response=await fetch(rss)
-const data=await response.json()
+let lineIndex=0
+let charIndex=0
 
-const parser=new DOMParser()
-const xml=parser.parseFromString(data.contents,"text/xml")
+function typeBoot(){
 
-const items=xml.querySelectorAll("item")
+if(lineIndex<bootLines.length){
 
-let headlines=[]
+if(charIndex<bootLines[lineIndex].length){
 
-items.forEach((el,i)=>{
-if(i<10){
-headlines.push(el.querySelector("title").textContent)
+message.textContent+=bootLines[lineIndex].charAt(charIndex)
+charIndex++
+setTimeout(typeBoot,35)
+
+}else{
+
+message.textContent+="\n"
+lineIndex++
+charIndex=0
+setTimeout(typeBoot,300)
+
 }
+
+}else{
+
+setTimeout(function(){
+
+splash.style.opacity="0"
+
+setTimeout(function(){
+splash.style.display="none"
+},700)
+
+},600)
+
+}
+
+}
+
+typeBoot()
+
 })
-
-document.getElementById("newsTicker").textContent=
-"BREAKING NEWS • "+headlines.join(" • ")
-
-}catch(err){
-
-document.getElementById("newsTicker").textContent="GLOBAL NEWS FEED UNAVAILABLE"
-
-}
-
-}
-
-loadNewsTicker()
 
 </script>
 
 </body>
 </html>
-
-
