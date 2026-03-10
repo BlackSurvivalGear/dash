@@ -75,14 +75,6 @@
 
 
 
-<!-- BREAKING NEWS TICKER -->
-
-<div class="ticker-bar">
-<div id="newsTicker">Loading global breaking news...</div>
-</div>
-
-
-
 <!-- NAVIGATION -->
 
 <nav>
@@ -257,9 +249,11 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </div>
 
 <div class="cryptoLaunch">
+
 <a href="https://cryptobubbles.net" target="_blank" class="cryptoButton">
 OPEN CRYPTOBUBBLES HEATMAP
 </a>
+
 </div>
 
 </div>
@@ -356,9 +350,7 @@ updateClock()
 
 
 
-/* ===============================
-BOOT TERMINAL SPLASH
-=============================== */
+/* TERMINAL SPLASH */
 
 document.addEventListener("DOMContentLoaded",function(){
 
@@ -414,6 +406,95 @@ splash.style.display="none"
 typeBoot()
 
 })
+
+
+
+/* NAVIGATION */
+
+document.querySelectorAll("nav button").forEach(btn=>{
+btn.addEventListener("click",function(){
+
+document.querySelectorAll(".tab").forEach(tab=>{
+tab.classList.remove("active")
+})
+
+document.querySelectorAll("nav button").forEach(b=>{
+b.classList.remove("active")
+})
+
+this.classList.add("active")
+
+document.getElementById(this.dataset.tab).classList.add("active")
+
+})
+})
+
+
+
+/* LIVE NEWS SWITCH */
+
+function showLive(channel){
+
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("liveQuad")
+
+single.style.display="block"
+quad.style.display="none"
+
+if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
+if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
+if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
+if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
+
+}
+
+
+
+/* MARKET NEWS SWITCH */
+
+function showMarkets(channel){
+
+const frame=document.getElementById("marketsFrame")
+const single=document.getElementById("marketsSingle")
+const quad=document.getElementById("marketsQuad")
+
+single.style.display="block"
+quad.style.display="none"
+
+if(channel==="c1"){frame.src="https://www.youtube.com/embed/I8EEKdYZL34"}
+if(channel==="c2"){frame.src="https://www.youtube.com/embed/iEpJwprxDdk"}
+if(channel==="c3"){frame.src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"}
+if(channel==="c4"){frame.src="https://www.youtube.com/embed/KQp-e_XQnDE"}
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
+
+}
+
+
+
+/* MARKETS PANEL SWITCH */
+
+function showMarketPanel(panel){
+
+document.querySelectorAll(".marketPanel").forEach(p=>{
+p.style.display="none"
+})
+
+if(panel==="news"){document.getElementById("marketNews").style.display="block"}
+if(panel==="macro"){document.getElementById("marketMacro").style.display="block"}
+if(panel==="crypto"){document.getElementById("marketCrypto").style.display="block"}
+if(panel==="forex"){document.getElementById("marketForex").style.display="block"}
+
+}
 
 </script>
 
