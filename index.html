@@ -9,13 +9,11 @@
 <title>Global Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
-
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
-
 
 
 <!-- SPLASH SCREEN -->
@@ -41,46 +39,36 @@
 </div>
 
 
-
 <!-- RADAR BACKGROUND -->
 
 <div class="siteRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
-
 
 
 <header class="mainHeader">
 
 <div class="headerVideo">
-
 <video autoplay muted loop playsinline>
 <source src="HEADER3.mp4">
 </video>
-
 </div>
 
 <div class="headerContent">
 
 <div class="radarLogo">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
-
 <span id="goldPrice">GOLD --</span>
 <span id="silverPrice">SILVER --</span>
-
 </div>
 
 </div>
@@ -88,13 +76,11 @@
 </header>
 
 
-
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
 <div id="marketTicker">Loading crypto market data...</div>
 </div>
-
 
 
 <!-- NAVIGATION -->
@@ -113,7 +99,6 @@
 </nav>
 
 
-
 <!-- HOME -->
 
 <section id="home" class="tab active">
@@ -122,7 +107,11 @@
 
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
-<p>This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.</p>
+<p>
+This dashboard consolidates open-source intelligence monitoring systems
+into a unified command interface providing real-time global awareness of
+conflicts, markets, cyber activity, maritime movement and air traffic.
+</p>
 
 <img src="BSG2.png" class="homeBg">
 
@@ -131,18 +120,17 @@
 </section>
 
 
-
 <!-- LIVE NEWS -->
 
 <section id="live" class="tab">
 
 <div class="liveNav">
 
-<button onclick="showLive(event,'rt')">RT</button>
-<button onclick="showLive(event,'aj')">Al Jazeera</button>
-<button onclick="showLive(event,'sky')">Sky News</button>
-<button onclick="showLive(event,'wion')">WION</button>
-<button onclick="showLive(event,'quad')">QUAD VIEW</button>
+<button onclick="showLive('rt')">RT</button>
+<button onclick="showLive('aj')">Al Jazeera</button>
+<button onclick="showLive('sky')">Sky News</button>
+<button onclick="showLive('wion')">WION</button>
+<button onclick="showLive('quad')">QUAD VIEW</button>
 
 </div>
 
@@ -166,24 +154,18 @@ allowfullscreen></iframe>
 </section>
 
 
-
 <!-- MARKETS -->
 
 <section id="markets" class="tab">
 
-
-
-<!-- MARKETS SUB NAV -->
-
 <div class="marketsNav">
 
-<button onclick="showMarketPanel(event,'news')" class="active">News</button>
-<button onclick="showMarketPanel(event,'macro')">Global Markets</button>
-<button onclick="showMarketPanel(event,'crypto')">Crypto</button>
-<button onclick="showMarketPanel(event,'forex')">Forex</button>
+<button onclick="showMarketPanel('news')" class="active">News</button>
+<button onclick="showMarketPanel('macro')">Global Markets</button>
+<button onclick="showMarketPanel('crypto')">Crypto</button>
+<button onclick="showMarketPanel('forex')">Forex</button>
 
 </div>
-
 
 
 <!-- MARKETS NEWS -->
@@ -192,11 +174,11 @@ allowfullscreen></iframe>
 
 <div class="liveNav">
 
-<button onclick="showMarkets(event,'c1')">Channel 1</button>
-<button onclick="showMarkets(event,'c2')">Channel 2</button>
-<button onclick="showMarkets(event,'c3')">Channel 3</button>
-<button onclick="showMarkets(event,'c4')">Channel 4</button>
-<button onclick="showMarkets(event,'quad')">QUAD VIEW</button>
+<button onclick="showMarkets('c1')">Channel 1</button>
+<button onclick="showMarkets('c2')">Channel 2</button>
+<button onclick="showMarkets('c3')">Channel 3</button>
+<button onclick="showMarkets('c4')">Channel 4</button>
+<button onclick="showMarkets('quad')">QUAD VIEW</button>
 
 </div>
 
@@ -219,8 +201,7 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </div>
 
 
-
-<!-- GLOBAL MARKETS PANEL -->
+<!-- GLOBAL MARKETS -->
 
 <div id="marketMacro" class="marketPanel">
 
@@ -241,7 +222,6 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </div>
 
 
-
 <!-- CRYPTO PLACEHOLDER -->
 
 <div id="marketCrypto" class="marketPanel">
@@ -254,7 +234,6 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </div>
 
 </div>
-
 
 
 <!-- FOREX PLACEHOLDER -->
@@ -270,10 +249,7 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 
 </div>
 
-
-
 </section>
-
 
 
 <!-- CONFLICT MAP -->
@@ -283,13 +259,11 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </section>
 
 
-
 <!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 </section>
-
 
 
 <!-- MARINE -->
@@ -299,17 +273,11 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </section>
 
 
-
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-
-<iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
-style="width:100%;height:85vh;border:0;">
-</iframe>
-
+<iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"></iframe>
 </section>
-
 
 
 <!-- OVERVIEW -->
@@ -328,15 +296,12 @@ style="width:100%;height:85vh;border:0;">
 </section>
 
 
-
 <footer>
 
 <div class="footerRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -346,53 +311,84 @@ BlackSurvivalGear.com
 </footer>
 
 
-
 <script>
 
 
-
-/* TAB SWITCHING */
+/* TAB SWITCH */
 
 document.querySelectorAll("nav button").forEach(btn=>{
-
 btn.addEventListener("click",function(){
 
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
-})
-
-document.querySelectorAll("nav button").forEach(b=>{
-b.classList.remove("active")
-})
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
 this.classList.add("active")
-
 document.getElementById(this.dataset.tab).classList.add("active")
 
 })
-
 })
 
 
+/* LIVE SWITCH */
 
-/* MARKETS SUB NAV */
+function showLive(channel){
 
-function showMarketPanel(event,panel){
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("liveQuad")
 
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.style.display="none"
-})
+single.style.display="block"
+quad.style.display="none"
 
-document.querySelectorAll(".marketsNav button").forEach(b=>{
-b.classList.remove("active")
-})
+if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
+if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
+if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
+if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
 
-document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).style.display="block"
-
-event.target.classList.add("active")
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
 
 }
 
+
+/* MARKET NEWS SWITCH */
+
+function showMarkets(channel){
+
+const frame=document.getElementById("marketsFrame")
+const single=document.getElementById("marketsSingle")
+const quad=document.getElementById("marketsQuad")
+
+single.style.display="block"
+quad.style.display="none"
+
+if(channel==="c1"){frame.src="https://www.youtube.com/embed/I8EEKdYZL34"}
+if(channel==="c2"){frame.src="https://www.youtube.com/embed/iEpJwprxDdk"}
+if(channel==="c3"){frame.src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"}
+if(channel==="c4"){frame.src="https://www.youtube.com/embed/KQp-e_XQnDE"}
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
+
+}
+
+
+/* MARKET PANEL SWITCH */
+
+function showMarketPanel(panel){
+
+document.querySelectorAll(".marketPanel").forEach(p=>p.style.display="none")
+
+if(panel==="news"){document.getElementById("marketNews").style.display="block"}
+if(panel==="macro"){document.getElementById("marketMacro").style.display="block"}
+if(panel==="crypto"){document.getElementById("marketCrypto").style.display="block"}
+if(panel==="forex"){document.getElementById("marketForex").style.display="block"}
+
+}
 
 
 /* SPLASH */
@@ -406,7 +402,7 @@ let progress=0
 
 const boot=setInterval(function(){
 
-progress+=5
+progress+=10
 bar.style.width=progress+"%"
 
 if(progress>=100){
@@ -417,15 +413,13 @@ setTimeout(function(){
 
 splash.style.opacity="0"
 
-setTimeout(()=>{
-splash.style.display="none"
-},1200)
+setTimeout(()=>{splash.style.display="none"},700)
 
-},1000)
+},500)
 
 }
 
-},120)
+},60)
 
 })
 
