@@ -14,14 +14,15 @@
 
 </head>
 
+
 <body>
 
 
-<!-- BOOT SPLASH SCREEN -->
+<!-- RADAR BOOT SCREEN -->
 
 <div id="introRadar">
 
-<video autoplay muted playsinline>
+<video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
 
@@ -30,7 +31,7 @@
 <div class="bootLine" data-text="INITIALIZING..."></div>
 <div class="bootLine" data-text="GLOBAL STRATEGIC AWARENESS OSINT..."></div>
 <div class="bootLine" data-text="LOADING MODULES..."></div>
-<div class="bootLine" data-text="CONNECTING FEEDS"></div>
+<div class="bootLine" data-text="CONNECTING FEEDS..."></div>
 <div class="bootLine" data-text="STANDBY BROTHER..."></div>
 
 </div>
@@ -42,7 +43,7 @@
 </div>
 
 
-<!-- RADAR WATERMARK BACKGROUND -->
+<!-- RADAR BACKGROUND -->
 
 <div class="siteRadar">
 <video autoplay muted loop playsinline>
@@ -51,7 +52,6 @@
 </div>
 
 
-<!-- HEADER -->
 
 <header class="mainHeader">
 
@@ -81,6 +81,7 @@
 </header>
 
 
+
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
@@ -88,6 +89,7 @@
 Loading crypto market data...
 </div>
 </div>
+
 
 
 <!-- NAVIGATION -->
@@ -107,6 +109,7 @@ Loading crypto market data...
 </nav>
 
 
+
 <!-- HOME -->
 
 <section id="home" class="tab active">
@@ -118,16 +121,19 @@ Loading crypto market data...
 <h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
 
 <p>
-This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
-</p>
 
-</div>
+This dashboard consolidates open-source intelligence monitoring tools into a unified global situational awareness interface.
+
+</p>
 
 <img src="BSG2.png" class="homeBg">
 
 </div>
 
+</div>
+
 </section>
+
 
 
 <!-- LIVE NEWS -->
@@ -136,13 +142,14 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 
 <div class="liveNav">
 
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky News</button>
-<button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">QUAD VIEW</button>
+<button onclick="showLive(event,'rt')">RT</button>
+<button onclick="showLive(event,'aj')">Al Jazeera</button>
+<button onclick="showLive(event,'sky')">Sky News</button>
+<button onclick="showLive(event,'wion')">WION</button>
+<button onclick="showLive(event,'quad')">QUAD VIEW</button>
 
 </div>
+
 
 <div id="liveSingle" class="livePlayer">
 
@@ -151,6 +158,7 @@ src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allowfullscreen></iframe>
 
 </div>
+
 
 <div id="quadView" class="quadGrid">
 
@@ -164,50 +172,53 @@ allowfullscreen></iframe>
 </section>
 
 
+
 <!-- BUSINESS NEWS -->
 
 <section id="business" class="tab">
 
 <div class="marketBar">
 
-<div>SPX</div>
-<div>NASDAQ</div>
-<div>DOW</div>
-<div>VIX</div>
-<div>GOLD</div>
-<div>BTC</div>
-<div>OIL</div>
+<span>SPX</span>
+<span>NASDAQ</span>
+<span>DOW</span>
+<span>VIX</span>
+<span>GOLD</span>
+<span>BTC</span>
+<span>OIL</span>
 
 </div>
 
 <div class="liveNav">
 
-<button onclick="showBusiness('bloomberg')">Bloomberg</button>
-<button onclick="showBusiness('cnbc')">CNBC</button>
-<button onclick="showBusiness('td')">TD Ameritrade</button>
-<button onclick="showBusiness('reuters')">Reuters</button>
-<button onclick="showBusiness('quad')">QUAD VIEW</button>
+<button onclick="showBiz(event,'bloomberg')">Bloomberg</button>
+<button onclick="showBiz(event,'cnbc')">CNBC</button>
+<button onclick="showBiz(event,'reuters')">Reuters</button>
+<button onclick="showBiz(event,'yahoo')">Yahoo Finance</button>
+<button onclick="showBiz(event,'quad')">QUAD VIEW</button>
 
 </div>
 
-<div id="businessSingle" class="livePlayer">
 
-<iframe id="businessFrame"
-src="https://www.youtube.com/embed/dp8PhLsUcFE"
-allowfullscreen></iframe>
+<div id="bizSingle" class="livePlayer">
+
+<iframe id="bizFrame"
+src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
 
 </div>
 
-<div id="businessQuad" class="quadGrid">
+
+<div id="bizQuad" class="quadGrid">
 
 <iframe src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
 <iframe src="https://www.youtube.com/embed/9NyxcX3rhQs"></iframe>
-<iframe src="https://www.youtube.com/embed/8yYJp1E6J2E"></iframe>
-<iframe src="https://www.youtube.com/embed/8TGHu1JHf6Y"></iframe>
+<iframe src="https://www.youtube.com/embed/nK0H37V9h6c"></iframe>
+<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 </div>
 
 </section>
+
 
 
 <!-- CONFLICT MAP -->
@@ -217,11 +228,13 @@ allowfullscreen></iframe>
 </section>
 
 
+
 <!-- AIRCRAFT -->
 
 <section id="air" class="tab">
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 </section>
+
 
 
 <!-- MARINE -->
@@ -231,11 +244,13 @@ allowfullscreen></iframe>
 </section>
 
 
+
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 </section>
+
 
 
 <!-- COMMAND WALL -->
@@ -245,16 +260,24 @@ allowfullscreen></iframe>
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
-
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
-<iframe src="https://coin360.com/widget/map"></iframe>
-
-<iframe src="https://s.tradingview.com/embed-widget/stock-heatmap/?locale=en&colorTheme=dark"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
+<iframe src="https://www.tradingview.com/markets/stocks-worldwide/heatmap/"></iframe>
+<iframe src="https://coin360.com"></iframe>
 
 </div>
 
 </section>
+
+
+
+<!-- MAP -->
+
+<section id="gmap" class="tab">
+
+<iframe src="https://maps.google.com/maps?q=world&t=&z=2&output=embed"></iframe>
+
+</section>
+
 
 
 <footer>
@@ -272,132 +295,94 @@ BlackSurvivalGear.com
 </footer>
 
 
+
 <script>
 
-/* TAB NAVIGATION */
+/* TAB SYSTEM */
 
 document.querySelectorAll("nav button").forEach(button=>{
+
 button.addEventListener("click",function(){
 
 const target=this.getAttribute("data-tab")
 
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
-})
-
-document.querySelectorAll("nav button").forEach(btn=>{
-btn.classList.remove("active")
-})
+document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"))
 
 document.getElementById(target).classList.add("active")
+
+document.querySelectorAll("nav button").forEach(btn=>btn.classList.remove("active"))
+
 this.classList.add("active")
 
 })
-})
-
-
-/* TYPEWRITER BOOT */
-
-function typeBootSequence(){
-
-const lines=document.querySelectorAll(".bootLine")
-let lineIndex=0
-
-function typeLine(){
-
-if(lineIndex>=lines.length) return
-
-const line=lines[lineIndex]
-const text=line.getAttribute("data-text")
-
-let charIndex=0
-
-line.style.opacity=1
-
-function typeChar(){
-
-if(charIndex<text.length){
-
-line.textContent+=text.charAt(charIndex)
-charIndex++
-
-setTimeout(typeChar,35)
-
-}else{
-
-lineIndex++
-setTimeout(typeLine,400)
-
-}
-
-}
-
-typeChar()
-
-}
-
-typeLine()
-
-}
-
-
-/* BOOT PROGRESS + EXIT */
-
-window.addEventListener("load",function(){
-
-typeBootSequence()
-
-let progress=0
-const bar=document.getElementById("bootBar")
-
-const bootInterval=setInterval(()=>{
-
-progress+=5
-bar.style.width=progress+"%"
-
-if(progress>=100){
-
-clearInterval(bootInterval)
-
-setTimeout(()=>{
-
-const intro=document.getElementById("introRadar")
-
-intro.style.transition="opacity 1.5s"
-intro.style.opacity="0"
-
-setTimeout(()=>{
-intro.style.display="none"
-},1500)
-
-},700)
-
-}
-
-},200)
 
 })
 
 
-/* BUSINESS CHANNEL SWITCH */
 
-function showBusiness(channel){
+/* LIVE NEWS SWITCH */
 
-const frame=document.getElementById("businessFrame")
-const single=document.getElementById("businessSingle")
-const quad=document.getElementById("businessQuad")
+function showLive(event,channel){
+
+document.querySelectorAll("#live .liveNav button").forEach(btn=>btn.classList.remove("active"))
+event.target.classList.add("active")
+
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("quadView")
 
 const streams={
-bloomberg:"https://www.youtube.com/embed/dp8PhLsUcFE",
-cnbc:"https://www.youtube.com/embed/9NyxcX3rhQs",
-td:"https://www.youtube.com/embed/8yYJp1E6J2E",
-reuters:"https://www.youtube.com/embed/8TGHu1JHf6Y"
+
+rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
+aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
+sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
+wion:"https://www.youtube.com/embed/vfszY1JYbMc"
+
 }
 
 if(channel==="quad"){
+
 single.style.display="none"
 quad.style.display="grid"
 return
+
+}
+
+quad.style.display="none"
+single.style.display="block"
+
+frame.src=streams[channel]
+
+}
+
+
+
+/* BUSINESS NEWS SWITCH */
+
+function showBiz(event,channel){
+
+document.querySelectorAll("#business .liveNav button").forEach(btn=>btn.classList.remove("active"))
+event.target.classList.add("active")
+
+const frame=document.getElementById("bizFrame")
+const single=document.getElementById("bizSingle")
+const quad=document.getElementById("bizQuad")
+
+const streams={
+
+bloomberg:"https://www.youtube.com/embed/dp8PhLsUcFE",
+cnbc:"https://www.youtube.com/embed/9NyxcX3rhQs",
+reuters:"https://www.youtube.com/embed/nK0H37V9h6c",
+yahoo:"https://www.youtube.com/embed/iEpJwprxDdk"
+
+}
+
+if(channel==="quad"){
+
+single.style.display="none"
+quad.style.display="grid"
+return
+
 }
 
 quad.style.display="none"
