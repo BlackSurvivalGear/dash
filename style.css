@@ -9,7 +9,7 @@ overflow-x:hidden;
 }
 
 
-/* BOOT SCREEN */
+/* BOOT SPLASH SCREEN */
 
 #introRadar{
 position:fixed;
@@ -22,8 +22,8 @@ z-index:9999;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
 flex-direction:column;
+overflow:hidden;
 }
 
 #introRadar video{
@@ -31,6 +31,9 @@ width:85%;
 height:85%;
 object-fit:contain;
 }
+
+
+/* BOOT TEXT */
 
 .bootText{
 position:absolute;
@@ -279,7 +282,7 @@ box-shadow:0 0 10px #00ffaa;
 }
 
 
-/* LIVE PLAYER */
+/* VIDEO PLAYER */
 
 .livePlayer iframe{
 width:100%;
@@ -307,7 +310,7 @@ box-shadow:0 0 10px #00ffaa22;
 }
 
 
-/* GLOBAL IFRAME */
+/* GLOBAL IFRAME STYLE */
 
 section iframe{
 width:100%;
@@ -337,6 +340,21 @@ background:black;
 }
 
 
+/* MARKET SENTIMENT BAR */
+
+.marketBar{
+display:flex;
+justify-content:center;
+gap:25px;
+background:#000;
+border-bottom:1px solid #00ffaa33;
+padding:6px 10px;
+font-size:14px;
+color:#00ffaa;
+text-shadow:0 0 6px #00ffaa;
+}
+
+
 /* FOOTER */
 
 footer{
@@ -363,16 +381,4 @@ font-size:14px;
 
 .footerLink:hover{
 text-decoration:underline;
-}
-
-.marketBar{
-display:flex;
-justify-content:center;
-gap:25px;
-background:#000;
-border-bottom:1px solid #00ffaa33;
-padding:6px 10px;
-font-size:14px;
-color:#00ffaa;
-text-shadow:0 0 6px #00ffaa;
 }
