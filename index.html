@@ -16,11 +16,31 @@
 
 <body>
 
+<!-- RADAR BOOT SCREEN -->
+
+<div id="introRadar">
+
+<video autoplay muted playsinline id="introVideo">
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+<div class="bootText">
+
+<div>INITIALIZING GLOBAL STRATEGIC AWARENESS SYSTEM</div>
+<div>LOADING OSINT MODULES...</div>
+<div>CONNECTING INTELLIGENCE FEEDS</div>
+<div>STANDBY</div>
+
+</div>
+
+</div>
+
+
 <!-- RADAR BACKGROUND -->
 
 <div class="siteRadar">
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 </div>
 
@@ -31,7 +51,7 @@
 
 <div class="headerVideo">
 <video autoplay muted loop playsinline>
-<source src="HEADER3.mp4" type="video/mp4">
+<source src="HEADER3.mp4">
 </video>
 </div>
 
@@ -60,11 +80,9 @@
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
-
 <div id="marketTicker" class="ticker-content">
 Loading crypto market data...
 </div>
-
 </div>
 
 
@@ -107,99 +125,21 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 </section>
 
 
-<!-- LIVE NEWS -->
-
-<section id="live" class="tab">
-
-<div class="liveNav">
-
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky News</button>
-<button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">QUAD VIEW</button>
-
-</div>
-
-<div id="liveSingle" class="livePlayer">
-
-<iframe id="liveFrame"
-src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen></iframe>
-
-</div>
-
-<div id="quadView" class="quadGrid">
-
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-<iframe src="https://www.youtube.com/embed/vfszY1JYbMc"></iframe>
-
-</div>
-
-</section>
-
-
-<!-- CONFLICT MAP -->
-
-<section id="map" class="tab">
-<iframe src="https://liveuamap.com"></iframe>
-</section>
-
-
-<!-- AIRCRAFT -->
-
-<section id="air" class="tab">
-<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-</section>
-
-
-<!-- MARINE -->
-
-<section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-</section>
-
-
-<!-- CYBER -->
-
-<section id="cyber" class="tab">
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-</section>
-
-
-<!-- COMMAND WALL -->
+<!-- OVERVIEW COMMAND WALL -->
 
 <section id="command" class="tab">
 
 <div class="grid">
 
-<!-- Conflict Map -->
 <iframe src="https://liveuamap.com"></iframe>
 
-<!-- Aircraft Watch -->
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
 
-<!-- Crypto Heatmap -->
-<iframe src="https://coin360.com/widget/map?utm_source=embed"></iframe>
+<iframe src="https://coin360.com/widget/map"></iframe>
 
-<iframe
-src="https://s.tradingview.com/embed-widget/stock-heatmap/?locale=en&colorTheme=dark&group=SPX500"
-frameborder="0">
-</iframe>
+<iframe src="https://s.tradingview.com/embed-widget/stock-heatmap/?locale=en&colorTheme=dark"></iframe>
 
 </div>
-
-</section>
-
-<!-- MAP -->
-
-<section id="gmap" class="tab">
-
-<iframe
-src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
-</iframe>
 
 </section>
 
@@ -223,21 +163,43 @@ BlackSurvivalGear.com
 
 <script>
 
+/* RADAR BOOT SCREEN */
+
+window.addEventListener("load",function(){
+
+setTimeout(function(){
+
+const intro=document.getElementById("introRadar")
+
+intro.style.transition="opacity 1.5s"
+intro.style.opacity="0"
+
+setTimeout(function(){
+
+intro.style.display="none"
+
+},1500)
+
+},4000)
+
+})
+
+
 /* TAB SYSTEM */
 
-document.addEventListener("DOMContentLoaded",function(){
-
-const buttons=document.querySelectorAll("nav button")
-const tabs=document.querySelectorAll(".tab")
-
-buttons.forEach(button=>{
+document.querySelectorAll("nav button").forEach(button=>{
 
 button.addEventListener("click",function(){
 
 const target=this.getAttribute("data-tab")
 
-tabs.forEach(tab=>tab.classList.remove("active"))
-buttons.forEach(btn=>btn.classList.remove("active"))
+document.querySelectorAll(".tab").forEach(tab=>{
+tab.classList.remove("active")
+})
+
+document.querySelectorAll("nav button").forEach(btn=>{
+btn.classList.remove("active")
+})
 
 document.getElementById(target).classList.add("active")
 this.classList.add("active")
@@ -245,45 +207,6 @@ this.classList.add("active")
 })
 
 })
-
-})
-
-
-/* LIVE NEWS */
-
-function showLive(channel){
-
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("quadView")
-
-const streams={
-
-rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
-aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
-sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
-wion:"https://www.youtube.com/embed/vfszY1JYbMc"
-
-}
-
-if(channel==="quad"){
-
-single.style.display="none"
-quad.style.display="grid"
-
-if(!document.fullscreenElement){
-quad.requestFullscreen().catch(()=>{})
-}
-
-return
-}
-
-quad.style.display="none"
-single.style.display="block"
-
-frame.src=streams[channel]
-
-}
 
 
 /* CRYPTO TICKER */
@@ -310,11 +233,8 @@ const item=document.createElement("span")
 item.className="ticker-item"
 
 item.innerHTML=`
-<span class="ticker-symbol">${coin.symbol.toUpperCase()}</span>
-$${coin.current_price.toLocaleString()}
-<span style="color:${color}">
-${arrow} ${change.toFixed(2)}%
-</span>
+${coin.symbol.toUpperCase()} $${coin.current_price}
+<span style="color:${color}">${arrow} ${change.toFixed(2)}%</span>
 `
 
 ticker.appendChild(item)
@@ -359,5 +279,3 @@ setInterval(loadMetals,60000)
 
 </body>
 </html>
-
-
