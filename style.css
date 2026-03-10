@@ -364,3 +364,15 @@ font-size:14px;
 .footerLink:hover{
 text-decoration:underline;
 }
+
+.marketBar{
+display:flex;
+justify-content:center;
+gap:25px;
+background:#000;
+border-bottom:1px solid #00ffaa33;
+padding:6px 10px;
+font-size:14px;
+color:#00ffaa;
+text-shadow:0 0 6px #00ffaa;
+}
