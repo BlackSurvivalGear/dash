@@ -18,6 +18,8 @@
 
 
 
+<script>
+
 /* ===============================
 BOOT TERMINAL SPLASH
 =============================== */
@@ -60,6 +62,26 @@ setTimeout(typeBoot,300);
 }
 
 }else{
+
+setTimeout(function(){
+
+splash.style.opacity = "0";
+
+setTimeout(function(){
+splash.style.display = "none";
+},700);
+
+},600);
+
+}
+
+}
+
+typeBoot();
+
+});
+
+</script>
 
 /* EXIT SPLASH AFTER TEXT FINISHES */
 
@@ -497,4 +519,5 @@ loadNewsTicker()
 
 </body>
 </html>
+
 
