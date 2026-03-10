@@ -169,37 +169,6 @@ color:#00ffaa;
 
 
 /* ===============================
-BREAKING NEWS TICKER
-=============================== */
-
-.ticker-bar{
-background:black;
-border-bottom:1px solid #00ffaa33;
-height:32px;
-display:flex;
-align-items:center;
-padding-left:10px;
-font-size:14px;
-color:#ccc;
-overflow:hidden;
-}
-
-#newsTicker{
-white-space:nowrap;
-animation:tickerMove 60s linear infinite;
-}
-
-@keyframes tickerMove{
-
-0%{transform:translateX(100%)}
-
-100%{transform:translateX(-100%)}
-
-}
-
-
-
-/* ===============================
 NAVIGATION
 =============================== */
 
@@ -271,7 +240,7 @@ opacity:.7;
 
 
 /* ===============================
-HOME IMAGE (TRANSPARENT + SMOOTH EDGES)
+HOME IMAGE
 =============================== */
 
 .homeBg{
@@ -279,12 +248,19 @@ max-width:420px;
 width:60%;
 margin-top:20px;
 
+/* transparency */
+
 opacity:.45;
+
+/* smooth fade edges */
 
 mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
 -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
 
+/* glow */
+
 filter: drop-shadow(0 0 10px rgba(0,255,170,.3));
+
 }
 
 
@@ -323,7 +299,7 @@ box-shadow:0 0 12px #00ffaa;
 
 
 /* ===============================
-MARKETS SUB NAV
+MARKETS NAV
 =============================== */
 
 .marketsNav{
