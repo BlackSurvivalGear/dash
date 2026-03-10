@@ -14,9 +14,15 @@
 
 </head>
 
-
 <body>
 
+<!-- GLOBAL RADAR BACKGROUND -->
+
+<div class="siteRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
 
 
 <header>
@@ -30,26 +36,20 @@
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
-
 <span id="goldPrice">GOLD --</span>
 <span id="silverPrice">SILVER --</span>
-
 </div>
 
 </header>
 
 
-
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
-
 <div id="marketTicker" class="ticker-content">
 Loading crypto market data...
 </div>
-
 </div>
-
 
 
 <!-- NAVIGATION -->
@@ -57,23 +57,15 @@ Loading crypto market data...
 <nav>
 
 <button data-tab="home" class="active">Home</button>
-
 <button data-tab="live">LIVE NEWS</button>
-
 <button data-tab="map">Conflict Map</button>
-
 <button data-tab="air">Aircraft Watch</button>
-
 <button data-tab="marine">Marine Watch</button>
-
 <button data-tab="cyber">Cyber Attacks</button>
-
 <button data-tab="command">Overview</button>
-
 <button data-tab="gmap">Map</button>
 
 </nav>
-
 
 
 <!-- HOME -->
@@ -99,7 +91,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 </div>
 
 </section>
-
 
 
 <!-- LIVE NEWS -->
@@ -136,45 +127,32 @@ allowfullscreen></iframe>
 </section>
 
 
-
 <!-- CONFLICT MAP -->
 
 <section id="map" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
-
 
 
 <!-- AIRCRAFT -->
 
 <section id="air" class="tab">
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
-
 
 
 <!-- MARINE -->
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
-
 
 
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
-
 
 
 <!-- COMMAND WALL -->
@@ -193,17 +171,14 @@ allowfullscreen></iframe>
 </section>
 
 
-
 <!-- GOOGLE MAP -->
 
 <section id="gmap" class="tab">
 
-<iframe
-src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
+<iframe src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
 </iframe>
 
 </section>
-
 
 
 <footer>
@@ -223,10 +198,7 @@ BlackSurvivalGear.com
 </footer>
 
 
-
 <script>
-
-
 
 /* TAB SYSTEM */
 
@@ -259,7 +231,6 @@ this.classList.add("active")
 })
 
 
-
 /* LIVE NEWS SWITCH */
 
 function showLive(channel){
@@ -283,7 +254,7 @@ single.style.display="none"
 quad.style.display="grid"
 
 if(!document.fullscreenElement){
-quad.requestFullscreen()
+quad.requestFullscreen().catch(()=>{})
 }
 
 return
@@ -297,88 +268,7 @@ frame.src=streams[channel]
 
 }
 
-
-
-/* CRYPTO TICKER */
-
-async function loadCryptoTicker(){
-
-const url="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false"
-
-const res=await fetch(url)
-const data=await res.json()
-
-const ticker=document.getElementById("marketTicker")
-
-ticker.innerHTML=""
-
-data.forEach(coin=>{
-
-const change=coin.price_change_percentage_24h||0
-const color=change>=0?"#00ff88":"#ff4d4d"
-const arrow=change>=0?"▲":"▼"
-
-const item=document.createElement("span")
-
-item.className="ticker-item"
-
-item.innerHTML=`
-<span class="ticker-symbol">${coin.symbol.toUpperCase()}</span>
-$${coin.current_price.toLocaleString()}
-<span style="color:${color}">
-${arrow} ${change.toFixed(2)}%
-</span>
-`
-
-ticker.appendChild(item)
-
-})
-
-}
-
-loadCryptoTicker()
-setInterval(loadCryptoTicker,30000)
-
-
-
-/* GOLD SILVER */
-
-async function loadMetals(){
-
-try{
-
-const goldRes = await fetch("https://api.gold-api.com/price/XAU")
-const gold = await goldRes.json()
-
-const silverRes = await fetch("https://api.gold-api.com/price/XAG")
-const silver = await silverRes.json()
-
-document.getElementById("goldPrice").innerText="GOLD $" + Math.round(gold.price)
-document.getElementById("silverPrice").innerText="SILVER $" + silver.price.toFixed(2)
-
-}
-catch{
-
-document.getElementById("goldPrice").innerText="GOLD --"
-document.getElementById("silverPrice").innerText="SILVER --"
-
-}
-
-}
-
-loadMetals()
-setInterval(loadMetals,60000)
-
 </script>
-
 
 </body>
 </html>
-
-
-
-
-
-
-
-
