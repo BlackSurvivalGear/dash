@@ -50,30 +50,23 @@
 <header class="mainHeader">
 
 <div class="headerVideo">
-
 <video autoplay muted loop playsinline>
 <source src="HEADER3.mp4">
 </video>
-
 </div>
 
 <div class="headerContent">
 
 <div class="radarLogo">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
 <div class="headerMarkets">
-
-<span id="goldPrice">GOLD --</span>
-<span id="silverPrice">SILVER --</span>
-
+<span id="dateTime"></span>
 </div>
 
 </div>
@@ -82,10 +75,10 @@
 
 
 
-<!-- CRYPTO TICKER -->
+<!-- BREAKING NEWS TICKER -->
 
 <div class="ticker-bar">
-<div id="marketTicker">Loading crypto market data...</div>
+<div id="newsTicker">Loading global breaking news...</div>
 </div>
 
 
@@ -222,9 +215,7 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script type="text/javascript"
-src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js"
-async>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
 {
 "colorTheme": "dark",
 "locale": "en",
@@ -250,9 +241,7 @@ async>
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script type="text/javascript"
-src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js"
-async>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
 {
 "defaultColumn": "overview",
 "screener_type": "crypto_mkt",
@@ -290,18 +279,16 @@ OPEN CRYPTOBUBBLES HEATMAP
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 
-<script type="text/javascript"
-src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js"
-async>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
 {
 "colorTheme": "dark",
 "isTransparent": false,
 "locale": "en",
-"currencies": [
+"currencies":[
 "EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY"
 ],
-"width": "100%",
-"height": 500
+"width":"100%",
+"height":500
 }
 </script>
 
@@ -367,11 +354,9 @@ async>
 <footer>
 
 <div class="footerRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -390,147 +375,77 @@ BSG Strategic Awareness OSINT — v1.0
 
 
 
-/* MAIN NAVIGATION */
+/* DATE & TIME */
 
-document.querySelectorAll("nav button").forEach(btn=>{
-btn.addEventListener("click",function(){
+function updateClock(){
 
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
+const now=new Date()
+
+const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
+const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+
+let day=days[now.getDay()]
+let date=now.getDate()
+let month=months[now.getMonth()]
+let year=now.getFullYear()
+
+let hours=now.getHours()
+let minutes=now.getMinutes()
+
+let ampm=hours>=12?"PM":"AM"
+
+hours=hours%12
+hours=hours?hours:12
+
+minutes=minutes<10?"0"+minutes:minutes
+
+document.getElementById("dateTime").textContent=
+`${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
+
+}
+
+setInterval(updateClock,1000)
+updateClock()
+
+
+
+/* BREAKING NEWS RSS */
+
+async function loadNewsTicker(){
+
+const rss="https://api.allorigins.win/get?url="+
+encodeURIComponent("https://rss.nytimes.com/services/xml/rss/nyt/World.xml")
+
+try{
+
+const response=await fetch(rss)
+const data=await response.json()
+
+const parser=new DOMParser()
+const xml=parser.parseFromString(data.contents,"text/xml")
+
+const items=xml.querySelectorAll("item")
+
+let headlines=[]
+
+items.forEach((el,i)=>{
+if(i<10){
+headlines.push(el.querySelector("title").textContent)
+}
 })
 
-document.querySelectorAll("nav button").forEach(b=>{
-b.classList.remove("active")
-})
+document.getElementById("newsTicker").textContent=
+"BREAKING NEWS • "+headlines.join(" • ")
 
-this.classList.add("active")
+}catch(err){
 
-document.getElementById(this.dataset.tab).classList.add("active")
-
-})
-})
-
-
-
-/* LIVE SWITCH */
-
-function showLive(channel){
-
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("liveQuad")
-
-single.style.display="block"
-quad.style.display="none"
-
-if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
-if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
-if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
-if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
-
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
-}
-
-}
-
-
-
-/* MARKET NEWS SWITCH */
-
-function showMarkets(channel){
-
-const frame=document.getElementById("marketsFrame")
-const single=document.getElementById("marketsSingle")
-const quad=document.getElementById("marketsQuad")
-
-single.style.display="block"
-quad.style.display="none"
-
-if(channel==="c1"){frame.src="https://www.youtube.com/embed/I8EEKdYZL34"}
-if(channel==="c2"){frame.src="https://www.youtube.com/embed/iEpJwprxDdk"}
-if(channel==="c3"){frame.src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"}
-if(channel==="c4"){frame.src="https://www.youtube.com/embed/KQp-e_XQnDE"}
-
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
-}
-
-}
-
-
-
-/* MARKETS PANEL SWITCH */
-
-function showMarketPanel(panel){
-
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.style.display="none"
-})
-
-if(panel==="news"){document.getElementById("marketNews").style.display="block"}
-if(panel==="macro"){document.getElementById("marketMacro").style.display="block"}
-if(panel==="crypto"){document.getElementById("marketCrypto").style.display="block"}
-if(panel==="forex"){document.getElementById("marketForex").style.display="block"}
-
-}
-
-
-
-/* BOOT TERMINAL TEXT */
-
-const bootLines=[
-"INITIALIZING RADAR SYSTEM...",
-"GLOBAL STRATEGIC AWARENESS OSINT...",
-"LOADING INTELLIGENCE MODULES...",
-"CONNECTING GLOBAL DATA FEEDS...",
-"SYSTEM ONLINE"
-]
-
-let lineIndex=0
-let charIndex=0
-
-const message=document.getElementById("bootMessage")
-const splash=document.getElementById("introRadar")
-
-function typeBoot(){
-
-if(lineIndex<bootLines.length){
-
-if(charIndex<bootLines[lineIndex].length){
-
-message.textContent+=bootLines[lineIndex].charAt(charIndex)
-charIndex++
-setTimeout(typeBoot,35)
-
-}else{
-
-message.textContent+="\n"
-lineIndex++
-charIndex=0
-setTimeout(typeBoot,300)
-
-}
-
-}else{
-
-setTimeout(function(){
-
-splash.style.opacity="0"
-
-setTimeout(function(){
-splash.style.display="none"
-},700)
-
-},600)
+document.getElementById("newsTicker").textContent="GLOBAL NEWS FEED UNAVAILABLE"
 
 }
 
 }
 
-typeBoot()
+loadNewsTicker()
 
 </script>
 
