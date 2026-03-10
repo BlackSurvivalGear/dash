@@ -14,9 +14,7 @@
 
 </head>
 
-
 <body>
-
 
 <!-- RADAR BACKGROUND -->
 
@@ -59,7 +57,6 @@
 </header>
 
 
-
 <!-- CRYPTO TICKER -->
 
 <div class="ticker-bar">
@@ -69,7 +66,6 @@ Loading crypto market data...
 </div>
 
 </div>
-
 
 
 <!-- NAVIGATION -->
@@ -86,7 +82,6 @@ Loading crypto market data...
 <button data-tab="gmap">Map</button>
 
 </nav>
-
 
 
 <!-- HOME -->
@@ -110,7 +105,6 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 </div>
 
 </section>
-
 
 
 <!-- LIVE NEWS -->
@@ -147,45 +141,32 @@ allowfullscreen></iframe>
 </section>
 
 
-
 <!-- CONFLICT MAP -->
 
 <section id="map" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
-
 
 
 <!-- AIRCRAFT -->
 
 <section id="air" class="tab">
-
 <iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
-
 </section>
-
 
 
 <!-- MARINE -->
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
-
 
 
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
-
 
 
 <!-- COMMAND WALL -->
@@ -195,17 +176,16 @@ allowfullscreen></iframe>
 <div class="grid">
 
 <iframe src="https://liveuamap.com"></iframe>
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-<iframe src="https://www.marinetraffic.com/en/ais/embed"></iframe>
-<iframe src="https://globe.adsbexchange.com"></iframe>
+<iframe src="https://globe.adsbexchange.com/?military=1"></iframe>
+<iframe src="https://cryptobubbles.net"></iframe>
+<iframe src="https://finviz.com/map.ashx"></iframe>
 
 </div>
 
 </section>
 
 
-
-<!-- GOOGLE MAP -->
+<!-- MAP -->
 
 <section id="gmap" class="tab">
 
@@ -216,17 +196,14 @@ src="https://maps.google.com/maps?q=world&t=&z=2&ie=UTF8&iwloc=&output=embed">
 </section>
 
 
-
 <!-- FOOTER -->
 
 <footer>
 
 <div class="footerRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank" class="footerLink">
@@ -236,10 +213,7 @@ BlackSurvivalGear.com
 </footer>
 
 
-
 <script>
-
-
 
 /* TAB SYSTEM */
 
@@ -254,13 +228,8 @@ button.addEventListener("click",function(){
 
 const target=this.getAttribute("data-tab")
 
-tabs.forEach(tab=>{
-tab.classList.remove("active")
-})
-
-buttons.forEach(btn=>{
-btn.classList.remove("active")
-})
+tabs.forEach(tab=>tab.classList.remove("active"))
+buttons.forEach(btn=>btn.classList.remove("active"))
 
 document.getElementById(target).classList.add("active")
 this.classList.add("active")
@@ -272,8 +241,7 @@ this.classList.add("active")
 })
 
 
-
-/* LIVE NEWS SWITCH */
+/* LIVE NEWS */
 
 function showLive(channel){
 
@@ -300,7 +268,6 @@ quad.requestFullscreen().catch(()=>{})
 }
 
 return
-
 }
 
 quad.style.display="none"
@@ -311,12 +278,11 @@ frame.src=streams[channel]
 }
 
 
-
 /* CRYPTO TICKER */
 
 async function loadCryptoTicker(){
 
-const url="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false"
+const url="https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1"
 
 const res=await fetch(url)
 const data=await res.json()
@@ -353,7 +319,6 @@ loadCryptoTicker()
 setInterval(loadCryptoTicker,30000)
 
 
-
 /* GOLD SILVER */
 
 async function loadMetals(){
@@ -366,8 +331,8 @@ const gold = await goldRes.json()
 const silverRes = await fetch("https://api.gold-api.com/price/XAG")
 const silver = await silverRes.json()
 
-document.getElementById("goldPrice").innerText="GOLD $" + Math.round(gold.price).toLocaleString()
-document.getElementById("silverPrice").innerText="SILVER $" + Number(silver.price).toFixed(2)
+document.getElementById("goldPrice").innerText="GOLD $" + Math.round(gold.price)
+document.getElementById("silverPrice").innerText="SILVER $" + silver.price.toFixed(2)
 
 }
 catch{
@@ -382,10 +347,7 @@ document.getElementById("silverPrice").innerText="SILVER N/A"
 loadMetals()
 setInterval(loadMetals,60000)
 
-
-
 </script>
-
 
 </body>
 </html>
