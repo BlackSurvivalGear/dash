@@ -379,23 +379,13 @@ box-shadow:0 0 10px #00ffaa22;
 
 
 /* ===============================
-GLOBAL MARKETS GRID
+GLOBAL MARKETS PANEL
 =============================== */
 
-.macroGrid{
-display:grid;
-grid-template-columns:1fr 1fr 1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:10px;
-height:85vh;
-}
-
-.macroGrid iframe{
+.macroContainer{
 width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
+max-width:1200px;
+margin:auto;
 }
 
 
@@ -404,20 +394,30 @@ background:black;
 CRYPTO PANEL
 =============================== */
 
-.cryptoPanel{
+.cryptoContainer{
 width:100%;
-height:85vh;
-display:flex;
-justify-content:center;
-align-items:center;
+max-width:1200px;
+margin:auto;
 }
 
-.cryptoPanel iframe{
-width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
+.cryptoLaunch{
+text-align:center;
+margin-top:20px;
+}
+
+.cryptoButton{
+display:inline-block;
+padding:10px 26px;
+border:1px solid #00ffaa;
+color:#00ffaa;
+text-decoration:none;
+font-size:14px;
+transition:.3s;
+}
+
+.cryptoButton:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
 }
 
 
