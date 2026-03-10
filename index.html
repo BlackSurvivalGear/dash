@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -16,11 +17,12 @@
 <body>
 
 
+
 <!-- SPLASH SCREEN -->
 
 <div id="introRadar">
 
-<video autoplay muted loop playsinline>
+<video autoplay muted loop playsinline preload="metadata">
 <source src="RADAR3.mp4">
 </video>
 
@@ -91,6 +93,8 @@ Loading crypto market data...
 
 
 
+<!-- NAVIGATION -->
+
 <nav>
 
 <button data-tab="home" class="active">Home</button>
@@ -130,11 +134,11 @@ This dashboard consolidates open-source intelligence monitoring tools into a uni
 
 <div class="liveNav">
 
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky News</button>
-<button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">QUAD VIEW</button>
+<button onclick="showLive(event,'rt')">RT</button>
+<button onclick="showLive(event,'aj')">Al Jazeera</button>
+<button onclick="showLive(event,'sky')">Sky News</button>
+<button onclick="showLive(event,'wion')">WION</button>
+<button onclick="showLive(event,'quad')">QUAD VIEW</button>
 
 </div>
 
@@ -167,11 +171,11 @@ allowfullscreen></iframe>
 
 <div class="liveNav">
 
-<button onclick="showBiz('bloomberg')">Bloomberg</button>
-<button onclick="showBiz('cnbc')">CNBC</button>
-<button onclick="showBiz('reuters')">Reuters</button>
-<button onclick="showBiz('yahoo')">Yahoo Finance</button>
-<button onclick="showBiz('quad')">QUAD VIEW</button>
+<button onclick="showBiz(event,'bloomberg')">Bloomberg</button>
+<button onclick="showBiz(event,'cnbc')">CNBC</button>
+<button onclick="showBiz(event,'reuters')">Reuters</button>
+<button onclick="showBiz(event,'yahoo')">Yahoo Finance</button>
+<button onclick="showBiz(event,'quad')">QUAD VIEW</button>
 
 </div>
 
@@ -179,17 +183,17 @@ allowfullscreen></iframe>
 <div id="bizSingle" class="livePlayer">
 
 <iframe id="bizFrame"
-src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
+src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 </div>
 
 
 <div id="bizQuad" class="quadGrid">
 
-<iframe src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
+<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 <iframe src="https://www.youtube.com/embed/9NyxcX3rhQs"></iframe>
 <iframe src="https://www.youtube.com/embed/nK0H37V9h6c"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
+<iframe src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
 
 </div>
 
@@ -257,32 +261,42 @@ BlackSurvivalGear.com
 /* TAB SYSTEM */
 
 document.querySelectorAll("nav button").forEach(btn=>{
+
 btn.addEventListener("click",function(){
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll(".tab").forEach(tab=>tab.classList.remove("active"))
 document.getElementById(this.dataset.tab).classList.add("active")
 
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 this.classList.add("active")
 
 })
+
 })
 
 
 
 /* LIVE NEWS */
 
-function showLive(channel){
+function showLive(event,channel){
+
+document.querySelectorAll("#live .liveNav button").forEach(btn=>{
+btn.classList.remove("active")
+})
+
+event.target.classList.add("active")
 
 const frame=document.getElementById("liveFrame")
 const single=document.getElementById("liveSingle")
 const quad=document.getElementById("quadView")
 
 const streams={
+
 rt:"https://rumble.com/embed/v33aw1a/?pub=4jw3x3",
 aj:"https://www.youtube.com/embed/gCNeDWCI0vo",
 sky:"https://www.youtube.com/embed/YDvsBbKfLPA",
 wion:"https://www.youtube.com/embed/vfszY1JYbMc"
+
 }
 
 if(channel==="quad"){
@@ -304,17 +318,25 @@ frame.src=streams[channel]
 
 /* BUSINESS NEWS */
 
-function showBiz(channel){
+function showBiz(event,channel){
+
+document.querySelectorAll("#business .liveNav button").forEach(btn=>{
+btn.classList.remove("active")
+})
+
+event.target.classList.add("active")
 
 const frame=document.getElementById("bizFrame")
 const single=document.getElementById("bizSingle")
 const quad=document.getElementById("bizQuad")
 
 const streams={
+
 bloomberg:"https://www.youtube.com/embed/dp8PhLsUcFE",
 cnbc:"https://www.youtube.com/embed/9NyxcX3rhQs",
 reuters:"https://www.youtube.com/embed/nK0H37V9h6c",
 yahoo:"https://www.youtube.com/embed/iEpJwprxDdk"
+
 }
 
 if(channel==="quad"){
@@ -370,7 +392,7 @@ splash.style.display="none"
 
 setTimeout(()=>{
 splash.style.display="none"
-},8000)
+},9000)
 
 })
 
