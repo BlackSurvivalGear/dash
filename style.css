@@ -37,9 +37,15 @@ max-width:520px;
 opacity:.9;
 }
 
+
+
+/* ===============================
+BOOT TEXT
+=============================== */
+
 .bootText{
 position:absolute;
-bottom:120px;
+bottom:140px;
 text-align:center;
 color:#00ffaa;
 font-size:20px;
@@ -49,27 +55,10 @@ line-height:1.6;
 white-space:pre-line;
 }
 
-.bootProgress{
-position:absolute;
-bottom:70px;
-left:50%;
-transform:translateX(-50%);
-width:320px;
-height:4px;
-background:#003333;
-}
-
-#bootBar{
-width:0%;
-height:100%;
-background:#00ffaa;
-box-shadow:0 0 10px #00ffaa;
-}
-
 
 
 /* ===============================
-BOOT CURSOR
+BLINKING CURSOR
 =============================== */
 
 .cursor{
