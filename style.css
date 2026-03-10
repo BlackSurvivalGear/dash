@@ -1,315 +1,215 @@
-*{
-box-sizing:border-box
-}
-
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
-color:#e2f0e9;
-background:#041f18;
-overflow-x:hidden;
+background:#05080c;
+color:white;
 }
 
+/* RADAR BACKGROUND */
 
+.siteRadar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+opacity:0.08;
+pointer-events:none;
+}
+
+.siteRadar video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
 
 /* HEADER */
 
 header{
 display:flex;
 align-items:center;
-padding:12px 18px;
-background:#06231c;
-border-bottom:2px solid #c6a55a;
+justify-content:space-between;
+padding:10px 25px;
+background:rgba(0,0,0,0.75);
+border-bottom:1px solid #00ffaa55;
+box-shadow:0 0 12px #00ffaa33;
 }
 
 header h1{
-color:#718754;
-font-weight:600;
-letter-spacing:1px;
+font-size:22px;
+color:#00ffaa;
+letter-spacing:2px;
 }
-
-
 
 /* RADAR LOGO */
 
-.radarLogo{
-height:60px;
-width:60px;
-margin-right:18px;
-border-radius:50%;
-overflow:hidden;
-}
-
 .radarLogo video{
-width:100%;
-height:100%;
-object-fit:cover;
+width:70px;
 }
 
-
-
-/* GOLD / SILVER */
+/* MARKETS */
 
 .headerMarkets{
-margin-left:auto;
+font-size:14px;
 display:flex;
-gap:40px;
-font-size:26px;
-font-weight:700;
+gap:15px;
 }
 
-#goldPrice{
-color:#ffd700;
-}
-
-#silverPrice{
-color:#c0c0c0;
-}
-
-
-
-/* CRYPTO TICKER */
+/* TICKER */
 
 .ticker-bar{
-width:100%;
 overflow:hidden;
-background:rgba(0,0,0,0.55);
-border-top:2px solid #c6a55a;
-border-bottom:2px solid #c6a55a;
-padding:14px 0;
+background:#000;
+border-bottom:1px solid #00ffaa33;
 }
 
 .ticker-content{
-display:flex;
-align-items:center;
 white-space:nowrap;
-animation:tickerMove 65s linear infinite;
-padding-left:40px;
+display:inline-block;
+animation:ticker 30s linear infinite;
 }
 
 .ticker-item{
-margin-right:70px;
-font-size:20px;
-font-weight:600;
-letter-spacing:1px;
-color:#e6e6e6;
+margin-right:35px;
 }
 
-.ticker-symbol{
-color:#d4b15a;
-font-weight:700;
-margin-right:6px;
-}
-
-@keyframes tickerMove{
+@keyframes ticker{
 0%{transform:translateX(100%)}
 100%{transform:translateX(-100%)}
 }
 
-
-
-/* NAVIGATION */
+/* NAV */
 
 nav{
 display:flex;
-background:#0b3a2e;
-flex-wrap:wrap;
-border-bottom:2px solid #c6a55a;
+justify-content:center;
+gap:12px;
+padding:10px;
+background:#05080c;
+border-bottom:1px solid #00ffaa33;
 }
 
 nav button{
-padding:14px 18px;
-border:none;
-background:#0b3a2e;
-color:#e2f0e9;
+background:transparent;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:6px 14px;
 cursor:pointer;
-font-weight:600;
-font-size:15px;
+font-size:14px;
 }
 
-nav button.active,
-nav button:hover{
-background:#c6a55a;
-color:#041f18;
+nav button.active{
+background:#00ffaa22;
+box-shadow:0 0 6px #00ffaa;
 }
 
-
-
-/* TAB PANELS */
+/* TABS */
 
 .tab{
 display:none;
-padding:25px;
-margin:15px;
-background:rgba(8,40,32,0.45);
-border-radius:8px;
+padding:15px;
 }
 
 .tab.active{
 display:block;
 }
 
-
-
-/* HOME PANEL */
+/* HOME */
 
 .homePanel{
-display:flex;
-align-items:center;
-gap:40px;
+position:relative;
+text-align:center;
 }
 
 .homeBg{
-width:420px;
-max-width:40%;
-border-radius:6px;
+width:300px;
+opacity:0.45;
 }
 
-.homeText{
-font-size:20px;
-line-height:1.7;
+.homeOverlay{
+max-width:700px;
+margin:auto;
 }
 
-
-
-/* LIVE NEWS */
+/* LIVE */
 
 .liveNav{
 margin-bottom:10px;
+text-align:center;
 }
 
 .liveNav button{
-margin-right:6px;
-padding:10px 14px;
-background:#0b3a2e;
-border:none;
-color:#e2f0e9;
-cursor:pointer;
-font-weight:600;
+margin:4px;
 }
-
-.liveNav button:hover{
-background:#c6a55a;
-color:#041f18;
-}
-
-
-
-/* SINGLE PLAYER */
 
 .livePlayer iframe{
 width:100%;
-height:65vh;
-border:none;
-border-radius:6px;
+height:70vh;
+border:1px solid #00ffaa44;
 }
-
-
-
-/* QUAD VIEW */
 
 .quadGrid{
 display:none;
 grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:10px;
+grid-template-rows:1fr 1fr;
+gap:6px;
+height:80vh;
 }
 
 .quadGrid iframe{
 width:100%;
-height:35vh;
-border:none;
-border-radius:6px;
+height:100%;
+border:1px solid #00ffaa33;
 }
 
+/* MAPS */
 
-
-/* MAP PANELS */
-
-#map iframe{
+section iframe{
 width:100%;
-height:75vh;
-border:none;
-border-radius:6px;
+height:80vh;
+border:1px solid #00ffaa33;
 }
 
-
-
-/* AIR / MARINE / CYBER */
-
-#air iframe,
-#marine iframe,
-#cyber iframe,
-#gmap iframe{
-width:100%;
-height:75vh;
-border:none;
-border-radius:6px;
-}
-
-
-
-/* OVERVIEW COMMAND WALL */
+/* COMMAND GRID */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin-top:10px;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:8px;
+height:80vh;
 }
 
 .grid iframe{
 width:100%;
-height:30vh;
-border:none;
-border-radius:6px;
+height:100%;
+border:1px solid #00ffaa33;
 }
-
-
-
-/* GENERAL IFRAME SAFETY */
-
-iframe{
-max-width:100%;
-display:block;
-}
-
-
 
 /* FOOTER */
 
 footer{
-text-align:center;
-padding:20px;
-border-top:1px solid #1b4d3e;
-margin-top:30px;
-}
-
-
-
-/* FOOTER RADAR */
-
-.footerRadar{
-width:60px;
-height:60px;
-margin:10px auto;
-border-radius:50%;
-overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+padding:10px;
+background:#000;
+border-top:1px solid #00ffaa33;
 }
 
 .footerRadar video{
-width:100%;
-height:100%;
-object-fit:cover;
+width:60px;
+opacity:0.6;
 }
 
-
-
-/* FOOTER LINK */
-
 .footerLink{
-color:#c6a55a;
+color:#00ffaa;
 text-decoration:none;
-font-weight:600;
-font-size:18px;
+}
+
+.footerLink:hover{
+text-decoration:underline;
 }
