@@ -17,7 +17,6 @@
 <body>
 
 
-
 <!-- =====================================
 SPLASH SCREEN
 ===================================== -->
@@ -31,7 +30,6 @@ SPLASH SCREEN
 </div>
 
 
-
 <!-- =====================================
 RADAR BACKGROUND
 ===================================== -->
@@ -43,7 +41,6 @@ RADAR BACKGROUND
 </video>
 
 </div>
-
 
 
 <!-- =====================================
@@ -77,7 +74,6 @@ HEADER
 </header>
 
 
-
 <!-- =====================================
 NAVIGATION
 ===================================== -->
@@ -97,7 +93,6 @@ NAVIGATION
 </nav>
 
 
-
 <!-- =====================================
 HOME
 ===================================== -->
@@ -113,15 +108,12 @@ HOME
 <h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
-Integrated OSINT monitoring platform providing real-time intelligence
-visibility across conflict zones, financial markets, cyber activity,
-aviation tracking and maritime movement.
+Integrated OSINT monitoring platform providing real-time intelligence visibility across conflict zones, financial markets, cyber activity, aviation tracking and maritime movement.
 </p>
 
 </div>
 
 </div>
-
 
 
 <div class="conflictBar">
@@ -143,7 +135,6 @@ aviation tracking and maritime movement.
 </section>
 
 
-
 <!-- =====================================
 LIVE NEWS
 ===================================== -->
@@ -160,6 +151,7 @@ LIVE NEWS
 
 </div>
 
+
 <div id="liveSingle" class="livePlayer">
 
 <iframe id="liveFrame"
@@ -168,6 +160,7 @@ allowfullscreen>
 </iframe>
 
 </div>
+
 
 <div id="liveQuad" class="quadGrid">
 
@@ -179,7 +172,6 @@ allowfullscreen>
 </div>
 
 </section>
-
 
 
 <!-- =====================================
@@ -198,7 +190,6 @@ MARKETS
 </div>
 
 
-
 <div id="marketNews" class="marketPanel active">
 
 <div id="marketsQuad" class="quadGrid" style="display:grid;">
@@ -211,7 +202,6 @@ MARKETS
 </div>
 
 </div>
-
 
 
 <div id="marketMacro" class="marketPanel">
@@ -231,7 +221,6 @@ MARKETS
 </div>
 
 </div>
-
 
 
 <div id="marketCrypto" class="marketPanel">
@@ -257,7 +246,6 @@ MARKETS
 </div>
 
 
-
 <div id="marketForex" class="marketPanel">
 
 <div class="tradingview-widget-container">
@@ -279,7 +267,6 @@ MARKETS
 </section>
 
 
-
 <!-- =====================================
 CONFLICT MAP
 ===================================== -->
@@ -287,7 +274,6 @@ CONFLICT MAP
 <section id="conflict" class="tab">
 <iframe src="https://liveuamap.com"></iframe>
 </section>
-
 
 
 <!-- =====================================
@@ -299,7 +285,6 @@ AIRCRAFT
 </section>
 
 
-
 <!-- =====================================
 MARINE
 ===================================== -->
@@ -307,7 +292,6 @@ MARINE
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
-
 
 
 <!-- =====================================
@@ -322,7 +306,6 @@ style="width:100%;height:85vh;border:0;">
 </iframe>
 
 </section>
-
 
 
 <!-- =====================================
@@ -354,49 +337,36 @@ OVERVIEW COMMAND WALL
 </section>
 
 
-
 <!-- =====================================
-GLOBAL RADIO MONITOR
+GLOBAL NEWS RADIO WALL
 ===================================== -->
 
 <section id="radio" class="tab">
 
-<h2 style="text-align:center;color:#00ffaa;margin-bottom:30px;">
-Global Radio Monitoring Wall
+<h2 style="text-align:center;color:#00ffaa;margin-bottom:20px;">
+Global News Radio Wall
 </h2>
 
 <div class="radioWall">
 
 <div class="radioPanel">
-<h3>UK HF Receiver</h3>
-<p>Hack Green WebSDR – Cheshire</p>
-<a href="http://hackgreensdr.org:8901" target="_blank" class="radioLaunch">
-Open Receiver
-</a>
+<h3>BBC World Service</h3>
+<iframe src="https://player.live365.com/a16806"></iframe>
 </div>
 
 <div class="radioPanel">
-<h3>Middle East Receiver</h3>
-<p>Cyprus KiwiSDR</p>
-<a href="http://kiwisdr.areg.org.au:8073" target="_blank" class="radioLaunch">
-Open Receiver
-</a>
+<h3>Al Jazeera English Radio</h3>
+<iframe src="https://www.radio.net/s/aljazeeraenglish"></iframe>
 </div>
 
 <div class="radioPanel">
-<h3>Eastern Europe Receiver</h3>
-<p>University of Twente WebSDR</p>
-<a href="http://websdr.ewi.utwente.nl:8901" target="_blank" class="radioLaunch">
-Open Receiver
-</a>
+<h3>Bloomberg Radio</h3>
+<iframe src="https://player.live365.com/a15199"></iframe>
 </div>
 
 <div class="radioPanel">
-<h3>Pacific Receiver</h3>
-<p>New Zealand KiwiSDR</p>
-<a href="http://kiwisdr.nz:8073" target="_blank" class="radioLaunch">
-Open Receiver
-</a>
+<h3>Aviation ATC Monitor</h3>
+<iframe src="https://www.liveatc.net/listen.php"></iframe>
 </div>
 
 </div>
@@ -411,9 +381,11 @@ FOOTER
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -421,11 +393,10 @@ BlackSurvivalGear.com
 </a>
 
 <div class="versionTag">
-BSG Strategic Awareness OSINT — v1.0
+BSG Strategic Awareness OSINT — v2
 </div>
 
 </footer>
-
 
 
 <!-- =====================================
@@ -467,7 +438,6 @@ updateClock()
 setInterval(updateClock,1000)
 
 
-
 /* TAB NAVIGATION */
 
 document.querySelectorAll("nav button").forEach(btn=>{
@@ -490,50 +460,7 @@ document.getElementById(this.dataset.tab).classList.add("active")
 
 })
 
-
-
-/* LIVE NEWS SWITCH */
-
-function showLive(channel){
-
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("liveQuad")
-
-if(channel==="quad"){
-
-single.style.display="none"
-quad.style.display="grid"
-return
-
-}
-
-quad.style.display="none"
-single.style.display="block"
-
-if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
-if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
-if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
-if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
-
-}
-
-
-
-/* MARKET PANELS */
-
-function showMarketPanel(panel){
-
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.style.display="none"
-})
-
-document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).style.display="block"
-
-}
-
 </script>
 
 </body>
 </html>
-
