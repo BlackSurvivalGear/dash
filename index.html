@@ -17,8 +17,7 @@
 <body>
 
 
-
-<!-- SPLASH SCREEN -->
+<!-- SPLASH -->
 
 <div id="introRadar">
 
@@ -26,23 +25,16 @@
 <source src="RADAR3.mp4">
 </video>
 
-<div class="bootText">
-<span id="bootMessage"></span>
-<span class="cursor">|</span>
-</div>
-
 </div>
 
 
 
-<!-- RADAR BACKGROUND -->
+<!-- BACKGROUND RADAR -->
 
 <div class="siteRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 
@@ -75,8 +67,6 @@
 
 
 
-<!-- NAVIGATION -->
-
 <nav>
 
 <button data-tab="home" class="active">Home</button>
@@ -92,18 +82,15 @@
 
 
 
-<!-- HOME -->
-
 <section id="home" class="tab active">
 
 <div class="homePanel">
 
-<h2>Welcome to the BSG Global Strategic Awareness OSINT Platform</h2>
+<h2>BSG Global Strategic Awareness</h2>
 
 <p>
-This dashboard consolidates open-source intelligence monitoring systems
-into a unified command interface providing real-time global awareness of
-conflicts, markets, cyber activity, maritime movement and air traffic.
+Integrated OSINT dashboard providing real-time monitoring of global
+conflict activity, markets, cyber threats, aviation and maritime movement.
 </p>
 
 <img src="BSG2.png" class="homeBg">
@@ -113,8 +100,6 @@ conflicts, markets, cyber activity, maritime movement and air traffic.
 </section>
 
 
-
-<!-- LIVE NEWS -->
 
 <section id="live" class="tab">
 
@@ -149,8 +134,6 @@ allowfullscreen></iframe>
 
 
 
-<!-- MARKETS -->
-
 <section id="markets" class="tab">
 
 <div class="marketsNav">
@@ -164,15 +147,11 @@ allowfullscreen></iframe>
 
 
 
-<!-- MARKET NEWS QUAD -->
-
 <div id="marketNews" class="marketPanel active">
 
 <div class="liveNav">
 <button onclick="showMarkets('quad')">QUAD VIEW</button>
 </div>
-
-<div id="marketsSingle" class="livePlayer" style="display:none;"></div>
 
 <div id="marketsQuad" class="quadGrid" style="display:grid;">
 
@@ -187,11 +166,7 @@ allowfullscreen></iframe>
 
 
 
-<!-- GLOBAL MARKETS -->
-
 <div id="marketMacro" class="marketPanel">
-
-<div class="macroContainer">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
@@ -209,15 +184,9 @@ allowfullscreen></iframe>
 
 </div>
 
-</div>
 
-
-
-<!-- CRYPTO -->
 
 <div id="marketCrypto" class="marketPanel">
-
-<div class="cryptoContainer">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
@@ -237,23 +206,11 @@ allowfullscreen></iframe>
 
 </div>
 
-<div class="cryptoLaunch">
-<a href="https://cryptobubbles.net" target="_blank" class="cryptoButton">
-OPEN CRYPTOBUBBLES HEATMAP
-</a>
-</div>
-
-</div>
-
 </div>
 
 
-
-<!-- FOREX -->
 
 <div id="marketForex" class="marketPanel">
-
-<div class="forexContainer">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
@@ -261,9 +218,7 @@ OPEN CRYPTOBUBBLES HEATMAP
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
 {
 "colorTheme":"dark",
-"isTransparent":false,
 "locale":"en",
-"currencies":["EUR","USD","JPY","GBP","CHF","AUD","CAD","NZD","CNY"],
 "width":"100%",
 "height":500
 }
@@ -273,45 +228,27 @@ OPEN CRYPTOBUBBLES HEATMAP
 
 </div>
 
-</div>
-
 </section>
 
 
-
-<!-- CONFLICT MAP -->
 
 <section id="conflict" class="tab">
 <iframe src="https://liveuamap.com" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
-
-
-<!-- AIRCRAFT -->
-
 <section id="aircraft" class="tab">
 <iframe src="https://globe.adsbexchange.com/?military=1" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
-
-
-<!-- MARINE -->
-
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
-
-
-
-<!-- CYBER -->
 
 <section id="cyber" class="tab">
 <iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
 
-
-<!-- OVERVIEW -->
 
 <section id="overview" class="tab">
 
@@ -350,25 +287,7 @@ BSG Strategic Awareness OSINT — v1.0
 
 <script>
 
-
-
-/* ===============================
-SYSTEM INIT
-=============================== */
-
-window.addEventListener("load", function(){
-
-initClock();
-initNavigation();
-initSplash();
-
-});
-
-
-
 /* CLOCK */
-
-function initClock(){
 
 function updateClock(){
 
@@ -392,7 +311,7 @@ hours=hours?hours:12
 
 minutes=minutes<10?"0"+minutes:minutes
 
-document.getElementById("dateTime").textContent=
+document.getElementById("dateTime").textContent =
 `${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
 
 }
@@ -400,13 +319,9 @@ document.getElementById("dateTime").textContent=
 updateClock()
 setInterval(updateClock,1000)
 
-}
-
 
 
 /* NAVIGATION */
-
-function initNavigation(){
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -422,9 +337,7 @@ b.classList.remove("active")
 
 this.classList.add("active")
 
-const tabID=this.dataset.tab
-
-const target=document.getElementById(tabID)
+const target=document.getElementById(this.dataset.tab)
 
 if(target){
 target.classList.add("active")
@@ -434,72 +347,64 @@ target.classList.add("active")
 
 })
 
+
+
+/* LIVE SWITCH */
+
+function showLive(channel){
+
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("liveQuad")
+
+single.style.display="block"
+quad.style.display="none"
+
+if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
+if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
+if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
+if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
+
 }
 
 
 
-/* SPLASH */
+/* MARKET PANELS */
 
-function initSplash(){
+function showMarketPanel(panel){
+
+document.querySelectorAll(".marketPanel").forEach(p=>{
+p.style.display="none"
+})
+
+document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).style.display="block"
+
+}
+
+
+
+/* SPLASH EXIT */
+
+window.addEventListener("load",function(){
 
 const splash=document.getElementById("introRadar")
-const message=document.getElementById("bootMessage")
 
-const lines=[
-"INITIALIZING RADAR SYSTEM...",
-"GLOBAL STRATEGIC AWARENESS OSINT...",
-"LOADING INTELLIGENCE MODULES...",
-"CONNECTING GLOBAL DATA FEEDS...",
-"SYSTEM ONLINE"
-]
-
-let line=0
-let char=0
-
-function type(){
-
-if(line<lines.length){
-
-if(char<lines[line].length){
-
-message.textContent+=lines[line].charAt(char)
-char++
-
-setTimeout(type,35)
-
-}else{
-
-message.textContent+="\n"
-line++
-char=0
-
-setTimeout(type,300)
-
-}
-
-}else{
-
-exitSplash()
-
-}
-
-}
-
-function exitSplash(){
+setTimeout(function(){
 
 splash.style.opacity="0"
 
-setTimeout(()=>{
+setTimeout(function(){
 splash.style.display="none"
-},700)
+},500)
 
-}
+},1500)
 
-type()
-
-setTimeout(exitSplash,4000)
-
-}
+})
 
 </script>
 
