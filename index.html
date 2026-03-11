@@ -83,7 +83,7 @@ MAIN HEADER
 
 
 <!-- =====================================
-MAIN NAVIGATION
+NAVIGATION BAR
 ===================================== -->
 
 <nav>
@@ -107,6 +107,29 @@ HOME DASHBOARD
 
 <section id="home" class="tab active">
 
+<div class="homeContainer">
+
+
+<!-- CONFLICT STRIP -->
+
+<div class="conflictStrip">
+
+<h3>Conflict Headlines</h3>
+
+<ul>
+<li>Ukraine front line artillery escalation</li>
+<li>Red Sea shipping attacks continue</li>
+<li>Sudan clashes intensify in Khartoum</li>
+<li>Sahel militant activity rising</li>
+<li>South China Sea naval patrol tensions</li>
+</ul>
+
+</div>
+
+
+
+<!-- CENTER PANEL -->
+
 <div class="homePanel">
 
 <img src="BSG2.png" class="homeBg">
@@ -125,12 +148,14 @@ aviation tracking and maritime movement.
 
 </div>
 
+</div>
+
 </section>
 
 
 
 <!-- =====================================
-LIVE NEWS PANEL
+LIVE NEWS MONITORING
 ===================================== -->
 
 <section id="live" class="tab">
@@ -147,6 +172,8 @@ LIVE NEWS PANEL
 
 
 
+<!-- SINGLE VIEW -->
+
 <div id="liveSingle" class="livePlayer">
 
 <iframe id="liveFrame"
@@ -157,6 +184,8 @@ allowfullscreen>
 </div>
 
 
+
+<!-- FULLSCREEN QUAD WALL -->
 
 <div id="liveQuad" class="quadGrid">
 
@@ -172,7 +201,7 @@ allowfullscreen>
 
 
 <!-- =====================================
-MARKETS
+MARKETS PANEL
 ===================================== -->
 
 <section id="markets" class="tab">
@@ -227,7 +256,7 @@ MARKETS
 
 
 
-<!-- CRYPTO MARKETS -->
+<!-- CRYPTO -->
 
 <div id="marketCrypto" class="marketPanel">
 
@@ -253,7 +282,7 @@ MARKETS
 
 
 
-<!-- FOREX MARKETS -->
+<!-- FOREX -->
 
 <div id="marketForex" class="marketPanel">
 
@@ -302,7 +331,7 @@ AIRCRAFT TRACKING
 
 
 <!-- =====================================
-MARITIME TRAFFIC
+MARINE TRAFFIC
 ===================================== -->
 
 <section id="marine" class="tab">
@@ -314,14 +343,14 @@ MARITIME TRAFFIC
 
 
 <!-- =====================================
-CYBER ATTACK MAP (FIXED)
+CYBER THREAT MAP
 ===================================== -->
 
 <section id="cyber" class="tab">
 
 <iframe
 src="https://threatmap.checkpoint.com/"
-style="width:100%; height:85vh; border:0;">
+style="width:100%;height:85vh;border:0;">
 </iframe>
 
 </section>
@@ -354,11 +383,9 @@ FOOTER
 <footer>
 
 <div class="footerRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -447,24 +474,27 @@ const frame=document.getElementById("liveFrame")
 const single=document.getElementById("liveSingle")
 const quad=document.getElementById("liveQuad")
 
-single.style.display="block"
+if(channel==="quad"){
+
+single.style.display="none"
+quad.style.display="grid"
+return
+
+}
+
 quad.style.display="none"
+single.style.display="block"
 
 if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
 if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
 if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
 if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
 
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
-}
-
 }
 
 
 
-/* MARKET PANEL SWITCH */
+/* MARKET PANELS */
 
 function showMarketPanel(panel){
 
