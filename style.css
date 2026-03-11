@@ -483,3 +483,65 @@ opacity:.55;
 margin-top:6px;
 letter-spacing:1px;
 }
+
+/* =====================================
+OVERVIEW COMMAND WALL
+===================================== */
+
+.overviewWall{
+
+display:grid;
+grid-template-columns: 1fr 1fr;
+
+height:85vh;
+
+gap:10px;
+
+}
+
+
+/* LEFT MAP */
+
+.overviewMap iframe{
+
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa33;
+
+}
+
+
+/* RIGHT NEWS STACK */
+
+.overviewNews{
+
+display:grid;
+
+grid-template-rows:1fr 1fr;
+
+gap:10px;
+
+}
+
+
+/* RT */
+
+.overviewRT iframe{
+
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+
+}
+
+
+/* ALJAZEERA */
+
+.overviewAJ iframe{
+
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+
+}
