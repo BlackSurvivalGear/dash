@@ -1,7 +1,3 @@
-/* ===============================
-GLOBAL
-=============================== */
-
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
@@ -9,12 +5,6 @@ background:#020606;
 color:white;
 overflow-x:hidden;
 }
-
-
-
-/* ===============================
-SPLASH SCREEN
-=============================== */
 
 #introRadar{
 position:fixed;
@@ -26,57 +16,14 @@ background:black;
 display:flex;
 align-items:center;
 justify-content:center;
-flex-direction:column;
 z-index:9999;
-transition:opacity 1s;
+transition:opacity .8s;
 }
 
 #introRadar video{
-width:45%;
-max-width:520px;
+width:420px;
 opacity:.9;
 }
-
-
-
-/* ===============================
-BOOT TEXT
-=============================== */
-
-.bootText{
-position:absolute;
-bottom:140px;
-text-align:center;
-color:#00ffaa;
-font-size:20px;
-letter-spacing:2px;
-text-shadow:0 0 10px #00ffaa;
-line-height:1.6;
-white-space:pre-line;
-}
-
-
-
-/* ===============================
-BLINKING CURSOR
-=============================== */
-
-.cursor{
-margin-left:6px;
-animation:blink 1s infinite;
-}
-
-@keyframes blink{
-0%{opacity:1}
-50%{opacity:0}
-100%{opacity:1}
-}
-
-
-
-/* ===============================
-RADAR BACKGROUND
-=============================== */
 
 .siteRadar{
 position:fixed;
@@ -86,7 +33,6 @@ width:100%;
 height:100%;
 opacity:.08;
 z-index:-1;
-pointer-events:none;
 }
 
 .siteRadar video{
@@ -95,82 +41,28 @@ height:100%;
 object-fit:cover;
 }
 
-
-
-/* ===============================
-HEADER
-=============================== */
-
 .mainHeader{
-position:relative;
 height:90px;
 border-bottom:1px solid #00ffaa44;
-}
-
-.headerVideo{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-opacity:.25;
-}
-
-.headerVideo video{
-width:100%;
-height:100%;
-object-fit:cover;
 }
 
 .headerContent{
 display:grid;
 grid-template-columns:80px 1fr 220px;
 align-items:center;
-height:90px;
 padding:0 20px;
 }
 
 header h1{
 color:#00ffaa;
-font-size:36px;
+font-size:34px;
 text-align:center;
-margin:0;
-text-shadow:0 0 15px #00ffaa;
 }
-
-
-
-/* ===============================
-RADAR LOGO
-=============================== */
-
-.radarLogo video{
-width:60px;
-}
-
-
-
-/* ===============================
-HEADER CLOCK
-=============================== */
 
 .headerMarkets{
-display:flex;
-justify-content:flex-end;
-font-size:15px;
-color:#00ffaa;
-letter-spacing:1px;
-}
-
-#dateTime{
+text-align:right;
 color:#00ffaa;
 }
-
-
-
-/* ===============================
-NAVIGATION
-=============================== */
 
 nav{
 display:flex;
@@ -186,26 +78,12 @@ background:transparent;
 border:1px solid #00ffaa55;
 color:#00ffaa;
 padding:6px 16px;
-font-size:14px;
 cursor:pointer;
-transition:.2s;
-}
-
-nav button:hover{
-background:#00ffaa22;
-box-shadow:0 0 10px #00ffaa;
 }
 
 nav button.active{
 background:#00ffaa22;
-box-shadow:0 0 12px #00ffaa;
 }
-
-
-
-/* ===============================
-TAB SYSTEM
-=============================== */
 
 .tab{
 display:none;
@@ -216,154 +94,14 @@ padding:20px;
 display:block;
 }
 
-
-
-/* ===============================
-HOME PANEL
-=============================== */
-
-.homePanel{
-max-width:900px;
-margin:auto;
-text-align:center;
-padding:30px 0;
-}
-
-.homePanel h2{
-font-size:24px;
-}
-
-.homePanel p{
-opacity:.7;
-}
-
-
-
-/* ===============================
-HOME IMAGE
-=============================== */
-
-.homeBg{
-max-width:420px;
-width:60%;
-margin-top:20px;
-
-/* transparency */
-
-opacity:.45;
-
-/* smooth fade edges */
-
-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
--webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-
-/* glow */
-
-filter: drop-shadow(0 0 10px rgba(0,255,170,.3));
-
-}
-
-
-
-/* ===============================
-LIVE / MARKETS BUTTONS
-=============================== */
-
-.liveNav{
-display:flex;
-justify-content:center;
-gap:12px;
-margin:16px 0;
-flex-wrap:wrap;
-}
-
-.liveNav button{
-background:transparent;
-border:1px solid #00ffaa55;
-color:#00ffaa;
-padding:6px 16px;
-cursor:pointer;
-transition:.2s;
-}
-
-.liveNav button:hover{
-background:#00ffaa22;
-box-shadow:0 0 12px #00ffaa;
-}
-
-.liveNav button.active{
-background:#00ffaa22;
-box-shadow:0 0 12px #00ffaa;
-}
-
-
-
-/* ===============================
-MARKETS NAV
-=============================== */
-
-.marketsNav{
-display:flex;
-justify-content:center;
-gap:12px;
-margin-bottom:20px;
-flex-wrap:wrap;
-}
-
-.marketsNav button{
-background:transparent;
-border:1px solid #00ffaa55;
-color:#00ffaa;
-padding:6px 16px;
-cursor:pointer;
-}
-
-.marketsNav button:hover{
-background:#00ffaa22;
-box-shadow:0 0 10px #00ffaa;
-}
-
-.marketsNav button.active{
-background:#00ffaa22;
-box-shadow:0 0 12px #00ffaa;
-}
-
-
-
-/* ===============================
-MARKET PANELS
-=============================== */
-
-.marketPanel{
-display:none;
-}
-
-.marketPanel.active{
-display:block;
-}
-
-
-
-/* ===============================
-VIDEO PLAYER
-=============================== */
-
 .livePlayer iframe{
 width:100%;
 height:70vh;
 border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
 }
 
-
-
-/* ===============================
-QUAD GRID
-=============================== */
-
 .quadGrid{
-display:none;
+display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
 gap:10px;
@@ -374,84 +112,7 @@ height:80vh;
 width:100%;
 height:100%;
 border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
 }
-
-
-
-/* ===============================
-GLOBAL MARKETS PANEL
-=============================== */
-
-.macroContainer{
-width:100%;
-max-width:1200px;
-margin:auto;
-}
-
-
-
-/* ===============================
-CRYPTO PANEL
-=============================== */
-
-.cryptoContainer{
-width:100%;
-max-width:1200px;
-margin:auto;
-}
-
-.cryptoLaunch{
-text-align:center;
-margin-top:20px;
-}
-
-.cryptoButton{
-display:inline-block;
-padding:10px 26px;
-border:1px solid #00ffaa;
-color:#00ffaa;
-text-decoration:none;
-font-size:14px;
-transition:.3s;
-}
-
-.cryptoButton:hover{
-background:#00ffaa22;
-box-shadow:0 0 10px #00ffaa;
-}
-
-
-
-/* ===============================
-FOREX PANEL
-=============================== */
-
-.forexContainer{
-width:100%;
-max-width:1200px;
-margin:auto;
-}
-
-
-
-/* ===============================
-MAP PANELS
-=============================== */
-
-section iframe{
-width:100%;
-height:85vh;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
-}
-
-
-
-/* ===============================
-COMMAND WALL
-=============================== */
 
 .grid{
 display:grid;
@@ -461,53 +122,13 @@ gap:10px;
 height:85vh;
 }
 
-.grid iframe{
-width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-}
-
-
-
-/* ===============================
-FOOTER
-=============================== */
-
 footer{
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:30px 0;
+text-align:center;
+padding:30px;
 border-top:1px solid #00ffaa33;
-margin-top:30px;
 }
-
-.footerRadar video{
-width:70px;
-margin-bottom:10px;
-opacity:.8;
-}
-
-footer a{
-color:#00ffaa;
-text-decoration:none;
-font-size:14px;
-}
-
-footer a:hover{
-text-decoration:underline;
-}
-
-
-
-/* ===============================
-VERSION TAG
-=============================== */
 
 .versionTag{
 font-size:11px;
-opacity:.55;
-margin-top:6px;
-letter-spacing:1px;
+opacity:.6;
 }
