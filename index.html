@@ -14,8 +14,8 @@
 
 </head>
 
-<body>
 
+<body>
 
 
 <!-- =====================================
@@ -105,45 +105,15 @@ HOME
 <section id="home" class="tab active">
 
 
-<!-- CONFLICT TICKER -->
+<!-- LIVE CONFLICT RSS TICKER -->
 
 <div class="conflictTicker">
 
-<div class="tickerWrap">
+<div class="tickerWrap" id="tickerFeed">
 
-<span>Ukraine artillery escalation</span>
-<span>Red Sea shipping attacks continue</span>
-<span>Sudan clashes intensify in Khartoum</span>
-<span>Sahel militant activity rising</span>
-<span>South China Sea naval tensions</span>
+Loading live conflict intelligence...
 
 </div>
-
-</div>
-
-
-
-<!-- TELEGRAM CONFLICT FEED -->
-
-<div class="liveuamapFeed">
-
-<h3>Live Conflict Updates</h3>
-
-<script async src="https://telegram.org/js/telegram-widget.js?22"
-data-telegram-channel="liveuamap"
-data-width="100%"
-data-height="400">
-</script>
-
-</div>
-
-
-
-<!-- LIVE CONFLICT MAP -->
-
-<div class="homeMap">
-
-<iframe src="https://liveuamap.com"></iframe>
 
 </div>
 
@@ -160,13 +130,12 @@ data-height="400">
 <h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
-Integrated OSINT monitoring platform providing real-time intelligence across conflicts, markets, cyber activity, aviation tracking and maritime monitoring.
+Integrated OSINT monitoring platform providing real-time intelligence across conflicts, financial markets, cyber activity, aviation tracking and maritime movement.
 </p>
 
 </div>
 
 </div>
-
 
 </section>
 
@@ -227,7 +196,6 @@ MARKET
 
 </div>
 
-
 <div id="marketNews" class="marketPanel active">
 
 <div class="quadGrid" style="display:grid">
@@ -240,7 +208,6 @@ MARKET
 </div>
 
 </div>
-
 
 <div id="marketMacro" class="marketPanel">
 <iframe src="https://www.tradingview.com/markets/"></iframe>
@@ -311,21 +278,10 @@ OVERVIEW COMMAND WALL
 
 <div class="overviewGrid">
 
-<div>
 <iframe src="https://liveuamap.com"></iframe>
-</div>
-
-<div>
 <iframe src="https://globe.adsbexchange.com"></iframe>
-</div>
-
-<div>
 <iframe src="https://coin360.com"></iframe>
-</div>
-
-<div>
 <iframe src="https://www.tradingview.com/markets/"></iframe>
-</div>
 
 </div>
 
@@ -375,11 +331,9 @@ BSG Strategic Awareness OSINT — v2
 
 
 
-<!-- =====================================
-JAVASCRIPT
-===================================== -->
-
 <script>
+
+
 
 /* CLOCK */
 
@@ -415,7 +369,7 @@ setInterval(updateClock,1000)
 
 
 
-/* TAB NAVIGATION */
+/* TAB NAV */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -434,51 +388,55 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 
 
-/* LIVE NEWS SWITCH */
+/* LIVE FEED RSS TICKER */
 
-function showLive(channel){
+async function loadConflictFeed(){
 
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("liveQuad")
+try{
 
-single.style.display="block"
-quad.style.display="none"
+const proxy="https://api.allorigins.win/raw?url="
+const rssURL="https://liveuamap.com/rss"
 
-if(channel==="rt")
-frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+const res=await fetch(proxy+rssURL)
 
-if(channel==="aj")
-frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+const text=await res.text()
 
-if(channel==="sky")
-frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
+const parser=new DOMParser()
 
-if(channel==="wion")
-frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+const xml=parser.parseFromString(text,"text/xml")
 
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
+const items=xml.querySelectorAll("item")
+
+let headlines=""
+
+items.forEach((item,i)=>{
+
+if(i<12){
+
+headlines+=`<span>${item.querySelector("title").textContent}</span>`
+
 }
 
-}
-
-
-
-/* MARKET SWITCH */
-
-function showMarketPanel(panel){
-
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.classList.remove("active")
 })
 
-document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).classList.add("active")
+document.getElementById("tickerFeed").innerHTML=headlines
 
 }
 
+catch(err){
+
+document.getElementById("tickerFeed").innerHTML="Live feed unavailable"
+
+}
+
+}
+
+loadConflictFeed()
+
+
+
 </script>
+
 
 </body>
 </html>
