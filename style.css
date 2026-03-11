@@ -427,35 +427,28 @@ background:black;
 
 
 /* =====================================
-GLOBAL RADIO WALL
+GLOBAL RADIO PAGE
 ===================================== */
 
-.radioWall{
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:10px;
+.radioContainer{
+
+width:100%;
 height:85vh;
+
+border:1px solid #00ffaa44;
+
+box-shadow:0 0 12px rgba(0,255,170,.25);
+
+background:black;
+
 }
 
-.radioPanel{
-background:#041414;
-border:1px solid #00ffaa33;
-padding:10px;
-box-shadow:0 0 10px rgba(0,255,170,.25);
-}
+.radioContainer iframe{
 
-.radioPanel h3{
-color:#00ffaa;
-margin-top:0;
-text-align:center;
-}
-
-.radioPanel iframe{
 width:100%;
 height:100%;
 border:0;
-background:black;
+
 }
 
 /* =====================================
