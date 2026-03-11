@@ -18,6 +18,7 @@
 <body>
 
 
+
 <!-- =====================================
 SPLASH SCREEN
 ===================================== -->
@@ -104,23 +105,6 @@ HOME
 
 <section id="home" class="tab active">
 
-
-<!-- LIVE CONFLICT RSS TICKER -->
-
-<div class="conflictTicker">
-
-<div class="tickerWrap" id="tickerFeed">
-
-Loading live conflict intelligence...
-
-</div>
-
-</div>
-
-
-
-<!-- HERO PANEL -->
-
 <div class="homeHero">
 
 <img src="BSG2.png" class="heroImage">
@@ -130,7 +114,7 @@ Loading live conflict intelligence...
 <h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
-Integrated OSINT monitoring platform providing real-time intelligence across conflicts, financial markets, cyber activity, aviation tracking and maritime movement.
+Integrated OSINT monitoring platform providing real-time intelligence across conflict zones, financial markets, cyber activity, aviation tracking and maritime movement.
 </p>
 
 </div>
@@ -182,7 +166,7 @@ allowfullscreen>
 
 
 <!-- =====================================
-MARKET
+MARKETS
 ===================================== -->
 
 <section id="markets" class="tab">
@@ -333,8 +317,6 @@ BSG Strategic Awareness OSINT — v2
 
 <script>
 
-
-
 /* CLOCK */
 
 function updateClock(){
@@ -388,43 +370,51 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 
 
-/* =====================================
-LIVE CONFLICT TICKER
-===================================== */
+/* LIVE NEWS SWITCH */
 
-async function loadConflictFeed(){
+function showLive(channel){
 
-try{
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("liveQuad")
 
-const proxy="https://api.rss2json.com/v1/api.json?rss_url="
+single.style.display="block"
+quad.style.display="none"
 
-const rssURL="https://rsshub.app/telegram/channel/liveuamap"
+if(channel==="rt")
+frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 
-const res=await fetch(proxy+encodeURIComponent(rssURL))
+if(channel==="aj")
+frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
 
-const data=await res.json()
+if(channel==="sky")
+frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
 
-let headlines=""
+if(channel==="wion")
+frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
 
-data.items.slice(0,12).forEach(item=>{
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
 
-headlines+=`<span>${item.title}</span>`
+}
 
+
+
+/* MARKET SWITCH */
+
+function showMarketPanel(panel){
+
+document.querySelectorAll(".marketPanel").forEach(p=>{
+p.classList.remove("active")
 })
 
-document.getElementById("tickerFeed").innerHTML=headlines
+document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).classList.add("active")
 
 }
 
-catch(err){
+</script>
 
-document.getElementById("tickerFeed").innerHTML=
-"<span>Conflict intelligence feed temporarily unavailable</span>"
-
-}
-
-}
-
-loadConflictFeed()
-
-setInterval(loadConflictFeed,300000)
+</body>
+</html>
