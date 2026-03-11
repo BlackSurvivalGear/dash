@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en"><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,35 +17,25 @@
 <body>
 
 
-<!-- =====================================
-SPLASH SCREEN
-===================================== -->
+<!-- SPLASH -->
 
 <div id="introRadar">
-
 <video autoplay muted playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 
-<!-- =====================================
-RADAR BACKGROUND
-===================================== -->
+<!-- BACKGROUND RADAR -->
 
 <div class="siteRadar">
-
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
-
 </div>
 
 
-<!-- =====================================
-HEADER
-===================================== -->
+<!-- HEADER -->
 
 <header class="mainHeader">
 
@@ -75,15 +64,13 @@ HEADER
 </header>
 
 
-<!-- =====================================
-NAVIGATION
-===================================== -->
+<!-- NAVIGATION -->
 
 <nav>
 
 <button data-tab="home" class="active">Home</button>
 <button data-tab="live">LIVE NEWS</button>
-<button data-tab="markets">MARKETS</button>
+<button data-tab="markets">Market</button>
 <button data-tab="conflict">Conflict Map</button>
 <button data-tab="aircraft">Aircraft Watch</button>
 <button data-tab="marine">Marine Watch</button>
@@ -94,9 +81,8 @@ NAVIGATION
 </nav>
 
 
-<!-- =====================================
-HOME
-===================================== -->
+
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -109,7 +95,7 @@ HOME
 <h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
-Integrated OSINT monitoring platform providing real-time intelligence visibility across conflict zones, financial markets, cyber activity, aviation tracking and maritime movement.
+Integrated OSINT monitoring platform providing real-time intelligence across conflicts, markets, cyber activity, aviation and maritime monitoring.
 </p>
 
 <div class="conflictHeadlines">
@@ -122,7 +108,7 @@ Integrated OSINT monitoring platform providing real-time intelligence visibility
 <li>Red Sea shipping attacks continue</li>
 <li>Sudan clashes intensify in Khartoum</li>
 <li>Sahel militant activity rising</li>
-<li>South China Sea naval patrol tensions</li>
+<li>South China Sea naval tensions</li>
 
 </ul>
 
@@ -135,9 +121,8 @@ Integrated OSINT monitoring platform providing real-time intelligence visibility
 </section>
 
 
-<!-- =====================================
-LIVE NEWS
-===================================== -->
+
+<!-- LIVE NEWS -->
 
 <section id="live" class="tab">
 
@@ -147,7 +132,7 @@ LIVE NEWS
 <button onclick="showLive('aj')">Al Jazeera</button>
 <button onclick="showLive('sky')">Sky News</button>
 <button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">QUAD VIEW</button>
+<button onclick="showLive('quad')">Quad View</button>
 
 </div>
 
@@ -172,21 +157,19 @@ allowfullscreen>
 </section>
 
 
-<!-- =====================================
-MARKETS
-===================================== -->
+
+<!-- MARKET -->
 
 <section id="markets" class="tab">
 
 <div class="marketsNav">
 
-<button onclick="showMarketPanel('news')" class="active">News</button>
+<button onclick="showMarketPanel('news')">News</button>
 <button onclick="showMarketPanel('macro')">Global Markets</button>
 <button onclick="showMarketPanel('crypto')">Crypto</button>
 <button onclick="showMarketPanel('forex')">Forex</button>
 
 </div>
-
 
 <div id="marketNews" class="marketPanel active">
 
@@ -201,60 +184,44 @@ MARKETS
 
 </div>
 
-
 <div id="marketMacro" class="marketPanel">
-
 <iframe src="https://www.tradingview.com/markets/"></iframe>
-
 </div>
-
 
 <div id="marketCrypto" class="marketPanel">
-
 <iframe src="https://www.tradingview.com/crypto-screener/"></iframe>
-
 </div>
 
-
 <div id="marketForex" class="marketPanel">
-
 <iframe src="https://www.tradingview.com/forex-cross-rates/"></iframe>
-
 </div>
 
 </section>
 
 
-<!-- =====================================
-CONFLICT MAP
-===================================== -->
+
+<!-- CONFLICT MAP -->
 
 <section id="conflict" class="tab">
 <iframe src="https://liveuamap.com"></iframe>
 </section>
 
 
-<!-- =====================================
-AIRCRAFT
-===================================== -->
+<!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
 <iframe src="https://globe.adsbexchange.com"></iframe>
 </section>
 
 
-<!-- =====================================
-MARINE
-===================================== -->
+<!-- MARINE -->
 
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 
-<!-- =====================================
-CYBER
-===================================== -->
+<!-- CYBER -->
 
 <section id="cyber" class="tab">
 
@@ -266,28 +233,27 @@ style="width:100%;height:85vh;border:0;">
 </section>
 
 
-<!-- =====================================
-OVERVIEW COMMAND WALL
-===================================== -->
+
+<!-- OVERVIEW -->
 
 <section id="overview" class="tab">
 
 <div class="overviewGrid">
 
-<div class="overviewLeftTop">
+<div>
 <iframe src="https://liveuamap.com"></iframe>
 </div>
 
-<div class="overviewLeftBottom">
-<iframe src="https://liveuamap.com/en"></iframe>
-</div>
-
-<div class="overviewRightTop">
+<div>
 <iframe src="https://globe.adsbexchange.com"></iframe>
 </div>
 
-<div class="overviewRightBottom">
+<div>
 <iframe src="https://coin360.com"></iframe>
+</div>
+
+<div>
+<iframe src="https://www.tradingview.com/markets/"></iframe>
 </div>
 
 </div>
@@ -295,15 +261,10 @@ OVERVIEW COMMAND WALL
 </section>
 
 
-<!-- =====================================
-GLOBAL RADIO
-===================================== -->
+
+<!-- GLOBAL RADIO -->
 
 <section id="radio" class="tab">
-
-<h2 style="text-align:center;color:#00ffaa;margin-bottom:20px;">
-Global Radio
-</h2>
 
 <div class="radioContainer">
 
@@ -314,16 +275,17 @@ Global Radio
 </section>
 
 
-<!-- =====================================
-FOOTER
-===================================== -->
+
+<!-- FOOTER -->
 
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -337,9 +299,8 @@ BSG Strategic Awareness OSINT — v2
 </footer>
 
 
-<!-- =====================================
-JAVASCRIPT
-===================================== -->
+
+<!-- JAVASCRIPT -->
 
 <script>
 
@@ -376,27 +337,24 @@ updateClock()
 setInterval(updateClock,1000)
 
 
+
 /* TAB NAVIGATION */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
-btn.addEventListener("click",function(){
+btn.addEventListener("click",()=>{
 
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
-})
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
-document.querySelectorAll("nav button").forEach(b=>{
-b.classList.remove("active")
-})
+btn.classList.add("active")
 
-this.classList.add("active")
-
-document.getElementById(this.dataset.tab).classList.add("active")
+document.getElementById(btn.dataset.tab).classList.add("active")
 
 })
 
 })
+
 
 
 /* LIVE SWITCH */
@@ -404,11 +362,11 @@ document.getElementById(this.dataset.tab).classList.add("active")
 function showLive(channel){
 
 const frame=document.getElementById("liveFrame")
-const quad=document.getElementById("liveQuad")
 const single=document.getElementById("liveSingle")
+const quad=document.getElementById("liveQuad")
 
-quad.style.display="none"
 single.style.display="block"
+quad.style.display="none"
 
 if(channel==="rt")
 frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
@@ -430,439 +388,8 @@ quad.style.display="grid"
 }
 
 
-/* MARKETS SWITCH */
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BSG Strategic Awareness OSINT</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
-
-<!-- =====================================
-SPLASH SCREEN
-===================================== -->
-
-<div id="introRadar">
-
-<video autoplay muted playsinline>
-<source src="RADAR3.mp4">
-</video>
-
-</div>
-
-
-<!-- =====================================
-RADAR BACKGROUND
-===================================== -->
-
-<div class="siteRadar">
-
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-
-</div>
-
-
-<!-- =====================================
-HEADER
-===================================== -->
-
-<header class="mainHeader">
-
-<div class="headerVideo">
-<video autoplay muted loop playsinline>
-<source src="HEADER3.mp4">
-</video>
-</div>
-
-<div class="headerContent">
-
-<div class="radarLogo">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<h1>Global Strategic Awareness OSINT</h1>
-
-<div class="headerMarkets">
-<span id="dateTime"></span>
-</div>
-
-</div>
-
-</header>
-
-
-<!-- =====================================
-NAVIGATION
-===================================== -->
-
-<nav>
-
-<button data-tab="home" class="active">Home</button>
-<button data-tab="live">LIVE NEWS</button>
-<button data-tab="markets">MARKETS</button>
-<button data-tab="conflict">Conflict Map</button>
-<button data-tab="aircraft">Aircraft Watch</button>
-<button data-tab="marine">Marine Watch</button>
-<button data-tab="cyber">Cyber Attacks</button>
-<button data-tab="overview">Overview</button>
-<button data-tab="radio">Global Radio</button>
-
-</nav>
-
-
-<!-- =====================================
-HOME
-===================================== -->
-
-<section id="home" class="tab active">
-
-<div class="homeHero">
-
-<img src="BSG2.png" class="heroImage">
-
-<div class="heroOverlay">
-
-<h2>BSG Strategic Awareness Dashboard</h2>
-
-<p>
-Integrated OSINT monitoring platform providing real-time intelligence visibility across conflict zones, financial markets, cyber activity, aviation tracking and maritime movement.
-</p>
-
-<div class="conflictHeadlines">
-
-<h3>Conflict Headlines</h3>
-
-<ul>
-
-<li>Ukraine front line artillery escalation</li>
-<li>Red Sea shipping attacks continue</li>
-<li>Sudan clashes intensify in Khartoum</li>
-<li>Sahel militant activity rising</li>
-<li>South China Sea naval patrol tensions</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-LIVE NEWS
-===================================== -->
-
-<section id="live" class="tab">
-
-<div class="liveNav">
-
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky News</button>
-<button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">QUAD VIEW</button>
-
-</div>
-
-<div id="liveSingle" class="livePlayer">
-
-<iframe id="liveFrame"
-src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<div id="liveQuad" class="quadGrid">
-
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-MARKETS
-===================================== -->
-
-<section id="markets" class="tab">
-
-<div class="marketsNav">
-
-<button onclick="showMarketPanel('news')" class="active">News</button>
-<button onclick="showMarketPanel('macro')">Global Markets</button>
-<button onclick="showMarketPanel('crypto')">Crypto</button>
-<button onclick="showMarketPanel('forex')">Forex</button>
-
-</div>
-
-
-<div id="marketNews" class="marketPanel active">
-
-<div class="quadGrid" style="display:grid">
-
-<iframe src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-<iframe src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"></iframe>
-<iframe src="https://www.youtube.com/embed/KQp-e_XQnDE"></iframe>
-
-</div>
-
-</div>
-
-
-<div id="marketMacro" class="marketPanel">
-
-<iframe src="https://www.tradingview.com/markets/"></iframe>
-
-</div>
-
-
-<div id="marketCrypto" class="marketPanel">
-
-<iframe src="https://www.tradingview.com/crypto-screener/"></iframe>
-
-</div>
-
-
-<div id="marketForex" class="marketPanel">
-
-<iframe src="https://www.tradingview.com/forex-cross-rates/"></iframe>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-CONFLICT MAP
-===================================== -->
-
-<section id="conflict" class="tab">
-<iframe src="https://liveuamap.com"></iframe>
-</section>
-
-
-<!-- =====================================
-AIRCRAFT
-===================================== -->
-
-<section id="aircraft" class="tab">
-<iframe src="https://globe.adsbexchange.com"></iframe>
-</section>
-
-
-<!-- =====================================
-MARINE
-===================================== -->
-
-<section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-</section>
-
-
-<!-- =====================================
-CYBER
-===================================== -->
-
-<section id="cyber" class="tab">
-
-<iframe
-src="https://threatmap.checkpoint.com/"
-style="width:100%;height:85vh;border:0;">
-</iframe>
-
-</section>
-
-
-<!-- =====================================
-OVERVIEW COMMAND WALL
-===================================== -->
-
-<section id="overview" class="tab">
-
-<div class="overviewGrid">
-
-<div class="overviewLeftTop">
-<iframe src="https://liveuamap.com"></iframe>
-</div>
-
-<div class="overviewLeftBottom">
-<iframe src="https://liveuamap.com/en"></iframe>
-</div>
-
-<div class="overviewRightTop">
-<iframe src="https://globe.adsbexchange.com"></iframe>
-</div>
-
-<div class="overviewRightBottom">
-<iframe src="https://coin360.com"></iframe>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-GLOBAL RADIO
-===================================== -->
-
-<section id="radio" class="tab">
-
-<h2 style="text-align:center;color:#00ffaa;margin-bottom:20px;">
-Global Radio
-</h2>
-
-<div class="radioContainer">
-
-<iframe src="https://radio.garden/"></iframe>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-FOOTER
-===================================== -->
-
-<footer>
-
-<div class="footerRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<a href="https://BlackSurvivalGear.com" target="_blank">
-BlackSurvivalGear.com
-</a>
-
-<div class="versionTag">
-BSG Strategic Awareness OSINT — v2
-</div>
-
-</footer>
-
-
-<!-- =====================================
-JAVASCRIPT
-===================================== -->
-
-<script>
-
-/* CLOCK */
-
-function updateClock(){
-
-const now=new Date()
-
-const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
-const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
-
-let day=days[now.getDay()]
-let date=now.getDate()
-let month=months[now.getMonth()]
-let year=now.getFullYear()
-
-let hours=now.getHours()
-let minutes=now.getMinutes()
-
-let ampm=hours>=12?"PM":"AM"
-
-hours=hours%12
-hours=hours?hours:12
-
-minutes=minutes<10?"0"+minutes:minutes
-
-document.getElementById("dateTime").textContent =
-`${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
-
-}
-
-updateClock()
-setInterval(updateClock,1000)
-
-
-/* TAB NAVIGATION */
-
-document.querySelectorAll("nav button").forEach(btn=>{
-
-btn.addEventListener("click",function(){
-
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
-})
-
-document.querySelectorAll("nav button").forEach(b=>{
-b.classList.remove("active")
-})
-
-this.classList.add("active")
-
-document.getElementById(this.dataset.tab).classList.add("active")
-
-})
-
-})
-
-
-/* LIVE SWITCH */
-
-function showLive(channel){
-
-const frame=document.getElementById("liveFrame")
-const quad=document.getElementById("liveQuad")
-const single=document.getElementById("liveSingle")
-
-quad.style.display="none"
-single.style.display="block"
-
-if(channel==="rt")
-frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-
-if(channel==="aj")
-frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
-
-if(channel==="sky")
-frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
-
-if(channel==="wion")
-frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
-
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
-}
-
-}
-
-
-/* MARKETS SWITCH */
+/* MARKET SWITCH */
 
 function showMarketPanel(panel){
 
@@ -878,470 +405,3 @@ document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).c
 
 </body>
 </html>
-function showMarketPanel(panel){
-
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.classList.remove("active")
-})
-
-document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).classList.add("active")
-
-}
-
-</script>
-
-</body>
-</html>
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BSG Strategic Awareness OSINT</title>
-
-<link rel="stylesheet" href="style.css">
-
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
-
-<!-- =====================================
-SPLASH SCREEN
-===================================== -->
-
-<div id="introRadar">
-
-<video autoplay muted playsinline>
-<source src="RADAR3.mp4">
-</video>
-
-</div>
-
-
-<!-- =====================================
-RADAR BACKGROUND
-===================================== -->
-
-<div class="siteRadar">
-
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-
-</div>
-
-
-<!-- =====================================
-HEADER
-===================================== -->
-
-<header class="mainHeader">
-
-<div class="headerVideo">
-<video autoplay muted loop playsinline>
-<source src="HEADER3.mp4">
-</video>
-</div>
-
-<div class="headerContent">
-
-<div class="radarLogo">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
-<h1>Global Strategic Awareness OSINT</h1>
-
-<div class="headerMarkets">
-<span id="dateTime"></span>
-</div>
-
-</div>
-
-</header>
-
-
-<!-- =====================================
-NAVIGATION
-===================================== -->
-
-<nav>
-
-<button data-tab="home" class="active">Home</button>
-<button data-tab="live">LIVE NEWS</button>
-<button data-tab="markets">MARKETS</button>
-<button data-tab="conflict">Conflict Map</button>
-<button data-tab="aircraft">Aircraft Watch</button>
-<button data-tab="marine">Marine Watch</button>
-<button data-tab="cyber">Cyber Attacks</button>
-<button data-tab="overview">Overview</button>
-<button data-tab="radio">Radio Monitor</button>
-
-</nav>
-
-
-<!-- =====================================
-HOME
-===================================== -->
-
-<section id="home" class="tab active">
-
-<div class="homeHero">
-
-<img src="BSG2.png" class="heroImage">
-
-<div class="heroOverlay">
-
-<h2>BSG Strategic Awareness Dashboard</h2>
-
-<p>
-Integrated OSINT monitoring platform providing real-time intelligence visibility across conflict zones, financial markets, cyber activity, aviation tracking and maritime movement.
-</p>
-
-</div>
-
-</div>
-
-
-<div class="conflictBar">
-
-<h3>Conflict Headlines</h3>
-
-<ul>
-
-<li>Ukraine front line artillery escalation</li>
-<li>Red Sea shipping attacks continue</li>
-<li>Sudan clashes intensify in Khartoum</li>
-<li>Sahel militant activity rising</li>
-<li>South China Sea naval patrol tensions</li>
-
-</ul>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-LIVE NEWS
-===================================== -->
-
-<section id="live" class="tab">
-
-<div class="liveNav">
-
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky News</button>
-<button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">QUAD VIEW</button>
-
-</div>
-
-
-<div id="liveSingle" class="livePlayer">
-
-<iframe id="liveFrame"
-src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen>
-</iframe>
-
-</div>
-
-
-<div id="liveQuad" class="quadGrid">
-
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-<iframe src="https://www.youtube.com/embed/vfszY1JYbMc"></iframe>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-MARKETS
-===================================== -->
-
-<section id="markets" class="tab">
-
-<div class="marketsNav">
-
-<button onclick="showMarketPanel('news')" class="active">News</button>
-<button onclick="showMarketPanel('macro')">Global Markets</button>
-<button onclick="showMarketPanel('crypto')">Crypto</button>
-<button onclick="showMarketPanel('forex')">Forex</button>
-
-</div>
-
-
-<div id="marketNews" class="marketPanel active">
-
-<div id="marketsQuad" class="quadGrid" style="display:grid;">
-
-<iframe src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-<iframe src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"></iframe>
-<iframe src="https://www.youtube.com/embed/KQp-e_XQnDE"></iframe>
-
-</div>
-
-</div>
-
-
-<div id="marketMacro" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-{
-"colorTheme":"dark",
-"locale":"en",
-"width":"100%",
-"height":650
-}
-</script>
-
-</div>
-
-</div>
-
-
-<div id="marketCrypto" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-{
-"defaultColumn":"overview",
-"screener_type":"crypto_mkt",
-"displayCurrency":"USD",
-"colorTheme":"dark",
-"isTransparent":true,
-"locale":"en",
-"width":"100%",
-"height":550
-}
-</script>
-
-</div>
-
-</div>
-
-
-<div id="marketForex" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-{
-"colorTheme":"dark",
-"locale":"en",
-"width":"100%",
-"height":500
-}
-</script>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-CONFLICT MAP
-===================================== -->
-
-<section id="conflict" class="tab">
-<iframe src="https://liveuamap.com"></iframe>
-</section>
-
-
-<!-- =====================================
-AIRCRAFT
-===================================== -->
-
-<section id="aircraft" class="tab">
-<iframe src="https://globe.adsbexchange.com"></iframe>
-</section>
-
-
-<!-- =====================================
-MARINE
-===================================== -->
-
-<section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-</section>
-
-
-<!-- =====================================
-CYBER
-===================================== -->
-
-<section id="cyber" class="tab">
-
-<iframe
-src="https://threatmap.checkpoint.com/"
-style="width:100%;height:85vh;border:0;">
-</iframe>
-
-</section>
-
-
-<!-- =====================================
-OVERVIEW COMMAND WALL
-===================================== -->
-
-<section id="overview" class="tab">
-
-<div class="overviewGrid">
-
-<div class="overviewLeftTop">
-<iframe src="https://liveuamap.com"></iframe>
-</div>
-
-<div class="overviewLeftBottom">
-<iframe src="https://liveuamap.com/en"></iframe>
-</div>
-
-<div class="overviewRightTop">
-<iframe src="https://globe.adsbexchange.com"></iframe>
-</div>
-
-<div class="overviewRightBottom">
-<iframe src="https://coin360.com"></iframe>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================
-GLOBAL RADIO
-===================================== -->
-
-<section id="radio" class="tab">
-
-<h2 style="text-align:center;color:#00ffaa;margin-bottom:20px;">
-Global Radio
-</h2>
-
-<div class="radioContainer">
-
-<iframe
-src="https://radio.garden/"
-loading="lazy"
-allow="autoplay"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</section>
-
-<!-- =====================================
-FOOTER
-===================================== -->
-
-<footer>
-
-<div class="footerRadar">
-
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-
-</div>
-
-<a href="https://BlackSurvivalGear.com" target="_blank">
-BlackSurvivalGear.com
-</a>
-
-<div class="versionTag">
-BSG Strategic Awareness OSINT — v2
-</div>
-
-</footer>
-
-
-<!-- =====================================
-JAVASCRIPT
-===================================== -->
-
-<script>
-
-/* CLOCK */
-
-function updateClock(){
-
-const now=new Date()
-
-const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
-const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
-
-let day=days[now.getDay()]
-let date=now.getDate()
-let month=months[now.getMonth()]
-let year=now.getFullYear()
-
-let hours=now.getHours()
-let minutes=now.getMinutes()
-
-let ampm=hours>=12?"PM":"AM"
-
-hours=hours%12
-hours=hours?hours:12
-
-minutes=minutes<10?"0"+minutes:minutes
-
-document.getElementById("dateTime").textContent =
-`${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
-
-}
-
-updateClock()
-setInterval(updateClock,1000)
-
-
-/* TAB NAVIGATION */
-
-document.querySelectorAll("nav button").forEach(btn=>{
-
-btn.addEventListener("click",function(){
-
-document.querySelectorAll(".tab").forEach(tab=>{
-tab.classList.remove("active")
-})
-
-document.querySelectorAll("nav button").forEach(b=>{
-b.classList.remove("active")
-})
-
-this.classList.add("active")
-
-document.getElementById(this.dataset.tab).classList.add("active")
-
-})
-
-})
-
-</script>
-
-</body>
-</html>
-
-
-
