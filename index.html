@@ -17,25 +17,38 @@
 <body>
 
 
-<!-- SPLASH -->
+
+<!-- =====================================
+SPLASH SCREEN
+===================================== -->
 
 <div id="introRadar">
+
 <video autoplay muted playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 
-<!-- BACKGROUND RADAR -->
+
+<!-- =====================================
+RADAR BACKGROUND
+===================================== -->
 
 <div class="siteRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 
-<!-- HEADER -->
+
+<!-- =====================================
+HEADER
+===================================== -->
 
 <header class="mainHeader">
 
@@ -64,7 +77,10 @@
 </header>
 
 
-<!-- NAVIGATION -->
+
+<!-- =====================================
+NAVIGATION
+===================================== -->
 
 <nav>
 
@@ -82,9 +98,58 @@
 
 
 
-<!-- HOME -->
+<!-- =====================================
+HOME
+===================================== -->
 
 <section id="home" class="tab active">
+
+
+<!-- CONFLICT TICKER -->
+
+<div class="conflictTicker">
+
+<div class="tickerWrap">
+
+<span>Ukraine artillery escalation</span>
+<span>Red Sea shipping attacks continue</span>
+<span>Sudan clashes intensify in Khartoum</span>
+<span>Sahel militant activity rising</span>
+<span>South China Sea naval tensions</span>
+
+</div>
+
+</div>
+
+
+
+<!-- TELEGRAM CONFLICT FEED -->
+
+<div class="liveuamapFeed">
+
+<h3>Live Conflict Updates</h3>
+
+<script async src="https://telegram.org/js/telegram-widget.js?22"
+data-telegram-channel="liveuamap"
+data-width="100%"
+data-height="400">
+</script>
+
+</div>
+
+
+
+<!-- LIVE CONFLICT MAP -->
+
+<div class="homeMap">
+
+<iframe src="https://liveuamap.com"></iframe>
+
+</div>
+
+
+
+<!-- HERO PANEL -->
 
 <div class="homeHero">
 
@@ -95,34 +160,21 @@
 <h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
-Integrated OSINT monitoring platform providing real-time intelligence across conflicts, markets, cyber activity, aviation and maritime monitoring.
+Integrated OSINT monitoring platform providing real-time intelligence across conflicts, markets, cyber activity, aviation tracking and maritime monitoring.
 </p>
 
-<div class="conflictHeadlines">
-
-<h3>Conflict Headlines</h3>
-
-<ul>
-
-<li>Ukraine front line artillery escalation</li>
-<li>Red Sea shipping attacks continue</li>
-<li>Sudan clashes intensify in Khartoum</li>
-<li>Sahel militant activity rising</li>
-<li>South China Sea naval tensions</li>
-
-</ul>
-
 </div>
 
 </div>
 
-</div>
 
 </section>
 
 
 
-<!-- LIVE NEWS -->
+<!-- =====================================
+LIVE NEWS
+===================================== -->
 
 <section id="live" class="tab">
 
@@ -136,6 +188,7 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 
 </div>
 
+
 <div id="liveSingle" class="livePlayer">
 
 <iframe id="liveFrame"
@@ -144,6 +197,7 @@ allowfullscreen>
 </iframe>
 
 </div>
+
 
 <div id="liveQuad" class="quadGrid">
 
@@ -158,7 +212,9 @@ allowfullscreen>
 
 
 
-<!-- MARKET -->
+<!-- =====================================
+MARKET
+===================================== -->
 
 <section id="markets" class="tab">
 
@@ -170,6 +226,7 @@ allowfullscreen>
 <button onclick="showMarketPanel('forex')">Forex</button>
 
 </div>
+
 
 <div id="marketNews" class="marketPanel active">
 
@@ -183,6 +240,7 @@ allowfullscreen>
 </div>
 
 </div>
+
 
 <div id="marketMacro" class="marketPanel">
 <iframe src="https://www.tradingview.com/markets/"></iframe>
@@ -200,28 +258,39 @@ allowfullscreen>
 
 
 
-<!-- CONFLICT MAP -->
+<!-- =====================================
+CONFLICT MAP
+===================================== -->
 
 <section id="conflict" class="tab">
 <iframe src="https://liveuamap.com"></iframe>
 </section>
 
 
-<!-- AIRCRAFT -->
+
+<!-- =====================================
+AIRCRAFT
+===================================== -->
 
 <section id="aircraft" class="tab">
 <iframe src="https://globe.adsbexchange.com"></iframe>
 </section>
 
 
-<!-- MARINE -->
+
+<!-- =====================================
+MARINE
+===================================== -->
 
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 
-<!-- CYBER -->
+
+<!-- =====================================
+CYBER
+===================================== -->
 
 <section id="cyber" class="tab">
 
@@ -234,7 +303,9 @@ style="width:100%;height:85vh;border:0;">
 
 
 
-<!-- OVERVIEW -->
+<!-- =====================================
+OVERVIEW COMMAND WALL
+===================================== -->
 
 <section id="overview" class="tab">
 
@@ -262,7 +333,9 @@ style="width:100%;height:85vh;border:0;">
 
 
 
-<!-- GLOBAL RADIO -->
+<!-- =====================================
+GLOBAL RADIO
+===================================== -->
 
 <section id="radio" class="tab">
 
@@ -276,7 +349,9 @@ style="width:100%;height:85vh;border:0;">
 
 
 
-<!-- FOOTER -->
+<!-- =====================================
+FOOTER
+===================================== -->
 
 <footer>
 
@@ -300,7 +375,9 @@ BSG Strategic Awareness OSINT — v2
 
 
 
-<!-- JAVASCRIPT -->
+<!-- =====================================
+JAVASCRIPT
+===================================== -->
 
 <script>
 
@@ -357,7 +434,7 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 
 
-/* LIVE SWITCH */
+/* LIVE NEWS SWITCH */
 
 function showLive(channel){
 
