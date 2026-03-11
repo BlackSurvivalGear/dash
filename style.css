@@ -27,7 +27,6 @@ display:flex;
 align-items:center;
 justify-content:center;
 z-index:9999;
-
 animation:splashFade 4s forwards;
 }
 
@@ -197,56 +196,6 @@ display:block;
 
 
 /* =====================================
-CONFLICT RSS TICKER
-===================================== */
-
-.conflictTicker{
-
-width:100%;
-
-overflow:hidden;
-
-border-top:1px solid #00ffaa55;
-
-border-bottom:1px solid #00ffaa55;
-
-background:#021111;
-
-margin-bottom:20px;
-
-}
-
-.tickerWrap{
-
-display:inline-block;
-
-white-space:nowrap;
-
-animation:tickerScroll 28s linear infinite;
-
-}
-
-.tickerWrap span{
-
-margin-right:60px;
-
-color:#00ffaa;
-
-font-size:14px;
-
-}
-
-@keyframes tickerScroll{
-
-0%{transform:translateX(100%)}
-
-100%{transform:translateX(-100%)}
-
-}
-
-
-
-/* =====================================
 HOME HERO
 ===================================== */
 
@@ -411,19 +360,63 @@ background:black;
 OVERVIEW COMMAND WALL
 ===================================== */
 
-.overviewGrid{
+.overviewWall{
+
 display:grid;
+
 grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:10px;
+
 height:85vh;
+
+gap:10px;
+
 }
 
-.overviewGrid iframe{
+
+/* LEFT MAP */
+
+.overviewMap iframe{
+
 width:100%;
 height:100%;
 border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
+box-shadow:0 0 10px #00ffaa33;
+
+}
+
+
+/* RIGHT NEWS STACK */
+
+.overviewNews{
+
+display:grid;
+
+grid-template-rows:1fr 1fr;
+
+gap:10px;
+
+}
+
+
+/* RT */
+
+.overviewRT iframe{
+
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+
+}
+
+
+/* ALJAZEERA */
+
+.overviewAJ iframe{
+
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+
 }
 
 
@@ -482,66 +475,4 @@ font-size:11px;
 opacity:.55;
 margin-top:6px;
 letter-spacing:1px;
-}
-
-/* =====================================
-OVERVIEW COMMAND WALL
-===================================== */
-
-.overviewWall{
-
-display:grid;
-grid-template-columns: 1fr 1fr;
-
-height:85vh;
-
-gap:10px;
-
-}
-
-
-/* LEFT MAP */
-
-.overviewMap iframe{
-
-width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa33;
-
-}
-
-
-/* RIGHT NEWS STACK */
-
-.overviewNews{
-
-display:grid;
-
-grid-template-rows:1fr 1fr;
-
-gap:10px;
-
-}
-
-
-/* RT */
-
-.overviewRT iframe{
-
-width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-
-}
-
-
-/* ALJAZEERA */
-
-.overviewAJ iframe{
-
-width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-
 }
