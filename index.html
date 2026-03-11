@@ -23,7 +23,7 @@ PAGE META
 
 
 <!-- =====================================
-SPLASH SCREEN (CSS CONTROLLED)
+SPLASH SCREEN
 ===================================== -->
 
 <div id="introRadar">
@@ -37,7 +37,7 @@ SPLASH SCREEN (CSS CONTROLLED)
 
 
 <!-- =====================================
-BACKGROUND RADAR ANIMATION
+BACKGROUND RADAR
 ===================================== -->
 
 <div class="siteRadar">
@@ -56,20 +56,13 @@ MAIN HEADER
 
 <header class="mainHeader">
 
-<!-- HEADER BACKGROUND VIDEO -->
-
 <div class="headerVideo">
 <video autoplay muted loop playsinline>
 <source src="HEADER3.mp4">
 </video>
 </div>
 
-
-<!-- HEADER CONTENT -->
-
 <div class="headerContent">
-
-<!-- RADAR LOGO -->
 
 <div class="radarLogo">
 <video autoplay muted loop playsinline>
@@ -77,11 +70,7 @@ MAIN HEADER
 </video>
 </div>
 
-<!-- DASHBOARD TITLE -->
-
 <h1>Global Strategic Awareness OSINT</h1>
-
-<!-- DATE + TIME -->
 
 <div class="headerMarkets">
 <span id="dateTime"></span>
@@ -94,7 +83,7 @@ MAIN HEADER
 
 
 <!-- =====================================
-MAIN NAVIGATION BAR
+MAIN NAVIGATION
 ===================================== -->
 
 <nav>
@@ -113,22 +102,26 @@ MAIN NAVIGATION BAR
 
 
 <!-- =====================================
-HOME DASHBOARD PANEL
+HOME DASHBOARD
 ===================================== -->
 
 <section id="home" class="tab active">
 
 <div class="homePanel">
 
+<img src="BSG2.png" class="homeBg">
+
+<div class="homeOverlay">
+
 <h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
 Integrated OSINT monitoring platform providing real-time intelligence
-visibility across conflict zones, global markets, cyber activity,
-aviation tracking and maritime traffic.
+visibility across conflict zones, financial markets, cyber activity,
+aviation tracking and maritime movement.
 </p>
 
-<img src="BSG2.png" class="homeBg">
+</div>
 
 </div>
 
@@ -137,12 +130,10 @@ aviation tracking and maritime traffic.
 
 
 <!-- =====================================
-LIVE NEWS MONITORING PANEL
+LIVE NEWS PANEL
 ===================================== -->
 
 <section id="live" class="tab">
-
-<!-- CHANNEL BUTTON ROW -->
 
 <div class="liveNav">
 
@@ -155,7 +146,6 @@ LIVE NEWS MONITORING PANEL
 </div>
 
 
-<!-- SINGLE CHANNEL VIEW -->
 
 <div id="liveSingle" class="livePlayer">
 
@@ -167,7 +157,6 @@ allowfullscreen>
 </div>
 
 
-<!-- QUAD NEWS VIEW -->
 
 <div id="liveQuad" class="quadGrid">
 
@@ -183,12 +172,10 @@ allowfullscreen>
 
 
 <!-- =====================================
-GLOBAL MARKETS PANEL
+MARKETS
 ===================================== -->
 
 <section id="markets" class="tab">
-
-<!-- MARKETS NAVIGATION -->
 
 <div class="marketsNav">
 
@@ -201,15 +188,9 @@ GLOBAL MARKETS PANEL
 
 
 
-<!-- =====================================
-MARKET NEWS QUAD VIEW
-===================================== -->
+<!-- MARKET NEWS QUAD -->
 
 <div id="marketNews" class="marketPanel active">
-
-<div class="liveNav">
-<button onclick="showMarkets('quad')">QUAD VIEW</button>
-</div>
 
 <div id="marketsQuad" class="quadGrid" style="display:grid;">
 
@@ -224,9 +205,7 @@ MARKET NEWS QUAD VIEW
 
 
 
-<!-- =====================================
-GLOBAL MARKET DATA
-===================================== -->
+<!-- GLOBAL MARKETS -->
 
 <div id="marketMacro" class="marketPanel">
 
@@ -248,9 +227,7 @@ GLOBAL MARKET DATA
 
 
 
-<!-- =====================================
-CRYPTO MARKET PANEL
-===================================== -->
+<!-- CRYPTO MARKETS -->
 
 <div id="marketCrypto" class="marketPanel">
 
@@ -276,9 +253,7 @@ CRYPTO MARKET PANEL
 
 
 
-<!-- =====================================
-FOREX MARKET PANEL
-===================================== -->
+<!-- FOREX MARKETS -->
 
 <div id="marketForex" class="marketPanel">
 
@@ -303,7 +278,7 @@ FOREX MARKET PANEL
 
 
 <!-- =====================================
-CONFLICT MAP MONITORING
+CONFLICT MAP
 ===================================== -->
 
 <section id="conflict" class="tab">
@@ -327,7 +302,7 @@ AIRCRAFT TRACKING
 
 
 <!-- =====================================
-MARITIME TRAFFIC MONITORING
+MARITIME TRAFFIC
 ===================================== -->
 
 <section id="marine" class="tab">
@@ -339,12 +314,15 @@ MARITIME TRAFFIC MONITORING
 
 
 <!-- =====================================
-CYBER ATTACK MONITORING
+CYBER ATTACK MAP (FIXED)
 ===================================== -->
 
 <section id="cyber" class="tab">
 
-<iframe src="https://cybermap.kaspersky.com"></iframe>
+<iframe
+src="https://threatmap.checkpoint.com/"
+style="width:100%; height:85vh; border:0;">
+</iframe>
 
 </section>
 
