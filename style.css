@@ -545,3 +545,48 @@ opacity:.55;
 margin-top:6px;
 letter-spacing:1px;
 }
+
+/* =====================================
+GLOBAL RADIO WALL
+===================================== */
+
+.radioWall{
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:20px;
+max-width:1000px;
+margin:auto;
+}
+
+.radioPanel{
+background:#041414;
+border:1px solid #00ffaa44;
+padding:30px;
+text-align:center;
+box-shadow:0 0 12px rgba(0,255,170,.25);
+}
+
+.radioPanel h3{
+color:#00ffaa;
+margin-top:0;
+}
+
+.radioPanel p{
+opacity:.8;
+margin-bottom:20px;
+}
+
+.radioLaunch{
+display:inline-block;
+padding:10px 20px;
+border:1px solid #00ffaa;
+color:#00ffaa;
+text-decoration:none;
+transition:.2s;
+}
+
+.radioLaunch:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
+}
