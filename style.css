@@ -1,153 +1,9 @@
-/* =====================================
-GLOBAL SETTINGS
-===================================== */
-
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
 background:#020606;
 color:white;
-overflow-x:hidden;
 }
-
-
-
-/* =====================================
-SPLASH SCREEN
-===================================== */
-
-#introRadar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:black;
-display:flex;
-align-items:center;
-justify-content:center;
-z-index:9999;
-animation:splashFade 4s forwards;
-}
-
-#introRadar video{
-width:420px;
-opacity:.9;
-}
-
-@keyframes splashFade{
-
-0%{opacity:1;}
-
-90%{opacity:1;}
-
-100%{
-opacity:0;
-visibility:hidden;
-pointer-events:none;
-}
-
-}
-
-
-
-/* =====================================
-RADAR BACKGROUND
-===================================== */
-
-.siteRadar{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-opacity:.08;
-z-index:-1;
-pointer-events:none;
-}
-
-.siteRadar video{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-
-
-/* =====================================
-HEADER
-===================================== */
-
-.mainHeader{
-position:relative;
-height:90px;
-border-bottom:1px solid #00ffaa44;
-}
-
-.headerVideo{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-opacity:.25;
-}
-
-.headerVideo video{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.headerContent{
-display:grid;
-grid-template-columns:80px 1fr 220px;
-align-items:center;
-height:90px;
-padding:0 20px;
-}
-
-header h1{
-color:#00ffaa;
-font-size:36px;
-text-align:center;
-margin:0;
-text-shadow:0 0 15px #00ffaa;
-}
-
-
-
-/* =====================================
-RADAR LOGO
-===================================== */
-
-.radarLogo video{
-width:60px;
-}
-
-
-
-/* =====================================
-CLOCK
-===================================== */
-
-.headerMarkets{
-display:flex;
-justify-content:flex-end;
-font-size:15px;
-color:#00ffaa;
-letter-spacing:1px;
-}
-
-#dateTime{
-color:#00ffaa;
-}
-
-
-
-/* =====================================
-NAVIGATION
-===================================== */
 
 nav{
 display:flex;
@@ -155,7 +11,6 @@ justify-content:center;
 gap:12px;
 padding:12px;
 border-bottom:1px solid #00ffaa33;
-flex-wrap:wrap;
 }
 
 nav button{
@@ -163,26 +18,12 @@ background:transparent;
 border:1px solid #00ffaa55;
 color:#00ffaa;
 padding:6px 16px;
-font-size:14px;
 cursor:pointer;
-transition:.2s;
-}
-
-nav button:hover{
-background:#00ffaa22;
-box-shadow:0 0 10px #00ffaa;
 }
 
 nav button.active{
 background:#00ffaa22;
-box-shadow:0 0 12px #00ffaa;
 }
-
-
-
-/* =====================================
-TAB SYSTEM
-===================================== */
 
 .tab{
 display:none;
@@ -193,33 +34,16 @@ padding:20px;
 display:block;
 }
 
-
-
-/* =====================================
-HOME HERO PANEL
-===================================== */
-
 .homeHero{
 position:relative;
 width:700px;
 margin:auto;
-margin-top:40px;
 }
-
-
-
-/* HERO IMAGE */
 
 .heroImage{
 width:100%;
 opacity:.35;
-mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
--webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
 }
-
-
-
-/* HERO TEXT */
 
 .heroOverlay{
 position:absolute;
@@ -229,148 +53,31 @@ transform:translate(-50%,-50%);
 text-align:center;
 width:80%;
 color:#00ffaa;
-text-shadow:0 0 14px rgba(0,255,170,.8);
 }
-
-.heroOverlay h2{
-font-size:34px;
-margin-bottom:12px;
-}
-
-.heroOverlay p{
-font-size:16px;
-line-height:1.5;
-}
-
-
-
-/* =====================================
-CONFLICT HEADLINES
-===================================== */
 
 .conflictHeadlines{
-margin-top:20px;
 background:rgba(0,0,0,.55);
 border:1px solid #00ffaa55;
 padding:12px;
-box-shadow:0 0 10px rgba(0,255,170,.3);
 }
-
-.conflictHeadlines h3{
-margin:0 0 10px 0;
-color:#00ffaa;
-font-size:18px;
-}
-
-.conflictHeadlines ul{
-list-style:none;
-padding:0;
-margin:0;
-}
-
-.conflictHeadlines li{
-font-size:14px;
-padding:4px 0;
-border-bottom:1px solid #00ffaa22;
-}
-
-
-
-/* =====================================
-LIVE NEWS CONTROLS
-===================================== */
-
-.liveNav{
-display:flex;
-justify-content:center;
-gap:12px;
-margin:16px 0;
-flex-wrap:wrap;
-}
-
-.liveNav button{
-background:transparent;
-border:1px solid #00ffaa55;
-color:#00ffaa;
-padding:6px 16px;
-cursor:pointer;
-transition:.2s;
-}
-
-.liveNav button:hover{
-background:#00ffaa22;
-box-shadow:0 0 12px #00ffaa;
-}
-
-
-
-/* =====================================
-LIVE PLAYER
-===================================== */
 
 .livePlayer iframe{
 width:100%;
 height:70vh;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
 }
 
-
-
-/* =====================================
-QUAD VIEW
-===================================== */
-
 .quadGrid{
-display:none;
+display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
 gap:6px;
-width:100%;
-height:calc(100vh - 160px);
+height:75vh;
 }
 
 .quadGrid iframe{
 width:100%;
 height:100%;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
 }
-
-
-
-/* =====================================
-MARKETS NAV
-===================================== */
-
-.marketsNav{
-display:flex;
-justify-content:center;
-gap:12px;
-margin-bottom:20px;
-flex-wrap:wrap;
-}
-
-.marketsNav button{
-background:transparent;
-border:1px solid #00ffaa55;
-color:#00ffaa;
-padding:6px 16px;
-cursor:pointer;
-}
-
-.marketsNav button:hover{
-background:#00ffaa22;
-box-shadow:0 0 10px #00ffaa;
-}
-
-
-
-/* =====================================
-MARKET PANELS
-===================================== */
 
 .marketPanel{
 display:none;
@@ -380,54 +87,23 @@ display:none;
 display:block;
 }
 
-
-
-/* =====================================
-MAP PANELS
-===================================== */
-
 section iframe{
 width:100%;
 height:85vh;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
+border:0;
 }
-
-
-
-/* =====================================
-OVERVIEW COMMAND WALL
-===================================== */
 
 .overviewGrid{
 display:grid;
-grid-template-columns:1fr 3fr;
+grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
 gap:10px;
 height:85vh;
 }
 
-.overviewGrid iframe{
-width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
-}
-
-
-
-/* =====================================
-GLOBAL RADIO PAGE
-===================================== */
-
 .radioContainer{
 width:100%;
 height:85vh;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px rgba(0,255,170,.25);
-background:black;
 }
 
 .radioContainer iframe{
@@ -436,40 +112,13 @@ height:100%;
 border:0;
 }
 
-
-
-/* =====================================
-FOOTER
-===================================== */
-
 footer{
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:30px 0;
+text-align:center;
+padding:30px;
 border-top:1px solid #00ffaa33;
-margin-top:30px;
-}
-
-.footerRadar video{
-width:70px;
-margin-bottom:10px;
-opacity:.8;
-}
-
-footer a{
-color:#00ffaa;
-text-decoration:none;
-font-size:14px;
-}
-
-footer a:hover{
-text-decoration:underline;
 }
 
 .versionTag{
 font-size:11px;
-opacity:.55;
-margin-top:6px;
-letter-spacing:1px;
+opacity:.6;
 }
