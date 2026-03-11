@@ -147,7 +147,7 @@ color:#00ffaa;
 
 
 /* =====================================
-NAVIGATION BAR
+NAVIGATION
 ===================================== */
 
 nav{
@@ -197,97 +197,88 @@ display:block;
 
 
 /* =====================================
-HOME LAYOUT
+HOME HERO PANEL
 ===================================== */
 
-.homeContainer{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:40px;
-max-width:1200px;
+.homeHero{
+position:relative;
+width:700px;
 margin:auto;
-padding:40px 20px;
+margin-top:40px;
+}
+
+
+
+/* HERO IMAGE */
+
+.heroImage{
+width:100%;
+opacity:.35;
+
+mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+-webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%);
+}
+
+
+
+/* HERO TEXT */
+
+.heroOverlay{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+width:80%;
+
+color:#00ffaa;
+text-shadow:0 0 14px rgba(0,255,170,.8);
+}
+
+.heroOverlay h2{
+font-size:34px;
+margin-bottom:12px;
+}
+
+.heroOverlay p{
+font-size:16px;
+line-height:1.5;
 }
 
 
 
 /* =====================================
-CONFLICT STRIP
+CONFLICT HEADLINES BAR
 ===================================== */
 
-.conflictStrip{
-width:260px;
+.conflictBar{
+max-width:700px;
+margin:40px auto;
+padding:20px;
+
 background:#041414;
 border:1px solid #00ffaa33;
-padding:20px;
-box-shadow:0 0 12px rgba(0,255,170,.2);
+box-shadow:0 0 12px rgba(0,255,170,.25);
 }
 
-.conflictStrip h3{
+.conflictBar h3{
 color:#00ffaa;
 margin-top:0;
 margin-bottom:12px;
+text-align:center;
 }
 
-.conflictStrip ul{
+.conflictBar ul{
 list-style:none;
 padding:0;
 margin:0;
 }
 
-.conflictStrip li{
-font-size:14px;
-padding:8px 0;
+.conflictBar li{
+padding:10px 0;
+font-size:15px;
 border-bottom:1px solid #00ffaa22;
-opacity:.9;
-}
-
-
-
-/* =====================================
-HOME PANEL
-===================================== */
-
-.homePanel{
-position:relative;
 text-align:center;
-}
-
-
-
-/* RADAR IMAGE */
-
-.homeBg{
-width:520px;
-opacity:.35;
-
-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
--webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-}
-
-
-
-/* TEXT OVERLAY */
-
-.homeOverlay{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:80%;
-color:#00ffaa;
-text-shadow:0 0 12px rgba(0,255,170,.7);
-}
-
-.homeOverlay h2{
-font-size:32px;
-margin-bottom:10px;
-}
-
-.homeOverlay p{
-font-size:16px;
-line-height:1.5;
 }
 
 
@@ -316,6 +307,44 @@ transition:.2s;
 .liveNav button:hover{
 background:#00ffaa22;
 box-shadow:0 0 12px #00ffaa;
+}
+
+
+
+/* =====================================
+LIVE PLAYER
+===================================== */
+
+.livePlayer iframe{
+width:100%;
+height:70vh;
+border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+background:black;
+}
+
+
+
+/* =====================================
+QUAD NEWS WALL
+===================================== */
+
+.quadGrid{
+display:none;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:6px;
+
+width:100%;
+height:calc(100vh - 160px);
+}
+
+.quadGrid iframe{
+width:100%;
+height:100%;
+border:1px solid #00ffaa44;
+box-shadow:0 0 10px #00ffaa22;
+background:black;
 }
 
 
@@ -362,44 +391,6 @@ display:block;
 
 
 /* =====================================
-LIVE PLAYER
-===================================== */
-
-.livePlayer iframe{
-width:100%;
-height:70vh;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
-}
-
-
-
-/* =====================================
-FULLSCREEN QUAD VIEW
-===================================== */
-
-.quadGrid{
-display:none;
-grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:6px;
-
-width:100%;
-height:calc(100vh - 160px);
-}
-
-.quadGrid iframe{
-width:100%;
-height:100%;
-border:1px solid #00ffaa44;
-box-shadow:0 0 10px #00ffaa22;
-background:black;
-}
-
-
-
-/* =====================================
 MAP PANELS
 ===================================== */
 
@@ -417,19 +408,54 @@ background:black;
 OVERVIEW COMMAND WALL
 ===================================== */
 
-.grid{
+.overviewGrid{
 display:grid;
-grid-template-columns:1fr 1fr;
+
+grid-template-columns:1fr 3fr;
 grid-template-rows:1fr 1fr;
+
 gap:10px;
 height:85vh;
 }
 
-.grid iframe{
+
+
+/* LEFT COLUMN */
+
+.overviewLeftTop{
+grid-column:1;
+grid-row:1;
+}
+
+.overviewLeftBottom{
+grid-column:1;
+grid-row:2;
+}
+
+
+
+/* RIGHT COLUMN */
+
+.overviewRightTop{
+grid-column:2;
+grid-row:1;
+}
+
+.overviewRightBottom{
+grid-column:2;
+grid-row:2;
+}
+
+
+
+/* PANEL IFRAMES */
+
+.overviewGrid iframe{
 width:100%;
 height:100%;
 border:1px solid #00ffaa44;
 box-shadow:0 0 10px #00ffaa22;
+background:black;
 }
 
 
