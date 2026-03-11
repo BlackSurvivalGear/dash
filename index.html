@@ -224,7 +224,7 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 
 
 
-<!-- CRYPTO PANEL -->
+<!-- CRYPTO -->
 
 <div id="marketCrypto" class="marketPanel">
 
@@ -249,11 +249,9 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </div>
 
 <div class="cryptoLaunch">
-
 <a href="https://cryptobubbles.net" target="_blank" class="cryptoButton">
 OPEN CRYPTOBUBBLES HEATMAP
 </a>
-
 </div>
 
 </div>
@@ -262,7 +260,7 @@ OPEN CRYPTOBUBBLES HEATMAP
 
 
 
-<!-- FOREX PANEL -->
+<!-- FOREX -->
 
 <div id="marketForex" class="marketPanel">
 
@@ -292,6 +290,75 @@ OPEN CRYPTOBUBBLES HEATMAP
 
 
 
+<!-- CONFLICT MAP -->
+
+<section id="conflict" class="tab">
+
+<iframe
+src="https://liveuamap.com"
+style="width:100%; height:85vh; border:0;">
+</iframe>
+
+</section>
+
+
+
+<!-- AIRCRAFT WATCH -->
+
+<section id="aircraft" class="tab">
+
+<iframe
+src="https://globe.adsbexchange.com/?military=1"
+style="width:100%; height:85vh; border:0;">
+</iframe>
+
+</section>
+
+
+
+<!-- MARINE WATCH -->
+
+<section id="marine" class="tab">
+
+<iframe
+src="https://www.marinetraffic.com/en/ais/embed/zoom:2"
+style="width:100%; height:85vh; border:0;">
+</iframe>
+
+</section>
+
+
+
+<!-- CYBER ATTACKS -->
+
+<section id="cyber" class="tab">
+
+<iframe
+src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
+style="width:100%; height:85vh; border:0;">
+</iframe>
+
+</section>
+
+
+
+<!-- OVERVIEW -->
+
+<section id="overview" class="tab">
+
+<div class="grid">
+
+<iframe src="https://liveuamap.com"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
+<iframe src="https://coin360.com"></iframe>
+<iframe src="https://www.tradingview.com/markets/stocks-worldwide/heatmap/"></iframe>
+
+</div>
+
+</section>
+
+
+
 <footer>
 
 <div class="footerRadar">
@@ -314,9 +381,7 @@ BSG Strategic Awareness OSINT — v1.0
 
 <script>
 
-
-
-/* DATE & TIME */
+/* DATE CLOCK */
 
 function updateClock(){
 
@@ -350,65 +415,6 @@ updateClock()
 
 
 
-/* TERMINAL SPLASH */
-
-document.addEventListener("DOMContentLoaded",function(){
-
-const splash=document.getElementById("introRadar")
-const message=document.getElementById("bootMessage")
-
-const bootLines=[
-"INITIALIZING RADAR SYSTEM...",
-"GLOBAL STRATEGIC AWARENESS OSINT...",
-"LOADING INTELLIGENCE MODULES...",
-"CONNECTING GLOBAL DATA FEEDS...",
-"SYSTEM ONLINE"
-]
-
-let lineIndex=0
-let charIndex=0
-
-function typeBoot(){
-
-if(lineIndex<bootLines.length){
-
-if(charIndex<bootLines[lineIndex].length){
-
-message.textContent+=bootLines[lineIndex].charAt(charIndex)
-charIndex++
-setTimeout(typeBoot,35)
-
-}else{
-
-message.textContent+="\n"
-lineIndex++
-charIndex=0
-setTimeout(typeBoot,300)
-
-}
-
-}else{
-
-setTimeout(function(){
-
-splash.style.opacity="0"
-
-setTimeout(function(){
-splash.style.display="none"
-},700)
-
-},600)
-
-}
-
-}
-
-typeBoot()
-
-})
-
-
-
 /* NAVIGATION */
 
 document.querySelectorAll("nav button").forEach(btn=>{
@@ -428,73 +434,6 @@ document.getElementById(this.dataset.tab).classList.add("active")
 
 })
 })
-
-
-
-/* LIVE NEWS SWITCH */
-
-function showLive(channel){
-
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("liveQuad")
-
-single.style.display="block"
-quad.style.display="none"
-
-if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
-if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
-if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
-if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
-
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
-}
-
-}
-
-
-
-/* MARKET NEWS SWITCH */
-
-function showMarkets(channel){
-
-const frame=document.getElementById("marketsFrame")
-const single=document.getElementById("marketsSingle")
-const quad=document.getElementById("marketsQuad")
-
-single.style.display="block"
-quad.style.display="none"
-
-if(channel==="c1"){frame.src="https://www.youtube.com/embed/I8EEKdYZL34"}
-if(channel==="c2"){frame.src="https://www.youtube.com/embed/iEpJwprxDdk"}
-if(channel==="c3"){frame.src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"}
-if(channel==="c4"){frame.src="https://www.youtube.com/embed/KQp-e_XQnDE"}
-
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
-}
-
-}
-
-
-
-/* MARKETS PANEL SWITCH */
-
-function showMarketPanel(panel){
-
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.style.display="none"
-})
-
-if(panel==="news"){document.getElementById("marketNews").style.display="block"}
-if(panel==="macro"){document.getElementById("marketMacro").style.display="block"}
-if(panel==="crypto"){document.getElementById("marketCrypto").style.display="block"}
-if(panel==="forex"){document.getElementById("marketForex").style.display="block"}
-
-}
 
 </script>
 
