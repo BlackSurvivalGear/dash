@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Global Strategic Awareness OSINT</title>
+<title>BSG Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -21,57 +21,45 @@
 
 <div id="introRadar">
 
-<video autoplay muted playsinline>
+<video autoplay muted loop>
 <source src="RADAR3.mp4">
 </video>
+
+<div class="bootText">
+GLOBAL STRATEGIC AWARENESS OSINT
+</div>
 
 </div>
 
 
 
-<!-- BACKGROUND RADAR -->
+<!-- HEADER -->
 
-<div class="siteRadar">
-<video autoplay muted loop playsinline>
+<header>
+
+<div class="headerLeft">
+
+<video autoplay muted loop>
 <source src="RADAR3.mp4">
 </video>
-</div>
 
-
-
-<header class="mainHeader">
-
-<div class="headerVideo">
-<video autoplay muted loop playsinline>
-<source src="HEADER3.mp4">
-</video>
-</div>
-
-<div class="headerContent">
-
-<div class="radarLogo">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
-<div class="headerMarkets">
-<span id="dateTime"></span>
-</div>
-
-</div>
+<div id="dateTime"></div>
 
 </header>
 
 
 
+<!-- NAV -->
+
 <nav>
 
 <button data-tab="home" class="active">Home</button>
-<button data-tab="live">LIVE NEWS</button>
-<button data-tab="markets">MARKETS</button>
+<button data-tab="live">Live News</button>
+<button data-tab="markets">Markets</button>
 <button data-tab="conflict">Conflict Map</button>
 <button data-tab="aircraft">Aircraft Watch</button>
 <button data-tab="marine">Marine Watch</button>
@@ -82,51 +70,30 @@
 
 
 
+<!-- HOME -->
+
 <section id="home" class="tab active">
 
-<div class="homePanel">
-
-<h2>BSG Global Strategic Awareness</h2>
+<h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
-Integrated OSINT dashboard providing real-time monitoring of global
-conflict activity, markets, cyber threats, aviation and maritime movement.
+Global OSINT monitoring platform integrating conflict intelligence,
+financial markets, cyber activity and global movement tracking.
 </p>
 
 <img src="BSG2.png" class="homeBg">
 
-</div>
-
 </section>
 
 
+
+<!-- LIVE NEWS -->
 
 <section id="live" class="tab">
 
-<div class="liveNav">
-
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky News</button>
-<button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">QUAD VIEW</button>
-
-</div>
-
-<div id="liveSingle" class="livePlayer">
-
-<iframe id="liveFrame"
-src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen></iframe>
-
-</div>
-
-<div id="liveQuad" class="quadGrid">
+<div class="livePlayer">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-<iframe src="https://www.youtube.com/embed/vfszY1JYbMc"></iframe>
 
 </div>
 
@@ -134,39 +101,11 @@ allowfullscreen></iframe>
 
 
 
+<!-- MARKETS -->
+
 <section id="markets" class="tab">
 
-<div class="marketsNav">
-
-<button onclick="showMarketPanel('news')" class="active">News</button>
-<button onclick="showMarketPanel('macro')">Global Markets</button>
-<button onclick="showMarketPanel('crypto')">Crypto</button>
-<button onclick="showMarketPanel('forex')">Forex</button>
-
-</div>
-
-
-
-<div id="marketNews" class="marketPanel active">
-
-<div class="liveNav">
-<button onclick="showMarkets('quad')">QUAD VIEW</button>
-</div>
-
-<div id="marketsQuad" class="quadGrid" style="display:grid;">
-
-<iframe src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-<iframe src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"></iframe>
-<iframe src="https://www.youtube.com/embed/KQp-e_XQnDE"></iframe>
-
-</div>
-
-</div>
-
-
-
-<div id="marketMacro" class="marketPanel">
+<div class="marketPanel">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
@@ -176,51 +115,7 @@ allowfullscreen></iframe>
 "colorTheme":"dark",
 "locale":"en",
 "width":"100%",
-"height":650
-}
-</script>
-
-</div>
-
-</div>
-
-
-
-<div id="marketCrypto" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-{
-"defaultColumn":"overview",
-"screener_type":"crypto_mkt",
-"displayCurrency":"USD",
-"colorTheme":"dark",
-"isTransparent":true,
-"locale":"en",
-"width":"100%",
-"height":550
-}
-</script>
-
-</div>
-
-</div>
-
-
-
-<div id="marketForex" class="marketPanel">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
-{
-"colorTheme":"dark",
-"locale":"en",
-"width":"100%",
-"height":500
+"height":600
 }
 </script>
 
@@ -231,24 +126,48 @@ allowfullscreen></iframe>
 </section>
 
 
+
+<!-- CONFLICT -->
 
 <section id="conflict" class="tab">
-<iframe src="https://liveuamap.com" style="width:100%;height:85vh;border:0;"></iframe>
+
+<iframe src="https://liveuamap.com"></iframe>
+
 </section>
+
+
+
+<!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-<iframe src="https://globe.adsbexchange.com/?military=1" style="width:100%;height:85vh;border:0;"></iframe>
+
+<iframe src="https://globe.adsbexchange.com"></iframe>
+
 </section>
+
+
+
+<!-- MARINE -->
 
 <section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2" style="width:100%;height:85vh;border:0;"></iframe>
+
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
 </section>
+
+
+
+<!-- CYBER -->
 
 <section id="cyber" class="tab">
-<iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark" style="width:100%;height:85vh;border:0;"></iframe>
+
+<iframe src="https://cybermap.kaspersky.com"></iframe>
+
 </section>
 
 
+
+<!-- OVERVIEW -->
 
 <section id="overview" class="tab">
 
@@ -267,18 +186,12 @@ allowfullscreen></iframe>
 
 <footer>
 
-<div class="footerRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-
 <a href="https://BlackSurvivalGear.com" target="_blank">
 BlackSurvivalGear.com
 </a>
 
 <div class="versionTag">
-BSG Strategic Awareness OSINT — v1.0
+BSG Strategic Awareness Dashboard v1.0
 </div>
 
 </footer>
@@ -291,7 +204,7 @@ BSG Strategic Awareness OSINT — v1.0
 
 function updateClock(){
 
-const now=new Date()
+const now = new Date()
 
 const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
 const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
@@ -349,62 +262,17 @@ target.classList.add("active")
 
 
 
-/* LIVE SWITCH */
-
-function showLive(channel){
-
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("liveQuad")
-
-single.style.display="block"
-quad.style.display="none"
-
-if(channel==="rt"){frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"}
-if(channel==="aj"){frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"}
-if(channel==="sky"){frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"}
-if(channel==="wion"){frame.src="https://www.youtube.com/embed/vfszY1JYbMc"}
-
-if(channel==="quad"){
-single.style.display="none"
-quad.style.display="grid"
-}
-
-}
-
-
-
-/* MARKET PANELS */
-
-function showMarketPanel(panel){
-
-document.querySelectorAll(".marketPanel").forEach(p=>{
-p.style.display="none"
-})
-
-document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).style.display="block"
-
-}
-
-
-
 /* SPLASH EXIT */
 
-window.addEventListener("load",function(){
-
-const splash=document.getElementById("introRadar")
+window.onload=function(){
 
 setTimeout(function(){
 
-splash.style.opacity="0"
+document.getElementById("introRadar").style.display="none"
 
-setTimeout(function(){
-splash.style.display="none"
-},500)
+},2000)
 
-},1500)
-
-})
+}
 
 </script>
 
