@@ -476,3 +476,80 @@ opacity:.55;
 margin-top:6px;
 letter-spacing:1px;
 }
+
+
+/* =====================================
+OVERVIEW FULLSCREEN COMMAND WALL
+===================================== */
+
+.overviewFullscreen{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+height:calc(100vh - 140px);
+
+gap:8px;
+
+}
+
+
+/* LEFT MAP */
+
+.overviewMap iframe{
+
+width:100%;
+
+height:100%;
+
+border:1px solid #00ffaa44;
+
+box-shadow:0 0 12px #00ffaa33;
+
+background:black;
+
+}
+
+
+/* RIGHT SIDE */
+
+.overviewNews{
+
+display:grid;
+
+grid-template-rows:1fr 1fr;
+
+gap:8px;
+
+}
+
+
+/* RT */
+
+.overviewRT iframe{
+
+width:100%;
+
+height:100%;
+
+border:1px solid #00ffaa44;
+
+background:black;
+
+}
+
+
+/* AL JAZEERA */
+
+.overviewAJ iframe{
+
+width:100%;
+
+height:100%;
+
+border:1px solid #00ffaa44;
+
+background:black;
+
+}
