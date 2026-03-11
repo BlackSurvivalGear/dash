@@ -12,63 +12,13 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
-<style>
-
-  #introRadar {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.8s ease;
-  }
-
-  #introRadar video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.6;
-  }
-
-  #introRadar.fade-out {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  #introRadar.hidden {
-    display: none;
-  }
-
-  .bootText {
-    position: relative;
-    z-index: 2;
-    font-family: 'Rajdhani', monospace;
-    color: #00ff88;
-    font-size: 1.4rem;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 10px #00ff88;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .cursor {
-    animation: blink 0.7s step-end infinite;
-  }
-
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
-
-</style>
-
 </head>
 
 <body>
+
+
+
+<!-- SPLASH SCREEN -->
 
 <div id="introRadar">
 
@@ -83,6 +33,10 @@
 
 </div>
 
+
+
+<!-- RADAR BACKGROUND -->
+
 <div class="siteRadar">
 
 <video autoplay muted loop playsinline>
@@ -90,6 +44,8 @@
 </video>
 
 </div>
+
+
 
 <header class="mainHeader">
 
@@ -117,6 +73,10 @@
 
 </header>
 
+
+
+<!-- NAVIGATION -->
+
 <nav>
 
 <button data-tab="home" class="active">Home</button>
@@ -129,6 +89,10 @@
 <button data-tab="overview">Overview</button>
 
 </nav>
+
+
+
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -147,6 +111,10 @@ conflicts, markets, cyber activity, maritime movement and air traffic.
 </div>
 
 </section>
+
+
+
+<!-- LIVE NEWS -->
 
 <section id="live" class="tab">
 
@@ -179,6 +147,10 @@ allowfullscreen></iframe>
 
 </section>
 
+
+
+<!-- MARKETS -->
+
 <section id="markets" class="tab">
 
 <div class="marketsNav">
@@ -190,26 +162,21 @@ allowfullscreen></iframe>
 
 </div>
 
+
+
+<!-- MARKETS NEWS (QUAD ONLY) -->
+
 <div id="marketNews" class="marketPanel active">
 
 <div class="liveNav">
 
-<button onclick="showMarkets('c1')">Channel 1</button>
-<button onclick="showMarkets('c2')">Channel 2</button>
-<button onclick="showMarkets('c3')">Channel 3</button>
-<button onclick="showMarkets('c4')">Channel 4</button>
 <button onclick="showMarkets('quad')">QUAD VIEW</button>
 
 </div>
 
-<div id="marketsSingle" class="livePlayer">
+<div id="marketsSingle" class="livePlayer" style="display:none;"></div>
 
-<iframe id="marketsFrame"
-src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
-
-</div>
-
-<div id="marketsQuad" class="quadGrid">
+<div id="marketsQuad" class="quadGrid" style="display:grid;">
 
 <iframe src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 <iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
@@ -219,6 +186,10 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </div>
 
 </div>
+
+
+
+<!-- GLOBAL MARKETS -->
 
 <div id="marketMacro" class="marketPanel">
 
@@ -241,6 +212,10 @@ src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
 </div>
 
 </div>
+
+
+
+<!-- CRYPTO -->
 
 <div id="marketCrypto" class="marketPanel">
 
@@ -274,6 +249,10 @@ OPEN CRYPTOBUBBLES HEATMAP
 
 </div>
 
+
+
+<!-- FOREX -->
+
 <div id="marketForex" class="marketPanel">
 
 <div class="forexContainer">
@@ -300,6 +279,10 @@ OPEN CRYPTOBUBBLES HEATMAP
 
 </section>
 
+
+
+<!-- CONFLICT MAP -->
+
 <section id="conflict" class="tab">
 
 <iframe
@@ -308,6 +291,10 @@ style="width:100%; height:85vh; border:0;">
 </iframe>
 
 </section>
+
+
+
+<!-- AIRCRAFT WATCH -->
 
 <section id="aircraft" class="tab">
 
@@ -318,6 +305,10 @@ style="width:100%; height:85vh; border:0;">
 
 </section>
 
+
+
+<!-- MARINE WATCH -->
+
 <section id="marine" class="tab">
 
 <iframe
@@ -327,6 +318,10 @@ style="width:100%; height:85vh; border:0;">
 
 </section>
 
+
+
+<!-- CYBER ATTACKS -->
+
 <section id="cyber" class="tab">
 
 <iframe
@@ -335,6 +330,10 @@ style="width:100%; height:85vh; border:0;">
 </iframe>
 
 </section>
+
+
+
+<!-- OVERVIEW -->
 
 <section id="overview" class="tab">
 
@@ -348,6 +347,8 @@ style="width:100%; height:85vh; border:0;">
 </div>
 
 </section>
+
+
 
 <footer>
 
@@ -367,113 +368,123 @@ BSG Strategic Awareness OSINT — v1.0
 
 </footer>
 
+
+
 <script>
 
-const bootLines = [
-  "INITIALISING BSG STRATEGIC AWARENESS SYSTEM...",
-  "LOADING OSINT INTELLIGENCE MODULES...",
-  "CONNECTING TO GLOBAL DATA FEEDS...",
-  "ESTABLISHING SECURE UPLINK...",
-  "SYSTEM ONLINE. STANDBY.",
-]
 
-const bootEl = document.getElementById("bootMessage")
-const splash  = document.getElementById("introRadar")
 
-let lineIndex  = 0
-let charIndex  = 0
-let fullText   = ""
-
-function typeNextChar() {
-
-  const currentLine = bootLines[lineIndex]
-
-  if (charIndex < currentLine.length) {
-
-    fullText += currentLine[charIndex]
-    bootEl.textContent = fullText
-    charIndex++
-    setTimeout(typeNextChar, 28)
-
-  } else {
-
-    lineIndex++
-    charIndex = 0
-
-    if (lineIndex < bootLines.length) {
-
-      fullText += "\n"
-      bootEl.style.whiteSpace = "pre"
-      setTimeout(typeNextChar, 400)
-
-    } else {
-
-      setTimeout(dismissSplash, 800)
-
-    }
-
-  }
-
-}
-
-function dismissSplash() {
-
-  splash.classList.add("fade-out")
-
-  splash.addEventListener("transitionend", () => {
-    splash.classList.add("hidden")
-  }, { once: true })
-
-}
-
-typeNextChar()
+/* DATE CLOCK */
 
 function updateClock(){
 
-  const now=new Date()
+const now=new Date()
 
-  const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
-  const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
+const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
 
-  let day=days[now.getDay()]
-  let date=now.getDate()
-  let month=months[now.getMonth()]
-  let year=now.getFullYear()
+let day=days[now.getDay()]
+let date=now.getDate()
+let month=months[now.getMonth()]
+let year=now.getFullYear()
 
-  let hours=now.getHours()
-  let minutes=now.getMinutes()
+let hours=now.getHours()
+let minutes=now.getMinutes()
 
-  let ampm=hours>=12?"PM":"AM"
+let ampm=hours>=12?"PM":"AM"
 
-  hours=hours%12
-  hours=hours?hours:12
+hours=hours%12
+hours=hours?hours:12
 
-  minutes=minutes<10?"0"+minutes:minutes
+minutes=minutes<10?"0"+minutes:minutes
 
-  document.getElementById("dateTime").textContent=
-    `${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
+document.getElementById("dateTime").textContent=
+`${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
 
 }
 
 setInterval(updateClock,1000)
 updateClock()
 
+
+
+/* TERMINAL SPLASH */
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const splash=document.getElementById("introRadar")
+const message=document.getElementById("bootMessage")
+
+const bootLines=[
+"INITIALIZING RADAR SYSTEM...",
+"GLOBAL STRATEGIC AWARENESS OSINT...",
+"LOADING INTELLIGENCE MODULES...",
+"CONNECTING GLOBAL DATA FEEDS...",
+"SYSTEM ONLINE"
+]
+
+let lineIndex=0
+let charIndex=0
+
+function typeBoot(){
+
+if(lineIndex<bootLines.length){
+
+if(charIndex<bootLines[lineIndex].length){
+
+message.textContent+=bootLines[lineIndex].charAt(charIndex)
+charIndex++
+setTimeout(typeBoot,35)
+
+}else{
+
+message.textContent+="\n"
+lineIndex++
+charIndex=0
+setTimeout(typeBoot,300)
+
+}
+
+}else{
+
+setTimeout(function(){
+
+splash.style.opacity="0"
+
+setTimeout(function(){
+splash.style.display="none"
+},700)
+
+},600)
+
+}
+
+}
+
+typeBoot()
+
+})
+
+
+
+/* NAVIGATION */
+
 document.querySelectorAll("nav button").forEach(btn=>{
-  btn.addEventListener("click",function(){
+btn.addEventListener("click",function(){
 
-    document.querySelectorAll(".tab").forEach(tab=>{
-      tab.classList.remove("active")
-    })
+document.querySelectorAll(".tab").forEach(tab=>{
+tab.classList.remove("active")
+})
 
-    document.querySelectorAll("nav button").forEach(b=>{
-      b.classList.remove("active")
-    })
+document.querySelectorAll("nav button").forEach(b=>{
+b.classList.remove("active")
+})
 
-    this.classList.add("active")
+this.classList.add("active")
 
-    document.getElementById(this.dataset.tab).classList.add("active")
+document.getElementById(this.dataset.tab).classList.add("active")
 
-  })
+})
 })
 
 </script>
