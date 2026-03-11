@@ -164,14 +164,12 @@ allowfullscreen></iframe>
 
 
 
-<!-- MARKETS NEWS (QUAD ONLY) -->
+<!-- MARKET NEWS QUAD -->
 
 <div id="marketNews" class="marketPanel active">
 
 <div class="liveNav">
-
 <button onclick="showMarkets('quad')">QUAD VIEW</button>
-
 </div>
 
 <div id="marketsSingle" class="livePlayer" style="display:none;"></div>
@@ -284,51 +282,31 @@ OPEN CRYPTOBUBBLES HEATMAP
 <!-- CONFLICT MAP -->
 
 <section id="conflict" class="tab">
-
-<iframe
-src="https://liveuamap.com"
-style="width:100%; height:85vh; border:0;">
-</iframe>
-
+<iframe src="https://liveuamap.com" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
 
 
-<!-- AIRCRAFT WATCH -->
+<!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-
-<iframe
-src="https://globe.adsbexchange.com/?military=1"
-style="width:100%; height:85vh; border:0;">
-</iframe>
-
+<iframe src="https://globe.adsbexchange.com/?military=1" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
 
 
-<!-- MARINE WATCH -->
+<!-- MARINE -->
 
 <section id="marine" class="tab">
-
-<iframe
-src="https://www.marinetraffic.com/en/ais/embed/zoom:2"
-style="width:100%; height:85vh; border:0;">
-</iframe>
-
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
 
 
-<!-- CYBER ATTACKS -->
+<!-- CYBER -->
 
 <section id="cyber" class="tab">
-
-<iframe
-src="https://cybermap.kaspersky.com/en/widget/dynamic/dark"
-style="width:100%; height:85vh; border:0;">
-</iframe>
-
+<iframe src="https://cybermap.kaspersky.com/en/widget/dynamic/dark" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
 
@@ -374,7 +352,23 @@ BSG Strategic Awareness OSINT — v1.0
 
 
 
-/* DATE CLOCK */
+/* ===============================
+SYSTEM INIT
+=============================== */
+
+window.addEventListener("load", function(){
+
+initClock();
+initNavigation();
+initSplash();
+
+});
+
+
+
+/* CLOCK */
+
+function initClock(){
 
 function updateClock(){
 
@@ -403,73 +397,19 @@ document.getElementById("dateTime").textContent=
 
 }
 
-setInterval(updateClock,1000)
 updateClock()
-
-
-
-/* TERMINAL SPLASH */
-
-document.addEventListener("DOMContentLoaded",function(){
-
-const splash=document.getElementById("introRadar")
-const message=document.getElementById("bootMessage")
-
-const bootLines=[
-"INITIALIZING RADAR SYSTEM...",
-"GLOBAL STRATEGIC AWARENESS OSINT...",
-"LOADING INTELLIGENCE MODULES...",
-"CONNECTING GLOBAL DATA FEEDS...",
-"SYSTEM ONLINE"
-]
-
-let lineIndex=0
-let charIndex=0
-
-function typeBoot(){
-
-if(lineIndex<bootLines.length){
-
-if(charIndex<bootLines[lineIndex].length){
-
-message.textContent+=bootLines[lineIndex].charAt(charIndex)
-charIndex++
-setTimeout(typeBoot,35)
-
-}else{
-
-message.textContent+="\n"
-lineIndex++
-charIndex=0
-setTimeout(typeBoot,300)
+setInterval(updateClock,1000)
 
 }
-
-}else{
-
-setTimeout(function(){
-
-splash.style.opacity="0"
-
-setTimeout(function(){
-splash.style.display="none"
-},700)
-
-},600)
-
-}
-
-}
-
-typeBoot()
-
-})
 
 
 
 /* NAVIGATION */
 
+function initNavigation(){
+
 document.querySelectorAll("nav button").forEach(btn=>{
+
 btn.addEventListener("click",function(){
 
 document.querySelectorAll(".tab").forEach(tab=>{
@@ -482,10 +422,84 @@ b.classList.remove("active")
 
 this.classList.add("active")
 
-document.getElementById(this.dataset.tab).classList.add("active")
+const tabID=this.dataset.tab
+
+const target=document.getElementById(tabID)
+
+if(target){
+target.classList.add("active")
+}
 
 })
+
 })
+
+}
+
+
+
+/* SPLASH */
+
+function initSplash(){
+
+const splash=document.getElementById("introRadar")
+const message=document.getElementById("bootMessage")
+
+const lines=[
+"INITIALIZING RADAR SYSTEM...",
+"GLOBAL STRATEGIC AWARENESS OSINT...",
+"LOADING INTELLIGENCE MODULES...",
+"CONNECTING GLOBAL DATA FEEDS...",
+"SYSTEM ONLINE"
+]
+
+let line=0
+let char=0
+
+function type(){
+
+if(line<lines.length){
+
+if(char<lines[line].length){
+
+message.textContent+=lines[line].charAt(char)
+char++
+
+setTimeout(type,35)
+
+}else{
+
+message.textContent+="\n"
+line++
+char=0
+
+setTimeout(type,300)
+
+}
+
+}else{
+
+exitSplash()
+
+}
+
+}
+
+function exitSplash(){
+
+splash.style.opacity="0"
+
+setTimeout(()=>{
+splash.style.display="none"
+},700)
+
+}
+
+type()
+
+setTimeout(exitSplash,4000)
+
+}
 
 </script>
 
