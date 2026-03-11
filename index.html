@@ -51,7 +51,7 @@ BACKGROUND RADAR
 
 
 <!-- =====================================
-MAIN HEADER
+HEADER
 ===================================== -->
 
 <header class="mainHeader">
@@ -83,7 +83,7 @@ MAIN HEADER
 
 
 <!-- =====================================
-NAVIGATION BAR
+NAVIGATION
 ===================================== -->
 
 <nav>
@@ -102,39 +102,16 @@ NAVIGATION BAR
 
 
 <!-- =====================================
-HOME DASHBOARD
+HOME
 ===================================== -->
 
 <section id="home" class="tab active">
 
-<div class="homeContainer">
+<div class="homeHero">
 
+<img src="BSG2.png" class="heroImage">
 
-<!-- CONFLICT STRIP -->
-
-<div class="conflictStrip">
-
-<h3>Conflict Headlines</h3>
-
-<ul>
-<li>Ukraine front line artillery escalation</li>
-<li>Red Sea shipping attacks continue</li>
-<li>Sudan clashes intensify in Khartoum</li>
-<li>Sahel militant activity rising</li>
-<li>South China Sea naval patrol tensions</li>
-</ul>
-
-</div>
-
-
-
-<!-- CENTER PANEL -->
-
-<div class="homePanel">
-
-<img src="BSG2.png" class="homeBg">
-
-<div class="homeOverlay">
+<div class="heroOverlay">
 
 <h2>BSG Strategic Awareness Dashboard</h2>
 
@@ -148,6 +125,22 @@ aviation tracking and maritime movement.
 
 </div>
 
+
+
+<div class="conflictBar">
+
+<h3>Conflict Headlines</h3>
+
+<ul>
+
+<li>Ukraine front line artillery escalation</li>
+<li>Red Sea shipping attacks continue</li>
+<li>Sudan clashes intensify in Khartoum</li>
+<li>Sahel militant activity rising</li>
+<li>South China Sea naval patrol tensions</li>
+
+</ul>
+
 </div>
 
 </section>
@@ -155,7 +148,7 @@ aviation tracking and maritime movement.
 
 
 <!-- =====================================
-LIVE NEWS MONITORING
+LIVE NEWS
 ===================================== -->
 
 <section id="live" class="tab">
@@ -172,8 +165,6 @@ LIVE NEWS MONITORING
 
 
 
-<!-- SINGLE VIEW -->
-
 <div id="liveSingle" class="livePlayer">
 
 <iframe id="liveFrame"
@@ -184,8 +175,6 @@ allowfullscreen>
 </div>
 
 
-
-<!-- FULLSCREEN QUAD WALL -->
 
 <div id="liveQuad" class="quadGrid">
 
@@ -201,7 +190,7 @@ allowfullscreen>
 
 
 <!-- =====================================
-MARKETS PANEL
+MARKETS
 ===================================== -->
 
 <section id="markets" class="tab">
@@ -217,8 +206,6 @@ MARKETS PANEL
 
 
 
-<!-- MARKET NEWS QUAD -->
-
 <div id="marketNews" class="marketPanel active">
 
 <div id="marketsQuad" class="quadGrid" style="display:grid;">
@@ -233,8 +220,6 @@ MARKETS PANEL
 </div>
 
 
-
-<!-- GLOBAL MARKETS -->
 
 <div id="marketMacro" class="marketPanel">
 
@@ -255,8 +240,6 @@ MARKETS PANEL
 </div>
 
 
-
-<!-- CRYPTO -->
 
 <div id="marketCrypto" class="marketPanel">
 
@@ -281,8 +264,6 @@ MARKETS PANEL
 </div>
 
 
-
-<!-- FOREX -->
 
 <div id="marketForex" class="marketPanel">
 
@@ -311,39 +292,33 @@ CONFLICT MAP
 ===================================== -->
 
 <section id="conflict" class="tab">
-
 <iframe src="https://liveuamap.com"></iframe>
-
 </section>
 
 
 
 <!-- =====================================
-AIRCRAFT TRACKING
+AIRCRAFT
 ===================================== -->
 
 <section id="aircraft" class="tab">
-
 <iframe src="https://globe.adsbexchange.com"></iframe>
-
 </section>
 
 
 
 <!-- =====================================
-MARINE TRAFFIC
+MARINE
 ===================================== -->
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
 
 
 
 <!-- =====================================
-CYBER THREAT MAP
+CYBER
 ===================================== -->
 
 <section id="cyber" class="tab">
@@ -363,12 +338,27 @@ OVERVIEW COMMAND WALL
 
 <section id="overview" class="tab">
 
-<div class="grid">
+<div class="overviewGrid">
 
+
+<div class="overviewLeftTop">
 <iframe src="https://liveuamap.com"></iframe>
+</div>
+
+
+<div class="overviewLeftBottom">
+<iframe src="https://liveuamap.com/en"></iframe>
+</div>
+
+
+<div class="overviewRightTop">
 <iframe src="https://globe.adsbexchange.com"></iframe>
+</div>
+
+
+<div class="overviewRightBottom">
 <iframe src="https://coin360.com"></iframe>
-<iframe src="https://www.tradingview.com/markets/stocks-worldwide/heatmap/"></iframe>
+</div>
 
 </div>
 
@@ -383,9 +373,11 @@ FOOTER
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -405,8 +397,6 @@ JAVASCRIPT
 ===================================== -->
 
 <script>
-
-
 
 /* CLOCK */
 
