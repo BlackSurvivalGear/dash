@@ -388,55 +388,46 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 
 
-/* LIVE FEED RSS TICKER */
+/* =====================================
+LIVEUAMAP RSS TICKER
+===================================== */
 
 async function loadConflictFeed(){
 
 try{
 
-const proxy="https://api.allorigins.win/raw?url="
-const rssURL="https://liveuamap.com/rss"
+const rssURL = "https://liveuamap.com/rss"
 
-const res=await fetch(proxy+rssURL)
+/* Reliable RSS proxy */
+const proxy = "https://api.rss2json.com/v1/api.json?rss_url="
 
-const text=await res.text()
+const res = await fetch(proxy + encodeURIComponent(rssURL))
 
-const parser=new DOMParser()
+const data = await res.json()
 
-const xml=parser.parseFromString(text,"text/xml")
+let headlines = ""
 
-const items=xml.querySelectorAll("item")
+data.items.slice(0,10).forEach(item=>{
 
-let headlines=""
-
-items.forEach((item,i)=>{
-
-if(i<12){
-
-headlines+=`<span>${item.querySelector("title").textContent}</span>`
-
-}
+headlines += `<span>${item.title}</span>`
 
 })
 
-document.getElementById("tickerFeed").innerHTML=headlines
+document.getElementById("tickerFeed").innerHTML = headlines
 
 }
 
-catch(err){
+catch(e){
 
-document.getElementById("tickerFeed").innerHTML="Live feed unavailable"
+document.getElementById("tickerFeed").innerHTML =
+"<span>Conflict intelligence feed temporarily unavailable</span>"
 
 }
 
 }
 
+/* Load feed */
 loadConflictFeed()
 
-
-
-</script>
-
-
-</body>
-</html>
+/* Refresh every 5 minutes */
+setInterval(loadConflictFeed,300000)
