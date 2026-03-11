@@ -13,7 +13,7 @@ overflow-x:hidden;
 
 
 /* =====================================
-SPLASH SCREEN (CSS CONTROLLED)
+SPLASH SCREEN
 ===================================== */
 
 #introRadar{
@@ -85,10 +85,6 @@ height:90px;
 border-bottom:1px solid #00ffaa44;
 }
 
-
-
-/* HEADER VIDEO */
-
 .headerVideo{
 position:absolute;
 top:0;
@@ -103,10 +99,6 @@ width:100%;
 height:100%;
 object-fit:cover;
 }
-
-
-
-/* HEADER CONTENT GRID */
 
 .headerContent{
 display:grid;
@@ -137,7 +129,7 @@ width:60px;
 
 
 /* =====================================
-HEADER CLOCK
+CLOCK
 ===================================== */
 
 .headerMarkets{
@@ -205,26 +197,69 @@ display:block;
 
 
 /* =====================================
+HOME LAYOUT
+===================================== */
+
+.homeContainer{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:40px;
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+
+
+/* =====================================
+CONFLICT STRIP
+===================================== */
+
+.conflictStrip{
+width:260px;
+background:#041414;
+border:1px solid #00ffaa33;
+padding:20px;
+box-shadow:0 0 12px rgba(0,255,170,.2);
+}
+
+.conflictStrip h3{
+color:#00ffaa;
+margin-top:0;
+margin-bottom:12px;
+}
+
+.conflictStrip ul{
+list-style:none;
+padding:0;
+margin:0;
+}
+
+.conflictStrip li{
+font-size:14px;
+padding:8px 0;
+border-bottom:1px solid #00ffaa22;
+opacity:.9;
+}
+
+
+
+/* =====================================
 HOME PANEL
 ===================================== */
 
 .homePanel{
 position:relative;
-max-width:900px;
-margin:auto;
 text-align:center;
-padding:40px 0;
 }
 
 
 
-/* HOME BACKGROUND IMAGE */
+/* RADAR IMAGE */
 
 .homeBg{
-width:100%;
-max-width:520px;
-display:block;
-margin:auto;
+width:520px;
 opacity:.35;
 
 mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
@@ -233,7 +268,7 @@ mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
 
 
 
-/* HOME TEXT OVERLAY */
+/* TEXT OVERLAY */
 
 .homeOverlay{
 position:absolute;
@@ -241,7 +276,6 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 width:80%;
-text-align:center;
 color:#00ffaa;
 text-shadow:0 0 12px rgba(0,255,170,.7);
 }
@@ -287,7 +321,7 @@ box-shadow:0 0 12px #00ffaa;
 
 
 /* =====================================
-MARKETS NAVIGATION
+MARKETS NAV
 ===================================== */
 
 .marketsNav{
@@ -328,7 +362,7 @@ display:block;
 
 
 /* =====================================
-LIVE VIDEO PLAYER
+LIVE PLAYER
 ===================================== */
 
 .livePlayer iframe{
@@ -342,15 +376,17 @@ background:black;
 
 
 /* =====================================
-QUAD GRID (NEWS WALLS)
+FULLSCREEN QUAD VIEW
 ===================================== */
 
 .quadGrid{
-display:grid;
+display:none;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:10px;
-height:80vh;
+gap:6px;
+
+width:100%;
+height:calc(100vh - 160px);
 }
 
 .quadGrid iframe{
@@ -358,6 +394,7 @@ width:100%;
 height:100%;
 border:1px solid #00ffaa44;
 box-shadow:0 0 10px #00ffaa22;
+background:black;
 }
 
 
@@ -410,19 +447,11 @@ border-top:1px solid #00ffaa33;
 margin-top:30px;
 }
 
-
-
-/* FOOTER RADAR */
-
 .footerRadar video{
 width:70px;
 margin-bottom:10px;
 opacity:.8;
 }
-
-
-
-/* FOOTER LINK */
 
 footer a{
 color:#00ffaa;
@@ -433,10 +462,6 @@ font-size:14px;
 footer a:hover{
 text-decoration:underline;
 }
-
-
-
-/* VERSION TAG */
 
 .versionTag{
 font-size:11px;
