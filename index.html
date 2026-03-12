@@ -17,7 +17,6 @@
 <body>
 
 
-
 <!-- SPLASH -->
 
 <div id="introRadar">
@@ -60,7 +59,7 @@
 
 
 
-<!-- NAV -->
+<!-- NAVIGATION -->
 
 <nav>
 
@@ -77,7 +76,7 @@
 
 
 
-<!-- SUBMENU -->
+<!-- SUB MENUS -->
 
 <div id="subMenuBar">
 
@@ -140,7 +139,7 @@ markets, cyber activity, aviation tracking and maritime movement.
 
 
 
-<!-- LIVE -->
+<!-- LIVE NEWS -->
 
 <section id="live" class="tab">
 
@@ -196,7 +195,7 @@ allowfullscreen></iframe>
 
 
 
-<!-- MARINE -->
+<!-- MARINE WATCH -->
 
 <section id="marine" class="tab">
 
@@ -234,9 +233,9 @@ allowfullscreen></iframe>
 
 <!-- FOOTER -->
 
-<footer>
+<footer class="mainFooter">
 
-<div class="footerRadar">
+<div class="footerTop">
 
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
@@ -244,12 +243,23 @@ allowfullscreen></iframe>
 
 </div>
 
+
+<div class="footerBottom">
+
+<div class="footerCenter">
+
 <a href="https://BlackSurvivalGear.com" target="_blank">
 BlackSurvivalGear.com
 </a>
 
-<div class="versionTag">
+</div>
+
+<div class="footerRight">
+
 BSG Strategic Awareness OSINT — VBASE
+
+</div>
+
 </div>
 
 </footer>
@@ -312,7 +322,7 @@ updateClock()
 
 
 
-/* TAB SWITCH */
+/* TAB SYSTEM */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -335,6 +345,7 @@ document.getElementById("liveMenu").style.display="flex"
 }
 
 else if(btn.dataset.tab==="marine"){
+
 subMenu.style.display="block"
 document.getElementById("marineMenu").style.display="flex"
 
@@ -353,7 +364,7 @@ subMenu.style.display="none"
 
 
 
-/* LIVE SWITCH */
+/* LIVE CHANNEL SWITCH */
 
 function showLive(e,channel){
 
@@ -388,7 +399,7 @@ quad.style.display="grid"
 
 
 
-/* MARINE CHOKE POINT SWITCH */
+/* MARINE CHOKE POINTS */
 
 function showMarine(e,point){
 
@@ -399,29 +410,14 @@ const frame=document.getElementById("marineFrame")
 
 let url="https://www.marinetraffic.com/en/ais/embed/maptype:4/"
 
-if(point==="hormuz")
-url+="zoom:6/lat:26.5/lon:56"
-
-if(point==="malacca")
-url+="zoom:6/lat:2.5/lon:101"
-
-if(point==="bab")
-url+="zoom:6/lat:12.6/lon:43.3"
-
-if(point==="suez")
-url+="zoom:6/lat:30.2/lon:32.3"
-
-if(point==="panama")
-url+="zoom:6/lat:9.2/lon:-79.9"
-
-if(point==="bosporus")
-url+="zoom:6/lat:41.1/lon:29"
-
-if(point==="gibraltar")
-url+="zoom:6/lat:36/lon:-5.3"
-
-if(point==="dover")
-url+="zoom:6/lat:51/lon:1"
+if(point==="hormuz") url+="zoom:6/lat:26.5/lon:56"
+if(point==="malacca") url+="zoom:6/lat:2.5/lon:101"
+if(point==="bab") url+="zoom:6/lat:12.6/lon:43.3"
+if(point==="suez") url+="zoom:6/lat:30.2/lon:32.3"
+if(point==="panama") url+="zoom:6/lat:9.2/lon:-79.9"
+if(point==="bosporus") url+="zoom:6/lat:41.1/lon:29"
+if(point==="gibraltar") url+="zoom:6/lat:36/lon:-5.3"
+if(point==="dover") url+="zoom:6/lat:51/lon:1"
 
 frame.src=url
 
