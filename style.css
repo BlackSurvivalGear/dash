@@ -135,6 +135,16 @@ color:#00ffaa;
 cursor:pointer;
 }
 
+.subMenu button:hover{
+background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
+}
+
+.subMenu button.active{
+background:#00ffaa33;
+box-shadow:0 0 14px #00ffaa;
+}
+
 
 
 /* PANELS */
@@ -215,7 +225,7 @@ padding:20px 30px;
 .footerTop{
 display:flex;
 justify-content:center;
-margin-bottom:8px;
+margin-bottom:6px;
 }
 
 .footerTop video{
@@ -223,13 +233,13 @@ width:55px;
 }
 
 .footerBottom{
+position:relative;
 display:flex;
 align-items:center;
-justify-content:space-between;
 }
 
 .footerCenter{
-flex:1;
+width:100%;
 text-align:center;
 }
 
@@ -240,9 +250,9 @@ font-size:16px;
 }
 
 .footerRight{
+position:absolute;
+right:0;
 font-size:12px;
 opacity:.6;
 color:#00ffaa;
-text-align:right;
-min-width:240px;
 }
