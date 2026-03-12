@@ -1,246 +1,169 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>BSG Strategic Awareness Dashboard</title>
-
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<header>
-<h1>BSG Strategic Awareness Dashboard</h1>
-</header>
-
-
-<!-- NAVIGATION -->
-
-<div class="tabs">
-
-<button onclick="openTab('overview')" class="tabbtn">Overview</button>
-
-<button onclick="openTab('live')" class="tabbtn">Live News</button>
-
-<button onclick="openTab('markets')" class="tabbtn">Markets</button>
-
-<button onclick="openTab('maritime')" class="tabbtn">Maritime</button>
-
-<button onclick="openTab('radio')" class="tabbtn">Global Radio</button>
-
-</div>
-
-
-
-<!-- OVERVIEW (HOME PAGE) -->
-
-<div id="overview" class="tabcontent">
-
-<div class="quad-grid">
-
-<div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
-<iframe src="https://liveuamap.com"></iframe>
-</div>
-
-<div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-</div>
-
-<div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
-<iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-</div>
-
-<div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
-<iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- LIVE NEWS -->
-
-<div id="live" class="tabcontent">
-
-<div class="quad-grid">
-
-<div class="panel">
-<iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://www.youtube.com/embed/pykpO5kQJ98"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- MARKETS -->
-
-<div id="markets" class="tabcontent">
-
-<div class="quad-grid">
-
-<div class="panel">
-<iframe src="https://s.tradingview.com/embed-widget/market-quotes/?locale=en"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://s.tradingview.com/embed-widget/crypto-screener/?locale=en"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://s.tradingview.com/embed-widget/forex-cross-rates/?locale=en"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://cryptobubbles.net"></iframe>
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- MARITIME TAB -->
-
-<div id="maritime" class="tabcontent">
-
-<div class="subnav">
-
-<button onclick="setMap(26.5,56.5,6)">Hormuz</button>
-<button onclick="setMap(2.5,101.0,6)">Malacca</button>
-<button onclick="setMap(30.5,32.5,6)">Suez</button>
-<button onclick="setMap(12.7,43.3,6)">Bab el-Mandeb</button>
-<button onclick="setMap(9.0,-79.5,6)">Panama Canal</button>
-<button onclick="setMap(41.1,29.0,7)">Bosporus</button>
-<button onclick="setMap(40.2,26.4,7)">Dardanelles</button>
-<button onclick="setMap(36.0,-5.4,7)">Gibraltar</button>
-
-</div>
-
-<div class="map-container">
-
-<iframe
-id="maritimeMap"
-src="https://liveuamap.com/en?lat=26.5&lon=56.5&zoom=6"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</div>
-
-</div>
-
-
-
-<!-- GLOBAL RADIO -->
-
-<div id="radio" class="tabcontent">
-
-<div class="quad-grid">
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/london"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/lagos"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/washington-dc"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/moscow"></iframe>
-</div>
-
-</div>
-
-</div>
-
-
-
-<footer>
-BlackSurvivalGear.com
-</footer>
-
-
-
-<script>
-
-function openTab(tabName){
-
-var i;
-var x=document.getElementsByClassName("tabcontent");
-
-for(i=0;i<x.length;i++){
-
-x[i].style.display="none";
-
+/* GLOBAL */
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#000;
+color:#00ff9c;
 }
 
-document.getElementById(tabName).style.display="block";
+/* HEADER */
 
+header{
+background:#000;
+text-align:center;
+padding:10px;
+border-bottom:2px solid #00ff9c;
 }
 
-
-function setMap(lat,lon,zoom){
-
-var map=document.getElementById("maritimeMap");
-
-map.src="https://liveuamap.com/en?lat="+lat+"&lon="+lon+"&zoom="+zoom;
-
+header h1{
+margin:0;
+font-size:36px;
+color:#00ff9c;
+text-shadow:0 0 10px #00ff9c;
 }
 
+/* NAVIGATION */
 
-function toggleFullscreen(el){
+.tabs{
+display:flex;
+gap:6px;
+padding:6px;
+background:#000;
+border-bottom:2px solid #00ff9c;
+}
 
-if(!document.fullscreenElement){
+.tabbtn{
+background:#000;
+color:#00ff9c;
+border:1px solid #00ff9c;
+padding:6px 14px;
+cursor:pointer;
+font-weight:bold;
+}
 
-el.requestFullscreen();
+.tabbtn:hover{
+background:#00ff9c;
+color:#000;
+}
 
-}else{
+/* TAB CONTENT */
 
-document.exitFullscreen();
+.tabcontent{
+display:none;
+padding:6px;
+height:calc(100vh - 130px);
+box-sizing:border-box;
+}
 
+/* QUAD GRID */
+
+.quad-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+grid-template-rows:1fr 1fr;
+gap:6px;
+height:100%;
+}
+
+/* PANEL */
+
+.panel{
+background:#000;
+border:1px solid #00ff9c;
+position:relative;
+overflow:hidden;
+}
+
+.panel iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* FULLSCREEN BUTTON */
+
+.panel button{
+position:absolute;
+top:4px;
+right:4px;
+z-index:10;
+background:#000;
+color:#00ff9c;
+border:1px solid #00ff9c;
+padding:3px 6px;
+font-size:11px;
+cursor:pointer;
+}
+
+.panel button:hover{
+background:#00ff9c;
+color:#000;
+}
+
+/* MARITIME BUTTON BAR */
+
+.subnav{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+margin-bottom:6px;
+}
+
+.subnav button{
+background:#000;
+color:#00ff9c;
+border:1px solid #00ff9c;
+padding:4px 10px;
+cursor:pointer;
+}
+
+.subnav button:hover{
+background:#00ff9c;
+color:#000;
+}
+
+/* MAP PANEL */
+
+.map-container{
+width:100%;
+height:85vh;
+}
+
+.map-container iframe{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* RADIO GRID */
+
+#radio iframe{
+background:#000;
+}
+
+/* FOOTER */
+
+footer{
+background:#000;
+border-top:1px solid #00ff9c;
+text-align:center;
+padding:6px;
+font-size:12px;
+color:#00ff9c;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:1000px){
+
+.quad-grid{
+grid-template-columns:1fr;
+grid-template-rows:repeat(4,1fr);
+}
+
+header h1{
+font-size:26px;
 }
 
 }
-
-
-window.onload=function(){
-
-openTab("overview");
-
-}
-
-</script>
-
-
-</body>
-</html>
