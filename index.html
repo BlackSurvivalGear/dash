@@ -16,7 +16,8 @@
 
 <body>
 
-<!-- SPLASH SCREEN -->
+
+<!-- SPLASH -->
 
 <div id="introRadar">
 <video autoplay muted playsinline>
@@ -25,7 +26,7 @@
 </div>
 
 
-<!-- RADAR BACKGROUND -->
+<!-- BACKGROUND RADAR -->
 
 <div class="siteRadar">
 <video autoplay muted loop playsinline>
@@ -46,6 +47,8 @@
 
 <div class="headerContent">
 
+<div class="headerLeft">
+
 <div class="radarLogo">
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4" type="video/mp4">
@@ -53,6 +56,8 @@
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
+
+</div>
 
 <div class="headerMarkets">
 <span id="dateTime"></span>
@@ -84,12 +89,12 @@
 
 <div id="subMenuBar">
 
-<div id="liveMenu" class="subMenu active">
+<div id="liveMenu" class="subMenu">
 <button onclick="showLive('rt')">RT</button>
 <button onclick="showLive('aj')">Al Jazeera</button>
 <button onclick="showLive('sky')">Sky</button>
 <button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">Quad View</button>
+<button onclick="showLive('fullscreen')">Full Screen</button>
 </div>
 
 <div id="marketMenu" class="subMenu">
@@ -125,7 +130,7 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 </section>
 
 
-<!-- LIVE NEWS -->
+<!-- LIVE -->
 
 <section id="live" class="tab">
 
@@ -135,15 +140,6 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 loading="lazy"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allowfullscreen></iframe>
-
-</div>
-
-<div id="liveQuad" class="quadGrid">
-
-<iframe loading="lazy" src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe loading="lazy" src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe loading="lazy" src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-<iframe loading="lazy" src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
 
 </div>
 
@@ -168,50 +164,45 @@ allowfullscreen></iframe>
 </div>
 
 <div id="marketMacro" class="marketPanel">
-<iframe loading="lazy" src="https://www.tradingview.com/markets/"></iframe>
+<iframe src="https://www.tradingview.com/markets/"></iframe>
 </div>
 
 <div id="marketCrypto" class="marketPanel">
-<iframe loading="lazy" src="https://www.tradingview.com/crypto-screener/"></iframe>
+<iframe src="https://www.tradingview.com/crypto-screener/"></iframe>
 </div>
 
 <div id="marketForex" class="marketPanel">
-<iframe loading="lazy" src="https://www.tradingview.com/forex-cross-rates/"></iframe>
+<iframe src="https://www.tradingview.com/forex-cross-rates/"></iframe>
 </div>
 
 </section>
 
 
-<!-- CONFLICT MAP -->
+<!-- CONFLICT -->
 
 <section id="conflict" class="tab">
-<iframe loading="lazy" src="https://iran.liveuamap.com"></iframe>
+<iframe src="https://iran.liveuamap.com"></iframe>
 </section>
 
 
 <!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-<iframe loading="lazy" src="https://globe.adsbexchange.com"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
 </section>
 
 
 <!-- MARINE -->
 
 <section id="marine" class="tab">
-<iframe loading="lazy" src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-
-<iframe loading="lazy"
-src="https://threatmap.checkpoint.com/"
-style="width:100%;height:85vh;border:0;">
-</iframe>
-
+<iframe src="https://threatmap.checkpoint.com/" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
 
@@ -222,17 +213,17 @@ style="width:100%;height:85vh;border:0;">
 <div class="overviewWall">
 
 <div class="overviewMap">
-<iframe loading="lazy" src="https://iran.liveuamap.com"></iframe>
+<iframe src="https://iran.liveuamap.com"></iframe>
 </div>
 
 <div class="overviewNews">
 
 <div class="overviewRT">
-<iframe loading="lazy" src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 </div>
 
 <div class="overviewAJ">
-<iframe loading="lazy" src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
 </div>
 
 </div>
@@ -242,12 +233,12 @@ style="width:100%;height:85vh;border:0;">
 </section>
 
 
-<!-- GLOBAL RADIO -->
+<!-- RADIO -->
 
 <section id="radio" class="tab">
 
 <div class="radioContainer">
-<iframe loading="lazy" src="https://radio.garden/"></iframe>
+<iframe src="https://radio.garden/"></iframe>
 </div>
 
 </section>
@@ -263,6 +254,12 @@ style="width:100%;height:85vh;border:0;">
 </video>
 </div>
 
+<div class="footerContent">
+
+<div class="footerLogo">
+<img src="BSG2.png">
+</div>
+
 <a href="https://BlackSurvivalGear.com" target="_blank">
 BlackSurvivalGear.com
 </a>
@@ -271,22 +268,25 @@ BlackSurvivalGear.com
 BSG Strategic Awareness OSINT — V3
 </div>
 
+</div>
+
 </footer>
 
 
 <script>
 
-/* SPLASH SCREEN */
 
-setTimeout(function(){
+/* SPLASH */
 
-const splash = document.getElementById("introRadar");
+setTimeout(()=>{
+
+const splash=document.getElementById("introRadar")
 
 if(splash){
-splash.remove();
+splash.remove()
 }
 
-},4000);
+},4000)
 
 
 
@@ -294,33 +294,33 @@ splash.remove();
 
 function updateClock(){
 
-const now = new Date();
+const now=new Date()
 
-const days=["SUN","MON","TUE","WED","THU","FRI","SAT"];
-const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
+const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
 
-let day = days[now.getDay()];
-let date = now.getDate();
-let month = months[now.getMonth()];
-let year = now.getFullYear();
+let day=days[now.getDay()]
+let date=now.getDate()
+let month=months[now.getMonth()]
+let year=now.getFullYear()
 
-let hours = now.getHours();
-let minutes = now.getMinutes();
+let hours=now.getHours()
+let minutes=now.getMinutes()
 
-let ampm = hours >= 12 ? "PM" : "AM";
+let ampm=hours>=12?"PM":"AM"
 
-hours = hours % 12;
-hours = hours ? hours : 12;
+hours=hours%12
+hours=hours?hours:12
 
-minutes = minutes < 10 ? "0"+minutes : minutes;
+minutes=minutes<10?"0"+minutes:minutes
 
-document.getElementById("dateTime").textContent =
-`${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`;
+document.getElementById("dateTime").textContent=
+`${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
 
 }
 
-updateClock();
-setInterval(updateClock,1000);
+updateClock()
+setInterval(updateClock,1000)
 
 
 
@@ -330,70 +330,67 @@ document.querySelectorAll("nav button").forEach(btn=>{
 
 btn.addEventListener("click",()=>{
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
-btn.classList.add("active");
+btn.classList.add("active")
 
-document.getElementById(btn.dataset.tab).classList.add("active");
+document.getElementById(btn.dataset.tab).classList.add("active")
 
-document.querySelectorAll(".subMenu").forEach(m=>m.classList.remove("active"));
+document.querySelectorAll(".subMenu").forEach(m=>m.classList.remove("active"))
 
 if(btn.dataset.tab==="live")
-document.getElementById("liveMenu").classList.add("active");
+document.getElementById("liveMenu").classList.add("active")
 
 if(btn.dataset.tab==="markets")
-document.getElementById("marketMenu").classList.add("active");
+document.getElementById("marketMenu").classList.add("active")
 
-});
+})
 
-});
+})
 
 
 
-/* LIVE CHANNEL SWITCH */
+/* LIVE SWITCH */
 
 function showLive(channel){
 
-const frame=document.getElementById("liveFrame");
-const single=document.getElementById("liveSingle");
-const quad=document.getElementById("liveQuad");
+const frame=document.getElementById("liveFrame")
+const player=document.getElementById("liveSingle")
 
-single.style.display="block";
-quad.style.display="none";
+player.classList.remove("fullScreenMode")
 
 if(channel==="rt")
-frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3";
+frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 
 if(channel==="aj")
-frame.src="https://www.youtube.com/embed/gCNeDWCI0vo";
+frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
 
 if(channel==="sky")
-frame.src="https://www.youtube.com/embed/9Auq9mYxFEE";
+frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
 
 if(channel==="wion")
-frame.src="https://www.youtube.com/embed/YDvsBbKfLPA";
+frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
 
-if(channel==="quad"){
-single.style.display="none";
-quad.style.display="grid";
+if(channel==="fullscreen"){
+player.classList.add("fullScreenMode")
 }
 
 }
 
 
 
-/* MARKET SWITCH */
+/* MARKET */
 
 function showMarketPanel(panel){
 
 document.querySelectorAll(".marketPanel").forEach(p=>{
-p.classList.remove("active");
-});
+p.classList.remove("active")
+})
 
 document.getElementById(
 "market"+panel.charAt(0).toUpperCase()+panel.slice(1)
-).classList.add("active");
+).classList.add("active")
 
 }
 
