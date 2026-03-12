@@ -9,6 +9,7 @@
 <title>BSG Strategic Awareness OSINT</title>
 
 <link rel="stylesheet" href="style.css">
+
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
 </head>
@@ -23,21 +24,19 @@
 
 <div class="headerVideo">
 <video autoplay muted loop playsinline>
-<source src="HEADER3.mp4" type="video/mp4">
+<source src="HEADER3.mp4">
 </video>
 </div>
 
-<div class="headerInner">
+<div class="headerContent">
 
-<div class="logoWrap">
-
+<div class="radarLogo">
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+</div>
 
 <h1>Global Strategic Awareness OSINT</h1>
-
-</div>
 
 <div id="dateTime"></div>
 
@@ -46,8 +45,7 @@
 </header>
 
 
-
-<!-- NAV BAR -->
+<!-- MAIN NAV -->
 
 <nav>
 
@@ -64,16 +62,33 @@
 </nav>
 
 
+<!-- SUB MENU -->
+
+<div id="subMenuBar">
+
+<div id="liveMenu" class="subMenu active">
+
+<button onclick="showLive('rt')">RT</button>
+<button onclick="showLive('aj')">Al Jazeera</button>
+<button onclick="showLive('sky')">Sky</button>
+<button onclick="showLive('wion')">WION</button>
+<button onclick="showLive('quad')">Quad View</button>
+<button onclick="fullscreenQuad()">Full Screen</button>
+
+</div>
+
+</div>
+
 
 <!-- HOME -->
 
 <section id="home" class="tab active">
 
-<div class="hero">
+<div class="homeHero">
 
-<img src="hero.png">
+<img src="hero.png" class="heroImage">
 
-<div class="heroText">
+<div class="heroOverlay">
 
 <h2>BSG Strategic Awareness Dashboard</h2>
 
@@ -89,22 +104,30 @@ markets, cyber activity, aviation tracking and maritime movement.
 </section>
 
 
-
 <!-- LIVE -->
 
 <section id="live" class="tab">
 
-<div class="livePlayer">
+<div id="liveSingle" class="livePlayer">
 
-<iframe
+<iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allowfullscreen>
 </iframe>
 
 </div>
 
-</section>
 
+<div id="liveQuad" class="quadGrid">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
+<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
+
+</div>
+
+</section>
 
 
 <!-- MARKETS -->
@@ -116,46 +139,53 @@ allowfullscreen>
 </section>
 
 
-
 <!-- CONFLICT -->
 
 <section id="conflict" class="tab">
-<iframe src="https://iran.liveuamap.com"></iframe>
-</section>
 
+<iframe src="https://iran.liveuamap.com"></iframe>
+
+</section>
 
 
 <!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-<iframe src="https://globe.adsbexchange.com"></iframe>
-</section>
 
+<iframe src="https://globe.adsbexchange.com"></iframe>
+
+</section>
 
 
 <!-- MARINE -->
 
 <section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-</section>
 
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+</section>
 
 
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-<iframe src="https://threatmap.checkpoint.com"></iframe>
-</section>
 
+<iframe src="https://threatmap.checkpoint.com"></iframe>
+
+</section>
 
 
 <!-- OVERVIEW -->
 
 <section id="overview" class="tab">
 
-<div class="overviewGrid">
+<div class="overviewWall">
 
+<div class="overviewMap">
 <iframe src="https://iran.liveuamap.com"></iframe>
+</div>
+
+<div class="overviewNews">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 
@@ -163,8 +193,9 @@ allowfullscreen>
 
 </div>
 
-</section>
+</div>
 
+</section>
 
 
 <!-- RADIO -->
@@ -176,19 +207,28 @@ allowfullscreen>
 </section>
 
 
-
 <!-- FOOTER -->
 
 <footer>
 
-<img src="bsg.jpg">
+<div class="footerRadar">
+
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+
+</div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
+
 BlackSurvivalGear.com
+
 </a>
 
 <div class="versionTag">
+
 BSG Strategic Awareness OSINT — V3
+
 </div>
 
 </footer>
@@ -197,6 +237,8 @@ BSG Strategic Awareness OSINT — V3
 
 <script>
 
+
+/* CLOCK */
 
 function updateClock(){
 
@@ -210,6 +252,8 @@ now.toLocaleString()
 setInterval(updateClock,1000)
 
 
+
+/* TAB SWITCH */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -227,6 +271,51 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 })
 
+
+
+/* LIVE SWITCH */
+
+function showLive(channel){
+
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("liveQuad")
+
+single.style.display="block"
+quad.style.display="none"
+
+if(channel==="rt")
+frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+
+if(channel==="aj")
+frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+
+if(channel==="sky")
+frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
+
+if(channel==="wion")
+frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
+
+}
+
+
+
+function fullscreenQuad(){
+
+const quad=document.getElementById("liveQuad")
+
+if(quad.requestFullscreen){
+
+quad.requestFullscreen()
+
+}
+
+}
 
 </script>
 
