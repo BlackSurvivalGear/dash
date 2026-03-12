@@ -19,19 +19,19 @@
 </header>
 
 
-<!-- MAIN NAVIGATION -->
+<!-- NAVIGATION -->
 
 <div class="tabs">
 
-<button class="tabbtn active" data-tab="overview" onclick="openTab('overview')">Overview</button>
+<button onclick="openTab('overview')" class="tabbtn">Overview</button>
 
-<button class="tabbtn" data-tab="live" onclick="openTab('live')">Live News</button>
+<button onclick="openTab('live')" class="tabbtn">Live News</button>
 
-<button class="tabbtn" data-tab="markets" onclick="openTab('markets')">Markets</button>
+<button onclick="openTab('markets')" class="tabbtn">Markets</button>
 
-<button class="tabbtn" data-tab="maritime" onclick="openTab('maritime')">Maritime</button>
+<button onclick="openTab('maritime')" class="tabbtn">Maritime</button>
 
-<button class="tabbtn" data-tab="radio" onclick="openTab('radio')">Global Radio</button>
+<button onclick="openTab('radio')" class="tabbtn">Global Radio</button>
 
 </div>
 
@@ -44,22 +44,18 @@
 <div class="quad-grid">
 
 <div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
 <iframe src="https://liveuamap.com"></iframe>
 </div>
 
 <div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 </div>
 
 <div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
 <iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
 </div>
 
 <div class="panel">
-<button onclick="toggleFullscreen(this.parentElement)">Fullscreen</button>
 <iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
 </div>
 
@@ -75,21 +71,13 @@
 
 <div class="quad-grid">
 
-<div class="panel">
 <iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-</div>
 
-<div class="panel">
 <iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-</div>
 
-<div class="panel">
 <iframe src="https://www.youtube.com/embed/pykpO5kQJ98"></iframe>
-</div>
 
-<div class="panel">
 <iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-</div>
 
 </div>
 
@@ -103,21 +91,13 @@
 
 <div class="quad-grid">
 
-<div class="panel">
 <iframe src="https://s.tradingview.com/embed-widget/market-quotes/?locale=en"></iframe>
-</div>
 
-<div class="panel">
 <iframe src="https://s.tradingview.com/embed-widget/crypto-screener/?locale=en"></iframe>
-</div>
 
-<div class="panel">
 <iframe src="https://s.tradingview.com/embed-widget/forex-cross-rates/?locale=en"></iframe>
-</div>
 
-<div class="panel">
 <iframe src="https://cryptobubbles.net"></iframe>
-</div>
 
 </div>
 
@@ -125,73 +105,20 @@
 
 
 
-<!-- MARITIME INTELLIGENCE -->
+<!-- MARITIME -->
 
 <div id="maritime" class="tabcontent">
 
-<div class="subtabs">
-
-<button onclick="openSubTab('maritime','hormuz')">Hormuz</button>
-
-<button onclick="openSubTab('maritime','malacca')">Malacca</button>
-
-<button onclick="openSubTab('maritime','suez')">Suez</button>
-
-<button onclick="openSubTab('maritime','bab')">Bab el-Mandeb</button>
-
-<button onclick="openSubTab('maritime','panama')">Panama</button>
-
-<button onclick="openSubTab('maritime','bosporus')">Bosporus</button>
-
-<button onclick="openSubTab('maritime','dardanelles')">Dardanelles</button>
-
-<button onclick="openSubTab('maritime','gibraltar')">Gibraltar</button>
-
-</div>
-
-
-<div class="subcontent">
-
-
-<div id="hormuz" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=26.5&lon=56.5&zoom=6"></iframe>
-</div>
-
-<div id="malacca" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=2.5&lon=101&zoom=6"></iframe>
-</div>
-
-<div id="suez" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=30.5&lon=32.5&zoom=6"></iframe>
-</div>
-
-<div id="bab" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=12.7&lon=43.3&zoom=6"></iframe>
-</div>
-
-<div id="panama" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=9.0&lon=-79.5&zoom=6"></iframe>
-</div>
-
-<div id="bosporus" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=41.1&lon=29.0&zoom=7"></iframe>
-</div>
-
-<div id="dardanelles" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=40.2&lon=26.4&zoom=7"></iframe>
-</div>
-
-<div id="gibraltar" class="subpanel">
-<iframe src="https://liveuamap.com/en?lat=36.0&lon=-5.4&zoom=7"></iframe>
-</div>
-
-</div>
+<iframe
+src="https://liveuamap.com"
+style="width:100%;height:90vh;border:none;">
+</iframe>
 
 </div>
 
 
 
-<!-- GLOBAL RADIO -->
+<!-- GLOBAL RADIO WALL (V2 FEATURE) -->
 
 <div id="radio" class="tabcontent">
 
@@ -229,59 +156,23 @@ BlackSurvivalGear.com
 
 function openTab(tabName){
 
-let tabs=document.querySelectorAll(".tabcontent");
+var i;
 
-let buttons=document.querySelectorAll(".tabbtn");
+var x=document.getElementsByClassName("tabcontent");
 
-tabs.forEach(tab=>tab.style.display="none");
+for(i=0;i<x.length;i++){
 
-buttons.forEach(btn=>btn.classList.remove("active"));
+x[i].style.display="none";
+
+}
 
 document.getElementById(tabName).style.display="block";
 
-document.querySelector(`[data-tab='${tabName}']`).classList.add("active");
-
 }
-
-
-
-function openSubTab(parent,subtab){
-
-let container=document.querySelector(`#${parent} .subcontent`);
-
-container.querySelectorAll(".subpanel").forEach(p=>{
-
-p.style.display="none";
-
-});
-
-document.getElementById(subtab).style.display="block";
-
-}
-
-
-
-function toggleFullscreen(el){
-
-if(!document.fullscreenElement){
-
-el.requestFullscreen();
-
-}else{
-
-document.exitFullscreen();
-
-}
-
-}
-
-
 
 window.onload=function(){
 
 openTab("overview");
-
-document.getElementById("hormuz").style.display="block";
 
 }
 
