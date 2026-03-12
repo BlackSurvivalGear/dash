@@ -66,7 +66,6 @@
 <button data-tab="aircraft">Aircraft Watch</button>
 <button data-tab="marine">Marine Watch</button>
 <button data-tab="cyber">Cyber Attacks</button>
-<button data-tab="overview">Overview</button>
 <button data-tab="radio">Global Radio</button>
 
 </nav>
@@ -74,6 +73,7 @@
 
 
 <div id="subMenuBar">
+
 
 <div id="liveMenu" class="subMenu">
 
@@ -85,6 +85,22 @@
 <button onclick="fullscreenQuad()">Full Screen</button>
 
 </div>
+
+
+
+<div id="marineMenu" class="subMenu">
+
+<button onclick="showMarine(event,'hormuz')" class="active">Hormuz</button>
+<button onclick="showMarine(event,'malacca')">Malacca</button>
+<button onclick="showMarine(event,'bab')">Bab el-Mandeb</button>
+<button onclick="showMarine(event,'suez')">Suez</button>
+<button onclick="showMarine(event,'panama')">Panama</button>
+<button onclick="showMarine(event,'bosporus')">Bosporus</button>
+<button onclick="showMarine(event,'gibraltar')">Gibraltar</button>
+<button onclick="showMarine(event,'dover')">Dover</button>
+
+</div>
+
 
 </div>
 
@@ -126,22 +142,18 @@ allowfullscreen></iframe>
 
 </div>
 
-
-
 <div id="liveQuad" class="quadGrid">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/dp8PhLsUcFE"></iframe>
 <iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
+<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 </div>
 
 </section>
 
 
-
-<!-- MARKETS -->
 
 <section id="markets" class="tab">
 
@@ -192,35 +204,17 @@ allowfullscreen></iframe>
 
 
 <section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
+
+<iframe id="marineFrame"
+src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:26.5/lon:56"
+allowfullscreen></iframe>
+
 </section>
 
 
 
 <section id="cyber" class="tab">
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-</section>
-
-
-
-<section id="overview" class="tab">
-
-<div class="overviewGrid">
-
-<div class="overviewConflict">
-<iframe src="https://iran.liveuamap.com"></iframe>
-</div>
-
-<div class="overviewRT">
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-</div>
-
-<div class="overviewAJ">
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-</div>
-
-</div>
-
 </section>
 
 
@@ -273,10 +267,33 @@ setTimeout(()=>{ splash.remove() },600)
 
 
 function updateClock(){
-document.getElementById("dateTime").textContent=new Date().toLocaleString()
+
+const now = new Date()
+
+const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+
+let day=days[now.getDay()]
+let date=now.getDate()
+let month=months[now.getMonth()]
+let year=now.getFullYear()
+
+let hours=now.getHours()
+let minutes=now.getMinutes()
+
+let ampm=hours>=12?"PM":"AM"
+
+hours=hours%12
+hours=hours?hours:12
+minutes=minutes<10?"0"+minutes:minutes
+
+document.getElementById("dateTime").textContent =
+`${day} ${date} ${month} ${year}, ${hours}:${minutes}${ampm}`
+
 }
 
 setInterval(updateClock,1000)
+updateClock()
 
 
 
@@ -293,9 +310,20 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 const subMenu=document.getElementById("subMenuBar")
 
+document.getElementById("liveMenu").style.display="none"
+document.getElementById("marineMenu").style.display="none"
+
 if(btn.dataset.tab==="live"){
 subMenu.style.display="block"
-}else{
+document.getElementById("liveMenu").style.display="flex"
+}
+
+else if(btn.dataset.tab==="marine"){
+subMenu.style.display="block"
+document.getElementById("marineMenu").style.display="flex"
+}
+
+else{
 subMenu.style.display="none"
 }
 
@@ -307,7 +335,7 @@ subMenu.style.display="none"
 
 function showLive(e,channel){
 
-document.querySelectorAll(".subMenu button").forEach(b=>b.classList.remove("active"))
+document.querySelectorAll("#liveMenu button").forEach(b=>b.classList.remove("active"))
 e.target.classList.add("active")
 
 const frame=document.getElementById("liveFrame")
@@ -327,12 +355,47 @@ if(channel==="sky")
 frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
 
 if(channel==="bloomberg")
-frame.src="https://www.youtube.com/embed/dp8PhLsUcFE"
+frame.src="https://www.youtube.com/embed/iEpJwprxDdk"
 
 if(channel==="quad"){
 single.style.display="none"
 quad.style.display="grid"
 }
+
+}
+
+
+
+function showMarine(e,point){
+
+document.querySelectorAll("#marineMenu button").forEach(b=>b.classList.remove("active"))
+e.target.classList.add("active")
+
+const frame=document.getElementById("marineFrame")
+
+if(point==="hormuz")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:26.5/lon:56"
+
+if(point==="malacca")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:2.5/lon:101"
+
+if(point==="bab")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:12.6/lon:43.3"
+
+if(point==="suez")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:30.2/lon:32.3"
+
+if(point==="panama")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:9.2/lon:-79.9"
+
+if(point==="bosporus")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:41.1/lon:29"
+
+if(point==="gibraltar")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:36/lon:-5.3"
+
+if(point==="dover")
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:51/lon:1"
 
 }
 
@@ -349,7 +412,6 @@ quad.requestFullscreen()
 }
 
 </script>
-
 
 </body>
 </html>
