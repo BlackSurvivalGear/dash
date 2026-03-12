@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,6 +11,7 @@
 <link rel="stylesheet" href="style.css">
 
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -17,13 +19,21 @@
 <header class="mainHeader">
 
 <div class="headerLeft">
-<img src="BSG2.png" class="logo">
+
+<div class="radarLogo">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
 <h1>Global Strategic Awareness OSINT</h1>
+
 </div>
 
 <div id="dateTime"></div>
 
 </header>
+
 
 
 <nav>
@@ -41,6 +51,7 @@
 </nav>
 
 
+
 <div id="subMenuBar">
 
 <div id="liveMenu" class="subMenu">
@@ -55,6 +66,7 @@
 </div>
 
 </div>
+
 
 
 <section id="home" class="tab active">
@@ -78,6 +90,7 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 </section>
 
 
+
 <section id="live" class="tab">
 
 <div id="liveSingle" class="livePlayer">
@@ -85,9 +98,12 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allow="fullscreen"
-loading="lazy"></iframe>
+loading="lazy">
+</iframe>
 
 </div>
+
+
 
 <div id="liveQuad" class="quadGrid">
 
@@ -99,6 +115,7 @@ loading="lazy"></iframe>
 </div>
 
 </section>
+
 
 
 <section id="conflict" class="tab">
@@ -122,11 +139,16 @@ loading="lazy"></iframe>
 </section>
 
 
+
 <footer>
 
 <div class="footerContent">
 
-<img src="BSG2.png" class="footerLogo">
+<div class="footerLogo">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
 
 <a href="https://BlackSurvivalGear.com">BlackSurvivalGear.com</a>
 
@@ -137,8 +159,8 @@ loading="lazy"></iframe>
 </footer>
 
 
-<script>
 
+<script>
 
 function updateClock(){
 
@@ -162,6 +184,7 @@ document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
 btn.classList.add("active")
+
 document.getElementById(btn.dataset.tab).classList.add("active")
 
 document.querySelectorAll(".subMenu").forEach(m=>m.classList.remove("active"))
@@ -173,6 +196,7 @@ document.getElementById("liveMenu").classList.add("active")
 }
 
 })
+
 
 
 function showLive(channel){
@@ -202,9 +226,14 @@ quad.style.display="grid"
 }
 
 if(channel==="fullscreen"){
+
 single.style.display="none"
 quad.style.display="grid"
+
+if(quad.requestFullscreen){
 quad.requestFullscreen()
+}
+
 }
 
 }
