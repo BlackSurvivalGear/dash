@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
@@ -29,13 +31,17 @@ width:420px;
 }
 
 @keyframes splashFade{
+
 0%{opacity:1;}
+
 90%{opacity:1;}
+
 100%{
 opacity:0;
 visibility:hidden;
 pointer-events:none;
 }
+
 }
 
 
@@ -122,15 +128,16 @@ cursor:pointer;
 
 nav button.active{
 background:#00ffaa22;
+box-shadow:0 0 10px #00ffaa;
 }
 
 
 
-/* TAB SYSTEM */
+/* TABS */
 
 .tab{
 display:none;
-padding:20px;
+padding:10px 20px;
 }
 
 .tab.active{
@@ -164,12 +171,27 @@ color:#00ffaa;
 
 
 
-/* LIVE PLAYER */
+/* LIVE NAV */
+
+.liveNav{
+display:flex;
+gap:8px;
+margin-bottom:8px;
+}
+
+.liveNav button{
+padding:4px 10px;
+cursor:pointer;
+}
+
+
+
+/* LIVE SINGLE PLAYER */
 
 .livePlayer iframe{
 width:100%;
-height:70vh;
-border:1px solid #00ffaa44;
+height:75vh;
+border:1px solid #00ffaa33;
 }
 
 
@@ -180,18 +202,26 @@ border:1px solid #00ffaa44;
 display:none;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:6px;
-height:calc(100vh - 160px);
+gap:4px;
+width:100%;
+height:calc(100vh - 180px);
 }
 
 .quadGrid iframe{
 width:100%;
 height:100%;
+border:1px solid #00ffaa33;
 }
 
 
 
-/* MARKET PANELS */
+/* MARKETS */
+
+.marketsNav{
+display:flex;
+gap:10px;
+margin-bottom:10px;
+}
 
 .marketPanel{
 display:none;
@@ -201,32 +231,70 @@ display:none;
 display:block;
 }
 
+.marketPanel iframe{
+width:100%;
+height:80vh;
+border:1px solid #00ffaa33;
+}
 
 
-/* OVERVIEW WALL */
+
+/* MAPS */
+
+section iframe{
+width:100%;
+height:80vh;
+border:1px solid #00ffaa33;
+}
+
+
+
+/* OVERVIEW COMMAND WALL */
 
 .overviewWall{
+
 display:grid;
+
 grid-template-columns:1fr 1fr;
-height:85vh;
-gap:10px;
+
+gap:6px;
+
+height:calc(100vh - 170px);
+
 }
+
+
+/* LEFT MAP */
 
 .overviewMap iframe{
+
 width:100%;
 height:100%;
+
 }
 
+
+/* RIGHT SIDE */
+
 .overviewNews{
+
 display:grid;
+
 grid-template-rows:1fr 1fr;
-gap:10px;
+
+gap:6px;
+
 }
+
+
+/* RIGHT PANELS */
 
 .overviewRT iframe,
 .overviewAJ iframe{
+
 width:100%;
 height:100%;
+
 }
 
 
@@ -234,8 +302,11 @@ height:100%;
 /* RADIO */
 
 .radioContainer iframe{
+
 width:100%;
-height:85vh;
+
+height:80vh;
+
 }
 
 
@@ -243,12 +314,13 @@ height:85vh;
 /* FOOTER */
 
 footer{
+
 display:flex;
 flex-direction:column;
 align-items:center;
-padding:30px 0;
+padding:20px;
 border-top:1px solid #00ffaa33;
-margin-top:30px;
+
 }
 
 .footerRadar video{
@@ -257,5 +329,5 @@ width:70px;
 
 .versionTag{
 font-size:11px;
-opacity:.55;
+opacity:.6;
 }
