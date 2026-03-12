@@ -28,9 +28,8 @@ align-items:center;
 gap:15px;
 }
 
-.radarLogo video{
+.headerLogo{
 height:55px;
-width:55px;
 }
 
 #dateTime{
@@ -109,7 +108,8 @@ display:block;
 
 .homeHero{
 position:relative;
-height:70vh;
+width:100%;
+height:65vh;
 overflow:hidden;
 }
 
@@ -124,9 +124,9 @@ object-fit:cover;
 position:absolute;
 bottom:40px;
 left:40px;
-background:rgba(0,0,0,0.6);
+background:rgba(0,0,0,0.65);
 padding:20px;
-max-width:500px;
+max-width:520px;
 border-left:3px solid #00ffaa;
 }
 
@@ -174,24 +174,31 @@ border:0;
 
 footer{
 border-top:1px solid #00ffaa33;
-padding:20px;
+padding:25px;
 }
 
-.footerContent{
-display:flex;
-justify-content:space-between;
+.footerWrap{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
 align-items:center;
 }
 
-.footerLogo video{
-height:45px;
+.footerCenter{
+text-align:center;
 }
 
-footer a{
+.footerLogo{
+height:45px;
+margin-bottom:6px;
+}
+
+.footerCenter a{
 color:#00ffaa;
 text-decoration:none;
+font-size:16px;
 }
 
-.versionTag{
+.footerRight{
+text-align:right;
 opacity:.7;
 }
