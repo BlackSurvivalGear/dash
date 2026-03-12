@@ -59,7 +59,7 @@
 
 
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 
 <nav>
 
@@ -76,7 +76,7 @@
 
 
 
-<!-- SUB MENUS -->
+<!-- SUBMENUS -->
 
 <div id="subMenuBar">
 
@@ -87,7 +87,7 @@
 <button onclick="showLive(event,'sky')">Sky</button>
 <button onclick="showLive(event,'bloomberg')">Bloomberg</button>
 <button onclick="showLive(event,'quad')">Quad View</button>
-<button onclick="fullscreenQuad()">Full Screen</button>
+<button onclick="fullscreenPlayer()">Full Screen</button>
 
 </div>
 
@@ -113,8 +113,6 @@
 <main>
 
 
-
-<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -156,7 +154,7 @@ allowfullscreen></iframe>
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
+<iframe src="https://www.youtube.com/embed/DPnC3p4cQYk"></iframe>
 <iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
 
 </div>
@@ -169,33 +167,49 @@ allowfullscreen></iframe>
 
 <section id="markets" class="tab">
 
-<iframe src="https://www.tradingview.com/markets/"></iframe>
+<div class="tradingview-widget-container">
+
+<div class="tradingview-widget-container__widget"></div>
+
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
+{
+"colorTheme":"dark",
+"locale":"en",
+"width":"100%",
+"height":600,
+"symbolsGroups":[
+{
+"name":"Indices",
+"symbols":[
+{"name":"FOREXCOM:SPXUSD","displayName":"S&P 500"},
+{"name":"FOREXCOM:NSXUSD","displayName":"NASDAQ 100"},
+{"name":"FOREXCOM:DJI","displayName":"Dow Jones"},
+{"name":"INDEX:NKY","displayName":"Nikkei"},
+{"name":"INDEX:DEU40","displayName":"DAX"},
+{"name":"FOREXCOM:UKXGBP","displayName":"FTSE"}
+]
+}
+]
+}
+</script>
+
+</div>
 
 </section>
 
 
-
-<!-- CONFLICT -->
 
 <section id="conflict" class="tab">
-
 <iframe src="https://iran.liveuamap.com"></iframe>
-
 </section>
 
 
-
-<!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-
 <iframe src="https://globe.adsbexchange.com"></iframe>
-
 </section>
 
 
-
-<!-- MARINE WATCH -->
 
 <section id="marine" class="tab">
 
@@ -207,22 +221,14 @@ allowfullscreen></iframe>
 
 
 
-<!-- CYBER -->
-
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
 
 
 
-<!-- RADIO -->
-
 <section id="radio" class="tab">
-
 <iframe src="https://radio.garden/"></iframe>
-
 </section>
 
 
@@ -243,21 +249,16 @@ allowfullscreen></iframe>
 
 </div>
 
-
 <div class="footerBottom">
 
 <div class="footerCenter">
-
 <a href="https://BlackSurvivalGear.com" target="_blank">
 BlackSurvivalGear.com
 </a>
-
 </div>
 
 <div class="footerRight">
-
 BSG Strategic Awareness OSINT — VBASE
-
 </div>
 
 </div>
@@ -277,11 +278,8 @@ window.addEventListener("load",()=>{
 const splash=document.getElementById("introRadar")
 
 setTimeout(()=>{
-
 splash.style.opacity="0"
-
 setTimeout(()=>{ splash.remove() },600)
-
 },1800)
 
 })
@@ -345,13 +343,10 @@ document.getElementById("liveMenu").style.display="flex"
 }
 
 else if(btn.dataset.tab==="marine"){
-
 subMenu.style.display="block"
 document.getElementById("marineMenu").style.display="flex"
-
 document.getElementById("marineFrame").src =
 "https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"
-
 }
 
 else{
@@ -385,7 +380,7 @@ if(channel==="aj")
 frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
 
 if(channel==="sky")
-frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
+frame.src="https://www.youtube.com/embed/DPnC3p4cQYk"
 
 if(channel==="bloomberg")
 frame.src="https://www.youtube.com/embed/iEpJwprxDdk"
@@ -399,6 +394,24 @@ quad.style.display="grid"
 
 
 
+/* FULLSCREEN HARDENED */
+
+function fullscreenPlayer(){
+
+let player=document.getElementById("liveQuad")
+
+if(player.style.display!=="grid"){
+player=document.getElementById("liveSingle")
+}
+
+if(player.requestFullscreen){
+player.requestFullscreen()
+}
+
+}
+
+
+
 /* MARINE CHOKE POINTS */
 
 function showMarine(e,point){
@@ -406,20 +419,19 @@ function showMarine(e,point){
 document.querySelectorAll("#marineMenu button").forEach(b=>b.classList.remove("active"))
 e.target.classList.add("active")
 
-const frame=document.getElementById("marineFrame")
+let lat=26.5
+let lon=56
 
-let url="https://www.marinetraffic.com/en/ais/embed/maptype:4/"
+if(point==="malacca"){lat=2.5;lon=101}
+if(point==="bab"){lat=12.6;lon=43.3}
+if(point==="suez"){lat=30.2;lon=32.3}
+if(point==="panama"){lat=9.2;lon=-79.9}
+if(point==="bosporus"){lat=41.1;lon=29}
+if(point==="gibraltar"){lat=36;lon=-5.3}
+if(point==="dover"){lat=51;lon=1}
 
-if(point==="hormuz") url+="zoom:6/lat:26.5/lon:56"
-if(point==="malacca") url+="zoom:6/lat:2.5/lon:101"
-if(point==="bab") url+="zoom:6/lat:12.6/lon:43.3"
-if(point==="suez") url+="zoom:6/lat:30.2/lon:32.3"
-if(point==="panama") url+="zoom:6/lat:9.2/lon:-79.9"
-if(point==="bosporus") url+="zoom:6/lat:41.1/lon:29"
-if(point==="gibraltar") url+="zoom:6/lat:36/lon:-5.3"
-if(point==="dover") url+="zoom:6/lat:51/lon:1"
-
-frame.src=url
+document.getElementById("marineFrame").src =
+`https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:${lat}/lon:${lon}/maptype:4`
 
 }
 
