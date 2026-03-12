@@ -71,7 +71,7 @@ height:55px;
 
 header h1{
 color:#00ffaa;
-text-shadow:0 0 6px #00ffaa33;
+text-shadow:0 0 8px #00ffaa33;
 }
 
 #dateTime{
@@ -92,16 +92,22 @@ border-bottom:1px solid #00ffaa33;
 }
 
 nav button{
-padding:10px 20px;
-background:transparent;
-border:1px solid #00ffaa55;
+padding:10px 22px;
+background:#021212;
+border:1px solid #00ffaa66;
 color:#00ffaa;
 cursor:pointer;
+transition:.25s;
 }
 
 nav button:hover{
 background:#00ffaa22;
-box-shadow:0 0 8px #00ffaa;
+box-shadow:0 0 12px #00ffaa;
+}
+
+nav button.active{
+background:#00ffaa33;
+box-shadow:0 0 18px #00ffaa;
 }
 
 
@@ -123,8 +129,8 @@ gap:10px;
 
 .subMenu button{
 padding:6px 14px;
-background:#020606;
-border:1px solid #00ffaa55;
+background:#021212;
+border:1px solid #00ffaa66;
 color:#00ffaa;
 cursor:pointer;
 }
