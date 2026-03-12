@@ -76,7 +76,7 @@
 
 
 
-<!-- SUBMENUS -->
+<!-- SUB MENUS -->
 
 <div id="subMenuBar">
 
@@ -113,6 +113,8 @@
 <main>
 
 
+
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -176,20 +178,7 @@ allowfullscreen></iframe>
 "colorTheme":"dark",
 "locale":"en",
 "width":"100%",
-"height":600,
-"symbolsGroups":[
-{
-"name":"Indices",
-"symbols":[
-{"name":"FOREXCOM:SPXUSD","displayName":"S&P 500"},
-{"name":"FOREXCOM:NSXUSD","displayName":"NASDAQ 100"},
-{"name":"FOREXCOM:DJI","displayName":"Dow Jones"},
-{"name":"INDEX:NKY","displayName":"Nikkei"},
-{"name":"INDEX:DEU40","displayName":"DAX"},
-{"name":"FOREXCOM:UKXGBP","displayName":"FTSE"}
-]
-}
-]
+"height":600
 }
 </script>
 
@@ -345,6 +334,7 @@ document.getElementById("liveMenu").style.display="flex"
 else if(btn.dataset.tab==="marine"){
 subMenu.style.display="block"
 document.getElementById("marineMenu").style.display="flex"
+
 document.getElementById("marineFrame").src =
 "https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"
 }
@@ -359,7 +349,7 @@ subMenu.style.display="none"
 
 
 
-/* LIVE CHANNEL SWITCH */
+/* LIVE SWITCH */
 
 function showLive(e,channel){
 
@@ -394,7 +384,7 @@ quad.style.display="grid"
 
 
 
-/* FULLSCREEN HARDENED */
+/* FULLSCREEN */
 
 function fullscreenPlayer(){
 
@@ -412,7 +402,7 @@ player.requestFullscreen()
 
 
 
-/* MARINE CHOKE POINTS */
+/* MARINE */
 
 function showMarine(e,point){
 
@@ -422,13 +412,17 @@ e.target.classList.add("active")
 let lat=26.5
 let lon=56
 
-if(point==="malacca"){lat=2.5;lon=101}
-if(point==="bab"){lat=12.6;lon=43.3}
-if(point==="suez"){lat=30.2;lon=32.3}
-if(point==="panama"){lat=9.2;lon=-79.9}
-if(point==="bosporus"){lat=41.1;lon=29}
-if(point==="gibraltar"){lat=36;lon=-5.3}
-if(point==="dover"){lat=51;lon=1}
+switch(point){
+
+case "malacca": lat=2.5; lon=101; break
+case "bab": lat=12.6; lon=43.3; break
+case "suez": lat=30.2; lon=32.3; break
+case "panama": lat=9.2; lon=-79.9; break
+case "bosporus": lat=41.1; lon=29; break
+case "gibraltar": lat=36; lon=-5.3; break
+case "dover": lat=51; lon=1; break
+
+}
 
 document.getElementById("marineFrame").src =
 `https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:${lat}/lon:${lon}/maptype:4`
