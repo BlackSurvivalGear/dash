@@ -19,7 +19,7 @@
 
 
 
-<!-- SPLASH -->
+<!-- SPLASH SCREEN -->
 
 <div id="introRadar">
 
@@ -31,7 +31,7 @@
 
 
 
-<!-- BACKGROUND RADAR -->
+<!-- RADAR BACKGROUND -->
 
 <div class="siteRadar">
 
@@ -91,14 +91,13 @@
 
 
 
-<!-- PERSISTENT SUB MENU -->
+<!-- SUB MENU -->
 
 <div id="subMenuBar">
 
-
 <div id="liveMenu" class="subMenu active">
 
-<button onclick="showLive('rt')" class="active">RT</button>
+<button onclick="showLive('rt')">RT</button>
 <button onclick="showLive('aj')">Al Jazeera</button>
 <button onclick="showLive('sky')">Sky</button>
 <button onclick="showLive('wion')">WION</button>
@@ -106,16 +105,14 @@
 
 </div>
 
-
 <div id="marketMenu" class="subMenu">
 
-<button onclick="showMarketPanel('news')" class="active">News</button>
+<button onclick="showMarketPanel('news')">News</button>
 <button onclick="showMarketPanel('macro')">Global Markets</button>
 <button onclick="showMarketPanel('crypto')">Crypto</button>
 <button onclick="showMarketPanel('forex')">Forex</button>
 
 </div>
-
 
 </div>
 
@@ -266,12 +263,14 @@ allowfullscreen></iframe>
 
 
 
-<!-- RADIO -->
+<!-- GLOBAL RADIO -->
 
 <section id="radio" class="tab">
 
 <div class="radioContainer">
+
 <iframe src="https://radio.garden/"></iframe>
+
 </div>
 
 </section>
@@ -299,6 +298,20 @@ allowfullscreen></iframe>
 
 
 <script>
+
+
+
+/* REMOVE SPLASH */
+
+setTimeout(function(){
+
+const splash=document.getElementById("introRadar");
+
+if(splash){
+splash.remove();
+}
+
+},4000);
 
 
 
@@ -336,7 +349,7 @@ setInterval(updateClock,1000)
 
 
 
-/* TAB SWITCHING */
+/* TAB SWITCH */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -363,7 +376,7 @@ document.getElementById("marketMenu").classList.add("active")
 
 
 
-/* LIVE SWITCH */
+/* LIVE CHANNEL SWITCH */
 
 function showLive(channel){
 
