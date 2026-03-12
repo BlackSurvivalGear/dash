@@ -4,12 +4,7 @@ font-family:'Rajdhani',sans-serif;
 background:#020606;
 color:white;
 overflow-x:hidden;
-display:flex;
-flex-direction:column;
-min-height:100vh;
 }
-
-main{flex:1}
 
 
 
@@ -19,20 +14,18 @@ main{flex:1}
 position:fixed;
 top:0;
 left:0;
-width:100vw;
-height:100vh;
-background:#000;
+width:100%;
+height:100%;
+background:black;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:99999;
-pointer-events:none;
-transition:opacity .6s ease;
+z-index:9999;
+transition:opacity .6s;
 }
 
 #introRadar video{
 width:420px;
-max-width:80vw;
 }
 
 
@@ -47,8 +40,6 @@ height:90px;
 
 .headerVideo{
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100%;
 opacity:.15;
@@ -66,7 +57,6 @@ display:flex;
 align-items:center;
 justify-content:space-between;
 padding:15px 30px;
-height:100%;
 }
 
 .headerLeft{
@@ -77,6 +67,11 @@ gap:15px;
 
 .radarLogo video{
 height:55px;
+}
+
+header h1{
+color:#00ffaa;
+text-shadow:0 0 6px #00ffaa33;
 }
 
 #dateTime{
@@ -96,45 +91,17 @@ padding:12px;
 border-bottom:1px solid #00ffaa33;
 }
 
-
-
 nav button{
-display:flex;
-align-items:center;
-justify-content:center;
 padding:10px 20px;
-min-height:38px;
 background:transparent;
 border:1px solid #00ffaa55;
 color:#00ffaa;
 cursor:pointer;
-transition:.18s ease;
 }
-
-
-
-/* HOVER */
 
 nav button:hover{
 background:#00ffaa22;
-border-color:#00ffaa;
-box-shadow:
-0 0 6px #00ffaa,
-0 0 12px #00ffaa55,
-inset 0 0 4px #00ffaa33;
-animation:radarPulse 1.4s infinite;
-}
-
-
-
-/* ACTIVE */
-
-nav button.active{
-background:#00ffaa22;
-border-color:#00ffaa;
-box-shadow:
-0 0 8px #00ffaa,
-0 0 16px #00ffaa66;
+box-shadow:0 0 8px #00ffaa;
 }
 
 
@@ -149,7 +116,7 @@ display:none;
 }
 
 .subMenu{
-display:flex;
+display:none;
 justify-content:center;
 gap:10px;
 }
@@ -160,45 +127,19 @@ background:#020606;
 border:1px solid #00ffaa55;
 color:#00ffaa;
 cursor:pointer;
-transition:.18s ease;
-}
-
-.subMenu button:hover{
-background:#00ffaa22;
-box-shadow:0 0 6px #00ffaa;
-animation:radarPulse 1.4s infinite;
-}
-
-.subMenu button.active{
-background:#00ffaa22;
-box-shadow:0 0 8px #00ffaa;
 }
 
 
 
-/* RADAR PULSE */
+/* TABS */
 
-@keyframes radarPulse{
-
-0%{box-shadow:0 0 6px #00ffaa}
-
-50%{box-shadow:0 0 14px #00ffaa}
-
-100%{box-shadow:0 0 6px #00ffaa}
-
+.tab{
+display:none;
+padding:10px 20px;
 }
 
-
-
-/* PANELS */
-
-.tab{display:none;padding:10px 20px}
-.tab.active{display:block}
-
-section iframe{
-width:100%;
-height:80vh;
-border:0;
+.tab.active{
+display:block;
 }
 
 
@@ -208,7 +149,6 @@ border:0;
 .homeHero{
 position:relative;
 height:65vh;
-max-height:650px;
 overflow:hidden;
 }
 
@@ -227,6 +167,16 @@ background:rgba(0,0,0,.6);
 padding:20px;
 max-width:500px;
 border-left:3px solid #00ffaa;
+}
+
+
+
+/* IFRAME PANELS */
+
+section iframe{
+width:100%;
+height:80vh;
+border:0;
 }
 
 
@@ -257,45 +207,12 @@ height:100%;
 
 
 
-/* OVERVIEW GRID */
-
-.overviewGrid{
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:6px;
-height:calc(100vh - 170px);
-}
-
-.overviewConflict{
-grid-row:1 / span 2;
-}
-
-.overviewRT{
-grid-column:2;
-grid-row:1;
-}
-
-.overviewAJ{
-grid-column:2;
-grid-row:2;
-}
-
-.overviewGrid iframe{
-width:100%;
-height:100%;
-border:0;
-}
-
-
-
 /* FOOTER */
 
 footer{
 border-top:1px solid #00ffaa33;
 padding:25px;
 text-align:center;
-margin-top:auto;
 }
 
 .footerRadar video{
