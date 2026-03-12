@@ -80,7 +80,7 @@
 <button onclick="showLive(event,'rt')" class="active">RT</button>
 <button onclick="showLive(event,'aj')">Al Jazeera</button>
 <button onclick="showLive(event,'sky')">Sky</button>
-<button onclick="showLive(event,'wion')">WION</button>
+<button onclick="showLive(event,'bloomberg')">Bloomberg</button>
 <button onclick="showLive(event,'quad')">Quad View</button>
 <button onclick="fullscreenQuad()">Full Screen</button>
 
@@ -141,7 +141,13 @@ allowfullscreen></iframe>
 
 
 
+<!-- MARKETS -->
+
 <section id="markets" class="tab">
+
+<div class="overviewGrid">
+
+<div class="overviewConflict">
 
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
@@ -151,33 +157,21 @@ allowfullscreen></iframe>
 "colorTheme":"dark",
 "locale":"en",
 "width":"100%",
-"height":"650",
-"symbolsGroups":[
-{
-"name":"Indices",
-"symbols":[
-{"name":"FOREXCOM:SPXUSD","displayName":"S&P 500"},
-{"name":"FOREXCOM:NSXUSD","displayName":"US 100"},
-{"name":"FOREXCOM:DJI","displayName":"Dow Jones"}
-]
-},
-{
-"name":"Futures",
-"symbols":[
-{"name":"CMCMARKETS:GOLD","displayName":"Gold"},
-{"name":"PYTH:WTI3!","displayName":"WTI Crude"}
-]
-},
-{
-"name":"Forex",
-"symbols":[
-{"name":"FX:EURUSD","displayName":"EUR/USD"},
-{"name":"FX:GBPUSD","displayName":"GBP/USD"}
-]
-}
-]
+"height":"100%"
 }
 </script>
+
+</div>
+
+</div>
+
+<div class="overviewRT">
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+</div>
+
+<div class="overviewAJ">
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+</div>
 
 </div>
 
@@ -211,17 +205,18 @@ allowfullscreen></iframe>
 
 <section id="overview" class="tab">
 
-<div class="overviewWall">
+<div class="overviewGrid">
 
-<div class="overviewMap">
+<div class="overviewConflict">
 <iframe src="https://iran.liveuamap.com"></iframe>
 </div>
 
-<div class="overviewNews">
-
+<div class="overviewRT">
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+</div>
 
+<div class="overviewAJ">
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
 </div>
 
 </div>
@@ -251,7 +246,7 @@ BlackSurvivalGear.com
 </a>
 
 <div class="versionTag">
-BSG Strategic Awareness OSINT — VF2
+BSG Strategic Awareness OSINT — VBASE
 </div>
 
 </footer>
@@ -269,9 +264,7 @@ setTimeout(()=>{
 
 splash.style.opacity="0"
 
-setTimeout(()=>{
-splash.remove()
-},600)
+setTimeout(()=>{ splash.remove() },600)
 
 },1800)
 
@@ -333,8 +326,8 @@ frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
 if(channel==="sky")
 frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
 
-if(channel==="wion")
-frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+if(channel==="bloomberg")
+frame.src="https://www.youtube.com/embed/dp8PhLsUcFE"
 
 if(channel==="quad"){
 single.style.display="none"
