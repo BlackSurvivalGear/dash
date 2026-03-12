@@ -3,48 +3,52 @@
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
-background:#050505;
+background:#020202;
 color:#00ff9c;
+overflow:hidden;
 }
 
 /* HEADER */
 
 header{
+background:#000;
 text-align:center;
 padding:10px;
-background:#000;
 border-bottom:2px solid #00ff9c;
 }
 
 header h1{
 margin:0;
-font-size:22px;
+font-size:36px;
 color:#00ff9c;
-letter-spacing:2px;
+text-shadow:0 0 10px #00ff9c;
 }
 
-/* MAIN NAV TABS */
+/* MAIN NAV */
 
 .tabs{
 display:flex;
-justify-content:center;
-flex-wrap:wrap;
+gap:6px;
+padding:6px;
 background:#000;
-border-bottom:1px solid #00ff9c;
+border-bottom:2px solid #00ff9c;
 }
 
-.tabs button{
-background:#000;
+.tabbtn{
+background:#111;
 color:#00ff9c;
 border:1px solid #00ff9c;
-margin:6px;
-padding:8px 18px;
+padding:6px 14px;
 cursor:pointer;
 font-weight:bold;
-transition:0.2s;
 }
 
-.tabs button:hover{
+.tabbtn:hover{
+background:#00ff9c;
+color:#000;
+}
+
+.tabbtn.active{
 background:#00ff9c;
 color:#000;
 }
@@ -53,35 +57,44 @@ color:#000;
 
 .tabcontent{
 display:none;
-padding:10px;
 height:calc(100vh - 120px);
+padding:6px;
+box-sizing:border-box;
 }
 
-/* OVERVIEW GRID */
+/* PANELS */
 
-.overview-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-height:100%;
+.panel{
+background:#000;
+border:1px solid #00ff9c;
+position:relative;
+overflow:hidden;
 }
 
-.overview-left iframe{
+.panel iframe{
 width:100%;
 height:100%;
 border:none;
 }
 
-.overview-right{
-display:grid;
-grid-template-rows:1fr 1fr;
-gap:10px;
+/* FULLSCREEN BUTTON */
+
+.panel button{
+position:absolute;
+top:4px;
+right:4px;
+z-index:10;
+background:#000;
+color:#00ff9c;
+border:1px solid #00ff9c;
+padding:2px 6px;
+font-size:11px;
+cursor:pointer;
 }
 
-.overview-right iframe{
-width:100%;
-height:100%;
-border:none;
+.panel button:hover{
+background:#00ff9c;
+color:#000;
 }
 
 /* QUAD GRID */
@@ -90,49 +103,46 @@ border:none;
 display:grid;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:10px;
+gap:6px;
 height:100%;
 }
 
-.quad-grid iframe{
-width:100%;
-height:100%;
-border:none;
-background:#000;
-}
+/* SUB NAVIGATION */
 
-/* SUB NAV (MARITIME BUTTONS) */
-
-.subnav{
+.subtabs{
 display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-bottom:10px;
+gap:6px;
+padding:6px;
+background:#000;
+border-bottom:1px solid #00ff9c;
 }
 
-.subnav button{
-background:#000;
+.subtabs button{
+background:#111;
 color:#00ff9c;
 border:1px solid #00ff9c;
-padding:8px 14px;
+padding:4px 10px;
 cursor:pointer;
-font-weight:bold;
-transition:0.2s;
+font-size:13px;
 }
 
-.subnav button:hover{
+.subtabs button:hover{
 background:#00ff9c;
 color:#000;
 }
 
-/* MAP CONTAINER */
+/* SUB CONTENT AREA */
 
-.map-container{
-width:100%;
-height:calc(100vh - 200px);
+.subcontent{
+height:calc(100vh - 180px);
 }
 
-.map-container iframe{
+.subpanel{
+display:none;
+height:100%;
+}
+
+.subpanel iframe{
 width:100%;
 height:100%;
 border:none;
@@ -144,13 +154,34 @@ border:none;
 background:#000;
 }
 
+/* SCROLL SAFETY */
+
+iframe{
+background:#000;
+}
+
 /* FOOTER */
 
 footer{
-text-align:center;
-padding:6px;
 background:#000;
 border-top:1px solid #00ff9c;
+text-align:center;
+padding:6px;
 font-size:12px;
 color:#00ff9c;
+}
+
+/* RESPONSIVE SAFETY */
+
+@media (max-width:1000px){
+
+.quad-grid{
+grid-template-columns:1fr;
+grid-template-rows:repeat(4,1fr);
+}
+
+header h1{
+font-size:26px;
+}
+
 }
