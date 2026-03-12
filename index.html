@@ -18,25 +18,41 @@
 <body>
 
 
+<!-- SPLASH SCREEN -->
+
+<div id="introRadar">
+
+<video autoplay muted playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+</div>
+
+
+
 <!-- HEADER -->
 
 <header class="mainHeader">
 
 <div class="headerVideo">
 <video autoplay muted loop playsinline>
-<source src="HEADER3.mp4">
+<source src="HEADER3.mp4" type="video/mp4">
 </video>
 </div>
 
 <div class="headerContent">
 
+<div class="headerLeft">
+
 <div class="radarLogo">
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
+<source src="RADAR3.mp4" type="video/mp4">
 </video>
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
+
+</div>
 
 <div id="dateTime"></div>
 
@@ -45,7 +61,8 @@
 </header>
 
 
-<!-- MAIN NAV -->
+
+<!-- NAV -->
 
 <nav>
 
@@ -62,6 +79,7 @@
 </nav>
 
 
+
 <!-- SUB MENU -->
 
 <div id="subMenuBar">
@@ -73,11 +91,12 @@
 <button onclick="showLive('sky')">Sky</button>
 <button onclick="showLive('wion')">WION</button>
 <button onclick="showLive('quad')">Quad View</button>
-<button onclick="fullscreenQuad()">Full Screen</button>
+<button onclick="fullScreenQuad()">Full Screen</button>
 
 </div>
 
 </div>
+
 
 
 <!-- HOME -->
@@ -102,6 +121,7 @@ markets, cyber activity, aviation tracking and maritime movement.
 </div>
 
 </section>
+
 
 
 <!-- LIVE -->
@@ -130,6 +150,7 @@ allowfullscreen>
 </section>
 
 
+
 <!-- MARKETS -->
 
 <section id="markets" class="tab">
@@ -137,6 +158,7 @@ allowfullscreen>
 <iframe src="https://www.tradingview.com/markets/"></iframe>
 
 </section>
+
 
 
 <!-- CONFLICT -->
@@ -148,6 +170,7 @@ allowfullscreen>
 </section>
 
 
+
 <!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
@@ -155,6 +178,7 @@ allowfullscreen>
 <iframe src="https://globe.adsbexchange.com"></iframe>
 
 </section>
+
 
 
 <!-- MARINE -->
@@ -166,6 +190,7 @@ allowfullscreen>
 </section>
 
 
+
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
@@ -173,6 +198,7 @@ allowfullscreen>
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 
 </section>
+
 
 
 <!-- OVERVIEW -->
@@ -188,7 +214,6 @@ allowfullscreen>
 <div class="overviewNews">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-
 <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
 
 </div>
@@ -198,6 +223,7 @@ allowfullscreen>
 </section>
 
 
+
 <!-- RADIO -->
 
 <section id="radio" class="tab">
@@ -205,6 +231,7 @@ allowfullscreen>
 <iframe src="https://radio.garden/"></iframe>
 
 </section>
+
 
 
 <!-- FOOTER -->
@@ -220,15 +247,11 @@ allowfullscreen>
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
-
 BlackSurvivalGear.com
-
 </a>
 
 <div class="versionTag">
-
 BSG Strategic Awareness OSINT — V3
-
 </div>
 
 </footer>
@@ -236,6 +259,21 @@ BSG Strategic Awareness OSINT — V3
 
 
 <script>
+
+
+
+/* SPLASH SCREEN */
+
+setTimeout(function(){
+
+const splash=document.getElementById("introRadar")
+
+if(splash){
+splash.remove()
+}
+
+},4000)
+
 
 
 /* CLOCK */
@@ -260,7 +298,6 @@ document.querySelectorAll("nav button").forEach(btn=>{
 btn.addEventListener("click",()=>{
 
 document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
-
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
 btn.classList.add("active")
@@ -273,7 +310,7 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 
 
-/* LIVE SWITCH */
+/* LIVE CHANNEL SWITCH */
 
 function showLive(channel){
 
@@ -297,22 +334,22 @@ if(channel==="wion")
 frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
 
 if(channel==="quad"){
+
 single.style.display="none"
 quad.style.display="grid"
-}
 
 }
 
+}
 
 
-function fullscreenQuad(){
+
+function fullScreenQuad(){
 
 const quad=document.getElementById("liveQuad")
 
 if(quad.requestFullscreen){
-
 quad.requestFullscreen()
-
 }
 
 }
