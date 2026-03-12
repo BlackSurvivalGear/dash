@@ -17,15 +17,18 @@
 <body>
 
 
+
 <!-- SPLASH -->
 
 <div id="introRadar">
-<video autoplay muted playsinline preload="auto">
+<video autoplay muted playsinline>
 <source src="RADAR3.mp4">
 </video>
 </div>
 
 
+
+<!-- HEADER -->
 
 <header class="mainHeader">
 
@@ -57,6 +60,8 @@
 
 
 
+<!-- NAV -->
+
 <nav>
 
 <button data-tab="home" class="active">Home</button>
@@ -72,8 +77,9 @@
 
 
 
-<div id="subMenuBar">
+<!-- SUBMENU -->
 
+<div id="subMenuBar">
 
 <div id="liveMenu" class="subMenu">
 
@@ -101,13 +107,15 @@
 
 </div>
 
-
 </div>
 
 
 
 <main>
 
+
+
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -132,6 +140,8 @@ markets, cyber activity, aviation tracking and maritime movement.
 
 
 
+<!-- LIVE -->
+
 <section id="live" class="tab">
 
 <div id="liveSingle" class="livePlayer">
@@ -141,6 +151,7 @@ src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allowfullscreen></iframe>
 
 </div>
+
 
 <div id="liveQuad" class="quadGrid">
 
@@ -155,84 +166,82 @@ allowfullscreen></iframe>
 
 
 
+<!-- MARKETS -->
+
 <section id="markets" class="tab">
 
-<div class="overviewGrid">
-
-<div class="overviewConflict">
-
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js" async>
-{
-"colorTheme":"dark",
-"locale":"en",
-"width":"100%",
-"height":"100%"
-}
-</script>
-
-</div>
-
-</div>
-
-<div class="overviewRT">
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-</div>
-
-<div class="overviewAJ">
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-</div>
-
-</div>
+<iframe src="https://www.tradingview.com/markets/"></iframe>
 
 </section>
 
 
+
+<!-- CONFLICT -->
 
 <section id="conflict" class="tab">
+
 <iframe src="https://iran.liveuamap.com"></iframe>
+
 </section>
 
 
+
+<!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
+
 <iframe src="https://globe.adsbexchange.com"></iframe>
+
 </section>
 
 
+
+<!-- MARINE -->
 
 <section id="marine" class="tab">
 
 <iframe id="marineFrame"
-src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:26.5/lon:56"
+src="https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"
 allowfullscreen></iframe>
 
 </section>
 
 
 
+<!-- CYBER -->
+
 <section id="cyber" class="tab">
+
 <iframe src="https://threatmap.checkpoint.com"></iframe>
+
 </section>
 
 
+
+<!-- RADIO -->
 
 <section id="radio" class="tab">
+
 <iframe src="https://radio.garden/"></iframe>
+
 </section>
+
+
 
 </main>
 
 
 
+<!-- FOOTER -->
+
 <footer>
 
 <div class="footerRadar">
+
 <video autoplay muted loop playsinline>
 <source src="RADAR3.mp4">
 </video>
+
 </div>
 
 <a href="https://BlackSurvivalGear.com" target="_blank">
@@ -250,6 +259,9 @@ BSG Strategic Awareness OSINT — VBASE
 <script>
 
 
+
+/* SPLASH */
+
 window.addEventListener("load",()=>{
 
 const splash=document.getElementById("introRadar")
@@ -266,9 +278,11 @@ setTimeout(()=>{ splash.remove() },600)
 
 
 
+/* CLOCK */
+
 function updateClock(){
 
-const now = new Date()
+const now=new Date()
 
 const days=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
 const months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
@@ -285,6 +299,7 @@ let ampm=hours>=12?"PM":"AM"
 
 hours=hours%12
 hours=hours?hours:12
+
 minutes=minutes<10?"0"+minutes:minutes
 
 document.getElementById("dateTime").textContent =
@@ -297,6 +312,8 @@ updateClock()
 
 
 
+/* TAB SWITCH */
+
 document.querySelectorAll("nav button").forEach(btn=>{
 
 btn.onclick=()=>{
@@ -305,7 +322,6 @@ document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
 btn.classList.add("active")
-
 document.getElementById(btn.dataset.tab).classList.add("active")
 
 const subMenu=document.getElementById("subMenuBar")
@@ -321,6 +337,10 @@ document.getElementById("liveMenu").style.display="flex"
 else if(btn.dataset.tab==="marine"){
 subMenu.style.display="block"
 document.getElementById("marineMenu").style.display="flex"
+
+document.getElementById("marineFrame").src =
+"https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"
+
 }
 
 else{
@@ -332,6 +352,8 @@ subMenu.style.display="none"
 })
 
 
+
+/* LIVE SWITCH */
 
 function showLive(e,channel){
 
@@ -366,6 +388,8 @@ quad.style.display="grid"
 
 
 
+/* MARINE CHOKE POINT SWITCH */
+
 function showMarine(e,point){
 
 document.querySelectorAll("#marineMenu button").forEach(b=>b.classList.remove("active"))
@@ -373,41 +397,33 @@ e.target.classList.add("active")
 
 const frame=document.getElementById("marineFrame")
 
+let url="https://www.marinetraffic.com/en/ais/embed/maptype:4/"
+
 if(point==="hormuz")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:26.5/lon:56"
+url+="zoom:6/lat:26.5/lon:56"
 
 if(point==="malacca")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:2.5/lon:101"
+url+="zoom:6/lat:2.5/lon:101"
 
 if(point==="bab")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:12.6/lon:43.3"
+url+="zoom:6/lat:12.6/lon:43.3"
 
 if(point==="suez")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:30.2/lon:32.3"
+url+="zoom:6/lat:30.2/lon:32.3"
 
 if(point==="panama")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:9.2/lon:-79.9"
+url+="zoom:6/lat:9.2/lon:-79.9"
 
 if(point==="bosporus")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:41.1/lon:29"
+url+="zoom:6/lat:41.1/lon:29"
 
 if(point==="gibraltar")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:36/lon:-5.3"
+url+="zoom:6/lat:36/lon:-5.3"
 
 if(point==="dover")
-frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:6/lat:51/lon:1"
+url+="zoom:6/lat:51/lon:1"
 
-}
-
-
-
-function fullscreenQuad(){
-
-const quad=document.getElementById("liveQuad")
-
-if(quad.requestFullscreen){
-quad.requestFullscreen()
-}
+frame.src=url
 
 }
 
