@@ -14,15 +14,16 @@
 
 </head>
 
+
 <body>
 
 
-<!-- SPLASH -->
+<!-- VF1 HARDENED SPLASH -->
 
 <div id="introRadar">
 
-<video autoplay muted playsinline>
-<source src="RADAR3.mp4">
+<video autoplay muted playsinline preload="auto">
+<source src="RADAR3.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -36,10 +37,11 @@
 <div class="headerVideo">
 
 <video autoplay muted loop playsinline>
-<source src="HEADER3.mp4">
+<source src="HEADER3.mp4" type="video/mp4">
 </video>
 
 </div>
+
 
 <div class="headerContent">
 
@@ -48,7 +50,7 @@
 <div class="radarLogo">
 
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
+<source src="RADAR3.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -101,8 +103,6 @@
 </div>
 
 
-
-<!-- MAIN CONTENT -->
 
 <main>
 
@@ -253,7 +253,7 @@ allowfullscreen>
 <div class="footerRadar">
 
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
+<source src="RADAR3.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -263,7 +263,7 @@ BlackSurvivalGear.com
 </a>
 
 <div class="versionTag">
-BSG Strategic Awareness OSINT — V3
+BSG Strategic Awareness OSINT — VF1
 </div>
 
 </footer>
@@ -274,12 +274,25 @@ BSG Strategic Awareness OSINT — V3
 
 
 
-/* SPLASH */
+/* HARDENED SPLASH */
+
+window.addEventListener("load",()=>{
+
+const splash=document.getElementById("introRadar")
 
 setTimeout(()=>{
-const splash=document.getElementById("introRadar")
-if(splash) splash.remove()
-},4000)
+
+if(splash){
+splash.style.opacity="0"
+
+setTimeout(()=>{
+splash.remove()
+},600)
+}
+
+},3500)
+
+})
 
 
 
@@ -317,7 +330,7 @@ document.getElementById(btn.dataset.tab).classList.add("active")
 
 
 
-/* LIVE SWITCH */
+/* LIVE CHANNEL SWITCH */
 
 function showLive(channel){
 
