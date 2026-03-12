@@ -11,6 +11,7 @@ overflow-x:hidden;
 }
 
 
+
 /* HEADER */
 
 .mainHeader{
@@ -27,13 +28,15 @@ align-items:center;
 gap:15px;
 }
 
-.logo{
+.radarLogo video{
 height:55px;
+width:55px;
 }
 
 #dateTime{
 color:#00ffaa;
 }
+
 
 
 /* NAV */
@@ -60,22 +63,33 @@ background:#00ffaa22;
 }
 
 
+
 /* SUBMENU */
 
 #subMenuBar{
 border-bottom:1px solid #00ffaa33;
-padding:8px;
+padding:10px 0;
+display:flex;
+justify-content:center;
 }
 
 .subMenu{
 display:none;
-justify-content:center;
 gap:12px;
 }
 
 .subMenu.active{
 display:flex;
 }
+
+.subMenu button{
+background:transparent;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:6px 14px;
+cursor:pointer;
+}
+
 
 
 /* TABS */
@@ -88,6 +102,7 @@ padding:20px;
 .tab.active{
 display:block;
 }
+
 
 
 /* HERO */
@@ -116,6 +131,7 @@ border-left:3px solid #00ffaa;
 }
 
 
+
 /* LIVE */
 
 .livePlayer iframe{
@@ -125,13 +141,14 @@ border:0;
 }
 
 
+
 /* QUAD GRID */
 
 .quadGrid{
 display:none;
 grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:4px;
+gap:6px;
 height:80vh;
 }
 
@@ -142,6 +159,7 @@ border:0;
 }
 
 
+
 /* IFRAME PAGES */
 
 section iframe{
@@ -149,6 +167,7 @@ width:100%;
 height:80vh;
 border:0;
 }
+
 
 
 /* FOOTER */
@@ -164,7 +183,7 @@ justify-content:space-between;
 align-items:center;
 }
 
-.footerLogo{
+.footerLogo video{
 height:45px;
 }
 
