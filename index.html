@@ -18,12 +18,13 @@
 <body>
 
 
+
 <!-- SPLASH SCREEN -->
 
 <div id="introRadar">
 
 <video autoplay muted playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 
 </div>
@@ -36,23 +37,19 @@
 
 <div class="headerVideo">
 <video autoplay muted loop playsinline>
-<source src="HEADER3.mp4" type="video/mp4">
+<source src="HEADER3.mp4">
 </video>
 </div>
 
 <div class="headerContent">
 
-<div class="headerLeft">
-
 <div class="radarLogo">
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
-
-</div>
 
 <div id="dateTime"></div>
 
@@ -91,7 +88,7 @@
 <button onclick="showLive('sky')">Sky</button>
 <button onclick="showLive('wion')">WION</button>
 <button onclick="showLive('quad')">Quad View</button>
-<button onclick="fullScreenQuad()">Full Screen</button>
+<button onclick="fullscreenQuad()">Full Screen</button>
 
 </div>
 
@@ -132,8 +129,7 @@ markets, cyber activity, aviation tracking and maritime movement.
 
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen>
-</iframe>
+allowfullscreen></iframe>
 
 </div>
 
@@ -154,9 +150,7 @@ allowfullscreen>
 <!-- MARKETS -->
 
 <section id="markets" class="tab">
-
 <iframe src="https://www.tradingview.com/markets/"></iframe>
-
 </section>
 
 
@@ -164,9 +158,7 @@ allowfullscreen>
 <!-- CONFLICT -->
 
 <section id="conflict" class="tab">
-
 <iframe src="https://iran.liveuamap.com"></iframe>
-
 </section>
 
 
@@ -174,9 +166,7 @@ allowfullscreen>
 <!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-
 <iframe src="https://globe.adsbexchange.com"></iframe>
-
 </section>
 
 
@@ -184,9 +174,7 @@ allowfullscreen>
 <!-- MARINE -->
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
 
 
@@ -194,9 +182,7 @@ allowfullscreen>
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
 
 
@@ -214,6 +200,7 @@ allowfullscreen>
 <div class="overviewNews">
 
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+
 <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
 
 </div>
@@ -227,9 +214,7 @@ allowfullscreen>
 <!-- RADIO -->
 
 <section id="radio" class="tab">
-
 <iframe src="https://radio.garden/"></iframe>
-
 </section>
 
 
@@ -266,13 +251,13 @@ BSG Strategic Awareness OSINT — V3
 
 setTimeout(function(){
 
-const splash=document.getElementById("introRadar")
+const splash=document.getElementById("introRadar");
 
 if(splash){
-splash.remove()
+splash.remove();
 }
 
-},4000)
+},4000);
 
 
 
@@ -280,14 +265,14 @@ splash.remove()
 
 function updateClock(){
 
-const now=new Date()
+const now=new Date();
 
 document.getElementById("dateTime").textContent =
-now.toLocaleString()
+now.toLocaleString();
 
 }
 
-setInterval(updateClock,1000)
+setInterval(updateClock,1000);
 
 
 
@@ -297,65 +282,62 @@ document.querySelectorAll("nav button").forEach(btn=>{
 
 btn.addEventListener("click",()=>{
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
-document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
 
-btn.classList.add("active")
+btn.classList.add("active");
 
-document.getElementById(btn.dataset.tab).classList.add("active")
+document.getElementById(btn.dataset.tab).classList.add("active");
 
-})
+});
 
-})
+});
 
 
 
-/* LIVE CHANNEL SWITCH */
+/* LIVE SWITCH */
 
 function showLive(channel){
 
-const frame=document.getElementById("liveFrame")
-const single=document.getElementById("liveSingle")
-const quad=document.getElementById("liveQuad")
+const frame=document.getElementById("liveFrame");
+const single=document.getElementById("liveSingle");
+const quad=document.getElementById("liveQuad");
 
-single.style.display="block"
-quad.style.display="none"
+single.style.display="block";
+quad.style.display="none";
 
 if(channel==="rt")
-frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3";
 
 if(channel==="aj")
-frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+frame.src="https://www.youtube.com/embed/gCNeDWCI0vo";
 
 if(channel==="sky")
-frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
+frame.src="https://www.youtube.com/embed/9Auq9mYxFEE";
 
 if(channel==="wion")
-frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+frame.src="https://www.youtube.com/embed/YDvsBbKfLPA";
 
 if(channel==="quad"){
-
-single.style.display="none"
-quad.style.display="grid"
-
+single.style.display="none";
+quad.style.display="grid";
 }
 
 }
 
 
 
-function fullScreenQuad(){
+function fullscreenQuad(){
 
-const quad=document.getElementById("liveQuad")
+const quad=document.getElementById("liveQuad");
 
 if(quad.requestFullscreen){
-quad.requestFullscreen()
+quad.requestFullscreen();
 }
 
 }
 
 </script>
-
 
 </body>
 </html>
