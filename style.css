@@ -21,26 +21,15 @@ display:flex;
 align-items:center;
 justify-content:center;
 z-index:9999;
-animation:splashFade 4s forwards;
 }
 
 #introRadar video{
 width:420px;
 }
 
-@keyframes splashFade{
-0%{opacity:1;}
-90%{opacity:1;}
-100%{
-opacity:0;
-visibility:hidden;
-pointer-events:none;
-}
-}
 
 
-
-/* RADAR BG */
+/* RADAR BACKGROUND */
 
 .siteRadar{
 position:fixed;
@@ -81,7 +70,7 @@ cursor:pointer;
 
 
 
-/* SUBMENU */
+/* SUB MENU */
 
 #subMenuBar{
 position:sticky;
@@ -110,7 +99,7 @@ cursor:pointer;
 
 
 
-/* TABS */
+/* TAB */
 
 .tab{
 display:none;
@@ -123,7 +112,7 @@ display:block;
 
 
 
-/* LIVE */
+/* LIVE PLAYER */
 
 .livePlayer iframe{
 width:100%;
@@ -132,7 +121,7 @@ height:75vh;
 
 
 
-/* QUAD */
+/* QUAD VIEW */
 
 .quadGrid{
 display:none;
