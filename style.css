@@ -36,11 +36,31 @@ width:420px;
 /* HEADER */
 
 .mainHeader{
+position:relative;
+border-bottom:1px solid #00ffaa33;
+}
+
+.headerVideo{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:.15;
+z-index:-1;
+}
+
+.headerVideo video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.headerContent{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:15px 30px;
-border-bottom:1px solid #00ffaa33;
 }
 
 .headerLeft{
@@ -52,7 +72,6 @@ gap:15px;
 .radarLogo video{
 height:55px;
 width:55px;
-object-fit:cover;
 }
 
 #dateTime{
@@ -160,7 +179,7 @@ border:0;
 
 
 
-/* QUAD GRID */
+/* GRID */
 
 .quadGrid{
 display:none;
@@ -174,6 +193,23 @@ height:80vh;
 width:100%;
 height:100%;
 border:0;
+}
+
+
+
+/* OVERVIEW */
+
+.overviewWall{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:6px;
+height:80vh;
+}
+
+.overviewNews{
+display:grid;
+grid-template-rows:1fr 1fr;
+gap:6px;
 }
 
 
