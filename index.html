@@ -16,7 +16,7 @@
 
 <body>
 
-<!-- SPLASH SCREEN -->
+<!-- SPLASH -->
 
 <div id="introRadar">
 <video autoplay muted playsinline>
@@ -67,7 +67,7 @@
 </header>
 
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 
 <nav>
 
@@ -117,8 +117,6 @@
 
 <div class="homeHero">
 
-<img src="BSG2.png" class="heroImage">
-
 <div class="heroOverlay">
 
 <h2>BSG Strategic Awareness Dashboard</h2>
@@ -143,18 +141,16 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allow="fullscreen; autoplay"
-loading="lazy">
-</iframe>
+loading="lazy"></iframe>
 
 </div>
 
-
 <div id="liveQuad" class="quadGrid">
 
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" allow="fullscreen"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo" allow="fullscreen"></iframe>
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE" allow="fullscreen"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA" allow="fullscreen"></iframe>
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
+<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
 
 </div>
 
@@ -169,55 +165,55 @@ loading="lazy">
 
 <div class="quadGrid" style="display:grid">
 
-<iframe src="https://www.youtube.com/embed/I8EEKdYZL34" allow="fullscreen"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk" allow="fullscreen"></iframe>
-<iframe src="https://www.youtube.com/embed/0TzJ5Ov-_Vs" allow="fullscreen"></iframe>
-<iframe src="https://www.youtube.com/embed/KQp-e_XQnDE" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
+<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
+<iframe src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"></iframe>
+<iframe src="https://www.youtube.com/embed/KQp-e_XQnDE"></iframe>
 
 </div>
 
 </div>
 
 <div id="marketMacro" class="marketPanel">
-<iframe src="https://www.tradingview.com/markets/" allow="fullscreen"></iframe>
+<iframe src="https://www.tradingview.com/markets/"></iframe>
 </div>
 
 <div id="marketCrypto" class="marketPanel">
-<iframe src="https://www.tradingview.com/crypto-screener/" allow="fullscreen"></iframe>
+<iframe src="https://www.tradingview.com/crypto-screener/"></iframe>
 </div>
 
 <div id="marketForex" class="marketPanel">
-<iframe src="https://www.tradingview.com/forex-cross-rates/" allow="fullscreen"></iframe>
+<iframe src="https://www.tradingview.com/forex-cross-rates/"></iframe>
 </div>
 
 </section>
 
 
-<!-- CONFLICT MAP -->
+<!-- CONFLICT -->
 
 <section id="conflict" class="tab">
-<iframe src="https://iran.liveuamap.com" allow="fullscreen"></iframe>
+<iframe src="https://iran.liveuamap.com"></iframe>
 </section>
 
 
 <!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-<iframe src="https://globe.adsbexchange.com" allow="fullscreen"></iframe>
+<iframe src="https://globe.adsbexchange.com"></iframe>
 </section>
 
 
 <!-- MARINE -->
 
 <section id="marine" class="tab">
-<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2" allow="fullscreen"></iframe>
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
 
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-<iframe src="https://threatmap.checkpoint.com/" style="width:100%;height:85vh;border:0;" allow="fullscreen"></iframe>
+<iframe src="https://threatmap.checkpoint.com/" style="width:100%;height:85vh;border:0;"></iframe>
 </section>
 
 
@@ -228,17 +224,17 @@ loading="lazy">
 <div class="overviewWall">
 
 <div class="overviewMap">
-<iframe src="https://iran.liveuamap.com" allow="fullscreen"></iframe>
+<iframe src="https://iran.liveuamap.com"></iframe>
 </div>
 
 <div class="overviewNews">
 
 <div class="overviewRT">
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" allow="fullscreen"></iframe>
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 </div>
 
 <div class="overviewAJ">
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
 </div>
 
 </div>
@@ -253,7 +249,7 @@ loading="lazy">
 <section id="radio" class="tab">
 
 <div class="radioContainer">
-<iframe src="https://radio.garden/" allow="fullscreen"></iframe>
+<iframe src="https://radio.garden/"></iframe>
 </div>
 
 </section>
@@ -291,9 +287,7 @@ BSG Strategic Awareness OSINT — V3
 <script>
 
 
-/* SPLASH */
-
-setTimeout(function(){
+setTimeout(()=>{
 
 const splash=document.getElementById("introRadar")
 
@@ -304,8 +298,6 @@ splash.remove()
 },4000)
 
 
-
-/* CLOCK */
 
 function updateClock(){
 
@@ -339,8 +331,6 @@ setInterval(updateClock,1000)
 
 
 
-/* TAB SWITCH */
-
 document.querySelectorAll("nav button").forEach(btn=>{
 
 btn.addEventListener("click",()=>{
@@ -364,9 +354,6 @@ document.getElementById("marketMenu").classList.add("active")
 
 })
 
-
-
-/* LIVE SWITCH */
 
 function showLive(channel){
 
@@ -401,10 +388,6 @@ single.classList.add("fullScreenMode")
 }
 
 }
-
-
-
-/* MARKET SWITCH */
 
 function showMarketPanel(panel){
 
