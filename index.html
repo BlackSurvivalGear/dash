@@ -16,6 +16,7 @@
 
 <body>
 
+
 <!-- SPLASH -->
 
 <div id="introRadar">
@@ -49,9 +50,7 @@
 <div class="headerLeft">
 
 <div class="radarLogo">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
+<img src="BSG2.png">
 </div>
 
 <h1>Global Strategic Awareness OSINT</h1>
@@ -117,6 +116,8 @@
 
 <div class="homeHero">
 
+<img src="hero.jpg" class="heroImage">
+
 <div class="heroOverlay">
 
 <h2>BSG Strategic Awareness Dashboard</h2>
@@ -132,7 +133,7 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 </section>
 
 
-<!-- LIVE NEWS -->
+<!-- LIVE -->
 
 <section id="live" class="tab">
 
@@ -259,12 +260,6 @@ loading="lazy"></iframe>
 
 <footer>
 
-<div class="footerRadar">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
-</video>
-</div>
-
 <div class="footerContent">
 
 <div class="footerLogo">
@@ -361,8 +356,6 @@ const frame=document.getElementById("liveFrame")
 const single=document.getElementById("liveSingle")
 const quad=document.getElementById("liveQuad")
 
-single.classList.remove("fullScreenMode")
-
 single.style.display="block"
 quad.style.display="none"
 
@@ -384,7 +377,14 @@ quad.style.display="grid"
 }
 
 if(channel==="fullscreen"){
-single.classList.add("fullScreenMode")
+
+single.style.display="none"
+quad.style.display="grid"
+
+if(quad.requestFullscreen){
+quad.requestFullscreen()
+}
+
 }
 
 }
