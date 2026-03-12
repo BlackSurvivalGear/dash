@@ -1,25 +1,424 @@
-<!-- Change on line 97 -->
-<button onclick="showLive('quadview')">Quad View</button> <!-- Updated button -->
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- New div after line 145 -->
-<div id="liveQuad" class="liveQuad" style="display:none;">
-    <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-        <iframe src="https://rumble.com/embed/xxxxx" title="RT Channel" width="500" height="300"></iframe>
-        <iframe src="https://www.youtube.com/embed/xxxxx" title="Al Jazeera" width="500" height="300"></iframe>
-        <iframe src="https://www.youtube.com/embed/xxxxx" title="Sky News" width="500" height="300"></iframe>
-        <iframe src="https://www.youtube.com/embed/xxxxx" title="WION" width="500" height="300"></iframe>
-    </div>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BSG Strategic Awareness OSINT</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- SPLASH SCREEN -->
+
+<div id="introRadar">
+<video autoplay muted playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
 </div>
 
-<!-- Updated showLive function -->
+
+<!-- RADAR BACKGROUND -->
+
+<div class="siteRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+
+<!-- HEADER -->
+
+<header class="mainHeader">
+
+<div class="headerVideo">
+<video autoplay muted loop playsinline>
+<source src="HEADER3.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="headerContent">
+
+<div class="headerLeft">
+
+<div class="radarLogo">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<h1>Global Strategic Awareness OSINT</h1>
+
+</div>
+
+<div class="headerMarkets">
+<span id="dateTime"></span>
+</div>
+
+</div>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<button data-tab="home" class="active">Home</button>
+<button data-tab="live">LIVE NEWS</button>
+<button data-tab="markets">Market</button>
+<button data-tab="conflict">Conflict Map</button>
+<button data-tab="aircraft">Aircraft Watch</button>
+<button data-tab="marine">Marine Watch</button>
+<button data-tab="cyber">Cyber Attacks</button>
+<button data-tab="overview">Overview</button>
+<button data-tab="radio">Global Radio</button>
+
+</nav>
+
+
+<!-- SUB MENUS -->
+
+<div id="subMenuBar">
+
+<div id="liveMenu" class="subMenu">
+
+<button onclick="showLive('rt')">RT</button>
+<button onclick="showLive('aj')">Al Jazeera</button>
+<button onclick="showLive('sky')">Sky</button>
+<button onclick="showLive('wion')">WION</button>
+<button onclick="showLive('quad')">Quad View</button>
+<button onclick="showLive('fullscreen')">Full Screen</button>
+
+</div>
+
+<div id="marketMenu" class="subMenu">
+
+<button onclick="showMarketPanel('news')">News</button>
+<button onclick="showMarketPanel('macro')">Global Markets</button>
+<button onclick="showMarketPanel('crypto')">Crypto</button>
+<button onclick="showMarketPanel('forex')">Forex</button>
+
+</div>
+
+</div>
+
+
+<!-- HOME -->
+
+<section id="home" class="tab active">
+
+<div class="homeHero">
+
+<img src="BSG2.png" class="heroImage">
+
+<div class="heroOverlay">
+
+<h2>BSG Strategic Awareness Dashboard</h2>
+
+<p>
+Integrated OSINT monitoring platform providing real-time intelligence across conflicts, markets, cyber activity, aviation tracking and maritime movement.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- LIVE NEWS -->
+
+<section id="live" class="tab">
+
+<div id="liveSingle" class="livePlayer">
+
+<iframe id="liveFrame"
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+allow="fullscreen; autoplay"
+loading="lazy">
+</iframe>
+
+</div>
+
+
+<div id="liveQuad" class="quadGrid">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA" allow="fullscreen"></iframe>
+
+</div>
+
+</section>
+
+
+<!-- MARKETS -->
+
+<section id="markets" class="tab">
+
+<div id="marketNews" class="marketPanel active">
+
+<div class="quadGrid" style="display:grid">
+
+<iframe src="https://www.youtube.com/embed/I8EEKdYZL34" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/iEpJwprxDdk" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/0TzJ5Ov-_Vs" allow="fullscreen"></iframe>
+<iframe src="https://www.youtube.com/embed/KQp-e_XQnDE" allow="fullscreen"></iframe>
+
+</div>
+
+</div>
+
+<div id="marketMacro" class="marketPanel">
+<iframe src="https://www.tradingview.com/markets/" allow="fullscreen"></iframe>
+</div>
+
+<div id="marketCrypto" class="marketPanel">
+<iframe src="https://www.tradingview.com/crypto-screener/" allow="fullscreen"></iframe>
+</div>
+
+<div id="marketForex" class="marketPanel">
+<iframe src="https://www.tradingview.com/forex-cross-rates/" allow="fullscreen"></iframe>
+</div>
+
+</section>
+
+
+<!-- CONFLICT MAP -->
+
+<section id="conflict" class="tab">
+<iframe src="https://iran.liveuamap.com" allow="fullscreen"></iframe>
+</section>
+
+
+<!-- AIRCRAFT -->
+
+<section id="aircraft" class="tab">
+<iframe src="https://globe.adsbexchange.com" allow="fullscreen"></iframe>
+</section>
+
+
+<!-- MARINE -->
+
+<section id="marine" class="tab">
+<iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2" allow="fullscreen"></iframe>
+</section>
+
+
+<!-- CYBER -->
+
+<section id="cyber" class="tab">
+<iframe src="https://threatmap.checkpoint.com/" style="width:100%;height:85vh;border:0;" allow="fullscreen"></iframe>
+</section>
+
+
+<!-- OVERVIEW -->
+
+<section id="overview" class="tab">
+
+<div class="overviewWall">
+
+<div class="overviewMap">
+<iframe src="https://iran.liveuamap.com" allow="fullscreen"></iframe>
+</div>
+
+<div class="overviewNews">
+
+<div class="overviewRT">
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3" allow="fullscreen"></iframe>
+</div>
+
+<div class="overviewAJ">
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo" allow="fullscreen"></iframe>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- RADIO -->
+
+<section id="radio" class="tab">
+
+<div class="radioContainer">
+<iframe src="https://radio.garden/" allow="fullscreen"></iframe>
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footerRadar">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="footerContent">
+
+<div class="footerLogo">
+<img src="BSG2.png">
+</div>
+
+<a href="https://BlackSurvivalGear.com" target="_blank">
+BlackSurvivalGear.com
+</a>
+
+<div class="versionTag">
+BSG Strategic Awareness OSINT — V3
+</div>
+
+</div>
+
+</footer>
+
+
 <script>
-function showLive(channel) {
-    if (channel === 'quadview') {
-        document.getElementById('liveSingle').style.display = 'none';
-        document.getElementById('liveQuad').style.display = 'block'; // Display quad view
-    } else {
-        document.getElementById('liveSingle').style.display = 'block';
-        document.getElementById('liveQuad').style.display = 'none'; // Hide quad view
-    }
+
+
+/* SPLASH */
+
+setTimeout(function(){
+
+const splash=document.getElementById("introRadar")
+
+if(splash){
+splash.remove()
 }
+
+},4000)
+
+
+
+/* CLOCK */
+
+function updateClock(){
+
+const now=new Date()
+
+const days=["SUN","MON","TUE","WED","THU","FRI","SAT"]
+const months=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+
+let day=days[now.getDay()]
+let date=now.getDate()
+let month=months[now.getMonth()]
+let year=now.getFullYear()
+
+let hours=now.getHours()
+let minutes=now.getMinutes()
+
+let ampm=hours>=12?"PM":"AM"
+
+hours=hours%12
+hours=hours?hours:12
+
+minutes=minutes<10?"0"+minutes:minutes
+
+document.getElementById("dateTime").textContent=
+`${day} ${date} ${month} ${year} • ${hours}:${minutes}${ampm}`
+
+}
+
+updateClock()
+setInterval(updateClock,1000)
+
+
+
+/* TAB SWITCH */
+
+document.querySelectorAll("nav button").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+
+btn.classList.add("active")
+
+document.getElementById(btn.dataset.tab).classList.add("active")
+
+document.querySelectorAll(".subMenu").forEach(m=>m.classList.remove("active"))
+
+if(btn.dataset.tab==="live")
+document.getElementById("liveMenu").classList.add("active")
+
+if(btn.dataset.tab==="markets")
+document.getElementById("marketMenu").classList.add("active")
+
+})
+
+})
+
+
+
+/* LIVE SWITCH */
+
+function showLive(channel){
+
+const frame=document.getElementById("liveFrame")
+const single=document.getElementById("liveSingle")
+const quad=document.getElementById("liveQuad")
+
+single.classList.remove("fullScreenMode")
+
+single.style.display="block"
+quad.style.display="none"
+
+if(channel==="rt")
+frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+
+if(channel==="aj")
+frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+
+if(channel==="sky")
+frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
+
+if(channel==="wion")
+frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+
+if(channel==="quad"){
+single.style.display="none"
+quad.style.display="grid"
+}
+
+if(channel==="fullscreen"){
+single.classList.add("fullScreenMode")
+}
+
+}
+
+
+
+/* MARKET SWITCH */
+
+function showMarketPanel(panel){
+
+document.querySelectorAll(".marketPanel").forEach(p=>{
+p.classList.remove("active")
+})
+
+document.getElementById(
+"market"+panel.charAt(0).toUpperCase()+panel.slice(1)
+).classList.add("active")
+
+}
+
 </script>
+
+</body>
+</html>
