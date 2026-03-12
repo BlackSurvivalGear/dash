@@ -18,6 +18,7 @@
 <body>
 
 
+
 <!-- SPLASH -->
 
 <div id="introRadar">
@@ -30,7 +31,7 @@
 
 
 
-<!-- RADAR BACKGROUND -->
+<!-- BACKGROUND RADAR -->
 
 <div class="siteRadar">
 
@@ -72,7 +73,7 @@
 
 
 
-<!-- NAV -->
+<!-- MAIN NAV -->
 
 <nav>
 
@@ -90,6 +91,36 @@
 
 
 
+<!-- PERSISTENT SUB MENU -->
+
+<div id="subMenuBar">
+
+
+<div id="liveMenu" class="subMenu active">
+
+<button onclick="showLive('rt')" class="active">RT</button>
+<button onclick="showLive('aj')">Al Jazeera</button>
+<button onclick="showLive('sky')">Sky</button>
+<button onclick="showLive('wion')">WION</button>
+<button onclick="showLive('quad')">Quad View</button>
+
+</div>
+
+
+<div id="marketMenu" class="subMenu">
+
+<button onclick="showMarketPanel('news')" class="active">News</button>
+<button onclick="showMarketPanel('macro')">Global Markets</button>
+<button onclick="showMarketPanel('crypto')">Crypto</button>
+<button onclick="showMarketPanel('forex')">Forex</button>
+
+</div>
+
+
+</div>
+
+
+
 <!-- HOME -->
 
 <section id="home" class="tab active">
@@ -103,7 +134,7 @@
 <h2>BSG Strategic Awareness Dashboard</h2>
 
 <p>
-Integrated OSINT monitoring platform providing real-time intelligence across conflicts, financial markets, cyber activity, aviation tracking and maritime movement.
+Integrated OSINT monitoring platform providing real-time intelligence across conflicts, markets, cyber activity, aviation tracking and maritime movement.
 </p>
 
 </div>
@@ -117,17 +148,6 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 <!-- LIVE NEWS -->
 
 <section id="live" class="tab">
-
-<div class="liveNav">
-
-<button onclick="showLive('rt')">RT</button>
-<button onclick="showLive('aj')">Al Jazeera</button>
-<button onclick="showLive('sky')">Sky</button>
-<button onclick="showLive('wion')">WION</button>
-<button onclick="showLive('quad')">Quad View</button>
-
-</div>
-
 
 <div id="liveSingle" class="livePlayer">
 
@@ -154,15 +174,6 @@ allowfullscreen></iframe>
 <!-- MARKETS -->
 
 <section id="markets" class="tab">
-
-<div class="marketsNav">
-
-<button onclick="showMarketPanel('news')">News</button>
-<button onclick="showMarketPanel('macro')">Global Markets</button>
-<button onclick="showMarketPanel('crypto')">Crypto</button>
-<button onclick="showMarketPanel('forex')">Forex</button>
-
-</div>
 
 <div id="marketNews" class="marketPanel active">
 
@@ -260,9 +271,7 @@ allowfullscreen></iframe>
 <section id="radio" class="tab">
 
 <div class="radioContainer">
-
 <iframe src="https://radio.garden/"></iframe>
-
 </div>
 
 </section>
@@ -290,6 +299,8 @@ allowfullscreen></iframe>
 
 
 <script>
+
+
 
 /* CLOCK */
 
@@ -325,7 +336,7 @@ setInterval(updateClock,1000)
 
 
 
-/* TAB SYSTEM */
+/* TAB SWITCHING */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -338,13 +349,21 @@ btn.classList.add("active")
 
 document.getElementById(btn.dataset.tab).classList.add("active")
 
-})
+document.querySelectorAll(".subMenu").forEach(m=>m.classList.remove("active"))
+
+if(btn.dataset.tab==="live")
+document.getElementById("liveMenu").classList.add("active")
+
+if(btn.dataset.tab==="markets")
+document.getElementById("marketMenu").classList.add("active")
 
 })
 
+})
 
 
-/* LIVE CHANNEL SWITCH */
+
+/* LIVE SWITCH */
 
 function showLive(channel){
 
@@ -371,6 +390,20 @@ if(channel==="quad"){
 single.style.display="none"
 quad.style.display="grid"
 }
+
+}
+
+
+
+/* MARKET SWITCH */
+
+function showMarketPanel(panel){
+
+document.querySelectorAll(".marketPanel").forEach(p=>{
+p.classList.remove("active")
+})
+
+document.getElementById("market"+panel.charAt(0).toUpperCase()+panel.slice(1)).classList.add("active")
 
 }
 
