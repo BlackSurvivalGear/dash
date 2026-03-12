@@ -59,7 +59,7 @@
 
 
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 
 <nav>
 
@@ -150,16 +150,6 @@ markets, cyber activity, aviation tracking and maritime movement.
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allowfullscreen></iframe>
-
-</div>
-
-
-<div id="liveQuad" class="quadGrid">
-
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/Ap-UM1O9RBU"></iframe>
-<iframe src="https://www.youtube.com/embed/mgBA2ouoGMg"></iframe>
 
 </div>
 
@@ -263,13 +253,11 @@ BSG Strategic Awareness OSINT — VBASE
 
 
 
-/* SPLASH EXIT HARDENED */
+/* SPLASH EXIT */
 
 window.addEventListener("load",function(){
 
-const splash = document.getElementById("introRadar")
-
-if(!splash) return
+const splash=document.getElementById("introRadar")
 
 setTimeout(function(){
 
@@ -348,6 +336,95 @@ showMarineTraffic()
 }
 
 })
+
+
+
+/* LIVE CHANNEL SWITCH */
+
+function showLive(event,channel){
+
+const frame=document.getElementById("liveFrame")
+
+document.querySelectorAll("#liveMenu button").forEach(b=>{
+b.classList.remove("active")
+})
+
+event.target.classList.add("active")
+
+if(channel==="rt"){
+frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+}
+
+if(channel==="aj"){
+frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+}
+
+if(channel==="france"){
+frame.src="https://www.youtube.com/embed/Ap-UM1O9RBU"
+}
+
+if(channel==="uk"){
+frame.src="https://www.youtube.com/embed/mgBA2ouoGMg"
+}
+
+}
+
+
+
+/* MARINE WATCH */
+
+function showMarineTraffic(event){
+
+const frame=document.getElementById("marineFrame")
+
+document.querySelectorAll("#marineMenu button").forEach(b=>{
+b.classList.remove("active")
+})
+
+if(event) event.target.classList.add("active")
+
+frame.src="https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"
+
+}
+
+
+
+function showMarinePoint(event,point){
+
+const frame=document.getElementById("marineFrame")
+
+document.querySelectorAll("#marineMenu button").forEach(b=>{
+b.classList.remove("active")
+})
+
+event.target.classList.add("active")
+
+
+if(point==="hormuz")
+frame.src="https://maps.google.com/maps?q=Strait%20of%20Hormuz&t=k&z=7&output=embed"
+
+if(point==="malacca")
+frame.src="https://maps.google.com/maps?q=Strait%20of%20Malacca&t=k&z=7&output=embed"
+
+if(point==="bab")
+frame.src="https://maps.google.com/maps?q=Bab%20el%20Mandeb&t=k&z=7&output=embed"
+
+if(point==="suez")
+frame.src="https://maps.google.com/maps?q=Suez%20Canal&t=k&z=7&output=embed"
+
+if(point==="panama")
+frame.src="https://maps.google.com/maps?q=Panama%20Canal&t=k&z=7&output=embed"
+
+if(point==="bosporus")
+frame.src="https://maps.google.com/maps?q=Bosporus%20Strait&t=k&z=7&output=embed"
+
+if(point==="gibraltar")
+frame.src="https://maps.google.com/maps?q=Strait%20of%20Gibraltar&t=k&z=7&output=embed"
+
+if(point==="dover")
+frame.src="https://maps.google.com/maps?q=Strait%20of%20Dover&t=k&z=7&output=embed"
+
+}
 
 </script>
 
