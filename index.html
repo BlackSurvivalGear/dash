@@ -14,11 +14,10 @@
 
 </head>
 
-
 <body>
 
 
-<!-- VF1 HARDENED SPLASH -->
+<!-- SPLASH -->
 
 <div id="introRadar">
 
@@ -37,11 +36,10 @@
 <div class="headerVideo">
 
 <video autoplay muted loop playsinline>
-<source src="HEADER3.mp4" type="video/mp4">
+<source src="HEADER3.mp4">
 </video>
 
 </div>
-
 
 <div class="headerContent">
 
@@ -50,7 +48,7 @@
 <div class="radarLogo">
 
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 
 </div>
@@ -89,7 +87,7 @@
 
 <div id="subMenuBar">
 
-<div id="liveMenu" class="subMenu active">
+<div id="liveMenu" class="subMenu">
 
 <button onclick="showLive('rt')">RT</button>
 <button onclick="showLive('aj')">Al Jazeera</button>
@@ -105,7 +103,6 @@
 
 
 <main>
-
 
 
 <!-- HOME -->
@@ -141,8 +138,7 @@ markets, cyber activity, aviation tracking and maritime movement.
 
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allowfullscreen>
-</iframe>
+allowfullscreen></iframe>
 
 </div>
 
@@ -163,9 +159,7 @@ allowfullscreen>
 <!-- MARKETS -->
 
 <section id="markets" class="tab">
-
 <iframe src="https://www.tradingview.com/markets/"></iframe>
-
 </section>
 
 
@@ -173,9 +167,7 @@ allowfullscreen>
 <!-- CONFLICT -->
 
 <section id="conflict" class="tab">
-
 <iframe src="https://iran.liveuamap.com"></iframe>
-
 </section>
 
 
@@ -183,9 +175,7 @@ allowfullscreen>
 <!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
-
 <iframe src="https://globe.adsbexchange.com"></iframe>
-
 </section>
 
 
@@ -193,9 +183,7 @@ allowfullscreen>
 <!-- MARINE -->
 
 <section id="marine" class="tab">
-
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
-
 </section>
 
 
@@ -203,9 +191,7 @@ allowfullscreen>
 <!-- CYBER -->
 
 <section id="cyber" class="tab">
-
 <iframe src="https://threatmap.checkpoint.com"></iframe>
-
 </section>
 
 
@@ -236,9 +222,7 @@ allowfullscreen>
 <!-- RADIO -->
 
 <section id="radio" class="tab">
-
 <iframe src="https://radio.garden/"></iframe>
-
 </section>
 
 
@@ -253,7 +237,7 @@ allowfullscreen>
 <div class="footerRadar">
 
 <video autoplay muted loop playsinline>
-<source src="RADAR3.mp4" type="video/mp4">
+<source src="RADAR3.mp4">
 </video>
 
 </div>
@@ -263,7 +247,7 @@ BlackSurvivalGear.com
 </a>
 
 <div class="versionTag">
-BSG Strategic Awareness OSINT — VF1
+BSG Strategic Awareness OSINT — VF1.2
 </div>
 
 </footer>
@@ -273,8 +257,7 @@ BSG Strategic Awareness OSINT — VF1
 <script>
 
 
-
-/* HARDENED SPLASH */
+/* SPLASH */
 
 window.addEventListener("load",()=>{
 
@@ -290,7 +273,7 @@ splash.remove()
 },600)
 }
 
-},3500)
+},1800)
 
 })
 
@@ -302,7 +285,7 @@ function updateClock(){
 
 const now=new Date()
 
-document.getElementById("dateTime").textContent=
+document.getElementById("dateTime").textContent =
 now.toLocaleString()
 
 }
@@ -311,7 +294,7 @@ setInterval(updateClock,1000)
 
 
 
-/* TAB SYSTEM */
+/* TAB SWITCH + SUBMENU */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -324,13 +307,22 @@ btn.classList.add("active")
 
 document.getElementById(btn.dataset.tab).classList.add("active")
 
+const subMenu=document.getElementById("subMenuBar")
+
+if(btn.dataset.tab==="live"){
+subMenu.style.display="block"
+}
+else{
+subMenu.style.display="none"
+}
+
 }
 
 })
 
 
 
-/* LIVE CHANNEL SWITCH */
+/* LIVE SWITCH */
 
 function showLive(channel){
 
