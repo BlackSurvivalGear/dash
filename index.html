@@ -29,7 +29,17 @@
 
 
 
+<!-- HEADER -->
+
 <header class="mainHeader">
+
+<div class="headerVideo">
+<video autoplay muted loop playsinline>
+<source src="HEADER3.mp4" type="video/mp4">
+</video>
+</div>
+
+<div class="headerContent">
 
 <div class="headerLeft">
 
@@ -45,9 +55,13 @@
 
 <div id="dateTime"></div>
 
+</div>
+
 </header>
 
 
+
+<!-- NAV -->
 
 <nav>
 
@@ -65,6 +79,8 @@
 
 
 
+<!-- SUB MENU -->
+
 <div id="subMenuBar">
 
 <div id="liveMenu" class="subMenu">
@@ -81,6 +97,8 @@
 </div>
 
 
+
+<!-- HOME -->
 
 <section id="home" class="tab active">
 
@@ -103,6 +121,8 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 </section>
 
 
+
+<!-- LIVE -->
 
 <section id="live" class="tab">
 
@@ -129,27 +149,87 @@ allowfullscreen></iframe>
 
 
 
+<!-- MARKETS -->
+
+<section id="markets" class="tab">
+
+<div class="quadGrid" style="display:grid">
+
+<iframe src="https://www.youtube.com/embed/I8EEKdYZL34"></iframe>
+<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
+<iframe src="https://www.youtube.com/embed/0TzJ5Ov-_Vs"></iframe>
+<iframe src="https://www.youtube.com/embed/KQp-e_XQnDE"></iframe>
+
+</div>
+
+</section>
+
+
+
+<!-- CONFLICT -->
+
 <section id="conflict" class="tab">
 <iframe src="https://iran.liveuamap.com"></iframe>
 </section>
+
+
+
+<!-- AIRCRAFT -->
 
 <section id="aircraft" class="tab">
 <iframe src="https://globe.adsbexchange.com"></iframe>
 </section>
 
+
+
+<!-- MARINE -->
+
 <section id="marine" class="tab">
 <iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2"></iframe>
 </section>
 
+
+
+<!-- CYBER -->
+
 <section id="cyber" class="tab">
 <iframe src="https://threatmap.checkpoint.com"></iframe>
 </section>
+
+
+
+<!-- OVERVIEW -->
+
+<section id="overview" class="tab">
+
+<div class="overviewWall">
+
+<div>
+<iframe src="https://iran.liveuamap.com"></iframe>
+</div>
+
+<div class="overviewNews">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- RADIO -->
 
 <section id="radio" class="tab">
 <iframe src="https://radio.garden"></iframe>
 </section>
 
 
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -165,9 +245,7 @@ allowfullscreen></iframe>
 
 <br>
 
-<a href="https://BlackSurvivalGear.com">
-BlackSurvivalGear.com
-</a>
+<a href="https://BlackSurvivalGear.com">BlackSurvivalGear.com</a>
 
 </div>
 
@@ -184,37 +262,24 @@ BSG Strategic Awareness OSINT — V3
 <script>
 
 
-/* SPLASH REMOVE */
-
 setTimeout(function(){
 
 const splash=document.getElementById("introRadar");
-
-if(splash){
-splash.remove();
-}
+if(splash){ splash.remove(); }
 
 },4000);
 
 
 
-/* CLOCK */
-
 function updateClock(){
-
 const now=new Date()
-
-document.getElementById("dateTime").textContent=
-now.toLocaleString()
-
+document.getElementById("dateTime").textContent = now.toLocaleString()
 }
 
 setInterval(updateClock,1000)
 updateClock()
 
 
-
-/* TAB SWITCH */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -224,7 +289,6 @@ document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
 document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
 btn.classList.add("active")
-
 document.getElementById(btn.dataset.tab).classList.add("active")
 
 document.querySelectorAll(".subMenu").forEach(m=>m.classList.remove("active"))
@@ -239,8 +303,6 @@ document.getElementById("liveMenu").classList.add("active")
 
 
 
-/* LIVE SWITCH */
-
 function showLive(channel){
 
 const frame=document.getElementById("liveFrame")
@@ -250,17 +312,10 @@ const quad=document.getElementById("liveQuad")
 single.style.display="block"
 quad.style.display="none"
 
-if(channel==="rt")
-frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-
-if(channel==="aj")
-frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
-
-if(channel==="sky")
-frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
-
-if(channel==="wion")
-frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+if(channel==="rt") frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+if(channel==="aj") frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+if(channel==="sky") frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
+if(channel==="wion") frame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
 
 if(channel==="quad"){
 single.style.display="none"
@@ -270,10 +325,7 @@ quad.style.display="grid"
 if(channel==="fullscreen"){
 single.style.display="none"
 quad.style.display="grid"
-
-if(quad.requestFullscreen){
 quad.requestFullscreen()
-}
 }
 
 }
