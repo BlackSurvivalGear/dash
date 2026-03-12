@@ -1,183 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- =====================================
+OVERVIEW COMMAND WALL
+===================================== -->
 
-<head>
+<section id="overview" class="tab">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="overviewFullscreen">
 
-<title>BSG Strategic Awareness Dashboard</title>
+<!-- LEFT MAP -->
 
-<link rel="stylesheet" href="style.css">
+<div class="overviewMap">
 
-</head>
-
-<body>
-
-<header>
-<h1>BSG Strategic Awareness Dashboard</h1>
-</header>
-
-
-<!-- NAVIGATION -->
-
-<div class="tabs">
-
-<button onclick="openTab('overview')" class="tabbtn">Overview</button>
-
-<button onclick="openTab('live')" class="tabbtn">Live News</button>
-
-<button onclick="openTab('markets')" class="tabbtn">Markets</button>
-
-<button onclick="openTab('maritime')" class="tabbtn">Maritime</button>
-
-<button onclick="openTab('radio')" class="tabbtn">Global Radio</button>
+<iframe src="https://iran.liveuamap.com"></iframe>
 
 </div>
 
 
+<!-- RIGHT NEWS -->
 
-<!-- OVERVIEW -->
+<div class="overviewNews">
 
-<div id="overview" class="tabcontent">
-
-<div class="quad-grid">
-
-<div class="panel">
-<iframe src="https://liveuamap.com"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- LIVE NEWS -->
-
-<div id="live" class="tabcontent">
-
-<div class="quad-grid">
-
-<iframe src="https://www.youtube.com/embed/bNyUyrR0PHo"></iframe>
-
-<iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-
-<iframe src="https://www.youtube.com/embed/pykpO5kQJ98"></iframe>
-
-<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
-
-</div>
-
-</div>
-
-
-
-<!-- MARKETS -->
-
-<div id="markets" class="tabcontent">
-
-<div class="quad-grid">
-
-<iframe src="https://s.tradingview.com/embed-widget/market-quotes/?locale=en"></iframe>
-
-<iframe src="https://s.tradingview.com/embed-widget/crypto-screener/?locale=en"></iframe>
-
-<iframe src="https://s.tradingview.com/embed-widget/forex-cross-rates/?locale=en"></iframe>
-
-<iframe src="https://cryptobubbles.net"></iframe>
-
-</div>
-
-</div>
-
-
-
-<!-- MARITIME -->
-
-<div id="maritime" class="tabcontent">
+<div class="overviewRT">
 
 <iframe
-src="https://liveuamap.com"
-style="width:100%;height:90vh;border:none;">
+src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+allowfullscreen>
 </iframe>
 
 </div>
 
+<div class="overviewAJ">
 
+<iframe
+src="https://www.youtube.com/embed/gCNeDWCI0vo"
+allowfullscreen>
+</iframe>
 
-<!-- GLOBAL RADIO WALL (V2 FEATURE) -->
-
-<div id="radio" class="tabcontent">
-
-<div class="quad-grid">
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/london"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/lagos"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/washington-dc"></iframe>
-</div>
-
-<div class="panel">
-<iframe src="https://radio.garden/visit/moscow"></iframe>
 </div>
 
 </div>
 
 </div>
 
-
-
-<footer>
-BlackSurvivalGear.com
-</footer>
-
-
-
-<script>
-
-function openTab(tabName){
-
-var i;
-
-var x=document.getElementsByClassName("tabcontent");
-
-for(i=0;i<x.length;i++){
-
-x[i].style.display="none";
-
-}
-
-document.getElementById(tabName).style.display="block";
-
-}
-
-window.onload=function(){
-
-openTab("overview");
-
-}
-
-</script>
-
-
-</body>
-</html>
+</section>
