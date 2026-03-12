@@ -16,11 +16,28 @@
 
 <body>
 
+
+<!-- SPLASH SCREEN -->
+
+<div id="introRadar">
+
+<video autoplay muted playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+
+</div>
+
+
+
 <header class="mainHeader">
 
 <div class="headerLeft">
 
-<img src="RADAR3.gif" class="headerLogo">
+<div class="radarLogo">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
+</div>
 
 <h1>Global Strategic Awareness OSINT</h1>
 
@@ -93,9 +110,7 @@ Integrated OSINT monitoring platform providing real-time intelligence across con
 
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-allow="fullscreen"
-loading="lazy">
-</iframe>
+allowfullscreen></iframe>
 
 </div>
 
@@ -140,11 +155,13 @@ loading="lazy">
 
 <div class="footerWrap">
 
-<div class="footerLeft"></div>
+<div></div>
 
 <div class="footerCenter">
 
-<img src="RADAR3.gif" class="footerLogo">
+<video autoplay muted loop playsinline class="footerLogo">
+<source src="RADAR3.mp4" type="video/mp4">
+</video>
 
 <br>
 
@@ -166,6 +183,23 @@ BSG Strategic Awareness OSINT — V3
 
 <script>
 
+
+/* SPLASH REMOVE */
+
+setTimeout(function(){
+
+const splash=document.getElementById("introRadar");
+
+if(splash){
+splash.remove();
+}
+
+},4000);
+
+
+
+/* CLOCK */
+
 function updateClock(){
 
 const now=new Date()
@@ -179,6 +213,8 @@ setInterval(updateClock,1000)
 updateClock()
 
 
+
+/* TAB SWITCH */
 
 document.querySelectorAll("nav button").forEach(btn=>{
 
@@ -202,6 +238,8 @@ document.getElementById("liveMenu").classList.add("active")
 })
 
 
+
+/* LIVE SWITCH */
 
 function showLive(channel){
 
@@ -230,14 +268,12 @@ quad.style.display="grid"
 }
 
 if(channel==="fullscreen"){
-
 single.style.display="none"
 quad.style.display="grid"
 
 if(quad.requestFullscreen){
 quad.requestFullscreen()
 }
-
 }
 
 }
