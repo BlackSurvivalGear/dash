@@ -1,3 +1,5 @@
+/* /css/style.css */
+
 body{
 margin:0;
 font-family:'Rajdhani',sans-serif;
@@ -6,7 +8,48 @@ color:white;
 overflow-x:hidden;
 }
 
+/* HEADER */
 
+.mainHeader{
+position:relative;
+height:90px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-bottom:1px solid #00ffaa33;
+}
+
+.headerVideo{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:.15;
+z-index:-1;
+}
+
+.headerVideo video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.headerContent{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.radarLogo video{
+width:60px;
+}
+
+.headerMarkets{
+margin-left:20px;
+color:#00ffaa;
+font-weight:600;
+}
 
 /* SPLASH */
 
@@ -27,8 +70,6 @@ z-index:9999;
 width:420px;
 }
 
-
-
 /* RADAR BACKGROUND */
 
 .siteRadar{
@@ -47,8 +88,6 @@ height:100%;
 object-fit:cover;
 }
 
-
-
 /* NAV */
 
 nav{
@@ -66,9 +105,12 @@ border:1px solid #00ffaa55;
 color:#00ffaa;
 padding:6px 16px;
 cursor:pointer;
+font-family:'Rajdhani',sans-serif;
 }
 
-
+nav button.active{
+background:#00ffaa22;
+}
 
 /* SUB MENU */
 
@@ -97,8 +139,6 @@ padding:4px 12px;
 cursor:pointer;
 }
 
-
-
 /* TAB */
 
 .tab{
@@ -110,16 +150,12 @@ padding:10px 20px;
 display:block;
 }
 
-
-
 /* LIVE PLAYER */
 
 .livePlayer iframe{
 width:100%;
 height:75vh;
 }
-
-
 
 /* QUAD VIEW */
 
@@ -134,9 +170,8 @@ height:calc(100vh - 180px);
 .quadGrid iframe{
 width:100%;
 height:100%;
+border:0;
 }
-
-
 
 /* MARKET */
 
@@ -148,16 +183,13 @@ display:none;
 display:block;
 }
 
-
-
-/* MAP */
+/* MAP / EMBEDS */
 
 section iframe{
 width:100%;
 height:80vh;
+border:0;
 }
-
-
 
 /* OVERVIEW */
 
@@ -168,8 +200,61 @@ gap:6px;
 height:calc(100vh - 170px);
 }
 
+.overviewMap iframe{
+height:100%;
+}
+
 .overviewNews{
 display:grid;
 grid-template-rows:1fr 1fr;
 gap:6px;
+}
+
+.overviewNews iframe{
+height:100%;
+}
+
+/* RADIO */
+
+.radioContainer iframe{
+width:100%;
+height:80vh;
+border:0;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:20px;
+padding:20px;
+text-align:center;
+border-top:1px solid #00ffaa33;
+position:relative;
+}
+
+.footerRadar{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:.08;
+z-index:-1;
+}
+
+.footerRadar video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+footer a{
+color:#00ffaa;
+text-decoration:none;
+}
+
+.versionTag{
+margin-top:6px;
+font-size:12px;
+opacity:.7;
 }
