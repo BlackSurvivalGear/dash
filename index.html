@@ -76,7 +76,7 @@
 
 
 
-<!-- SUBMENUS -->
+<!-- SUB MENUS -->
 
 <div id="subMenuBar">
 
@@ -150,6 +150,15 @@ markets, cyber activity, aviation tracking and maritime movement.
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allowfullscreen></iframe>
+
+</div>
+
+<div id="liveQuad" class="quadGrid">
+
+<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe src="https://www.youtube.com/embed/Ap-UM1O9RBU"></iframe>
+<iframe src="https://www.youtube.com/embed/9Auq9mYxFEE"></iframe>
 
 </div>
 
@@ -253,7 +262,7 @@ BSG Strategic Awareness OSINT — VBASE
 
 
 
-/* SPLASH EXIT */
+/* SPLASH */
 
 window.addEventListener("load",function(){
 
@@ -339,7 +348,7 @@ showMarineTraffic()
 
 
 
-/* LIVE CHANNEL SWITCH */
+/* LIVE SWITCH */
 
 function showLive(event,channel){
 
@@ -351,27 +360,47 @@ b.classList.remove("active")
 
 event.target.classList.add("active")
 
-if(channel==="rt"){
+document.getElementById("liveSingle").style.display="block"
+document.getElementById("liveQuad").style.display="none"
+
+if(channel==="rt")
 frame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-}
 
-if(channel==="aj"){
+if(channel==="aj")
 frame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
-}
 
-if(channel==="france"){
+if(channel==="france")
 frame.src="https://www.youtube.com/embed/Ap-UM1O9RBU"
+
+if(channel==="uk")
+frame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
+
+if(channel==="quad"){
+document.getElementById("liveSingle").style.display="none"
+document.getElementById("liveQuad").style.display="grid"
 }
 
-if(channel==="uk"){
-frame.src="https://www.youtube.com/embed/mgBA2ouoGMg"
+}
+
+
+
+function fullscreenPlayer(){
+
+let player=document.getElementById("liveQuad")
+
+if(player.style.display!=="grid"){
+player=document.getElementById("liveSingle")
+}
+
+if(player.requestFullscreen){
+player.requestFullscreen()
 }
 
 }
 
 
 
-/* MARINE WATCH */
+/* MARINE */
 
 function showMarineTraffic(event){
 
@@ -398,7 +427,6 @@ b.classList.remove("active")
 })
 
 event.target.classList.add("active")
-
 
 if(point==="hormuz")
 frame.src="https://maps.google.com/maps?q=Strait%20of%20Hormuz&t=k&z=7&output=embed"
