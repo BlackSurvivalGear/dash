@@ -3,6 +3,28 @@ margin:0;
 font-family:'Rajdhani',sans-serif;
 background:#020606;
 color:white;
+overflow-x:hidden;
+}
+
+
+
+/* SPLASH */
+
+#introRadar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+}
+
+#introRadar video{
+width:420px;
 }
 
 
@@ -11,9 +33,7 @@ color:white;
 
 .mainHeader{
 position:relative;
-height:90px;
 border-bottom:1px solid #00ffaa33;
-overflow:hidden;
 }
 
 .headerVideo{
@@ -23,6 +43,7 @@ left:0;
 width:100%;
 height:100%;
 opacity:.15;
+z-index:-1;
 }
 
 .headerVideo video{
@@ -31,23 +52,21 @@ height:100%;
 object-fit:cover;
 }
 
-.headerInner{
-position:relative;
-z-index:2;
+.headerContent{
 display:flex;
+align-items:center;
 justify-content:space-between;
-align-items:center;
-padding:15px 25px;
+padding:15px 30px;
 }
 
-.logoWrap{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.logoWrap video{
+.radarLogo video{
 height:55px;
+width:55px;
+object-fit:cover;
+}
+
+#dateTime{
+color:#00ffaa;
 }
 
 
@@ -58,7 +77,8 @@ nav{
 display:flex;
 justify-content:center;
 gap:14px;
-padding:14px;
+flex-wrap:wrap;
+padding:12px;
 border-bottom:1px solid #00ffaa33;
 }
 
@@ -72,11 +92,37 @@ cursor:pointer;
 
 
 
+/* SUB MENU */
+
+#subMenuBar{
+position:sticky;
+top:90px;
+background:#020606;
+border-bottom:1px solid #00ffaa33;
+padding:6px 20px;
+}
+
+.subMenu{
+display:flex;
+justify-content:center;
+gap:10px;
+}
+
+.subMenu button{
+background:#020606;
+border:1px solid #00ffaa55;
+color:#00ffaa;
+padding:4px 12px;
+cursor:pointer;
+}
+
+
+
 /* TABS */
 
 .tab{
 display:none;
-padding:20px;
+padding:10px 20px;
 }
 
 .tab.active{
@@ -87,25 +133,27 @@ display:block;
 
 /* HERO */
 
-.hero{
+.homeHero{
 position:relative;
-height:60vh;
+height:65vh;
+overflow:hidden;
 }
 
-.hero img{
+.heroImage{
+position:absolute;
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
-.heroText{
+.heroOverlay{
 position:absolute;
-bottom:50px;
-left:50px;
-background:rgba(0,0,0,.6);
-padding:25px;
-border-left:4px solid #00ffaa;
-max-width:420px;
+bottom:40px;
+left:40px;
+background:rgba(0,0,0,0.6);
+padding:20px;
+max-width:500px;
+border-left:3px solid #00ffaa;
 }
 
 
@@ -114,34 +162,53 @@ max-width:420px;
 
 .livePlayer iframe{
 width:100%;
-height:70vh;
+height:75vh;
 border:0;
 }
 
 
 
-/* OVERVIEW GRID */
+/* QUAD GRID */
 
-.overviewGrid{
-display:grid;
-grid-template-columns:2fr 1fr;
+.quadGrid{
+display:none;
+grid-template-columns:1fr 1fr;
 grid-template-rows:1fr 1fr;
-gap:6px;
-height:70vh;
+gap:4px;
+height:calc(100vh - 180px);
 }
 
-.overviewGrid iframe:first-child{
-grid-row:1 / span 2;
+.quadGrid iframe{
+width:100%;
+height:100%;
+border:0;
 }
 
 
 
-/* IFRAME */
+/* MARKETS + MAPS */
 
 section iframe{
 width:100%;
-height:70vh;
+height:80vh;
 border:0;
+}
+
+
+
+/* OVERVIEW */
+
+.overviewWall{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:6px;
+height:calc(100vh - 170px);
+}
+
+.overviewNews{
+display:grid;
+grid-template-rows:1fr 1fr;
+gap:6px;
 }
 
 
@@ -150,14 +217,12 @@ border:0;
 
 footer{
 border-top:1px solid #00ffaa33;
+padding:25px;
 text-align:center;
-padding:40px 20px;
 }
 
-footer img{
-width:140px;
-display:block;
-margin:auto;
+.footerRadar video{
+width:60px;
 margin-bottom:10px;
 }
 
@@ -165,9 +230,9 @@ footer a{
 color:#00ffaa;
 text-decoration:none;
 display:block;
-margin-bottom:8px;
+margin-bottom:6px;
 }
 
 .versionTag{
-color:#777;
+opacity:.7;
 }
