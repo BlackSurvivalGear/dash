@@ -1,285 +1,279 @@
- border:0;
- 
- .homeHero{
- position:relative;
- height:65vh;
- overflow:hidden;
- }
- 
- .heroImage{
- position:absolute;
- width:100%;
- height:100%;
- object-fit:cover;
- }
- 
- .heroOverlay{
- position:absolute;
- bottom:140px;
- left:40px;
- background:rgba(0,0,0,.6);
- padding:20px;
- max-width:500px;
- border-left:3px solid #00ffaa;
- }
- 
- 
-+/* LIVE FEED WIDGET */
-+
-+.liveFeedWidget{
-+max-width:980px;
-+margin:18px auto 8px;
-+padding:0;
-+border:1px solid #00ffaa44;
-+background:#0d0e0f;
-+border-radius:6px;
-+overflow:hidden;
-+}
-+
-+.lf-header{
-+display:flex;
-+align-items:center;
-+justify-content:space-between;
-+padding:14px 18px;
-+border-bottom:1px solid #ffffff1a;
-+background:#141516;
-+}
-+
-+.lf-header-left,
-+.lf-header-right{
-+display:flex;
-+align-items:center;
-+gap:10px;
-+}
-+
-+.lf-live-indicator{
-+display:flex;
-+align-items:center;
-+gap:6px;
-+font-size:10px;
-+letter-spacing:.08em;
-+color:#c8a96e;
-+text-transform:uppercase;
-+}
-+
-+.lf-live-dot{
-+width:6px;
-+height:6px;
-+border-radius:50%;
-+background:#c8a96e;
-+animation:lfBlink 2s ease-in-out infinite;
-+}
-+
-+@keyframes lfBlink{
-+0%,100%{opacity:1;box-shadow:0 0 0 0 #c8a96e66;}
-+50%{opacity:.5;box-shadow:0 0 0 4px #c8a96e00;}
-+}
-+
-+.lf-header-title{
-+font-size:12px;
-+letter-spacing:.04em;
-+}
-+
-+.lf-header-title span,
-+.lf-timestamp,
-+.lf-footer-count,
-+.lf-item-loc,
-+.lf-item-time{
-+color:#8f8b85;
-+}
-+
-+.lf-timestamp{
-+font-size:10px;
-+}
-+
-+.lf-refresh-btn{
-+font-size:10px;
-+letter-spacing:.06em;
-+text-transform:uppercase;
-+color:#c8a96e;
-+background:transparent;
-+border:1px solid #c8a96e55;
-+border-radius:4px;
-+padding:4px 10px;
-+cursor:pointer;
-+display:flex;
-+align-items:center;
-+gap:5px;
-+}
-+
-+.lf-refresh-btn:hover{
-+background:#c8a96e14;
-+border-color:#c8a96e99;
-+}
-+
-+.lf-refresh-btn:disabled{
-+opacity:.4;
-+cursor:default;
-+}
-+
-+.lf-refresh-btn.spinning .lf-refresh-icon{
-+animation:lfSpin .7s linear infinite;
-+}
-+
-+@keyframes lfSpin{to{transform:rotate(360deg);}}
-+
-+.lf-filters{
-+display:flex;
-+border-bottom:1px solid #ffffff1a;
-+overflow-x:auto;
-+scrollbar-width:none;
-+}
-+
-+.lf-filters::-webkit-scrollbar{display:none;}
-+
-+.lf-filter-btn{
-+font-size:10px;
-+letter-spacing:.07em;
-+text-transform:uppercase;
-+color:#7f7a74;
-+background:transparent;
-+border:none;
-+border-right:1px solid #ffffff14;
-+padding:10px 16px;
-+cursor:pointer;
-+white-space:nowrap;
-+position:relative;
-+display:flex;
-+align-items:center;
-+gap:6px;
-+}
-+
-+.lf-filter-btn:last-child{border-right:none;}
-+.lf-filter-btn:hover{color:#e8e6e1;background:#ffffff08;}
-+.lf-filter-btn.active{color:#e8e6e1;}
-+.lf-filter-btn.active::after{
-+content:'';
-+position:absolute;
-+left:0;
-+right:0;
-+bottom:0;
-+height:2px;
-+background:#c8a96e;
-+}
-+
-+.lf-filter-btn[data-filter="ukraine"].active::after{background:#4a90d9;}
-+.lf-filter-btn[data-filter="russia"].active::after{background:#d95a4a;}
-+.lf-filter-btn[data-filter="middle-east"].active::after{background:#d9a44a;}
-+.lf-filter-btn[data-filter="world"].active::after{background:#6ab87a;}
-+
-+.lf-count-badge{
-+font-size:9px;
-+background:#1c1e1f;
-+color:#8f8b85;
-+padding:1px 5px;
-+border-radius:10px;
-+min-width:18px;
-+text-align:center;
-+}
-+
-+.lf-feed{
-+max-height:520px;
-+overflow-y:auto;
-+}
-+
-+.lf-item{
-+padding:14px 18px;
-+border-bottom:1px solid #ffffff14;
-+}
-+
-+.lf-item:hover{background:#ffffff05;}
-+.lf-item:last-child{border-bottom:none;}
-+
-+.lf-item-meta{
-+display:flex;
-+align-items:center;
-+gap:8px;
-+margin-bottom:6px;
-+flex-wrap:wrap;
-+}
-+
-+.lf-tag{
-+font-size:9px;
-+letter-spacing:.08em;
-+text-transform:uppercase;
-+padding:2px 7px;
-+border-radius:2px;
-+font-weight:600;
-+}
-+
-+.lf-tag-ukraine{background:#4a90d91a;color:#4a90d9;border:1px solid #4a90d933;}
-+.lf-tag-russia{background:#d95a4a1a;color:#d95a4a;border:1px solid #d95a4a33;}
-+.lf-tag-middle-east{background:#d9a44a1a;color:#d9a44a;border:1px solid #d9a44a33;}
-+.lf-tag-world{background:#6ab87a1a;color:#6ab87a;border:1px solid #6ab87a33;}
-+
-+.lf-item-loc,
-+.lf-item-time,
-+.lf-footer-source,
-+.lf-footer-count{
-+font-size:10px;
-+letter-spacing:.04em;
-+}
-+
-+.lf-item-loc::before{content:'◎ ';font-size:8px;}
-+.lf-item-time{margin-left:auto;}
-+
-+.lf-item-text{
-+font-size:14px;
-+font-weight:300;
-+line-height:1.6;
-+}
-+
-+.lf-state-msg{
-+padding:3rem 2rem;
-+text-align:center;
-+font-size:11px;
-+letter-spacing:.06em;
-+text-transform:uppercase;
-+color:#8f8b85;
-+}
-+
-+.lf-footer{
-+display:flex;
-+align-items:center;
-+justify-content:space-between;
-+padding:10px 18px;
-+border-top:1px solid #ffffff1a;
-+background:#141516;
-+}
-+
-+.lf-footer-source{
-+color:#8f8b85;
-+text-decoration:none;
-+}
-+
-+.lf-footer-source:hover{color:#c8a96e;}
-+
-+
- 
- /* FOOTER */
- 
- .mainFooter{
- border-top:1px solid #00ffaa33;
- padding:18px 30px;
- text-align:center;
- position:relative;
- }
- 
- .footerTop{
- display:flex;
- justify-content:center;
- margin-bottom:6px;
- }
- 
- .footerTop video{
- width:55px;
- }
- 
- .footerCenter{
- text-align:center;
- margin-bottom:6px;
- }
- 
- 
-EOF
-)
+.homeHero{
+position:relative;
+height:65vh;
+overflow:hidden;
+}
+
+.heroImage{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.heroOverlay{
+position:absolute;
+bottom:140px;
+left:40px;
+background:rgba(0,0,0,.6);
+padding:20px;
+max-width:500px;
+border-left:3px solid #00ffaa;
+}
+
+
+/* LIVE FEED WIDGET */
+
+.liveFeedWidget{
+max-width:980px;
+margin:18px auto 8px;
+padding:0;
+border:1px solid #00ffaa44;
+background:#0d0e0f;
+border-radius:6px;
+overflow:hidden;
+}
+
+.lf-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 18px;
+border-bottom:1px solid #ffffff1a;
+background:#141516;
+}
+
+.lf-header-left,
+.lf-header-right{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.lf-live-indicator{
+display:flex;
+align-items:center;
+gap:6px;
+font-size:10px;
+letter-spacing:.08em;
+color:#c8a96e;
+text-transform:uppercase;
+}
+
+.lf-live-dot{
+width:6px;
+height:6px;
+border-radius:50%;
+background:#c8a96e;
+animation:lfBlink 2s ease-in-out infinite;
+}
+
+@keyframes lfBlink{
+0%,100%{opacity:1;box-shadow:0 0 0 0 #c8a96e66;}
+50%{opacity:.5;box-shadow:0 0 0 4px #c8a96e00;}
+}
+
+.lf-header-title{
+font-size:12px;
+letter-spacing:.04em;
+}
+
+.lf-header-title span,
+.lf-timestamp,
+.lf-footer-count,
+.lf-item-loc,
+.lf-item-time{
+color:#8f8b85;
+}
+
+.lf-timestamp{
+font-size:10px;
+}
+
+.lf-refresh-btn{
+font-size:10px;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:#c8a96e;
+background:transparent;
+border:1px solid #c8a96e55;
+border-radius:4px;
+padding:4px 10px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:5px;
+}
+
+.lf-refresh-btn:hover{
+background:#c8a96e14;
+border-color:#c8a96e99;
+}
+
+.lf-refresh-btn:disabled{
+opacity:.4;
+cursor:default;
+}
+
+.lf-refresh-btn.spinning .lf-refresh-icon{
+animation:lfSpin .7s linear infinite;
+}
+
+@keyframes lfSpin{to{transform:rotate(360deg);}}
+
+.lf-filters{
+display:flex;
+border-bottom:1px solid #ffffff1a;
+overflow-x:auto;
+scrollbar-width:none;
+}
+
+.lf-filters::-webkit-scrollbar{display:none;}
+
+.lf-filter-btn{
+font-size:10px;
+letter-spacing:.07em;
+text-transform:uppercase;
+color:#7f7a74;
+background:transparent;
+border:none;
+border-right:1px solid #ffffff14;
+padding:10px 16px;
+cursor:pointer;
+white-space:nowrap;
+position:relative;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+.lf-filter-btn:last-child{border-right:none;}
+.lf-filter-btn:hover{color:#e8e6e1;background:#ffffff08;}
+.lf-filter-btn.active{color:#e8e6e1;}
+.lf-filter-btn.active::after{
+content:'';
+position:absolute;
+left:0;
+right:0;
+bottom:0;
+height:2px;
+background:#c8a96e;
+}
+
+.lf-filter-btn[data-filter="ukraine"].active::after{background:#4a90d9;}
+.lf-filter-btn[data-filter="russia"].active::after{background:#d95a4a;}
+.lf-filter-btn[data-filter="middle-east"].active::after{background:#d9a44a;}
+.lf-filter-btn[data-filter="world"].active::after{background:#6ab87a;}
+
+.lf-count-badge{
+font-size:9px;
+background:#1c1e1f;
+color:#8f8b85;
+padding:1px 5px;
+border-radius:10px;
+min-width:18px;
+text-align:center;
+}
+
+.lf-feed{
+max-height:520px;
+overflow-y:auto;
+}
+
+.lf-item{
+padding:14px 18px;
+border-bottom:1px solid #ffffff14;
+}
+
+.lf-item:hover{background:#ffffff05;}
+.lf-item:last-child{border-bottom:none;}
+
+.lf-item-meta{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:6px;
+flex-wrap:wrap;
+}
+
+.lf-tag{
+font-size:9px;
+letter-spacing:.08em;
+text-transform:uppercase;
+padding:2px 7px;
+border-radius:2px;
+font-weight:600;
+}
+
+.lf-tag-ukraine{background:#4a90d91a;color:#4a90d9;border:1px solid #4a90d933;}
+.lf-tag-russia{background:#d95a4a1a;color:#d95a4a;border:1px solid #d95a4a33;}
+.lf-tag-middle-east{background:#d9a44a1a;color:#d9a44a;border:1px solid #d9a44a33;}
+.lf-tag-world{background:#6ab87a1a;color:#6ab87a;border:1px solid #6ab87a33;}
+
+.lf-item-loc,
+.lf-item-time,
+.lf-footer-source,
+.lf-footer-count{
+font-size:10px;
+letter-spacing:.04em;
+}
+
+.lf-item-loc::before{content:'◎ ';font-size:8px;}
+.lf-item-time{margin-left:auto;}
+
+.lf-item-text{
+font-size:14px;
+font-weight:300;
+line-height:1.6;
+}
+
+.lf-state-msg{
+padding:3rem 2rem;
+text-align:center;
+font-size:11px;
+letter-spacing:.06em;
+text-transform:uppercase;
+color:#8f8b85;
+}
+
+.lf-footer{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px 18px;
+border-top:1px solid #ffffff1a;
+background:#141516;
+}
+
+.lf-footer-source{
+color:#8f8b85;
+text-decoration:none;
+}
+
+.lf-footer-source:hover{color:#c8a96e;}
+
+
+
+/* FOOTER */
+
+.mainFooter{
+border-top:1px solid #00ffaa33;
+padding:18px 30px;
+text-align:center;
+position:relative;
+}
+
+.footerTop{
+display:flex;
+justify-content:center;
+margin-bottom:6px;
+}
+
+.footerTop video{
+width:55px;
+}
+
+.footerCenter{
+text-align:center;
+margin-bottom:6px;
+}
