@@ -84,8 +84,7 @@ border-bottom:1px solid #00ffaa33;
 nav button{
 padding:10px 22px;
 background:#021212;
-border:1px
-  border:1px solid #00ffaa66;
+border:1px solid #00ffaa66;
 color:#00ffaa;
 cursor:pointer;
 transition:.25s;
@@ -102,7 +101,6 @@ box-shadow:0 0 18px #00ffaa;
 }
 
 /* SUBMENU */
-
 #subMenuBar{
 background:#020606;
 border-bottom:1px solid #00ffaa33;
@@ -135,7 +133,6 @@ box-shadow:0 0 14px #00ffaa;
 }
 
 /* LIVE */
-
 .livePlayer iframe{
 width:100%;
 height:75vh;
@@ -156,7 +153,6 @@ border:0;
 }
 
 /* PANELS */
-
 .tab{
 display:none;
 padding:10px 20px;
@@ -173,7 +169,6 @@ border:0;
 }
 
 /* HERO */
-
 .homeHero{
 position:relative;
 height:65vh;
@@ -198,7 +193,6 @@ border-left:3px solid #00ffaa;
 }
 
 /* FOOTER */
-
 .mainFooter{
 border-top:1px solid #00ffaa33;
 padding:18px 30px;
