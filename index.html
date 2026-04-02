@@ -159,6 +159,7 @@ font-family:Arial, sans-serif;
 color:white;
 }
 
+/* BACKGROUND IMAGE */
 #africa::before {
 content:'';
 position:absolute;
@@ -170,70 +171,101 @@ opacity:0.3;
 z-index:0;
 }
 
-#africa * { position:relative; z-index:1; }
+/* LAYER FIX */
+#africa * { 
+position:relative; 
+z-index:1; 
+}
 
+/* TITLE */
 #africa .title {
 font-size:32px;
 font-weight:bold;
 margin-bottom:20px;
 text-align:center;
+color:#00ffaa;
 }
 
+/* PANEL BOX */
 #africa #news-widget {
 width:80%;
 max-width:900px;
-border:1px solid rgba(255,255,255,0.2);
+border:1px solid #00ffaa33;
 padding:20px;
-background-color:rgba(0,0,0,0.8);
+background-color:rgba(0,0,0,0.85);
 border-radius:10px;
-backdrop-filter:blur(5px);
+backdrop-filter:blur(6px);
+box-shadow:0 0 20px #00ffaa22;
 }
 
+/* BUTTON ROW */
 #africa .button-row {
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-margin-bottom:10px;
+gap:10px;
+margin-bottom:12px;
 }
 
-#africa button {
-margin:5px;
-padding:10px;
+/* 🔥 MAIN AFRICA BUTTON STYLE */
+#africa button{
+margin:6px;
+padding:10px 18px;
 font-weight:bold;
 cursor:pointer;
-border:none;
-border-radius:5px;
-background:#fff;
-color:#000;
+
+background:#021212;
+color:#00ffaa;
+
+border:1px solid #00ffaa66;
+border-radius:6px;
+
+transition:all .25s ease;
 }
 
-#africa .country-row button {
-background:#333;
-color:#fff;
+/* HOVER */
+#africa button:hover{
+background:#00ffaa22;
+box-shadow:0 0 12px #00ffaa;
+transform:translateY(-1px);
 }
 
-#africa .news-row button {
-background:#006400;
-color:#fff;
+/* ACTIVE */
+#africa button.active{
+background:#00ffaa33;
+box-shadow:0 0 18px #00ffaa;
 }
 
+/* COUNTRY + NEWS BUTTONS (MATCH THEME) */
+#africa .country-row button,
+#africa .news-row button{
+background:#021212;
+color:#00ffaa;
+border:1px solid #00ffaa66;
+}
+
+/* ROWS */
 #africa .country-row, 
 #africa .news-row {
 display:none;
 flex-wrap:wrap;
 justify-content:center;
+gap:8px;
 }
 
+/* ACTIVE DISPLAY */
 #africa .active {
 display:flex;
 }
 
+/* FOOTER TEXT */
 #africa .footer {
 margin-top:20px;
 font-weight:bold;
+color:#00ffaa;
+opacity:0.8;
 }
 </style>
-
 
 
 <div id="news-widget">
