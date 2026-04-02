@@ -1,213 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BSG Strategic Awareness OSINT</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+.tradingview-widget-container,
+.tradingview-widget-container__widget{
+width:100%!important;
+height:80vh!important;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- SPLASH -->
+<div id="introRadar">
+<video autoplay muted playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+
+<!-- HEADER -->
+<header class="mainHeader">
+<div class="headerVideo">
+<video autoplay muted loop playsinline>
+<source src="HEADER3.mp4">
+</video>
+</div>
+
+<div class="headerContent">
+<div class="headerLeft">
+<div class="radarLogo">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+<h1>Global Strategic Awareness OSINT</h1>
+</div>
+<div id="dateTime"></div>
+</div>
+</header>
+
+<!-- NAV -->
+<nav>
+<button data-tab="home" class="active">Home</button>
+<button data-tab="live">LIVE NEWS</button>
+<button data-tab="conflict">CONFLICT MAP</button>
+<button data-tab="markets">Markets</button>
+<button data-tab="aircraft">Aircraft Watch</button>
+<button data-tab="marine">Marine Watch</button>
+<button data-tab="cyber">Cyber Attacks</button>
+<button data-tab="radio">Global Radio</button>
+<button id="weatherBtn">Weather</button>
+</nav>
+
+<!-- SUB MENUS -->
+<div id="subMenuBar">
+
+<div id="liveMenu" class="subMenu">
+<button onclick="showLive(event,'rt')" class="active">RT</button>
+<button onclick="showLive(event,'aj')">Al Jazeera</button>
+<button onclick="showLive(event,'wion')">Sky News</button>
+<button onclick="showLive(event,'sky')">WION</button>
+<button onclick="showLive(event,'quad')">Quad View</button>
+<button onclick="fullscreenPlayer()">Full Screen</button>
+</div>
+
+<div id="marketsMenu" class="subMenu">
+<button onclick="showMarket(event,'overview')" class="active">Overview</button>
+<button onclick="showMarket(event,'stocks')">Stock Heatmap</button>
+<button onclick="showMarket(event,'crypto')">Crypto Heatmap</button>
+</div>
+
+</div>
+
 <main>
 
-
-
 <!-- HOME -->
-
 <section id="home" class="tab active">
-
 <div class="homeHero">
-
 <img src="hero.png" class="heroImage">
-
 <div class="heroOverlay">
-
 <h2>BSG Strategic Awareness Dashboard</h2>
 
+<p>Situational awareness is the foundation of preparedness. Monitor global events in real time — conflicts, markets, cyber threats, and movement across air and sea.
+</p>
 <p>
-Integrated OSINT monitoring platform providing real-time intelligence across conflicts,
-markets, cyber activity, aviation tracking and maritime movement.
+Those who remain informed early gain the advantage to anticipate, adapt, and endure.
 </p>
 
+<p class="heroTag">
+Stay informed. Stay ready.
+</p>
 </div>
-
 </div>
-
-<div class="liveFeedWidget">
-  <div class="lf-header">
-    <div class="lf-header-left">
-      <div class="lf-live-indicator">
-        <div class="lf-live-dot"></div>
-        Live
-      </div>
-      <div class="lf-header-title">LIVEUAMAP <span>/ Conflict Feed</span></div>
-    </div>
-    <div class="lf-header-right">
-      <span class="lf-timestamp" id="lf-ts">—</span>
-      <button class="lf-refresh-btn" id="lf-refresh-btn" onclick="liveFeedRefresh()">
-        <span class="lf-refresh-icon">↻</span> Refresh
-      </button>
-    </div>
-  </div>
-
-  <div class="lf-filters">
-    <button class="lf-filter-btn active" data-filter="all" onclick="setLiveFeedFilter('all',this)">
-      All <span class="lf-count-badge" id="lf-c-all">0</span>
-    </button>
-    <button class="lf-filter-btn" data-filter="ukraine" onclick="setLiveFeedFilter('ukraine',this)">
-      Ukraine <span class="lf-count-badge" id="lf-c-ukraine">0</span>
-    </button>
-    <button class="lf-filter-btn" data-filter="russia" onclick="setLiveFeedFilter('russia',this)">
-      Russia <span class="lf-count-badge" id="lf-c-russia">0</span>
-    </button>
-    <button class="lf-filter-btn" data-filter="middle-east" onclick="setLiveFeedFilter('middle-east',this)">
-      Middle East <span class="lf-count-badge" id="lf-c-middle-east">0</span>
-    </button>
-    <button class="lf-filter-btn" data-filter="world" onclick="setLiveFeedFilter('world',this)">
-      World <span class="lf-count-badge" id="lf-c-world">0</span>
-    </button>
-  </div>
-
-  <div class="lf-feed" id="lf-feed">
-    <div class="lf-state-msg">Loading…</div>
-  </div>
-
-  <div class="lf-footer">
-    <a href="https://liveuamap.com" target="_blank" class="lf-footer-source">↗ liveuamap.com</a>
-    <span class="lf-footer-count" id="lf-footer-count">— items</span>
-  </div>
-</div>
-
 </section>
 
-
-
-<!-- LIVE NEWS -->
-
+<!-- LIVE -->
 <section id="live" class="tab">
-
 <div id="liveSingle" class="livePlayer">
-
 <iframe id="liveFrame"
 src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 allowfullscreen></iframe>
-
 </div>
 
 <div id="liveQuad" class="quadGrid">
-
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
 <iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
 <iframe src="https://www.youtube.com/embed/vfszY1JYbMc"></iframe>
+</div>
+</section>
 
+<!-- MARKETS -->
+<section id="markets" class="tab">
+
+<!-- OVERVIEW -->
+<div id="marketOverview">
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+{
+"colorTheme":"dark",
+"backgroundColor":"#020606",
+"width":"100%",
+"height":"100%"
+}
+</script>
+</div>
 </div>
 
-@@ -434,29 +479,119 @@ if(point==="hormuz")
-frame.src="https://maps.google.com/maps?q=Strait%20of%20Hormuz&t=k&z=7&output=embed"
-
-if(point==="malacca")
-frame.src="https://maps.google.com/maps?q=Strait%20of%20Malacca&t=k&z=7&output=embed"
-
-if(point==="bab")
-frame.src="https://maps.google.com/maps?q=Bab%20el%20Mandeb&t=k&z=7&output=embed"
-
-if(point==="suez")
-frame.src="https://maps.google.com/maps?q=Suez%20Canal&t=k&z=7&output=embed"
-
-if(point==="panama")
-frame.src="https://maps.google.com/maps?q=Panama%20Canal&t=k&z=7&output=embed"
-
-if(point==="bosporus")
-frame.src="https://maps.google.com/maps?q=Bosporus%20Strait&t=k&z=7&output=embed"
-
-if(point==="gibraltar")
-frame.src="https://maps.google.com/maps?q=Strait%20of%20Gibraltar&t=k&z=7&output=embed"
-
-if(point==="dover")
-frame.src="https://maps.google.com/maps?q=Strait%20of%20Dover&t=k&z=7&output=embed"
-
+<!-- STOCK -->
+<div id="marketStocks" style="display:none;">
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+{
+"colorTheme":"dark",
+"backgroundColor":"#020606",
+"dataSource":"SPX500",
+"width":"100%",
+"height":"100%"
 }
-
-
-/* LIVEUAMAP FEED */
-
-const LIVE_FEED_ITEMS = [
-{ tag:'ukraine', loc:'Vinnytsia Oblast', time:'24 Mar', text:'Russia launched 556 strike drones between 9am–6pm; the Ukrainian Air Force recorded 15 impacts across the country.' },
-{ tag:'ukraine', loc:'Lviv Oblast', time:'24 Mar', text:'Drone raids on Lviv region left 32 wounded; critical infrastructure targeted in Komarnivska and Dobrosynsko-Maherivska communities.' },
-{ tag:'ukraine', loc:'Ivano-Frankivsk', time:'24 Mar', text:'2 killed and 4 wounded including a child following a drone strike on Ivano-Frankivsk.' },
-{ tag:'ukraine', loc:'Dnipro', time:'24 Mar', text:'Multiple explosions reported in Dnipro city during a renewed drone raid; one drone shot down by air defences.' },
-{ tag:'ukraine', loc:'Kharkiv Oblast', time:'24 Mar', text:'Russian troops struck Odnorobivka village in Zolochiv district with 5 Molniya UAVs.' },
-{ tag:'ukraine', loc:'Mykolaiv Oblast', time:'24 Mar', text:'Russia launched Tornado missiles targeting Ochakiv.' },
-{ tag:'ukraine', loc:'Zaporizhzhia NPP', time:'24 Mar', text:'The Russian-occupied Zaporizhzhia nuclear plant is once again running on a single power transmission line, the IAEA reported.' },
-{ tag:'ukraine', loc:'Crimea', time:'24 Mar', text:'A Zircon hypersonic missile launcher has been destroyed in Crimea, according to Ukraine\'s Defence Intelligence.' },
-{ tag:'russia', loc:'Saratov Oblast', time:'24 Mar', text:'Ukraine\'s General Staff confirms overnight strikes on facilities at the Saratov oil refinery, used to supply fuel to Russian forces.' },
-{ tag:'russia', loc:'Nevinnomyssk', time:'24 Mar', text:'The Nevinnomysskyi Azot chemical plant was attacked with drones in Stavropol Krai.' },
-{ tag:'middle-east', loc:'Dubai, UAE', time:'24 Mar', text:'UAE air defences intercepted 7 ballistic missiles and 16 drones launched from Iran; 352 ballistic missiles intercepted since attacks began.' },
-{ tag:'middle-east', loc:'Tehran, Iran', time:'24 Mar', text:'Iran issued a warning to civilians in northern Israel — Upper Galilee, Lower Galilee, Golan Heights, and Haifa.' },
-{ tag:'middle-east', loc:'Isfahan, Iran', time:'24 Mar', text:'The IRGC\'s Khordad 15 base in Baharestan, Isfahan, was targeted on the afternoon of 23 March.' },
-{ tag:'middle-east', loc:'Lebanon', time:'24 Mar', text:'Israeli airstrikes hit Bint Jbeil and nearby towns in southern Lebanon; Hezbollah says it struck Israeli soldiers in Markaba with missiles.' },
-{ tag:'middle-east', loc:'Syria', time:'24 Mar', text:'Six drones targeted the Rmelan (Kharab al-Jir) US-linked base in Hasakah, reportedly launched from Iraq by Iran-backed factions.' },
-{ tag:'world', loc:'Moldova', time:'24 Mar', text:'Russian strikes on Ukraine\'s energy sector damaged the Isaccea–Vulcănești power line linking Moldova to Romania; a 60-day energy emergency is being considered.' },
-{ tag:'world', loc:'Albania', time:'24 Mar', text:'Protesters hurled fireworks and Molotov cocktails at government buildings in Tirana; police responded with water cannons and tear gas.' },
-{ tag:'world', loc:'Cyprus', time:'24 Mar', text:'Turkey deployed six F-16 fighter jets and air defence systems to northern Cyprus amid regional tensions.' },
-{ tag:'world', loc:'Islamabad', time:'24 Mar', text:'US–Iran talks are underway in Islamabad, mediated by Turkey, Egypt and Pakistan; Trump postponed Pentagon strikes on Iranian power plants for 5 days.' },
-]
-
-let liveFeedCurrentFilter='all'
-const liveFeedTagLabel={ukraine:'Ukraine',russia:'Russia','middle-east':'Middle East',world:'World'}
-
-function setLiveFeedFilter(filter,btn){
-liveFeedCurrentFilter=filter
-document.querySelectorAll('.lf-filter-btn').forEach(b=>b.classList.remove('active'))
-btn.classList.add('active')
-renderLiveFeed()
-}
-
-function renderLiveFeed(){
-const feed=document.getElementById('lf-feed')
-const list=liveFeedCurrentFilter==='all'
-? LIVE_FEED_ITEMS
-: LIVE_FEED_ITEMS.filter(i=>i.tag===liveFeedCurrentFilter)
-
-if(!list.length){
-feed.innerHTML='<div class="lf-state-msg">No items for this filter</div>'
-return
-}
-
-feed.innerHTML=list.map(i=>`
-<div class="lf-item">
-<div class="lf-item-meta">
-<span class="lf-tag lf-tag-${i.tag}">${liveFeedTagLabel[i.tag]}</span>
-${i.loc?`<span class="lf-item-loc">${i.loc}</span>`:''}
-<span class="lf-item-time">${i.time||''}</span>
+</script>
 </div>
-<div class="lf-item-text">${i.text}</div>
 </div>
-`).join('')
 
-document.getElementById('lf-footer-count').textContent=list.length+' item'+(list.length!==1?'s':'')
+<!-- CRYPTO -->
+<div id="marketCrypto" style="display:none;">
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+{
+"colorTheme":"dark",
+"backgroundColor":"#020606",
+"dataSource":"Crypto",
+"width":"100%",
+"height":"100%"
 }
+</script>
+</div>
+</div>
 
-function updateLiveFeedCounts(){
-document.getElementById('lf-c-all').textContent=LIVE_FEED_ITEMS.length
-;['ukraine','russia','middle-east','world'].forEach(tag=>{
-document.getElementById('lf-c-'+tag).textContent=LIVE_FEED_ITEMS.filter(i=>i.tag===tag).length
-})
-}
+</section>
 
-function updateLiveFeedTimestamp(){
-const now=new Date()
-document.getElementById('lf-ts').textContent=
-now.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+' '+
-now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})
-}
+<section id="conflict" class="tab"><iframe src="https://iran.liveuamap.com"></iframe></section>
+<section id="aircraft" class="tab"><iframe src="https://globe.adsbexchange.com"></iframe></section>
+<section id="marine" class="tab"><iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"></iframe></section>
+<section id="cyber" class="tab"><iframe src="https://threatmap.checkpoint.com"></iframe></section>
+<section id="radio" class="tab"><iframe src="https://radio.garden/"></iframe></section>
 
-function liveFeedRefresh(){
-const btn=document.getElementById('lf-refresh-btn')
-btn.classList.add('spinning')
-btn.disabled=true
+</main>
+
+<!-- FOOTER -->
+<footer class="mainFooter">
+<div class="footerTop">
+<video autoplay muted loop playsinline>
+<source src="RADAR3.mp4">
+</video>
+</div>
+<div class="footerCenter">
+<a href="https://BlackSurvivalGear.com">BlackSurvivalGear.com</a>
+</div>
+</footer>
+
+<script>
+
+/* SPLASH */
+document.addEventListener("DOMContentLoaded", function(){
+const splash=document.getElementById("introRadar");
 setTimeout(()=>{
-btn.classList.remove('spinning')
-btn.disabled=false
-updateLiveFeedTimestamp()
-renderLiveFeed()
-},900)
+splash.style.opacity="0";
+setTimeout(()=>{splash.style.display="none"},600);
+},1500);
+});
+
+/* CLOCK */
+setInterval(()=>{
+document.getElementById("dateTime").textContent=new Date().toLocaleString()
+},1000)
+
+/* NAV */
+document.querySelectorAll("nav button").forEach(btn=>{
+btn.addEventListener("click", ()=>{
+if(!btn.dataset.tab) return;
+
+document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
+document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+
+btn.classList.add("active")
+document.getElementById(btn.dataset.tab).classList.add("active")
+
+document.getElementById("subMenuBar").style.display="none"
+document.querySelectorAll(".subMenu").forEach(m=>m.style.display="none")
+
+if(btn.dataset.tab==="live"){
+subMenuBar.style.display="block"
+liveMenu.style.display="flex"
+}
+if(btn.dataset.tab==="markets"){
+subMenuBar.style.display="block"
+marketsMenu.style.display="flex"
+}
+});
+});
+
+/* LIVE */
+function showLive(e,c){
+document.querySelectorAll("#liveMenu button").forEach(b=>b.classList.remove("active"))
+e.target.classList.add("active")
+
+liveSingle.style.display="block"
+liveQuad.style.display="none"
+
+if(c==="rt") liveFrame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+if(c==="aj") liveFrame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+if(c==="wion") liveFrame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+if(c==="sky") liveFrame.src="https://www.youtube.com/embed/vfszY1JYbMc"
+
+if(c==="quad"){
+liveSingle.style.display="none"
+liveQuad.style.display="grid"
+}
 }
 
-updateLiveFeedCounts()
-updateLiveFeedTimestamp()
-renderLiveFeed()
+/* MARKETS FIX */
+function showMarket(e,t){
+
+document.querySelectorAll("#marketsMenu button").forEach(b=>b.classList.remove("active"))
+e.target.classList.add("active")
+
+document.getElementById("marketOverview").style.display="none"
+document.getElementById("marketStocks").style.display="none"
+document.getElementById("marketCrypto").style.display="none"
+
+if(t==="overview") document.getElementById("marketOverview").style.display="block"
+if(t==="stocks") document.getElementById("marketStocks").style.display="block"
+if(t==="crypto") document.getElementById("marketCrypto").style.display="block"
+
+}
+
+/* FULLSCREEN */
+function fullscreenPlayer(){
+let player=(liveQuad.style.display==="grid")?liveQuad:liveSingle
+player.requestFullscreen()
+}
+
+/* WEATHER FIX */
+document.getElementById("weatherBtn").addEventListener("click", function(e){
+    e.stopPropagation();
+    window.open("https://www.windy.com/?6.842,26.166,3", "_blank");
+});
 
 </script>
 
