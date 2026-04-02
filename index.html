@@ -131,12 +131,232 @@ allowfullscreen></iframe>
 
 <!-- AFRICA TAB -->
 <section id="africa" class="tab">
-<div class="quadGrid">
-<iframe src="https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"></iframe>
-<iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
-<iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
-<iframe src="https://www.youtube.com/embed/live_stream?channel=UCylg6Jw0ZpV9n8l8X3Ykz9A"></iframe>
+
+<style>
+#africa {
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100%;
+position:relative;
+background-color:#000;
+font-family:Arial, sans-serif;
+color:white;
+}
+
+#africa::before {
+content:'';
+position:absolute;
+top:0; left:0; right:0; bottom:0;
+background-image:url('https://lh3.googleusercontent.com/sitesv/AAzXCkeIqupAEJefue8xiKHNXMvMfj6zbD_FVpYwHZhV5mPciCZsdc-XQAWP4OLoO6ReMZ31IIfxTkqtrRfQreesGaYrc_FsOILTVL9BrKGNzfWWXbidp1i-wz3KJ7uLfvp5zTfAD7a8p_rHbMkBabjZJ0GaqaWvXHuHyglDA1SQDpLc3lHelLSzG1Bw_dmIkeUDGMBdu5geCkf7KzrHpFc_kHooSBamwbu-i7C1=w1280');
+background-size:cover;
+background-position:center;
+opacity:0.3;
+z-index:0;
+}
+
+#africa * { position:relative; z-index:1; }
+
+#africa .title {
+font-size:32px;
+font-weight:bold;
+margin-bottom:20px;
+text-align:center;
+}
+
+#africa #news-widget {
+width:80%;
+max-width:900px;
+border:1px solid rgba(255,255,255,0.2);
+padding:20px;
+background-color:rgba(0,0,0,0.8);
+border-radius:10px;
+backdrop-filter:blur(5px);
+}
+
+#africa .button-row {
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+margin-bottom:10px;
+}
+
+#africa button {
+margin:5px;
+padding:10px;
+font-weight:bold;
+cursor:pointer;
+border:none;
+border-radius:5px;
+background:#fff;
+color:#000;
+}
+
+#africa .country-row button {
+background:#333;
+color:#fff;
+}
+
+#africa .news-row button {
+background:#006400;
+color:#fff;
+}
+
+#africa .country-row, 
+#africa .news-row {
+display:none;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+#africa .active {
+display:flex;
+}
+
+#africa .footer {
+margin-top:20px;
+font-weight:bold;
+}
+</style>
+
+<div class="title">BSG: Pan African News</div>
+
+<div id="news-widget">
+<div class="button-row">
+<button onclick="showCountries('North Africa')">North Africa</button>
+<button onclick="showCountries('West Africa')">West Africa</button>
+<button onclick="showCountries('Central Africa')">Central Africa</button>
+<button onclick="showCountries('East Africa')">East Africa</button>
+<button onclick="showCountries('Southern Africa')">Southern Africa</button>
 </div>
+
+<div class="country-row" id="country-buttons"></div>
+<div class="news-row" id="news-links"></div>
+</div>
+
+<div class="footer">BlackSurvivalGear.com</div>
+
+<script>
+const africaData = {
+
+"North Africa": {
+"Algeria":["Algeria Press Service","https://www.aps.dz","El Watan","https://www.elwatan.com"],
+"Egypt":["Al-Ahram","https://english.ahram.org.eg","Al-Masry Al-Youm","https://www.almasryalyoum.com"],
+"Libya":["Libya Herald","https://www.libyaherald.com","Libyan Observer","https://www.libyanobserver.ly"],
+"Mauritania":["Al-Akhbar","https://alakhbar.info","Sahara Media","https://saharamedias.net"],
+"Morocco":["Le Matin","https://lematin.ma","MAP","https://www.map.ma"],
+"Sudan":["Sudan Tribune","https://sudantribune.com","Sudanese News","https://www.sudanews.net"],
+"Tunisia":["TAP","https://www.tap.info.tn","La Presse","https://lapresse.tn"]
+},
+
+"West Africa": {
+"AES":["Africa Intelligence Wire","https://syft.ai/top-stories/WdE37rQ97ydsW"],
+"Benin":["Fraternite","https://www.fraternitebj.info","Le Matinal","https://www.lematinal.bj"],
+"Burkina Faso":["leFaso","https://www.lefaso.net","Burkina24","https://www.burkina24.com"],
+"Cape Verde":["A Semana","https://www.asemana.cv","Santiago Magazine","https://www.santiagomagazine.cv"],
+"Gambia":["The Point","https://thepoint.gm","Foroyaa","https://foroyaa.net"],
+"Ghana":["Graphic","https://graphic.com.gh","Daily Guide","https://dailyguidenetwork.com"],
+"Guinea":["Guinee24","https://guinee24.com","Conakry Infos","https://www.conakryinfos.com"],
+"Guinea-Bissau":["Diario","https://www.ogologb.com","Novidades","https://novidades.gw"],
+"Ivory Coast":["Abidjan","https://www.abidjan.net","Le Patriote","https://www.lepatriote.net"],
+"Liberia":["New Dawn","https://www.newdawnliberia.com","FrontPageAfrica","https://www.frontpageafricaonline.com"],
+"Mali":["Maliweb","https://www.maliweb.net","Le Republicain","https://www.maliweb.net"],
+"Niger":["Niamey24","https://www.niameysoir.com","Le Sahel","https://www.lesahel.org"],
+"Nigeria":[
+"Premium Times","https://www.premiumtimesng.com",
+"Channels TV","https://www.channelstv.com",
+"Leadership","https://leadership.ng",
+"The Nation","https://thenationonlineng.net",
+"ThisDay","https://www.thisdaylive.com",
+"Tribune","https://tribuneonlineng.com",
+"Naija News","https://www.naijanews.com",
+"The Cable","https://www.thecable.ng",
+"Daily Sun","https://www.sunnewsonline.com",
+"Ripples","https://www.ripplesnigeria.com",
+"Sahara Reporters","https://www.saharareporters.com",
+"Vanguard","https://www.vanguardngr.com",
+"Punch","https://www.punchng.com",
+"Daily Trust","https://www.dailytrust.com"
+],
+"Senegal":["Le Soleil","https://www.lesoleil.sn","Seneweb","https://www.seneweb.com"],
+"Sierra Leone":["Concord Times","https://www.concordtimes.com","Sierra Express","https://www.sierraexpressmedia.com"],
+"Togo":["Togo Presse","https://www.togopresse.tg","Le Correcteur","https://lecorrecteur.info"]
+},
+
+"Central Africa": {
+"Angola":["Jornal de Angola","https://www.jornaldeangola.ao","O Pais","https://www.opais.co.ao"],
+"Cameroon":["Cameroon Tribune","https://www.cameroon-tribune.cm","CRTV","https://www.crtv.cm"],
+"CAR":["Journal de Bangui","https://www.journaldebangui.com","Radio Ndeke Luka","https://www.radiondekeluka.org"],
+"Chad":["Alwihda","https://www.alwihdainfo.com","Le Progres","https://www.leprogres.td"],
+"Congo":["Les Depeches","https://www.lesdepechesdebrazzaville.fr","Congo24","https://www.congo24.net"],
+"DRC":["Radio Okapi","https://www.radiookapi.net","Le Potentiel","https://www.lepotentiel.cd"],
+"Gabon":["Gabon24","https://www.gabon24.ga","Nouvelle Republique","https://www.lanouvellerepublique.com"],
+"Equatorial Guinea":["Diario Rombe","https://www.diariorombe.es","Radio Macuto","https://radiomacuto.net"],
+"Sao Tome":["Tela Non","https://www.telanon.info","STP24","https://www.stp24.com"]
+},
+
+"East Africa": {
+"Burundi":["Iwacu","https://www.iwacu-burundi.org","Renouveau","https://www.renouveau.digital"],
+"Djibouti":["La Nation","https://www.lanation.dj","Djibouti24","https://www.djibouti24.com"],
+"Eritrea":["ENA","http://www.shabait.com","Asmarino","https://www.asmarino.com"],
+"Ethiopia":["Addis Standard","https://addisstandard.com","Reporter","https://www.ethiopianreporter.com"],
+"Kenya":["Nation","https://nation.africa","Capital FM","https://www.capitalfm.co.ke"],
+"Madagascar":["Midi","https://www.midi-madagasikara.mg","Express","https://lexpress.mg"],
+"Malawi":["Nation MW","https://www.mwnation.com","Malawi24","https://malawi24.com"],
+"Mozambique":["Noticias","https://www.jornalnoticias.co.mz","O Pais","https://www.opais.co.mz"],
+"Rwanda":["New Times","https://www.newtimes.co.rw","Rwanda Today","https://www.rwandatoday.africa"],
+"Somalia":["Radio Muqdisho","https://www.radiomuqdisho.so","SONNA","https://sonna.so"],
+"South Sudan":["Juba Monitor","https://www.jubamonitor.com","Radio Tamazuj","https://radiotamazuj.org"],
+"Tanzania":["Citizen","https://www.thecitizen.co.tz","Daily News","https://www.dailynews.co.tz"],
+"Uganda":["New Vision","https://www.newvision.co.ug","Observer","https://www.observer.ug"],
+"Zambia":["Daily Mail","https://www.daily-mail.co.zm","Post","https://www.postzambia.com"],
+"Zimbabwe":["Herald","https://www.herald.co.zw","NewsDay","https://www.newsday.co.zw"]
+},
+
+"Southern Africa": {
+"Botswana":["Mmegi","https://www.mmegi.bw","Patriot","https://www.thepatriot.co.bw"],
+"Lesotho":["Lesotho Times","https://lestimes.com","Public Eye","https://publiceyenews.com"],
+"Namibia":["New Era","https://www.ne.com.na","Namibian","https://www.namibian.com.na"],
+"South Africa":["SABC","https://www.sabcnews.com","News24","https://www.news24.com","Mail Guardian","https://mg.co.za"],
+"Eswatini":["Observer","https://www.observer.org.sz","Times","https://www.times.co.sz"]
+}
+
+};
+
+function showCountries(region){
+const c=document.getElementById('country-buttons');
+const n=document.getElementById('news-links');
+c.innerHTML='';
+n.innerHTML='';
+
+Object.keys(africaData[region]).forEach(country=>{
+let b=document.createElement('button');
+b.textContent=country;
+b.onclick=()=>showNews(region,country);
+c.appendChild(b);
+});
+
+c.classList.add('active');
+n.classList.remove('active');
+}
+
+function showNews(region,country){
+const n=document.getElementById('news-links');
+n.innerHTML='';
+
+let links=africaData[region][country];
+
+for(let i=0;i<links.length;i+=2){
+let b=document.createElement('button');
+b.innerHTML=`<a href="${links[i+1]}" target="_blank">${links[i]}</a>`;
+n.appendChild(b);
+}
+
+n.classList.add('active');
+}
+</script>
+
 </section>
 
 <!-- MARKETS -->
