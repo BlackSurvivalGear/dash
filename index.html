@@ -53,6 +53,7 @@ height:80vh!important;
 <nav>
 <button data-tab="home" class="active">Home</button>
 <button data-tab="live">LIVE NEWS</button>
+<button data-tab="africa">AFRICA NEWS</button>
 <button data-tab="conflict">CONFLICT MAP</button>
 <button data-tab="markets">Markets</button>
 <button data-tab="aircraft">Aircraft Watch</button>
@@ -69,10 +70,13 @@ height:80vh!important;
 <button onclick="showLive(event,'aj')" class="active">Al Jazeera</button>
 <button onclick="showLive(event,'arise')">Arise News</button>
 <button onclick="showLive(event,'channels')">Channels TV</button>
+<button onclick="showLive(event,'africanews')">Africanews</button>
+<button onclick="showLive(event,'newscentral')">News Central</button>
 <button onclick="showLive(event,'rt')">RT</button>
 <button onclick="showLive(event,'sky')">Sky News</button>
 <button onclick="showLive(event,'wion')">WION</button>
 <button onclick="showLive(event,'quad')">Quad View</button>
+<button onclick="showLive(event,'africaQuad')">Africa Quad</button>
 <button onclick="fullscreenPlayer()">Full Screen</button>
 </div>
 
@@ -93,15 +97,11 @@ height:80vh!important;
 <div class="heroOverlay">
 <h2>BSG Strategic Awareness Dashboard</h2>
 
-<p>Situational awareness is the foundation of preparedness. Monitor global events in real time — conflicts, markets, cyber threats, and movement across air and sea.
-</p>
-<p>
-Those who remain informed early gain the advantage to anticipate, adapt, and endure.
-</p>
+<p>Situational awareness is the foundation of preparedness. Monitor global events in real time — conflicts, markets, cyber threats, and movement across air and sea.</p>
 
-<p class="heroTag">
-Stay informed. Stay ready.
-</p>
+<p>Those who remain informed early gain the advantage to anticipate, adapt, and endure.</p>
+
+<p class="heroTag">Stay informed. Stay ready.</p>
 </div>
 </div>
 </section>
@@ -118,60 +118,55 @@ allowfullscreen></iframe>
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
 <iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
 <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
+<iframe src="https://www.youtube.com/embed/h9SRBxdqNcs"></iframe>
+</div>
+
+<div id="africaQuad" class="quadGrid" style="display:none;">
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"></iframe>
+<iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
+<iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UCylg6Jw0ZpV9n8l8X3Ykz9A"></iframe>
+</div>
+</section>
+
+<!-- AFRICA TAB -->
+<section id="africa" class="tab">
+<div class="quadGrid">
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"></iframe>
+<iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
+<iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
+<iframe src="https://www.youtube.com/embed/live_stream?channel=UCylg6Jw0ZpV9n8l8X3Ykz9A"></iframe>
 </div>
 </section>
 
 <!-- MARKETS -->
 <section id="markets" class="tab">
-
-<!-- OVERVIEW -->
 <div id="marketOverview">
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-{
-"colorTheme":"dark",
-"backgroundColor":"#020606",
-"width":"100%",
-"height":"100%"
-}
+{"colorTheme":"dark","backgroundColor":"#020606","width":"100%","height":"100%"}
 </script>
 </div>
 </div>
 
-<!-- STOCK -->
 <div id="marketStocks" style="display:none;">
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-{
-"colorTheme":"dark",
-"backgroundColor":"#020606",
-"dataSource":"SPX500",
-"width":"100%",
-"height":"100%"
-}
+{"colorTheme":"dark","backgroundColor":"#020606","dataSource":"SPX500","width":"100%","height":"100%"}
 </script>
 </div>
 </div>
 
-<!-- CRYPTO -->
 <div id="marketCrypto" style="display:none;">
 <div class="tradingview-widget-container">
 <div class="tradingview-widget-container__widget"></div>
 <script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-{
-"colorTheme":"dark",
-"backgroundColor":"#020606",
-"dataSource":"Crypto",
-"width":"100%",
-"height":"100%"
-}
+{"colorTheme":"dark","backgroundColor":"#020606","dataSource":"Crypto","width":"100%","height":"100%"}
 </script>
 </div>
 </div>
-
 </section>
 
 <section id="conflict" class="tab"><iframe src="https://iran.liveuamap.com"></iframe></section>
@@ -182,7 +177,6 @@ allowfullscreen></iframe>
 
 </main>
 
-<!-- FOOTER -->
 <footer class="mainFooter">
 <div class="footerTop">
 <video autoplay muted loop playsinline>
@@ -228,7 +222,7 @@ if(btn.dataset.tab==="live"){
 subMenuBar.style.display="block"
 liveMenu.style.display="flex"
 }
-if(btn.dataset.tab==="markets"){
+else if(btn.dataset.tab==="markets"){
 subMenuBar.style.display="block"
 marketsMenu.style.display="flex"
 }
@@ -242,23 +236,30 @@ e.target.classList.add("active")
 
 liveSingle.style.display="block"
 liveQuad.style.display="none"
+africaQuad.style.display="none"
 
 if(c==="aj") liveFrame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
 if(c==="arise") liveFrame.src="https://www.youtube.com/embed/E8PRZmDUiPw"
 if(c==="channels") liveFrame.src="https://www.youtube.com/embed/W8nThq62Vb4"
+if(c==="africanews") liveFrame.src="https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"
+if(c==="newscentral") liveFrame.src="https://www.youtube.com/embed/live_stream?channel=UCylg6Jw0ZpV9n8l8X3Ykz9A"
 if(c==="rt") liveFrame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
 if(c==="sky") liveFrame.src="https://www.youtube.com/embed/9Auq9mYxFEE"
-if(c==="wion") liveFrame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+if(c==="wion") liveFrame.src="https://www.youtube.com/embed/h9SRBxdqNcs"
 
 if(c==="quad"){
 liveSingle.style.display="none"
 liveQuad.style.display="grid"
 }
+
+if(c==="africaQuad"){
+liveSingle.style.display="none"
+africaQuad.style.display="grid"
+}
 }
 
-/* MARKETS FIX */
+/* MARKETS */
 function showMarket(e,t){
-
 document.querySelectorAll("#marketsMenu button").forEach(b=>b.classList.remove("active"))
 e.target.classList.add("active")
 
@@ -269,19 +270,19 @@ document.getElementById("marketCrypto").style.display="none"
 if(t==="overview") document.getElementById("marketOverview").style.display="block"
 if(t==="stocks") document.getElementById("marketStocks").style.display="block"
 if(t==="crypto") document.getElementById("marketCrypto").style.display="block"
-
 }
 
 /* FULLSCREEN */
 function fullscreenPlayer(){
-let player=(liveQuad.style.display==="grid")?liveQuad:liveSingle
+let player=(liveQuad.style.display==="grid")?liveQuad:
+(africaQuad.style.display==="grid")?africaQuad:liveSingle
 player.requestFullscreen()
 }
 
-/* WEATHER FIX */
+/* WEATHER */
 document.getElementById("weatherBtn").addEventListener("click", function(e){
-    e.stopPropagation();
-    window.open("https://www.windy.com/?6.842,26.166,3", "_blank");
+e.stopPropagation();
+window.open("https://www.windy.com/?6.842,26.166,3","_blank");
 });
 
 </script>
