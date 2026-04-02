@@ -15,17 +15,6 @@
 width:100%!important;
 height:80vh!important;
 }
-
-/* 🔥 AFRICA BUTTON FIX (SAFE INLINE) */
-#africa button{
-background:#021212;
-color:#00ffaa;
-border:1px solid #00ffaa66;
-}
-#africa button:hover{
-background:#00ffaa22;
-box-shadow:0 0 10px #00ffaa;
-}
 </style>
 
 </head>
@@ -92,6 +81,12 @@ box-shadow:0 0 10px #00ffaa;
 <button onclick="fullscreenPlayer()">Full Screen</button>
 </div>
 
+<div id="marketsMenu" class="subMenu">
+<button onclick="showMarket(event,'overview')" class="active">Overview</button>
+<button onclick="showMarket(event,'stocks')">Stock Heatmap</button>
+<button onclick="showMarket(event,'crypto')">Crypto Heatmap</button>
+</div>
+
 </div>
 
 <main>
@@ -102,7 +97,11 @@ box-shadow:0 0 10px #00ffaa;
 <img src="hero.png" class="heroImage">
 <div class="heroOverlay">
 <h2>BSG Strategic Awareness Dashboard</h2>
-<p>Situational awareness is the foundation of preparedness.</p>
+
+<p>Situational awareness is the foundation of preparedness. Monitor global events in real time — conflicts, markets, cyber threats, and movement across air and sea.</p>
+
+<p>Those who remain informed early gain the advantage to anticipate, adapt, and endure.</p>
+
 <p class="heroTag">Stay informed. Stay ready.</p>
 </div>
 </div>
@@ -111,21 +110,118 @@ box-shadow:0 0 10px #00ffaa;
 <!-- LIVE -->
 <section id="live" class="tab">
 <div id="liveSingle" class="livePlayer">
-<iframe id="liveFrame" src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe id="liveFrame"
+src="https://www.youtube.com/embed/gCNeDWCI0vo"
+allowfullscreen></iframe>
 </div>
 
 <div id="liveQuad" class="quadGrid">
 <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
 <iframe src="https://www.youtube.com/embed/BOy2xDU1LC8"></iframe>
+<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+<iframe src="https://www.youtube.com/embed/h9SRBxdqNcs"></iframe>
+</div>
+
+<div id="africaQuad" class="quadGrid" style="display:none;">
+<iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
+<iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
+<iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
+<iframe src="https://www.youtube.com/embed/Mv14aabg4mA"></iframe>
 </div>
 </section>
 
 <!-- AFRICA TAB -->
 <section id="africa" class="tab">
+
+<style>
+#africa {
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100%;
+position:relative;
+background-color:#000;
+font-family:Arial, sans-serif;
+color:white;
+}
+
+#africa::before {
+content:'';
+position:absolute;
+top:0; left:0; right:0; bottom:0;
+background-image:url('https://lh3.googleusercontent.com/sitesv/AAzXCkeIqupAEJefue8xiKHNXMvMfj6zbD_FVpYwHZhV5mPciCZsdc-XQAWP4OLoO6ReMZ31IIfxTkqtrRfQreesGaYrc_FsOILTVL9BrKGNzfWWXbidp1i-wz3KJ7uLfvp5zTfAD7a8p_rHbMkBabjZJ0GaqaWvXHuHyglDA1SQDpLc3lHelLSzG1Bw_dmIkeUDGMBdu5geCkf7KzrHpFc_kHooSBamwbu-i7C1=w1280');
+background-size:cover;
+background-position:center;
+opacity:0.3;
+z-index:0;
+}
+
+#africa * { position:relative; z-index:1; }
+
+#africa .title {
+font-size:32px;
+font-weight:bold;
+margin-bottom:20px;
+text-align:center;
+}
+
+#africa #news-widget {
+width:80%;
+max-width:900px;
+border:1px solid rgba(255,255,255,0.2);
+padding:20px;
+background-color:rgba(0,0,0,0.8);
+border-radius:10px;
+backdrop-filter:blur(5px);
+}
+
+#africa .button-row {
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+margin-bottom:10px;
+}
+
+#africa button {
+margin:5px;
+padding:10px;
+font-weight:bold;
+cursor:pointer;
+border:none;
+border-radius:5px;
+background:#fff;
+color:#000;
+}
+
+#africa .country-row button {
+background:#333;
+color:#fff;
+}
+
+#africa .news-row button {
+background:#006400;
+color:#fff;
+}
+
+#africa .country-row, 
+#africa .news-row {
+display:none;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+#africa .active {
+display:flex;
+}
+
+#africa .footer {
+margin-top:20px;
+font-weight:bold;
+}
+</style>
+
+
 
 <div id="news-widget">
 <div class="button-row">
@@ -140,7 +236,164 @@ box-shadow:0 0 10px #00ffaa;
 <div class="news-row" id="news-links"></div>
 </div>
 
+
+<script>
+const africaData = {
+
+"North Africa": {
+"Algeria":["Algeria Press Service","https://www.aps.dz","El Watan","https://www.elwatan.com"],
+"Egypt":["Al-Ahram","https://english.ahram.org.eg","Al-Masry Al-Youm","https://www.almasryalyoum.com"],
+"Libya":["Libya Herald","https://www.libyaherald.com","Libyan Observer","https://www.libyanobserver.ly"],
+"Mauritania":["Al-Akhbar","https://alakhbar.info","Sahara Media","https://saharamedias.net"],
+"Morocco":["Le Matin","https://lematin.ma","MAP","https://www.map.ma"],
+"Sudan":["Sudan Tribune","https://sudantribune.com","Sudanese News","https://www.sudanews.net"],
+"Tunisia":["TAP","https://www.tap.info.tn","La Presse","https://lapresse.tn"]
+},
+
+"West Africa": {
+"AES":["Africa Intelligence Wire","https://syft.ai/top-stories/WdE37rQ97ydsW"],
+"Benin":["Fraternite","https://www.fraternitebj.info","Le Matinal","https://www.lematinal.bj"],
+"Burkina Faso":["leFaso","https://www.lefaso.net","Burkina24","https://www.burkina24.com"],
+"Cape Verde":["A Semana","https://www.asemana.cv","Santiago Magazine","https://www.santiagomagazine.cv"],
+"Gambia":["The Point","https://thepoint.gm","Foroyaa","https://foroyaa.net"],
+"Ghana":["Graphic","https://graphic.com.gh","Daily Guide","https://dailyguidenetwork.com"],
+"Guinea":["Guinee24","https://guinee24.com","Conakry Infos","https://www.conakryinfos.com"],
+"Guinea-Bissau":["Diario","https://www.ogologb.com","Novidades","https://novidades.gw"],
+"Ivory Coast":["Abidjan","https://www.abidjan.net","Le Patriote","https://www.lepatriote.net"],
+"Liberia":["New Dawn","https://www.newdawnliberia.com","FrontPageAfrica","https://www.frontpageafricaonline.com"],
+"Mali":["Maliweb","https://www.maliweb.net","Le Republicain","https://www.maliweb.net"],
+"Niger":["Niamey24","https://www.niameysoir.com","Le Sahel","https://www.lesahel.org"],
+"Nigeria":[
+"Premium Times","https://www.premiumtimesng.com",
+"Channels TV","https://www.channelstv.com",
+"Leadership","https://leadership.ng",
+"The Nation","https://thenationonlineng.net",
+"ThisDay","https://www.thisdaylive.com",
+"Tribune","https://tribuneonlineng.com",
+"Naija News","https://www.naijanews.com",
+"The Cable","https://www.thecable.ng",
+"Daily Sun","https://www.sunnewsonline.com",
+"Ripples","https://www.ripplesnigeria.com",
+"Sahara Reporters","https://www.saharareporters.com",
+"Vanguard","https://www.vanguardngr.com",
+"Punch","https://www.punchng.com",
+"Daily Trust","https://www.dailytrust.com"
+],
+"Senegal":["Le Soleil","https://www.lesoleil.sn","Seneweb","https://www.seneweb.com"],
+"Sierra Leone":["Concord Times","https://www.concordtimes.com","Sierra Express","https://www.sierraexpressmedia.com"],
+"Togo":["Togo Presse","https://www.togopresse.tg","Le Correcteur","https://lecorrecteur.info"]
+},
+
+"Central Africa": {
+"Angola":["Jornal de Angola","https://www.jornaldeangola.ao","O Pais","https://www.opais.co.ao"],
+"Cameroon":["Cameroon Tribune","https://www.cameroon-tribune.cm","CRTV","https://www.crtv.cm"],
+"CAR":["Journal de Bangui","https://www.journaldebangui.com","Radio Ndeke Luka","https://www.radiondekeluka.org"],
+"Chad":["Alwihda","https://www.alwihdainfo.com","Le Progres","https://www.leprogres.td"],
+"Congo":["Les Depeches","https://www.lesdepechesdebrazzaville.fr","Congo24","https://www.congo24.net"],
+"DRC":["Radio Okapi","https://www.radiookapi.net","Le Potentiel","https://www.lepotentiel.cd"],
+"Gabon":["Gabon24","https://www.gabon24.ga","Nouvelle Republique","https://www.lanouvellerepublique.com"],
+"Equatorial Guinea":["Diario Rombe","https://www.diariorombe.es","Radio Macuto","https://radiomacuto.net"],
+"Sao Tome":["Tela Non","https://www.telanon.info","STP24","https://www.stp24.com"]
+},
+
+"East Africa": {
+"Burundi":["Iwacu","https://www.iwacu-burundi.org","Renouveau","https://www.renouveau.digital"],
+"Djibouti":["La Nation","https://www.lanation.dj","Djibouti24","https://www.djibouti24.com"],
+"Eritrea":["ENA","http://www.shabait.com","Asmarino","https://www.asmarino.com"],
+"Ethiopia":["Addis Standard","https://addisstandard.com","Reporter","https://www.ethiopianreporter.com"],
+"Kenya":["Nation","https://nation.africa","Capital FM","https://www.capitalfm.co.ke"],
+"Madagascar":["Midi","https://www.midi-madagasikara.mg","Express","https://lexpress.mg"],
+"Malawi":["Nation MW","https://www.mwnation.com","Malawi24","https://malawi24.com"],
+"Mozambique":["Noticias","https://www.jornalnoticias.co.mz","O Pais","https://www.opais.co.mz"],
+"Rwanda":["New Times","https://www.newtimes.co.rw","Rwanda Today","https://www.rwandatoday.africa"],
+"Somalia":["Radio Muqdisho","https://www.radiomuqdisho.so","SONNA","https://sonna.so"],
+"South Sudan":["Juba Monitor","https://www.jubamonitor.com","Radio Tamazuj","https://radiotamazuj.org"],
+"Tanzania":["Citizen","https://www.thecitizen.co.tz","Daily News","https://www.dailynews.co.tz"],
+"Uganda":["New Vision","https://www.newvision.co.ug","Observer","https://www.observer.ug"],
+"Zambia":["Daily Mail","https://www.daily-mail.co.zm","Post","https://www.postzambia.com"],
+"Zimbabwe":["Herald","https://www.herald.co.zw","NewsDay","https://www.newsday.co.zw"]
+},
+
+"Southern Africa": {
+"Botswana":["Mmegi","https://www.mmegi.bw","Patriot","https://www.thepatriot.co.bw"],
+"Lesotho":["Lesotho Times","https://lestimes.com","Public Eye","https://publiceyenews.com"],
+"Namibia":["New Era","https://www.ne.com.na","Namibian","https://www.namibian.com.na"],
+"South Africa":["SABC","https://www.sabcnews.com","News24","https://www.news24.com","Mail Guardian","https://mg.co.za"],
+"Eswatini":["Observer","https://www.observer.org.sz","Times","https://www.times.co.sz"]
+}
+
+};
+
+function showCountries(region){
+const c=document.getElementById('country-buttons');
+const n=document.getElementById('news-links');
+c.innerHTML='';
+n.innerHTML='';
+
+Object.keys(africaData[region]).forEach(country=>{
+let b=document.createElement('button');
+b.textContent=country;
+b.onclick=()=>showNews(region,country);
+c.appendChild(b);
+});
+
+c.classList.add('active');
+n.classList.remove('active');
+}
+
+function showNews(region,country){
+const n=document.getElementById('news-links');
+n.innerHTML='';
+
+let links=africaData[region][country];
+
+for(let i=0;i<links.length;i+=2){
+let b=document.createElement('button');
+b.innerHTML=`<a href="${links[i+1]}" target="_blank">${links[i]}</a>`;
+n.appendChild(b);
+}
+
+n.classList.add('active');
+}
+</script>
+
 </section>
+
+<!-- MARKETS -->
+<section id="markets" class="tab">
+<div id="marketOverview">
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+{"colorTheme":"dark","backgroundColor":"#020606","width":"100%","height":"100%"}
+</script>
+</div>
+</div>
+
+<div id="marketStocks" style="display:none;">
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+{"colorTheme":"dark","backgroundColor":"#020606","dataSource":"SPX500","width":"100%","height":"100%"}
+</script>
+</div>
+</div>
+
+<div id="marketCrypto" style="display:none;">
+<div class="tradingview-widget-container">
+<div class="tradingview-widget-container__widget"></div>
+<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+{"colorTheme":"dark","backgroundColor":"#020606","dataSource":"Crypto","width":"100%","height":"100%"}
+</script>
+</div>
+</div>
+</section>
+
+<section id="conflict" class="tab"><iframe src="https://iran.liveuamap.com"></iframe></section>
+<section id="aircraft" class="tab"><iframe src="https://globe.adsbexchange.com"></iframe></section>
+<section id="marine" class="tab"><iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"></iframe></section>
+<section id="cyber" class="tab"><iframe src="https://threatmap.checkpoint.com"></iframe></section>
+<section id="radio" class="tab"><iframe src="https://radio.garden/"></iframe></section>
 
 </main>
 
@@ -150,9 +403,11 @@ box-shadow:0 0 10px #00ffaa;
 <source src="RADAR3.mp4">
 </video>
 </div>
+<div class="footerVersion">BSG OSINT: VBase2</div>
 <div class="footerCenter">
-<a href="#">BlackSurvivalGear.com</a>
+<a href="https://BlackSurvivalGear.com">BlackSurvivalGear.com</a>
 </div>
+
 </footer>
 
 <script>
@@ -166,6 +421,11 @@ setTimeout(()=>{splash.style.display="none"},600);
 },1500);
 });
 
+/* CLOCK */
+setInterval(()=>{
+document.getElementById("dateTime").textContent=new Date().toLocaleString()
+},1000)
+
 /* NAV */
 document.querySelectorAll("nav button").forEach(btn=>{
 btn.addEventListener("click", ()=>{
@@ -176,15 +436,78 @@ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
 
 btn.classList.add("active")
 document.getElementById(btn.dataset.tab).classList.add("active")
+
+document.getElementById("subMenuBar").style.display="none"
+document.querySelectorAll(".subMenu").forEach(m=>m.style.display="none")
+
+if(btn.dataset.tab==="live"){
+subMenuBar.style.display="block"
+liveMenu.style.display="flex"
+}
+else if(btn.dataset.tab==="markets"){
+subMenuBar.style.display="block"
+marketsMenu.style.display="flex"
+}
 });
 });
 
-/* AFRICA DATA (UNCHANGED) */
-const africaData = {};
+/* LIVE */
+function showLive(e,c){
+document.querySelectorAll("#liveMenu button").forEach(b=>b.classList.remove("active"))
+e.target.classList.add("active")
 
-/* FUNCTIONS */
-function showCountries(region){}
-function showNews(region,country){}
+liveSingle.style.display="block"
+liveQuad.style.display="none"
+africaQuad.style.display="none"
+
+if(c==="aj") liveFrame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
+if(c==="arise") liveFrame.src="https://www.youtube.com/embed/E8PRZmDUiPw"
+if(c==="channels") liveFrame.src="https://www.youtube.com/embed/W8nThq62Vb4"
+if(c==="africanews") liveFrame.src="https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"
+if(c==="newscentral") liveFrame.src="https://www.youtube.com/embed/live_stream?channel=UCylg6Jw0ZpV9n8l8X3Ykz9A"
+if(c==="rt") liveFrame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+if(c==="sky") liveFrame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
+if(c==="wion") liveFrame.src="https://www.youtube.com/embed/h9SRBxdqNcs"
+if(c==="cgtn") liveFrame.src="https://www.youtube.com/embed/BOy2xDU1LC8"
+if(c==="Bloomberg") liveFrame.src="https://www.youtube.com/embed/iEpJwprxDdk"
+
+if(c==="quad"){
+liveSingle.style.display="none"
+liveQuad.style.display="grid"
+}
+
+if(c==="africaQuad"){
+liveSingle.style.display="none"
+africaQuad.style.display="grid"
+}
+}
+
+/* MARKETS */
+function showMarket(e,t){
+document.querySelectorAll("#marketsMenu button").forEach(b=>b.classList.remove("active"))
+e.target.classList.add("active")
+
+document.getElementById("marketOverview").style.display="none"
+document.getElementById("marketStocks").style.display="none"
+document.getElementById("marketCrypto").style.display="none"
+
+if(t==="overview") document.getElementById("marketOverview").style.display="block"
+if(t==="stocks") document.getElementById("marketStocks").style.display="block"
+if(t==="crypto") document.getElementById("marketCrypto").style.display="block"
+}
+
+/* FULLSCREEN */
+function fullscreenPlayer(){
+let player=(liveQuad.style.display==="grid")?liveQuad:
+(africaQuad.style.display==="grid")?africaQuad:liveSingle
+player.requestFullscreen()
+}
+
+/* WEATHER */
+document.getElementById("weatherBtn").addEventListener("click", function(e){
+e.stopPropagation();
+window.open("https://www.windy.com/?6.842,26.166,3","_blank");
+});
 
 </script>
 
