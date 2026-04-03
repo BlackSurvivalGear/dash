@@ -11,7 +11,7 @@ const africaData = {
 },
 
 "West Africa": {
-"AES":["Africa Intelligence Wire","https://syft.ai/top-stories/WdE37rQ97ydsW"],
+"AES":["Sputnik Africa","https://en.sputniknews.africa/search/?query=AES" , "leFaso","https://www.lefaso.net","Burkina24","https://www.burkina24.com" , "Maliweb","https://www.maliweb.net","Le Republicain","https://www.maliweb.net" , "Niamey24","https://www.niameysoir.com","Le Sahel","https://www.lesahel.org"],
 "Benin":["Fraternite","https://www.fraternitebj.info","Le Matinal","https://www.lematinal.bj"],
 "Burkina Faso":["leFaso","https://www.lefaso.net","Burkina24","https://www.burkina24.com"],
 "Cape Verde":["A Semana","https://www.asemana.cv","Santiago Magazine","https://www.santiagomagazine.cv"],
