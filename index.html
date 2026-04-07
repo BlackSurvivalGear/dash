@@ -2,364 +2,368 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BSG Strategic Awareness OSINT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSG Strategic Awareness OSINT</title>
 
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
-<meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="dark">
 
-<style>
-.tradingview-widget-container,
-.tradingview-widget-container__widget{
-width:100%!important;
-height:80vh!important;
-}
-</style>
-
+    <style>
+        .tradingview-widget-container,
+        .tradingview-widget-container__widget {
+            width: 100% !important;
+            height: 80vh !important;
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- SPLASH -->
-<div id="introRadar">
-<video autoplay muted playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
+    <div id="introRadar">
+        <video autoplay muted playsinline>
+            <source src="RADAR3.mp4">
+        </video>
+    </div>
 
-<!-- HEADER -->
-<header class="mainHeader">
-<div class="headerVideo">
-<video autoplay muted loop playsinline>
-<source src="HEADER3.mp4">
-</video>
-</div>
+    <header class="mainHeader">
+        <div class="headerVideo">
+            <video autoplay muted loop playsinline>
+                <source src="HEADER3.mp4">
+            </video>
+        </div>
 
-<div class="headerContent">
-<div class="headerLeft">
-<div class="radarLogo">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-<h1>Global Strategic Awareness OSINT</h1>
-</div>
-<div id="dateTime"></div>
-</div>
-</header>
+        <div class="headerContent">
+            <div class="headerLeft">
+                <div class="radarLogo">
+                    <video autoplay muted loop playsinline>
+                        <source src="RADAR3.mp4">
+                    </video>
+                </div>
+                <h1>Global Strategic Awareness OSINT</h1>
+            </div>
+            <div id="dateTime"></div>
+        </div>
+    </header>
 
-<!-- NAV -->
-<nav>
-<button data-tab="home" class="active">Home</button>
-<button data-tab="live">LIVE NEWS</button>
-<button data-tab="conflict">CONFLICT MAP</button>
-<button data-tab="markets">Markets</button>
-<button data-tab="aircraft">Aircraft Watch</button>
-<button data-tab="marine">Marine Watch</button>
-<button data-tab="cyber">Cyber Attacks</button>
-<button data-tab="radio">Global Radio</button>
-<button id="weatherBtn">Weather</button>
-</nav>
+    <nav>
+        <button data-tab="home" class="active">Home</button>
+        <button data-tab="live">LIVE NEWS</button>
+        <button data-tab="conflict">CONFLICT MAP</button>
+        <button data-tab="markets">Markets</button>
+        <button data-tab="aircraft">Aircraft Watch</button>
+        <button data-tab="marine">Marine Watch</button>
+        <button data-tab="cyber">Cyber Attacks</button>
+        <button data-tab="radio">Global Radio</button>
+        <button id="weatherBtn">Weather</button>
+    </nav>
 
-<!-- SUB MENU -->
-<div id="subMenuBar">
+    <div id="subMenuBar">
 
-<div id="liveMenu" class="subMenu">
-<button onclick="showLive(event,'aj')" class="active">Al Jazeera</button>
-<button onclick="showLive(event,'arise')">Arise News</button>
-<button onclick="showLive(event,'africanews')">Africa News</button>
-<button onclick="showLive(event,'channels')">ChannelsTV</button>
-<button onclick="showLive(event,'cgtn')">CGTN</button>
-<button onclick="showLive(event,'rt')">RT</button>
-<button onclick="showLive(event,'sky')">SKY</button>
-<button onclick="showLive(event,'wion')">WION</button>
-<button onclick="showLive(event,'Bloomberg')">Bloomberg</button>
-<button onclick="showLive(event,'quad')">News Wall</button>
-<button onclick="showLive(event,'africaQuad')">Africa Wall</button>
-<button onclick="fullscreenPlayer()">Full Screen</button>
-</div>
+        <div id="liveMenu" class="subMenu">
+            <button onclick="showLive(event,'aj')" class="active">Al Jazeera</button>
+            <button onclick="showLive(event,'arise')">Arise News</button>
+            <button onclick="showLive(event,'africanews')">Africa News</button>
+            <button onclick="showLive(event,'channels')">ChannelsTV</button>
+            <button onclick="showLive(event,'cgtn')">CGTN</button>
+            <button onclick="showLive(event,'rt')">RT</button>
+            <button onclick="showLive(event,'sky')">SKY</button>
+            <button onclick="showLive(event,'wion')">WION</button>
+            <button onclick="showLive(event,'Bloomberg')">Bloomberg</button>
+            <button onclick="showLive(event,'quad')">News Wall</button>
+            <button onclick="showLive(event,'africaQuad')">Africa Wall</button>
+            <button onclick="fullscreenPlayer()">Full Screen</button>
+        </div>
 
-<div id="marketsMenu" class="subMenu">
-<button onclick="showMarket(event,'overview')" class="active">Overview</button>
-<button onclick="showMarket(event,'stocks')">Stock Heatmap</button>
-<button onclick="showMarket(event,'crypto')">Crypto Heatmap</button>
-</div>
+        <div id="conflictMenu" class="subMenu">
+            <a href="https://monitor-the-situation.com/" target="_blank" rel="noopener noreferrer" class="subLinkBtn">Situation</a>
+            <a href="https://www.worldmonitor.app/" target="_blank" rel="noopener noreferrer" class="subLinkBtn">World</a>
+        </div>
 
-</div>
+        <div id="marketsMenu" class="subMenu">
+            <button onclick="showMarket(event,'overview')" class="active">Overview</button>
+            <button onclick="showMarket(event,'stocks')">Stock Heatmap</button>
+            <button onclick="showMarket(event,'crypto')">Crypto Heatmap</button>
+        </div>
 
-<main>
+        <div class="marketTicker">
+            <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
+            <tv-ticker-tape symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,BITSTAMP:BTCUSD,BITSTAMP:ETHUSD,CMCMARKETS:GOLD,TVC:SILVER,BLACKBULL:BRENT,OANDA:GBPUSD,FX_IDC:GBPNGN,BINANCE:SOLUSDT,BINANCE:AVAXUSDT,BINANCE:RENDERUSDT" item-size="compact" hover-type="performance-grid" show-hover theme="dark">
+            </tv-ticker-tape>
+        </div>
+        </div>
 
-<!-- HOME -->
-<section id="home" class="tab active">
-<div class="homeHero">
-<img src="hero.png" class="heroImage">
-<div class="heroOverlay">
-<h2>BSG Strategic Awareness Dashboard</h2>
-<p>Situational awareness is the foundation of preparedness.</p>
-<p>Monitor global events in real time.</p>
-<p class="heroTag">Stay informed. Stay ready.</p>
-</div>
-</div>
-</section>
+    <main>
 
-<!-- LIVE -->
-<section id="live" class="tab">
-<div id="liveSingle" class="livePlayer">
-<iframe id="liveFrame"
-src="https://www.youtube.com/embed/gCNeDWCI0vo"
-allowfullscreen></iframe>
-</div>
+        <section id="home" class="tab active">
+            <div class="homeHero">
+                <img src="hero.png" class="heroImage">
+                <div class="heroOverlay">
+                    <h2>BSG Strategic Awareness Dashboard</h2>
+                    <p>Situational awareness is the foundation of preparedness.</p>
+                    <p>Monitor global events in real time.</p>
+                    <p class="heroTag">Stay informed. Stay ready.</p>
+                </div>
+            </div>
+        </section>
 
-<div id="liveQuad" class="quadGrid">
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-<iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-<iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
-<iframe src="https://www.youtube.com/embed/BOy2xDU1LC8"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-<iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-</div>
+        <section id="live" class="tab">
+            <div id="liveSingle" class="livePlayer">
+                <iframe id="liveFrame" src="https://www.youtube.com/embed/gCNeDWCI0vo" allowfullscreen></iframe>
+            </div>
 
-<div id="africaQuad" class="quadGrid" style="display:none;">
-<iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
-<iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
-<iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-<iframe src="https://www.youtube.com/embed/Mv14aabg4mA"></iframe>
-<iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-<iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-</div>
-</section>
+            <div id="liveQuad" class="quadGrid">
+                <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+                <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
+                <iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
+                <iframe src="https://www.youtube.com/embed/BOy2xDU1LC8"></iframe>
+                <iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
+                <iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
+            </div>
 
-<!-- MARKETS -->
-<section id="markets" class="tab">
+            <div id="africaQuad" class="quadGrid" style="display:none;">
+                <iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
+                <iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
+                <iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
+                <iframe src="https://www.youtube.com/embed/Mv14aabg4mA"></iframe>
+                <iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
+                <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
+            </div>
+        </section>
 
-<div id="marketOverview">
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-{
-  "colorTheme": "dark",
-  "dateRange": "12M",
-  "showChart": true,
-  "locale": "en",
-  "isTransparent": false,
-  "showSymbolLogo": true,
-  "width": "100%",
-  "height": "100%"
-}
-</script>
-</div>
-</div>
+        <section id="conflict" class="tab">
+            <iframe id="conflictMainMap" src="https://iran.liveuamap.com/" style="width:100%;height:80vh;border:0;"></iframe>
+        </section>
 
-<div id="marketStocks" style="display:none;">
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-{
-  "dataSource": "SPX500",
-  "grouping": "sector",
-  "blockSize": "market_cap_basic",
-  "blockColor": "change",
-  "locale": "en",
-  "colorTheme": "dark"
-}
-</script>
-</div>
-</div>
+        <section id="markets" class="tab">
+            <div id="marketOverview">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                        {
+                            "colorTheme": "dark",
+                            "dateRange": "12M",
+                            "showChart": true,
+                            "locale": "en",
+                            "isTransparent": false,
+                            "showSymbolLogo": true,
+                            "width": "100%",
+                            "height": "100%"
+                        }
+                    </script>
+                </div>
+            </div>
 
-<div id="marketCrypto" style="display:none;">
-<div class="tradingview-widget-container">
-<div class="tradingview-widget-container__widget"></div>
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-{
-  "dataSource": "Crypto",
-  "blockSize": "market_cap_calc",
-  "blockColor": "change",
-  "locale": "en",
-  "colorTheme": "dark"
-}
-</script>
-</div>
-</div>
+            <div id="marketStocks" style="display:none;">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
+                        {
+                            "dataSource": "SPX500",
+                            "grouping": "sector",
+                            "blockSize": "market_cap_basic",
+                            "blockColor": "change",
+                            "locale": "en",
+                            "colorTheme": "dark"
+                        }
+                    </script>
+                </div>
+            </div>
 
-</section>
+            <div id="marketCrypto" style="display:none;">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
+                        {
+                            "dataSource": "Crypto",
+                            "blockSize": "market_cap_calc",
+                            "blockColor": "change",
+                            "locale": "en",
+                            "colorTheme": "dark"
+                        }
+                    </script>
+                </div>
+            </div>
+        </section>
 
-<section id="conflict" class="tab"><iframe src="https://iran.liveuamap.com"></iframe></section>
-<section id="aircraft" class="tab"><iframe src="https://globe.adsbexchange.com"></iframe></section>
-<section id="marine" class="tab"><iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"></iframe></section>
-<section id="cyber" class="tab"><iframe src="https://threatmap.checkpoint.com"></iframe></section>
-<section id="radio" class="tab"><iframe src="https://radio.garden/"></iframe></section>
+        <section id="aircraft" class="tab"><iframe src="https://globe.adsbexchange.com"></iframe></section>
+        <section id="marine" class="tab"><iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"></iframe></section>
+        <section id="cyber" class="tab"><iframe src="https://threatmap.checkpoint.com"></iframe></section>
+        <section id="radio" class="tab"><iframe src="https://radio.garden/"></iframe></section>
 
-</main>
+    </main>
 
-<footer class="mainFooter">
-<div class="footerTop">
-<video autoplay muted loop playsinline>
-<source src="RADAR3.mp4">
-</video>
-</div>
-<div class="footerVersion">BSG OSINT: VBase3</div>
-<div class="footerCenter">
-<a href="https://BlackSurvivalGear.com">BlackSurvivalGear.com</a>
-</div>
-</footer>
+    <footer class="mainFooter">
+        <div class="footerTop">
+            <video autoplay muted loop playsinline>
+                <source src="RADAR3.mp4">
+            </video>
+        </div>
+        <div class="footerVersion">BSG OSINT: VBase3</div>
+        <div class="footerCenter">
+            <a href="https://BlackSurvivalGear.com">BlackSurvivalGear.com</a>
+        </div>
+    </footer>
 
-<!-- AFRICA -->
-<div id="africaDrawer">
-<button id="africaToggle">▲ AFRICAN NEWS DRAW</button>
+    <div id="africaDrawer">
+        <button id="africaToggle">▲ PAN AFRICAN NEWS DRAW</button>
 
-<div id="africaContent">
-<div class="regionButtons">
-<button onclick="showCountries('North Africa')">North</button>
-<button onclick="showCountries('West Africa')">West</button>
-<button onclick="showCountries('Central Africa')">Central</button>
-<button onclick="showCountries('East Africa')">East</button>
-<button onclick="showCountries('Southern Africa')">South</button>
-</div>
+        <div id="africaContent">
+            <div class="regionButtons">
+                <button onclick="showCountries('North Africa')">North</button>
+                <button onclick="showCountries('West Africa')">West</button>
+                <button onclick="showCountries('Central Africa')">Central</button>
+                <button onclick="showCountries('East Africa')">East</button>
+                <button onclick="showCountries('Southern Africa')">South</button>
+            </div>
 
-<div id="country-buttons"></div>
-<div id="news-links"></div>
-</div>
-</div>
+            <div id="country-buttons"></div>
+            <div id="news-links"></div>
+        </div>
+    </div>
 
-<script src="africaData.js"></script>
+    <script src="africaData.js"></script>
 
-<script>
+    <script>
+        /* SPLASH */
+        document.addEventListener("DOMContentLoaded", function() {
+            const splash = document.getElementById("introRadar");
+            if (!splash) return;
 
-/* SPLASH (KEEP YOUR WORKING VERSION) */
-document.addEventListener("DOMContentLoaded", function(){
-const splash=document.getElementById("introRadar");
-if(!splash) return;
+            setTimeout(() => {
+                splash.style.opacity = "0";
+                setTimeout(() => {
+                    splash.style.display = "none"
+                }, 600);
+            }, 1500);
+        });
 
-setTimeout(()=>{
-splash.style.opacity="0";
-setTimeout(()=>{splash.style.display="none"},600);
-},1500);
-});
+        setTimeout(() => {
+            let splash = document.getElementById("introRadar");
+            if (splash) splash.style.display = "none";
+        }, 4000);
 
-setTimeout(()=>{
-let splash=document.getElementById("introRadar");
-if(splash) splash.style.display="none";
-},4000);
+        /* CLOCK */
+        setInterval(() => {
+            document.getElementById("dateTime").textContent = new Date().toLocaleString()
+        }, 1000)
 
-/* CLOCK */
-setInterval(()=>{
-document.getElementById("dateTime").textContent=new Date().toLocaleString()
-},1000)
+        /* NAV */
+        document.querySelectorAll("nav button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (!btn.dataset.tab) return;
 
-/* NAV */
-document.querySelectorAll("nav button").forEach(btn=>{
-btn.addEventListener("click", ()=>{
-if(!btn.dataset.tab) return;
+                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"))
+                document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"))
 
-document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"))
-document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"))
+                btn.classList.add("active")
+                document.getElementById(btn.dataset.tab).classList.add("active")
 
-btn.classList.add("active")
-document.getElementById(btn.dataset.tab).classList.add("active")
+                subMenuBar.style.display = "none"
+                document.querySelectorAll(".subMenu").forEach(m => m.style.display = "none")
 
-subMenuBar.style.display="none"
-document.querySelectorAll(".subMenu").forEach(m=>m.style.display="none")
+                if (btn.dataset.tab === "live") {
+                    subMenuBar.style.display = "block"
+                    liveMenu.style.display = "flex"
+                } else if (btn.dataset.tab === "conflict") {
+                    subMenuBar.style.display = "block"
+                    conflictMenu.style.display = "flex"
+                } else if (btn.dataset.tab === "markets") {
+                    subMenuBar.style.display = "block"
+                    marketsMenu.style.display = "flex"
+                }
+            });
+        });
 
-if(btn.dataset.tab==="live"){
-subMenuBar.style.display="block"
-liveMenu.style.display="flex"
-}
-else if(btn.dataset.tab==="markets"){
-subMenuBar.style.display="block"
-marketsMenu.style.display="flex"
-}
-});
-});
+        /* MARKETS */
+        function showMarket(e, t) {
+            document.querySelectorAll("#marketsMenu button").forEach(b => b.classList.remove("active"))
+            e.target.classList.add("active")
 
-/* MARKETS */
-function showMarket(e,t){
-document.querySelectorAll("#marketsMenu button").forEach(b=>b.classList.remove("active"))
-e.target.classList.add("active")
+            document.getElementById("marketOverview").style.display = "none"
+            document.getElementById("marketStocks").style.display = "none"
+            document.getElementById("marketCrypto").style.display = "none"
 
-document.getElementById("marketOverview").style.display="none"
-document.getElementById("marketStocks").style.display="none"
-document.getElementById("marketCrypto").style.display="none"
+            if (t === "overview") document.getElementById("marketOverview").style.display = "block"
+            if (t === "stocks") document.getElementById("marketStocks").style.display = "block"
+            if (t === "crypto") document.getElementById("marketCrypto").style.display = "block"
+        }
 
-if(t==="overview") document.getElementById("marketOverview").style.display="block"
-if(t==="stocks") document.getElementById("marketStocks").style.display="block"
-if(t==="crypto") document.getElementById("marketCrypto").style.display="block"
-}
+        /* WEATHER */
+        document.getElementById("weatherBtn").onclick = function() {
+            window.open("https://www.windy.com", "_blank");
+        };
 
-/* WEATHER */
-document.getElementById("weatherBtn").onclick=function(){
-window.open("https://www.windy.com","_blank");
-};
+        /* FULLSCREEN */
+        function fullscreenPlayer() {
+            let el = liveSingle;
+            if (liveQuad.style.display === "grid") el = liveQuad;
+            if (africaQuad.style.display === "grid") el = africaQuad;
 
-/* FULLSCREEN */
-function fullscreenPlayer(){
-let el = liveSingle;
-if(liveQuad.style.display==="grid") el=liveQuad;
-if(africaQuad.style.display==="grid") el=africaQuad;
+            if (el.requestFullscreen) el.requestFullscreen();
+        }
 
-if(el.requestFullscreen) el.requestFullscreen();
-}
+        /* LIVE */
+        function showLive(e, c) {
+            document.querySelectorAll("#liveMenu button").forEach(b => b.classList.remove("active"))
+            e.target.classList.add("active")
 
-/* LIVE */
-function showLive(e,c){
-document.querySelectorAll("#liveMenu button").forEach(b=>b.classList.remove("active"))
-e.target.classList.add("active")
+            liveSingle.style.display = "block"
+            liveQuad.style.display = "none"
+            africaQuad.style.display = "none"
 
-liveSingle.style.display="block"
-liveQuad.style.display="none"
-africaQuad.style.display="none"
+            if (c === "aj") liveFrame.src = "https://www.youtube.com/embed/gCNeDWCI0vo"
+            if (c === "arise") liveFrame.src = "https://www.youtube.com/embed/E8PRZmDUiPw"
+            if (c === "channels") liveFrame.src = "https://www.youtube.com/embed/W8nThq62Vb4"
+            if (c === "africanews") liveFrame.src = "https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"
+            if (c === "rt") liveFrame.src = "https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
+            if (c === "sky") liveFrame.src = "https://www.youtube.com/embed/YDvsBbKfLPA"
+            if (c === "wion") liveFrame.src = "https://www.youtube.com/embed/h9SRBxdqNcs"
+            if (c === "cgtn") liveFrame.src = "https://www.youtube.com/embed/BOy2xDU1LC8"
+            if (c === "Bloomberg") liveFrame.src = "https://www.youtube.com/embed/iEpJwprxDdk"
 
-if(c==="aj") liveFrame.src="https://www.youtube.com/embed/gCNeDWCI0vo"
-if(c==="arise") liveFrame.src="https://www.youtube.com/embed/E8PRZmDUiPw"
-if(c==="channels") liveFrame.src="https://www.youtube.com/embed/W8nThq62Vb4"
-if(c==="africanews") liveFrame.src="https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"
-if(c==="rt") liveFrame.src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-if(c==="sky") liveFrame.src="https://www.youtube.com/embed/YDvsBbKfLPA"
-if(c==="wion") liveFrame.src="https://www.youtube.com/embed/h9SRBxdqNcs"
-if(c==="cgtn") liveFrame.src="https://www.youtube.com/embed/BOy2xDU1LC8"
-if(c==="Bloomberg") liveFrame.src="https://www.youtube.com/embed/iEpJwprxDdk"
+            if (c === "quad") {
+                liveSingle.style.display = "none"
+                liveQuad.style.display = "grid"
+            }
+            if (c === "africaQuad") {
+                liveSingle.style.display = "none"
+                africaQuad.style.display = "grid"
+            }
+        }
 
-if(c==="quad"){
-liveSingle.style.display="none"
-liveQuad.style.display="grid"
-}
-if(c==="africaQuad"){
-liveSingle.style.display="none"
-africaQuad.style.display="grid"
-}
-}
+        /* AFRICA */
+        function showCountries(region) {
+            const c = document.getElementById('country-buttons');
+            const n = document.getElementById('news-links');
+            c.innerHTML = '';
+            n.innerHTML = '';
+            Object.keys(africaData[region]).forEach(country => {
+                let b = document.createElement('button');
+                b.textContent = country;
+                b.onclick = () => showNews(region, country);
+                c.appendChild(b);
+            });
+        }
 
-/* AFRICA */
-function showCountries(region){
-const c=document.getElementById('country-buttons');
-const n=document.getElementById('news-links');
-c.innerHTML=''; n.innerHTML='';
-Object.keys(africaData[region]).forEach(country=>{
-let b=document.createElement('button');
-b.textContent=country;
-b.onclick=()=>showNews(region,country);
-c.appendChild(b);
-});
-}
+        function showNews(region, country) {
+            const n = document.getElementById('news-links');
+            n.innerHTML = '';
+            let links = africaData[region][country];
+            for (let i = 0; i < links.length; i += 2) {
+                let b = document.createElement('button');
+                b.innerHTML = `<a href="${links[i+1]}" target="_blank">${links[i]}</a>`;
+                n.appendChild(b);
+            }
+        }
 
-function showNews(region,country){
-const n=document.getElementById('news-links');
-n.innerHTML='';
-let links=africaData[region][country];
-for(let i=0;i<links.length;i+=2){
-let b=document.createElement('button');
-b.innerHTML=`<a href="${links[i+1]}" target="_blank">${links[i]}</a>`;
-n.appendChild(b);
-}
-}
-
-document.getElementById("africaToggle").onclick=function(){
-document.getElementById("africaContent").classList.toggle("active");
-};
-
-</script>
+        document.getElementById("africaToggle").onclick = function() {
+            document.getElementById("africaContent").classList.toggle("active");
+        };
+    </script>
 
 </body>
+
 </html>
