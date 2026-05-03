@@ -1,369 +1,627 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSG Strategic Awareness OSINT</title>
-
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
-
-    <meta name="color-scheme" content="dark">
-
-    <style>
-        .tradingview-widget-container,
-        .tradingview-widget-container__widget {
-            width: 100% !important;
-            height: 80vh !important;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>BSG Multidomain OSINT</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--cyan:#00ffee;--bg:#02070d;--panel:#061018}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:#fff;font-family:Rajdhani,sans-serif;overflow-x:hidden}
+#commandHeader{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;padding:18px 24px;background:linear-gradient(180deg,#07141c,#050b12);background-image:linear-gradient(180deg,rgba(7,20,28,0.88),rgba(5,11,18,0.92)),url('BSG BLACK GOLD.png');background-size:cover;background-position:center;border-bottom:2px solid #00ffee55}
+.brand-wrap{display:flex;align-items:center;gap:15px}
+.radar-logo,.footer-radar{width:72px;height:72px;border-radius:50%;border:1px solid #00ffee88;box-shadow:0 0 16px #00ffee55;animation:radarPulse 4s infinite;transition:box-shadow 0.3s ease}
+@keyframes radarPulse{50%{box-shadow:0 0 26px #00ffeeaa}}
+.brand-wrap:hover .radar-logo{box-shadow:0 0 30px #00ffee,0 0 60px #00ffee,0 0 100px #00ffee88;animation:none}
+.callsign{font-size:30px;font-weight:700;letter-spacing:2px;color:#06161c;text-shadow:0 0 27px #00ffee,0 0 50px #00ffee88;transition:text-shadow 0.3s ease;cursor:default}
+.brand-wrap:hover .callsign{text-shadow:0 0 30px #00ffee,0 0 60px #00ffee,0 0 100px #00ffee,0 0 140px #00ffee,0 0 200px #00ffee,0 0 280px #00ffeedd,0 0 380px #00ffeecc,0 0 500px #00ffeeaa}
+.subline{font-size:16px;letter-spacing:4px;color:#fff;text-shadow:0 0 10px #00ffee,0 0 20px #00ffee88;transition:font-size 0.3s ease,text-shadow 0.3s ease}
+.OSINT.PLATFORM-sub{font-size:16px;letter-spacing:4px;color:#00ffee;transition:font-size 0.3s ease,text-shadow 0.3s ease}
+.brand-wrap:hover .subline,.brand-wrap:hover .OSINT.PLATFORM-sub{font-size:22px;text-shadow:0 0 14px #00ffee,0 0 28px #00ffee,0 0 56px #00ffee88}
+.header-center{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.command-btn{padding:10px 14px;border:1px solid #00ffee66;background:#081821;color:#00ffee;font-family:'Share Tech Mono';cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease,background 0.15s ease,text-shadow 0.15s ease}
+.command-btn:hover{background:#0c2430;transform:translateY(-2px);box-shadow:0 0 18px #00ffee88,0 0 36px #00ffee44,0 0 54px #00ffee22;text-shadow:0 0 8px #00ffee;border-color:#00ffeebb}
+.command-btn.active{background:#0c2430;box-shadow:0 0 14px #00ffee77,0 0 28px #00ffee44,0 0 42px #00ffee22;border-color:#00ffeedd;text-shadow:0 0 6px #00ffee}
+.drawer-toggle:hover{box-shadow:0 0 18px #00ffee88,0 0 36px #00ffee44;text-shadow:0 0 8px #00ffee;transform:translateY(-1px)}
+.channel:hover{background:#0c2430!important;box-shadow:0 0 12px #00ffee66;text-shadow:0 0 8px #00ffee;color:#00ffee}
+#gmtClock{text-align:center;color:#00ffee;width:100%;cursor:pointer;user-select:none}
+#gmtClock:hover{text-shadow:0 0 8px #00ffee}
+#africaTimePanel{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);z-index:10000;width:min(960px,92vw);max-height:80vh;overflow-y:auto;border-radius:12px;box-shadow:0 8px 40px rgba(0,255,238,0.15),0 0 1px #00ffee44}
+#africaTimePanel.open{display:block}
+#africaTimeWidget{font-family:Rajdhani,sans-serif;background:#061018;color:#f1f5f9;border-radius:12px;padding:16px;box-sizing:border-box;border:1px solid #00ffee44}
+#africaTimeWidget h2{text-align:center;color:#00ffee;margin-bottom:10px;margin-top:0;font-family:'Share Tech Mono',monospace;letter-spacing:2px;text-shadow:0 0 10px #00ffee88}
+#africaTimeWidget input,#africaTimeWidget select{width:100%;padding:8px;margin-bottom:10px;border-radius:8px;border:1px solid #00ffee44;background:#081821;color:#00ffee;box-sizing:border-box;font-family:'Share Tech Mono',monospace}
+.atw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.atw-card{background:#081821;border:1px solid #00ffee33;border-radius:10px;padding:12px;transition:0.3s;cursor:default}
+.atw-card:hover{border-color:#00ffee;box-shadow:0 0 15px rgba(0,255,238,0.3)}
+.atw-card.highlight{border-color:#00ffee;box-shadow:0 0 25px rgba(0,255,238,0.9);transform:scale(1.05)}
+.atw-flag{font-size:20px;margin-right:8px}
+.atw-country{font-weight:bold;margin-bottom:4px;display:flex;align-items:center}
+.atw-city{font-size:14px;margin-bottom:8px;color:#7fd6df}
+.atw-time{font-family:'Share Tech Mono',monospace;font-size:20px;color:#00ffee;font-weight:bold;text-shadow:0 0 6px #00ffee88}
+.atw-date{color:#7fd6df;font-size:13px;margin-top:4px}
+.atw-toggle-container{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.atw-small-button{background:#081821;border:1px solid #00ffee66;color:#00ffee;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:bold;flex-grow:1;font-family:'Share Tech Mono',monospace;transition:background 0.15s,box-shadow 0.15s,text-shadow 0.15s}
+.atw-small-button:hover{background:#0c2430;box-shadow:0 0 18px #00ffee88;text-shadow:0 0 8px #00ffee}
+.atw-set-btn{background:none;border:1px solid #00ffee55;color:#00ffee;padding:4px 10px;border-radius:4px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;margin-top:6px;transition:background 0.15s,box-shadow 0.15s}
+.atw-set-btn:hover{background:#0c2430;box-shadow:0 0 12px #00ffee66}
+.atw-set-btn.active{background:#00ffee;color:#061018;font-weight:bold}
+#atwSearchBox{flex-grow:3}
+.header-right{display:flex;align-items:center;gap:6px;justify-content:flex-end}
+.market-box{padding:4px 8px;text-align:center}
+.market-price{font-size:24px;color:#00ffee}
+#breakingBanner{background:#0a0000;border-bottom:1px solid #ff2200aa;padding:0;overflow:hidden;display:none}
+#breakingBanner.active{display:block}
+.breaking-inner{display:flex;align-items:center;height:32px}
+.breaking-tag{background:#ff2200;color:#fff;font-family:'Share Tech Mono';font-size:12px;font-weight:700;padding:0 12px;height:100%;display:flex;align-items:center;letter-spacing:1px;animation:breakingPulse 1.5s infinite}
+@keyframes breakingPulse{50%{background:#cc0000}}
+.breaking-scroll{flex:1;overflow:hidden;display:flex;align-items:center}.breaking-track{display:inline-flex;align-items:center;white-space:nowrap;padding-left:100%;animation:scroll 120s linear infinite}
+.breaking-link{display:inline-block;padding-right:60px;color:#ff8866;text-decoration:none;font-size:13px;font-family:'Share Tech Mono'}
+.breaking-link:hover{color:#ffaa88}
+#newsTickerWrap{display:flex;height:42px;background:#050b12;border-top:1px solid #00ffee55;border-bottom:1px solid #00ffee55;overflow:hidden}
+.channel{background:#071923;border:none;color:#7fd6df;padding:0 14px;cursor:pointer;font-family:'Share Tech Mono';font-size:12px;white-space:nowrap;transition:background 0.15s,color 0.15s,text-shadow 0.15s,box-shadow 0.15s}.channel.active{background:#0c2430;color:#00ffee;font-weight:700;text-shadow:0 0 8px #00ffee;box-shadow:inset 0 -2px 0 #00ffee}
+.channel-wrap{display:flex;overflow-x:auto;flex-shrink:0}
+.ticker-window{flex:1;overflow:hidden;display:flex;align-items:center}.ticker-track{display:inline-flex;align-items:center;white-space:nowrap;padding-left:100%;animation:scroll 150s linear infinite;font-size:18px}
+@keyframes scroll{100%{transform:translateX(-100%)}}
+.headline-link{display:inline-block;padding-right:95px;color:#d7ffff;text-decoration:none;font-size:18px;line-height:42px}
+.placeholder{height:calc(100vh - 126px);display:flex;justify-content:center;align-items:center}
+.ops-bay{width:min(1500px,96%);height:78vh;border:1px solid #00ffee44;background:#040b10;overflow:hidden}
+#opsShell{height:100%;display:grid;grid-template-columns:1fr;overflow:hidden;position:relative}
+#opsMenu{position:absolute;top:0;left:0;z-index:50;width:48px;height:100%;background:#061018;border-right:1px solid #00ffee44;overflow:hidden;transition:width 0.3s ease}
+#opsMenu:hover,#opsMenu.open{width:280px;overflow-y:auto}
+#opsMenu .menu-content{opacity:0;pointer-events:none;transition:opacity 0.2s ease;padding:0 18px 18px}
+#opsMenu:hover .menu-content,#opsMenu.open .menu-content{opacity:1;pointer-events:auto}
+.drawer-toggle{width:100%;padding:10px;margin-bottom:18px;background:#081821;border:1px solid #00ffee55;color:#00ffee;cursor:pointer;font-family:'Share Tech Mono';transition:transform 0.15s ease,box-shadow 0.15s ease,text-shadow 0.15s ease}
+.panel-trigger{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#081821;border:none;border-bottom:1px solid #00ffee44;color:#00ffee;cursor:pointer;font-size:20px;font-family:'Share Tech Mono'}
+.panel-trigger:hover{background:#0c2430;text-shadow:0 0 8px #00ffee}
+#opsShell.fullscreen #opsMenu{display:none}
+#opsShell.fullscreen #opsViewport{margin-left:0}
+#opsViewport{margin-left:48px}
+.feed-panel{position:relative;background:#000;border:1px solid #0f2730}
+.feed-label{position:absolute;top:10px;left:10px;padding:6px 10px;background:rgba(3,22,29,.8);border:1px solid #00ffee66;color:#00ffee;z-index:2}
+iframe,.map-frame{width:100%;height:100%;border:none}
+#marineFrame iframe{filter:invert(92%) hue-rotate(180deg) grayscale(.85)}
+#flightFrame iframe{filter:invert(92%) hue-rotate(180deg) grayscale(.9) brightness(.6) contrast(1.2)}
+#commandFooter{padding:28px;display:flex;flex-direction:column;align-items:center;background:linear-gradient(180deg,#050b12,#07141c);border-top:2px solid #00ffee55;position:relative}
+.version{position:absolute;right:20px;bottom:12px;font-size:11px;color:#00ffee55;font-family:'Share Tech Mono'}
+a{color:#00ffee;text-decoration:none}
+#splashScreen{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#02070d;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:99999;transition:opacity 0.5s ease}
+#splashScreen.fade-out{opacity:0}
+#splashScreen video{width:140px;height:140px;border-radius:50%;border:1px solid #00ffee88;box-shadow:0 0 30px #00ffee,0 0 60px #00ffee55;animation:radarPulse 2s infinite}
+#splashScreen .splash-title{margin-top:20px;font-size:28px;font-weight:700;letter-spacing:3px;color:#06161c;text-shadow:0 0 30px #00ffee,0 0 60px #00ffee,0 0 100px #00ffee88}
+#splashScreen .splash-sub{font-size:13px;letter-spacing:6px;color:#00ffee;margin-top:6px;font-family:'Share Tech Mono'}
+.loader-wrap{margin-top:32px;width:260px;height:3px;background:#0a1a22;border-radius:2px;overflow:hidden}
+.loader-bar{width:0;height:100%;background:linear-gradient(90deg,#00ffee,#00ffeedd);border-radius:2px;animation:loadBar 3s ease-in-out forwards}
+@keyframes loadBar{0%{width:0}100%{width:100%}}
+</style>
 </head>
-
 <body>
+<div id='splashScreen'>
+<video autoplay muted loop playsinline><source src='https://blacksurvivalgear.github.io/osint/RADAR3.mp4'></video>
+<div class='splash-title'>BLACK SURVIVAL GEAR</div>
+<div class='splash-sub'>OSINT PLATFORM</div>
+<div class='loader-wrap'><div class='loader-bar'></div></div>
+</div>
+<header id='commandHeader'>
+<div class='brand-wrap'>
+<a href='https://www.blacksurvivalgear.com/' target='_blank'><video class='radar-logo' autoplay muted loop playsinline><source src='https://blacksurvivalgear.github.io/osint/RADAR3.mp4'></video></a>
+<div><div class='callsign'>BLACK SURVIVAL GEAR</div><div class='subline'>Members</div><div class='OSINT PLATFORM-sub'>OSINT PLATFORM</div></div>
+</div>
+<div class='header-center' style='position:relative'>
+<div id='navBtns'>
+<button id='headlinesBtn' class='command-btn'>HEADLINES</button>
+<button id='newsBtn' class='command-btn'>LIVE NEWS</button>
+<button id='mapBtn' class='command-btn'>CONFLICT MAP</button>
+<button id='marineBtn' class='command-btn'>MARINE WATCH</button>
+<button id='flightBtn' class='command-btn'>FLIGHT WATCH</button>
+<button id='marketsBtn' class='command-btn'>MARKETS</button>
+</div>
+<div id='gmtClock' onclick='toggleAfricaTime()'></div>
+<div id='gmtClockFlag' style='text-align:center;font-size:28px;line-height:1;display:none;cursor:pointer' onclick='openCountryView()'></div>
+<div id='africaTimePanel' onmouseenter='clearAfricaTimeHide()' onmouseleave='scheduleAfricaTimeHide()'>
+<div id='africaTimeWidget'>
+<h2>African Time</h2>
+<div class='atw-toggle-container'>
+<input id='atwSearchBox' type='text' placeholder='Search country or capital...' autocomplete='off' />
+<select id='atwHourFormat' style='width:auto'>
+<option value='auto'>Auto Format</option>
+<option value='12'>12-hour</option>
+<option value='24'>24-hour</option>
+</select>
+<button class='atw-small-button' id='atwToggleShow'>Show All Countries</button>
+<button class='atw-small-button' id='atwResetGmt' onclick="setHeaderTime(null,'','')">RESET TO GMT</button>
+</div>
+<select id='atwCountrySelect'><option value=''>Jump to country...</option></select>
+<div class='atw-grid' id='atwCityGrid'></div>
+</div>
+</div>
+</div>
+<div class='header-right'>
+<div class='market-box'><div>BRENT</div><div class='market-price' id='priceBrent'>--</div></div>
+<div class='market-box'><div>GOLD</div><div class='market-price' id='priceGold'>--</div></div>
+<div class='market-box'><div>SILVER</div><div class='market-price' id='priceSilver'>--</div></div>
+<div class='market-box'><div>BTC</div><div class='market-price' id='priceBtc'>--</div></div>
+</div>
+</header>
+<div id='breakingBanner'><div class='breaking-inner'><span class='breaking-tag'>BREAKING</span><div class='breaking-scroll'><div id='breakingTrack' class='breaking-track'></div></div></div></div>
+<div id='newsTickerWrap'>
+<div class='channel-wrap'><button class='channel active'>AJ</button><button class='channel'>AP</button><button class='channel'>BBC</button><button class='channel'>CNBC</button><button class='channel'>DW</button><button class='channel'>EURO</button><button class='channel'>FR24</button><button class='channel'>GUARDIAN</button><button class='channel'>REUTERS</button><button class='channel'>RT</button><button class='channel'>SKY</button></div>
+<div class='ticker-window'><div id='newsTicker' class='ticker-track'>Loading Tactical Feed...</div></div>
+</div>
+<section class='placeholder'><div id='opsBay' class='ops-bay'></div></section>
+<footer id='commandFooter'>
+<a href='https://www.blacksurvivalgear.com/' target='_blank'><video class='footer-radar' autoplay muted loop playsinline><source src='https://blacksurvivalgear.github.io/osint/RADAR3.mp4'></video></a>
+<a href='#'>BlackSurvivalGear.com</a>
+<span class='version'>v1.0.0</span>
+</footer>
+<script>
+setTimeout(()=>{let s=document.getElementById('splashScreen');s.classList.add('fade-out');setTimeout(()=>s.remove(),500)},3000);
+let headerTz=null,headerTzLabel='',headerTzIso='';
+function updateClock(){const now=new Date();const flagEl=document.getElementById('gmtClockFlag');if(headerTz){const time=new Intl.DateTimeFormat('en-GB',{timeZone:headerTz,weekday:'short',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(now);gmtClock.textContent=time+' | '+headerTzLabel;if(flagEl){flagEl.innerHTML=`<img src='https://flagcdn.com/w80/${headerTzIso}.png' alt='${headerTzLabel.replace(/'/g,"&#39;")}' style='width:36px;height:auto;border-radius:3px'>`;flagEl.style.display='block'}}else{gmtClock.textContent=now.toUTCString().replace('GMT','GMT / ZULU');if(flagEl){flagEl.innerHTML='';flagEl.style.display='none'}}}setInterval(updateClock,1000);updateClock();
+function setHeaderTime(tz,label,iso){headerTz=tz;headerTzLabel=label;headerTzIso=iso||'';updateClock();atwRender();atwUpdateTimes()}
 
-    <div id="introRadar">
-        <video autoplay muted playsinline>
-            <source src="RADAR3.mp4">
-        </video>
-    </div>
+let africaTimePanelOpen=false,africaTimeHideTimer=null;
+function toggleAfricaTime(){const p=document.getElementById('africaTimePanel');if(africaTimePanelOpen){p.classList.remove('open');africaTimePanelOpen=false}else{p.classList.add('open');africaTimePanelOpen=true;atwRender();atwUpdateTimes()}}
+function scheduleAfricaTimeHide(){africaTimeHideTimer=setTimeout(()=>{document.getElementById('africaTimePanel').classList.remove('open');africaTimePanelOpen=false},600)}
+function clearAfricaTimeHide(){if(africaTimeHideTimer){clearTimeout(africaTimeHideTimer);africaTimeHideTimer=null}}
+function openCountryView(){if(!headerTzLabel)return;const p=document.getElementById('africaTimePanel');if(!africaTimePanelOpen){p.classList.add('open');africaTimePanelOpen=true}atwViewCountry(headerTzLabel,headerTzIso)}
+const atwAllCities=[
+{iso:"dz",name:"Algeria",city:"Algiers",tz:"Africa/Algiers"},
+{iso:"ao",name:"Angola",city:"Luanda",tz:"Africa/Luanda"},
+{iso:"bj",name:"Benin",city:"Porto-Novo",tz:"Africa/Porto-Novo"},
+{iso:"bw",name:"Botswana",city:"Gaborone",tz:"Africa/Gaborone"},
+{iso:"bf",name:"Burkina Faso",city:"Ouagadougou",tz:"Africa/Ouagadougou"},
+{iso:"bi",name:"Burundi",city:"Gitega",tz:"Africa/Bujumbura"},
+{iso:"cm",name:"Cameroon",city:"Yaound\u00e9",tz:"Africa/Douala"},
+{iso:"cv",name:"Cape Verde",city:"Praia",tz:"Atlantic/Cape_Verde"},
+{iso:"cf",name:"Central African Republic",city:"Bangui",tz:"Africa/Bangui"},
+{iso:"td",name:"Chad",city:"N'Djamena",tz:"Africa/Ndjamena"},
+{iso:"km",name:"Comoros",city:"Moroni",tz:"Indian/Comoro"},
+{iso:"cg",name:"Congo (Brazzaville)",city:"Brazzaville",tz:"Africa/Brazzaville"},
+{iso:"cd",name:"Congo (Kinshasa)",city:"Kinshasa",tz:"Africa/Kinshasa"},
+{iso:"ci",name:"C\u00f4te d'Ivoire",city:"Yamoussoukro",tz:"Africa/Abidjan"},
+{iso:"dj",name:"Djibouti",city:"Djibouti",tz:"Africa/Djibouti"},
+{iso:"eg",name:"Egypt",city:"Cairo",tz:"Africa/Cairo"},
+{iso:"gq",name:"Equatorial Guinea",city:"Malabo",tz:"Africa/Malabo"},
+{iso:"er",name:"Eritrea",city:"Asmara",tz:"Africa/Asmara"},
+{iso:"sz",name:"Eswatini",city:"Mbabane",tz:"Africa/Mbabane"},
+{iso:"et",name:"Ethiopia",city:"Addis Ababa",tz:"Africa/Addis_Ababa"},
+{iso:"ga",name:"Gabon",city:"Libreville",tz:"Africa/Libreville"},
+{iso:"gm",name:"Gambia",city:"Banjul",tz:"Africa/Banjul"},
+{iso:"gh",name:"Ghana",city:"Accra",tz:"Africa/Accra"},
+{iso:"gn",name:"Guinea",city:"Conakry",tz:"Africa/Conakry"},
+{iso:"gw",name:"Guinea-Bissau",city:"Bissau",tz:"Africa/Bissau"},
+{iso:"ke",name:"Kenya",city:"Nairobi",tz:"Africa/Nairobi"},
+{iso:"ls",name:"Lesotho",city:"Maseru",tz:"Africa/Maseru"},
+{iso:"lr",name:"Liberia",city:"Monrovia",tz:"Africa/Monrovia"},
+{iso:"ly",name:"Libya",city:"Tripoli",tz:"Africa/Tripoli"},
+{iso:"mg",name:"Madagascar",city:"Antananarivo",tz:"Indian/Antananarivo"},
+{iso:"mw",name:"Malawi",city:"Lilongwe",tz:"Africa/Blantyre"},
+{iso:"ml",name:"Mali",city:"Bamako",tz:"Africa/Bamako"},
+{iso:"mr",name:"Mauritania",city:"Nouakchott",tz:"Africa/Nouakchott"},
+{iso:"mu",name:"Mauritius",city:"Port Louis",tz:"Indian/Mauritius"},
+{iso:"ma",name:"Morocco",city:"Rabat",tz:"Africa/Casablanca"},
+{iso:"mz",name:"Mozambique",city:"Maputo",tz:"Africa/Maputo"},
+{iso:"na",name:"Namibia",city:"Windhoek",tz:"Africa/Windhoek"},
+{iso:"ne",name:"Niger",city:"Niamey",tz:"Africa/Niamey"},
+{iso:"ng",name:"Nigeria",city:"Abuja",tz:"Africa/Lagos"},
+{iso:"rw",name:"Rwanda",city:"Kigali",tz:"Africa/Kigali"},
+{iso:"st",name:"S\u00e3o Tom\u00e9 and Pr\u00edncipe",city:"S\u00e3o Tom\u00e9",tz:"Africa/Sao_Tome"},
+{iso:"sn",name:"Senegal",city:"Dakar",tz:"Africa/Dakar"},
+{iso:"sc",name:"Seychelles",city:"Victoria",tz:"Indian/Mahe"},
+{iso:"sl",name:"Sierra Leone",city:"Freetown",tz:"Africa/Freetown"},
+{iso:"so",name:"Somalia",city:"Mogadishu",tz:"Africa/Mogadishu"},
+{iso:"za",name:"South Africa",city:"Pretoria",tz:"Africa/Johannesburg"},
+{iso:"ss",name:"South Sudan",city:"Juba",tz:"Africa/Juba"},
+{iso:"sd",name:"Sudan",city:"Khartoum",tz:"Africa/Khartoum"},
+{iso:"tz",name:"Tanzania",city:"Dodoma",tz:"Africa/Dar_es_Salaam"},
+{iso:"tg",name:"Togo",city:"Lom\u00e9",tz:"Africa/Lome"},
+{iso:"tn",name:"Tunisia",city:"Tunis",tz:"Africa/Tunis"},
+{iso:"ug",name:"Uganda",city:"Kampala",tz:"Africa/Kampala"},
+{iso:"zm",name:"Zambia",city:"Lusaka",tz:"Africa/Lusaka"},
+{iso:"zw",name:"Zimbabwe",city:"Harare",tz:"Africa/Harare"}
+];
+function atwFlagImg(iso,size){return `<img src='https://flagcdn.com/w40/${iso}.png' alt='' style='width:${size||20}px;height:auto;vertical-align:middle;border-radius:2px'>`}
+let atwShowAll=false;const atwTopCount=8;
+let atwGrid=document.getElementById('atwCityGrid');
+let atwSearchBox=document.getElementById('atwSearchBox');
+let atwSelect=document.getElementById('atwCountrySelect');
+let atwToggleBtn=document.getElementById('atwToggleShow');
+let atwHourFormat=document.getElementById('atwHourFormat');
+const atwOriginalHTML=document.getElementById('africaTimeWidget').innerHTML;
+function atwGetFiltered(){const q=atwSearchBox.value.toLowerCase();return atwAllCities.filter(c=>c.name.toLowerCase().includes(q)||c.city.toLowerCase().includes(q))}
+function atwRender(){
+const filtered=atwGetFiltered();
+const list=atwShowAll?filtered:filtered.slice(0,atwTopCount);
+atwGrid.innerHTML='';
+list.forEach((c,i)=>{const card=document.createElement('div');card.className='atw-card';card.id='atw-card-'+i;const isActive=headerTz===c.tz;card.innerHTML=`<div class='atw-country'><span class='atw-flag'>${atwFlagImg(c.iso)}</span>${c.name}</div><div class='atw-city'>${c.city}</div><div class='atw-time' id='atw-time-${i}'>--:--:--</div><div class='atw-date' id='atw-date-${i}'></div><div style='display:flex;gap:6px;margin-top:6px'><button class="atw-set-btn${isActive?' active':''}" data-tz="${c.tz}" data-iso="${c.iso}">${isActive?'RESET':'SET'}</button><button class="atw-set-btn" onclick="atwViewCountry('${c.name.replace(/'/g,"\\'")}','${c.iso}')">VIEW</button></div>`;card.querySelector('.atw-set-btn').onclick=function(){if(isActive){setHeaderTime(null,'','')}else{setHeaderTime(c.tz,c.name,c.iso)}};atwGrid.appendChild(card)});
+atwSelect.innerHTML='<option value="">Jump to country...</option>'+filtered.map((c,i)=>`<option value="${i}">${c.name}</option>`).join('')}
+function atwUpdateTimes(){
+if(!africaTimePanelOpen)return;
+const now=new Date();const fv=atwHourFormat.value;const h12=fv==='auto'?undefined:(fv==='12');
+const filtered=atwGetFiltered();const list=atwShowAll?filtered:filtered.slice(0,atwTopCount);
+list.forEach((c,i)=>{const te=document.getElementById('atw-time-'+i);const de=document.getElementById('atw-date-'+i);if(te&&de){try{te.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:c.tz,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:h12}).format(now);de.textContent=new Intl.DateTimeFormat('en-GB',{timeZone:c.tz,weekday:'short',month:'short',day:'numeric'}).format(now)}catch(e){te.textContent='Error'}}})}
+setInterval(atwUpdateTimes,1000);
+atwSearchBox.addEventListener('input',()=>{atwRender();atwUpdateTimes()});
+atwToggleBtn.addEventListener('click',()=>{atwShowAll=!atwShowAll;atwToggleBtn.textContent=atwShowAll?'Collapse List':'Show All Countries';atwRender();atwUpdateTimes()});
+atwSelect.addEventListener('change',()=>{const idx=atwSelect.value;if(idx!==''){let card=document.getElementById('atw-card-'+idx);if(!card){atwShowAll=true;atwToggleBtn.textContent='Collapse List';atwRender();atwUpdateTimes();card=document.getElementById('atw-card-'+idx)}if(card){card.classList.add('highlight');card.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>card.classList.remove('highlight'),2000)}}});
+atwHourFormat.addEventListener('change',atwUpdateTimes);
+document.addEventListener('click',function(e){const panel=document.getElementById('africaTimePanel');const clock=document.getElementById('gmtClock');const flag=document.getElementById('gmtClockFlag');if(africaTimePanelOpen&&document.contains(e.target)&&!panel.contains(e.target)&&!clock.contains(e.target)&&!(flag&&flag.contains(e.target))){panel.classList.remove('open');africaTimePanelOpen=false}});
+function atwRestoreWidget(){
+const w=document.getElementById('africaTimeWidget');
+w.innerHTML=atwOriginalHTML;
+atwGrid=document.getElementById('atwCityGrid');
+atwSearchBox=document.getElementById('atwSearchBox');
+atwSelect=document.getElementById('atwCountrySelect');
+atwToggleBtn=document.getElementById('atwToggleShow');
+atwHourFormat=document.getElementById('atwHourFormat');
+atwSearchBox.addEventListener('input',()=>{atwRender();atwUpdateTimes()});
+atwToggleBtn.addEventListener('click',()=>{atwShowAll=!atwShowAll;atwToggleBtn.textContent=atwShowAll?'Collapse List':'Show All Countries';atwRender();atwUpdateTimes()});
+atwSelect.addEventListener('change',()=>{const idx=atwSelect.value;if(idx!==''){let card=document.getElementById('atw-card-'+idx);if(!card){atwShowAll=true;atwToggleBtn.textContent='Collapse List';atwRender();atwUpdateTimes();card=document.getElementById('atw-card-'+idx)}if(card){card.classList.add('highlight');card.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>card.classList.remove('highlight'),2000)}}});
+atwHourFormat.addEventListener('change',atwUpdateTimes);
+atwRender();atwUpdateTimes()}
+const liveuamapUrls={
+'Algeria':'https://algeria.liveuamap.com/',
+'Angola':'https://drcongo.liveuamap.com/',
+'Benin':'https://sahel.liveuamap.com/',
+'Botswana':'https://southafrica.liveuamap.com/',
+'Burkina Faso':'https://sahel.liveuamap.com/',
+'Burundi':'https://drcongo.liveuamap.com/',
+'Cameroon':'https://cameroon.liveuamap.com/',
+'Cape Verde':'https://sahel.liveuamap.com/',
+'Central African Republic':'https://centralafrica.liveuamap.com/',
+'Chad':'https://sahel.liveuamap.com/',
+'Comoros':'https://tanzania.liveuamap.com/',
+'Congo (Brazzaville)':'https://drcongo.liveuamap.com/',
+'Congo (Kinshasa)':'https://drcongo.liveuamap.com/',
+"C\u00f4te d'Ivoire":'https://sahel.liveuamap.com/',
+'Djibouti':'https://somalia.liveuamap.com/',
+'Egypt':'https://egypt.liveuamap.com/',
+'Equatorial Guinea':'https://cameroon.liveuamap.com/',
+'Eritrea':'https://ethiopia.liveuamap.com/',
+'Eswatini':'https://southafrica.liveuamap.com/',
+'Ethiopia':'https://ethiopia.liveuamap.com/',
+'Gabon':'https://cameroon.liveuamap.com/',
+'Gambia':'https://sahel.liveuamap.com/',
+'Ghana':'https://sahel.liveuamap.com/',
+'Guinea':'https://sahel.liveuamap.com/',
+'Guinea-Bissau':'https://sahel.liveuamap.com/',
+'Kenya':'https://kenya.liveuamap.com/',
+'Lesotho':'https://southafrica.liveuamap.com/',
+'Liberia':'https://sahel.liveuamap.com/',
+'Libya':'https://libya.liveuamap.com/',
+'Madagascar':'https://tanzania.liveuamap.com/',
+'Malawi':'https://tanzania.liveuamap.com/',
+'Mali':'https://sahel.liveuamap.com/',
+'Mauritania':'https://sahel.liveuamap.com/',
+'Mauritius':'https://southafrica.liveuamap.com/',
+'Morocco':'https://algeria.liveuamap.com/',
+'Mozambique':'https://tanzania.liveuamap.com/',
+'Namibia':'https://southafrica.liveuamap.com/',
+'Niger':'https://sahel.liveuamap.com/',
+'Nigeria':'https://nigeria.liveuamap.com/',
+'Rwanda':'https://drcongo.liveuamap.com/',
+"S\u00e3o Tom\u00e9 and Pr\u00edncipe":'https://cameroon.liveuamap.com/',
+'Senegal':'https://sahel.liveuamap.com/',
+'Seychelles':'https://kenya.liveuamap.com/',
+'Sierra Leone':'https://sahel.liveuamap.com/',
+'Somalia':'https://somalia.liveuamap.com/',
+'South Africa':'https://southafrica.liveuamap.com/',
+'South Sudan':'https://sudan.liveuamap.com/',
+'Sudan':'https://sudan.liveuamap.com/',
+'Tanzania':'https://tanzania.liveuamap.com/',
+'Togo':'https://sahel.liveuamap.com/',
+'Tunisia':'https://tunisia.liveuamap.com/',
+'Uganda':'https://uganda.liveuamap.com/',
+'Zambia':'https://zimbabwe.liveuamap.com/',
+'Zimbabwe':'https://zimbabwe.liveuamap.com/'
+};
+async function atwViewCountry(name,iso){
+const w=document.getElementById('africaTimeWidget');
+w.innerHTML=`<div style='text-align:center;padding:40px;color:#00ffee;font-family:Share Tech Mono,monospace'>Loading ${name}...</div>`;
+try{
+const r=await fetch('https://restcountries.com/v3.1/name/'+encodeURIComponent(name)+'?fullText=true');
+const d=await r.json();
+if(!d||!d.length)throw new Error('Not found');
+const c=d[0];
+const flag=c.flags?c.flags.png:'';
+const region=c.region||'N/A';
+const subregion=c.subregion||'N/A';
+const capital=c.capital?c.capital[0]:'N/A';
+const code=(c.idd&&c.idd.root?c.idd.root:'')+(c.idd&&c.idd.suffixes?c.idd.suffixes[0]:'');
+const pop=c.population?c.population.toLocaleString():'N/A';
+const area=c.area?c.area.toLocaleString()+' km²':'N/A';
+const curr=c.currencies?Object.values(c.currencies)[0]:{};
+const currName=curr.name||'N/A';
+const currTicker=c.currencies?Object.keys(c.currencies)[0]:'N/A';
+const lang=c.languages?Object.values(c.languages).join(', '):'N/A';
+const coords=c.latlng||[];
+const gmap=coords.length?`https://www.google.com/maps/search/?q=${coords[0]},${coords[1]}`:`https://www.google.com/maps/search/?q=${capital}`;
+const passIdx=`https://www.passportindex.org/passport/${name.toLowerCase().replace(/ /g,'-')}/`;
+let exRate='N/A';
+try{const er=await fetch('https://api.exchangerate-api.com/v4/latest/USD');const ed=await er.json();if(ed.rates&&ed.rates[currTicker])exRate=ed.rates[currTicker].toFixed(2)}catch(e){}
+const liveMapUrl=liveuamapUrls[name]||'https://africa.liveuamap.com/';
+const mapEmbed=`<iframe src='${liveMapUrl}' class='map-frame' style='width:100%;height:350px;border:none;border-radius:8px;margin-top:12px'></iframe>`;
+const countryNameMap={'Algeria':'Algeria','Angola':'Angola','Benin':'Benin','Botswana':'Botswana','Burkina Faso':'BurkinaFaso','Burundi':'Burundi','Cameroon':'Cameroon','Cape Verde':'CapeVerde','Central African Republic':'CentralAfricanRepublic','Chad':'Chad','Congo (Brazzaville)':'Congo','Congo (Kinshasa)':'DRCongo',"C\u00f4te d'Ivoire":'IvoryCoast','Djibouti':'Djibouti','Egypt':'Egypt','Equatorial Guinea':'EquatorialGuinea','Eritrea':'Eritrea','Eswatini':'Eswatini','Ethiopia':'Ethiopia','Gabon':'Gabon','Gambia':'Gambia','Ghana':'Ghana','Guinea':'Guinea','Guinea-Bissau':'GuineaBissau','Kenya':'Kenya','Lesotho':'Lesotho','Liberia':'Liberia','Libya':'Libya','Madagascar':'Madagascar','Malawi':'Malawi','Mali':'Mali','Mauritania':'Mauritania','Morocco':'Morocco','Mozambique':'Mozambique','Namibia':'Namibia','Niger':'Niger','Nigeria':'Nigeria','Rwanda':'Rwanda',"S\u00e3o Tom\u00e9 and Pr\u00edncipe":'SaoTome','Senegal':'Senegal','Sierra Leone':'SierraLeone','Somalia':'Somalia','South Africa':'SouthAfrica','South Sudan':'SouthSudan','Sudan':'Sudan','Tanzania':'Tanzania','Togo':'Togo','Tunisia':'Tunisia','Uganda':'Uganda','Zambia':'Zambia','Zimbabwe':'Zimbabwe'};
+const dataKey=countryNameMap[name]||'';
+let newsSources=[];
+if(dataKey){for(const reg of Object.values(africaData)){if(reg[dataKey]){newsSources=reg[dataKey];break}}}
+let newsLinksHtml='';
+if(newsSources.length){newsLinksHtml='<div style="margin-top:12px"><div style="color:#00ffee;font-family:Share Tech Mono,monospace;font-size:14px;margin-bottom:8px;text-shadow:0 0 6px #00ffee88">📰 NEWS SOURCES</div><div style="display:flex;flex-wrap:wrap;gap:6px">'+newsSources.map(s=>`<a href='${s[1]}' target='_blank' style='padding:6px 12px;background:#081821;border:1px solid #00ffee44;border-radius:6px;color:#00ffee;text-decoration:none;font-family:Share Tech Mono,monospace;font-size:12px;transition:background 0.15s,box-shadow 0.15s'onmouseover="this.style.background='#0c2430';this.style.boxShadow='0 0 12px #00ffee66'"onmouseout="this.style.background='#081821';this.style.boxShadow='none'">${s[0]}</a>`).join('')+'</div></div>'}
+w.innerHTML=`<div style='padding:12px'>
+<button class='atw-small-button' onclick='atwRestoreWidget()' style='margin-bottom:16px'>⬅ BACK</button>
+<div style='display:flex;align-items:center;gap:12px;margin-bottom:16px'><img src='${flag}' style='width:60px;border-radius:4px'><div><h2 style='margin:0;color:#00ffee;font-family:Share Tech Mono,monospace'>${name}</h2><div style='color:#7fd6df;font-size:13px'>${region} — ${subregion}</div></div></div>
+<div style='display:grid;grid-template-columns:1fr 1fr;gap:8px;font-family:Rajdhani,sans-serif;font-size:14px'>
+<div><span style='color:#7fd6df'>Capital:</span> ${capital}</div>
+<div><span style='color:#7fd6df'>Population:</span> ${pop}</div>
+<div><span style='color:#7fd6df'>Currency:</span> ${currName} (${currTicker})</div>
+<div><span style='color:#7fd6df'>Area:</span> ${area}</div>
+<div><span style='color:#7fd6df'>Exchange Rate (USD):</span> ${exRate}</div>
+<div><span style='color:#7fd6df'>Calling Code:</span> ${code}</div>
+<div><span style='color:#7fd6df'>Language:</span> ${lang}</div>
+<div><a href='${gmap}' target='_blank' style='color:#00ffee;text-decoration:none'>📍 Google Maps</a></div>
+<div></div>
+<div><a href='${passIdx}' target='_blank' style='color:#00ffee;text-decoration:none'>🛃 Passport Index</a></div>
+</div>
+${newsLinksHtml}
+${mapEmbed}
+<div id='countryHeadlines' style='margin-top:12px'></div>
+</div>`;
+const countryRssFeeds={'Premium Times':'https://www.premiumtimesng.com/feed','Channels TV':'https://www.channelstv.com/feed','Leadership':'https://leadership.ng/feed','ThisDay':'https://www.thisdaylive.com/feed','Vanguard':'https://www.vanguardngr.com/feed','Punch':'https://punchng.com/feed','Daily Trust':'https://www.dailytrust.com/feed','The Cable':'https://www.thecable.ng/feed','Sahara Reporters':'https://saharareporters.com/articles/rss','Sudan Tribune':'https://sudantribune.com/feed','Addis Standard':'https://addisstandard.com/feed','Nation':'https://nation.africa/rss.xml','New Vision':'https://www.newvision.co.ug/feed','Citizen':'https://www.thecitizen.co.tz/feed','SABC News':'https://www.sabcnews.com/sabcnews/feed','News24':'https://feeds.news24.com/articles/news24/TopStories/rss','Herald':'https://www.herald.co.zw/feed','Iwacu':'https://www.iwacu-burundi.org/feed','New Times':'https://www.newtimes.co.rw/feed','Radio Okapi':'https://www.radiookapi.net/feed','Cameroon Tribune':'https://www.cameroon-tribune.cm/feed','Algeria Press Service':'https://www.aps.dz/en/component/obrss/all-news?format=feed','Libya Herald':'https://www.libyaherald.com/feed','Juba Monitor':'https://www.jubamonitor.com/feed','FrontPageAfrica':'https://www.frontpageafricaonline.com/feed','Graphic':'https://graphic.com.gh/feed','Mmegi':'https://www.mmegi.bw/feed','Namibian':'https://www.namibian.com.na/feed','Al-Ahram':'https://english.ahram.org.eg/RSS.aspx'};
+if(newsSources.length){const hlDiv=document.getElementById('countryHeadlines');hlDiv.innerHTML='<div style="color:#00ffee;font-family:Share Tech Mono,monospace;font-size:14px;margin-bottom:8px;text-shadow:0 0 6px #00ffee88">📡 LATEST HEADLINES</div><div style="color:#7fd6df;font-size:12px">Loading feeds...</div>';const rssApi='https://api.rss2json.com/v1/api.json?rss_url=';let allItems=[];let fetched=0;const feedSources=newsSources.filter(s=>countryRssFeeds[s[0]]);const maxFeeds=Math.min(feedSources.length,3);if(!maxFeeds){hlDiv.innerHTML='';} else {for(let i=0;i<maxFeeds;i++){const srcName=feedSources[i][0];const rssUrl=countryRssFeeds[srcName];(async()=>{let items=[];try{const r=await fetch(rssApi+encodeURIComponent(rssUrl));const d=await r.json();if(d.status==='ok'&&d.items){d.items.slice(0,4).forEach(item=>{items.push({title:item.title,link:item.link,source:srcName,pubDate:item.pubDate})})}}catch(e){}fetched++;allItems=allItems.concat(items);if(fetched>=maxFeeds){if(allItems.length){allItems.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));hlDiv.innerHTML='<div style="color:#00ffee;font-family:Share Tech Mono,monospace;font-size:14px;margin-bottom:8px;text-shadow:0 0 6px #00ffee88">📡 LATEST HEADLINES</div>'+allItems.slice(0,8).map(it=>`<a href='${safeHref(it.link)}' target='_blank' style='display:block;padding:8px;margin-bottom:4px;background:#081821;border-left:2px solid #00ffee44;color:#d7ffff;text-decoration:none;font-size:13px;transition:background 0.15s'onmouseover="this.style.background='#0c2430'"onmouseout="this.style.background='#081821'"><span style='color:#00ffee;font-size:11px'>${esc(it.source)} — ${it.pubDate?new Date(it.pubDate).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):''}</span><br>${esc(it.title)}</a>`).join('')}else{hlDiv.innerHTML=''}}})()}}}
+}catch(e){w.innerHTML=`<div style='padding:20px'><button class='atw-small-button' onclick='atwRestoreWidget()'>⬅ BACK</button><div style='text-align:center;color:#ff4444;padding:20px'>Failed to load country data.</div></div>`}}
+function esc(s){let d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function safeHref(u){let s=String(u).trim();if(!(s.startsWith('https://')||s.startsWith('http://')))return'#';return esc(s).replace(/'/g,'&#39;')}
+let full=false,idx=0;
+function active(id){document.querySelectorAll('.command-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function renderOps(menu,content){opsBay.style.cssText='';full=false;opsBay.innerHTML=`<div id='opsShell'><div id='opsMenu'><button class='panel-trigger' onclick="document.getElementById('opsMenu').classList.toggle('open')" title='COMMAND PANEL'>☰</button><div class='menu-content'>${menu}</div></div><div id='opsViewport' style='height:100%;overflow-y:auto;min-height:0'>${content}</div></div>`}
 
-    <header class="mainHeader">
-        <div class="headerVideo">
-            <video autoplay muted loop playsinline>
-                <source src="HEADER3.mp4">
-            </video>
-        </div>
+const globalFeeds=[['WAR ROOM','https://rumble.com/embed/v33aw1a/?pub=4jw3x3'],['AL JAZEERA','https://www.youtube.com/embed/gCNeDWCI0vo'],['DW','https://www.youtube.com/embed/LuKwFajn37U'],['BLOOMBERG','https://www.youtube.com/embed/iEpJwprxDdk'],['FR24','https://www.youtube.com/embed/u9foWyMSETk'],['SKY','https://www.youtube.com/embed/YDvsBbKfLPA']];
 
-        <div class="headerContent">
-            <div class="headerLeft">
-                <div class="radarLogo">
-                    <video autoplay muted loop playsinline>
-                        <source src="RADAR3.mp4">
-                    </video>
-                </div>
-                <h1>Global Strategic Awareness OSINT</h1>
-            </div>
-            <div id="dateTime"></div>
-        </div>
-    </header>
 
-    <nav>
-        <button data-tab="home" class="active">Home</button>
-        <button data-tab="live">LIVE NEWS</button>
-        <button data-tab="conflict">CONFLICT MAP</button>
-        <button data-tab="markets">Markets</button>
-        <button data-tab="aircraft">Aircraft Watch</button>
-        <button data-tab="marine">Marine Watch</button>
-        <button data-tab="cyber">Cyber Attacks</button>
-        <button data-tab="radio">Global Radio</button>
-        <button id="weatherBtn">Weather</button>
-    </nav>
+const africanChannels=[['DW Africa','https://www.youtube.com/embed/W8nThq62Vb4'],['Africa Live','https://www.youtube.com/embed/E8PRZmDUiPw'],['Africa Today','https://www.youtube.com/embed/NQjabLGdP5g'],['Africa Now','https://www.youtube.com/embed/Mv14aabg4mA'],['Africanews','https://www.youtube.com/embed/NJ1GmKo9zIg']];
+const americanChannels=[['ABC News','https://www.youtube.com/embed/w_Ma8oQLmSM'],['Bloomberg','https://www.youtube.com/embed/iEpJwprxDdk'],['C5N','https://www.youtube.com/embed/SF06Qy1Ct6Y'],['CBC News','https://www.youtube.com/embed/jxP_h3V-Dv8'],['CNBC','https://www.youtube.com/embed/9NyxcX3rhQs'],['CNN','https://www.youtube.com/embed/w_Ma8oQLmSM'],['CNN Brasil','https://www.youtube.com/embed/qcTn899skkc'],['TN Argentina','https://www.youtube.com/embed/cb12KmMMDJA']];
+const asianChannels=[['ABP News','https://www.youtube.com/embed/mKXfcdJArAI'],['Al Jazeera','https://www.youtube.com/embed/gCNeDWCI0vo'],['Al Jazeera Arabic','https://www.youtube.com/embed/bNyUyrR0PHo'],['Al Arabiya','https://www.youtube.com/embed/n7eQejkXbnM'],['Al Hadath','https://www.youtube.com/embed/xWXpl7azI8k'],['Arirang News','https://www.youtube.com/embed/live_stream?channel=UCVhZFhVERyP8VhHXl4GqDwA'],['Asharq News','https://www.youtube.com/embed/f6VpkfV7m4Y'],['CNA','https://www.youtube.com/embed/XWq5kBlakcQ'],['i24NEWS','https://www.youtube.com/embed/myKybZUK0IA'],['India Today','https://www.youtube.com/embed/sYZtOFzM78M'],['Kan 11','https://www.youtube.com/embed/TCnaIE_SAtM'],['NHK World','https://www.youtube.com/embed/f0lYfG_vY_U'],['Sky News Arabia','https://www.youtube.com/embed/U--OjmpjF5o'],['TBS NEWS DIG','https://www.youtube.com/embed/aUDm173E8k8'],['TRT World','https://www.youtube.com/embed/ABfFhWzWs0s'],['WION','https://www.youtube.com/embed/live_stream?channel=UC_gUM8rL-Lrg6O3adPW9K1g']];
+const chineseChannels=[['CGTN','https://www.youtube.com/embed/JVbrHGPzVPA'],['CGTN Français','https://www.youtube.com/embed/4KZoMnMsFnc'],['Phoenix InfoNews','https://www.youtube.com/embed/fHDCkysNVBM']];
+const europeanChannels=[['ABC News Australia','https://www.youtube.com/embed/vOTiJkg1voo'],['BBC News','https://www.youtube.com/embed/bjgQzJzCZKs'],['BFMTV','https://www.youtube.com/embed/smB_F6DW7cI'],['DW','https://www.youtube.com/embed/LuKwFajn37U'],['Euronews','https://www.youtube.com/embed/pykpO5kQJ98'],['France 24','https://www.youtube.com/embed/u9foWyMSETk'],['France 24 FR','https://www.youtube.com/embed/l8PMl7tUDIE'],['France Info','https://www.youtube.com/embed/Z-Nwo-ypKtM'],['RTVE 24H','https://www.youtube.com/embed/7_srED6k0bE'],['Sky News','https://www.youtube.com/embed/uvviIF4725I'],['Tagesschau24','https://www.youtube.com/embed/fC_q9TkO1uU'],['Telewizja Republika','https://www.youtube.com/embed/dzntyCTgJMQ'],['TRT Haber','https://www.youtube.com/embed/3XHebGJG0bc'],['TVP Info','https://www.youtube.com/embed/3jKb-uThfrg']];
+const russianChannels=[['RT','https://rumble.com/embed/vtp5hp/'],['RT News','https://rumble.com/embed/vtp5hp/'],['Sputnik','https://www.youtube.com/embed/PLFONfJEiIg']];
 
-    <div id="subMenuBar">
+const africaData={
+NorthAfrica:{Algeria:[['Algeria Press Service','https://www.aps.dz'],['El Watan','https://www.elwatan.com']],Egypt:[['Al-Ahram','https://english.ahram.org.eg'],['Al-Masry Al-Youm','https://www.almasryalyoum.com']],Libya:[['Libya Herald','https://www.libyaherald.com'],['Libyan Observer','https://www.libyanobserver.ly']],Mauritania:[['Al-Akhbar','https://alakhbar.info'],['Sahara Media','https://saharamedias.net']],Morocco:[['Le Matin','https://lematin.ma'],['MAP','https://www.map.ma']],Sudan:[['Sudan Tribune','https://sudantribune.com'],['Sudanese News','https://www.sudanews.net']],Tunisia:[['TAP','https://www.tap.info.tn'],['La Presse','https://lapresse.tn']]},
+WestAfrica:{AES:[['Sputnik Africa','https://en.sputniknews.africa/search/?query=AES'],['leFaso','https://www.lefaso.net'],['Burkina24','https://www.burkina24.com'],['Maliweb','https://www.maliweb.net'],['Le Republicain','https://www.maliweb.net'],['Niamey24','https://www.niameysoir.com'],['Le Sahel','https://www.lesahel.org']],Benin:[['Fraternite','https://www.fraternitebj.info'],['Le Matinal','https://www.lematinal.bj']],BurkinaFaso:[['leFaso','https://www.lefaso.net'],['Burkina24','https://www.burkina24.com']],CapeVerde:[['A Semana','https://www.asemana.cv'],['Santiago Magazine','https://www.santiagomagazine.cv']],Gambia:[['The Point','https://thepoint.gm'],['Foroyaa','https://foroyaa.net']],Ghana:[['Graphic','https://graphic.com.gh'],['Daily Guide','https://dailyguidenetwork.com']],Guinea:[['Guinee24','https://guinee24.com'],['Conakry Infos','https://www.conakryinfos.com']],GuineaBissau:[['O Gologb','https://www.ogologb.com'],['Novidades','https://novidades.gw']],IvoryCoast:[['Abidjan.net','https://www.abidjan.net'],['Le Patriote','https://www.lepatriote.net']],Liberia:[['New Dawn','https://www.newdawnliberia.com'],['FrontPageAfrica','https://www.frontpageafricaonline.com']],Mali:[['Maliweb','https://www.maliweb.net'],['Le Republicain','https://www.maliweb.net']],Niger:[['Niamey24','https://www.niameysoir.com'],['Le Sahel','https://www.lesahel.org']],Nigeria:[['Premium Times','https://www.premiumtimesng.com'],['Channels TV','https://www.channelstv.com'],['Leadership','https://leadership.ng'],['The Nation','https://thenationonlineng.net'],['ThisDay','https://www.thisdaylive.com'],['Tribune','https://tribuneonlineng.com'],['Naija News','https://www.naijanews.com'],['The Cable','https://www.thecable.ng'],['Daily Sun','https://www.sunnewsonline.com'],['Ripples','https://www.ripplesnigeria.com'],['Sahara Reporters','https://www.saharareporters.com'],['Vanguard','https://www.vanguardngr.com'],['Punch','https://www.punchng.com'],['Daily Trust','https://www.dailytrust.com']],Senegal:[['Le Soleil','https://www.lesoleil.sn'],['Seneweb','https://www.seneweb.com']],SierraLeone:[['Concord Times','https://www.concordtimes.com'],['Sierra Express','https://www.sierraexpressmedia.com']],Togo:[['Togo Presse','https://www.togopresse.tg'],['Le Correcteur','https://lecorrecteur.info']]},
+CentralAfrica:{Angola:[['Jornal de Angola','https://www.jornaldeangola.ao'],['O Pais','https://www.opais.co.ao']],Cameroon:[['Cameroon Tribune','https://www.cameroon-tribune.cm'],['CRTV','https://www.crtv.cm']],CentralAfricanRepublic:[['Journal de Bangui','https://www.journaldebangui.com'],['Radio Ndeke Luka','https://www.radiondekeluka.org']],Chad:[['Alwihda','https://www.alwihdainfo.com'],['Le Progres','https://www.leprogres.td']],Congo:[['Les Depeches','https://www.lesdepechesdebrazzaville.fr'],['Congo24','https://www.congo24.net']],DRCongo:[['Radio Okapi','https://www.radiookapi.net'],['Le Potentiel','https://www.lepotentiel.cd']],Gabon:[['Gabon24','https://www.gabon24.ga'],['Nouvelle Republique','https://www.lanouvellerepublique.com']],EquatorialGuinea:[['Diario Rombe','https://www.diariorombe.es'],['Radio Macuto','https://radiomacuto.net']],SaoTome:[['Tela Non','https://www.telanon.info'],['STP24','https://www.stp24.com']]},
+EastAfrica:{Burundi:[['Iwacu','https://www.iwacu-burundi.org'],['Renouveau','https://www.renouveau.digital']],Djibouti:[['La Nation','https://www.lanation.dj'],['Djibouti24','https://www.djibouti24.com']],Eritrea:[['ENA','http://www.shabait.com'],['Asmarino','https://www.asmarino.com']],Ethiopia:[['Addis Standard','https://addisstandard.com'],['Reporter','https://www.ethiopianreporter.com']],Kenya:[['Nation','https://nation.africa'],['Capital FM','https://www.capitalfm.co.ke']],Madagascar:[['Midi Madagasikara','https://www.midi-madagasikara.mg'],["L'Express",'https://lexpress.mg']],Malawi:[['Nation MW','https://www.mwnation.com'],['Malawi24','https://malawi24.com']],Mozambique:[['Noticias','https://www.jornalnoticias.co.mz'],['O Pais','https://www.opais.co.mz']],Rwanda:[['New Times','https://www.newtimes.co.rw'],['Rwanda Today','https://www.rwandatoday.africa']],Somalia:[['Radio Muqdisho','https://www.radiomuqdisho.so'],['SONNA','https://sonna.so']],SouthSudan:[['Juba Monitor','https://www.jubamonitor.com'],['Radio Tamazuj','https://radiotamazuj.org']],Tanzania:[['Citizen','https://www.thecitizen.co.tz'],['Daily News','https://www.dailynews.co.tz']],Uganda:[['New Vision','https://www.newvision.co.ug'],['Observer','https://www.observer.ug']],Zambia:[['Daily Mail','https://www.daily-mail.co.zm'],['Post','https://www.postzambia.com']],Zimbabwe:[['Herald','https://www.herald.co.zw'],['NewsDay','https://www.newsday.co.zw']]},
+SouthernAfrica:{Botswana:[['Mmegi','https://www.mmegi.bw'],['Patriot','https://www.thepatriot.co.bw']],Lesotho:[['Lesotho Times','https://lestimes.com'],['Public Eye','https://publiceyenews.com']],Namibia:[['New Era','https://www.ne.com.na'],['Namibian','https://www.namibian.com.na']],SouthAfrica:[['SABC News','https://www.sabcnews.com'],['News24','https://www.news24.com'],['Mail & Guardian','https://mg.co.za']],Eswatini:[['Observer','https://www.observer.org.sz'],['Times','https://www.times.co.sz']]}
+};
 
-        <div id="liveMenu" class="subMenu">
-            <button onclick="showLive(event,'aj')" class="active">Al Jazeera</button>
-            <button onclick="showLive(event,'arise')">Arise News</button>
-            <button onclick="showLive(event,'africanews')">Africa News</button>
-            <button onclick="showLive(event,'channels')">ChannelsTV</button>
-            <button onclick="showLive(event,'cgtn')">CGTN</button>
-            <button onclick="showLive(event,'rt')">RT</button>
-            <button onclick="showLive(event,'sky')">SKY</button>
-            <button onclick="showLive(event,'wion')">WION</button>
-            <button onclick="showLive(event,'Bloomberg')">Bloomberg</button>
-            <button onclick="showLive(event,'quad')">News Wall</button>
-            <button onclick="showLive(event,'africaQuad')">Africa Wall</button>
-            <button onclick="fullscreenPlayer()">Full Screen</button>
-        </div>
+function renderNews(){
+let feeds=globalFeeds;
+let viewport=document.getElementById('newsViewport');
+if(full){document.getElementById('opsBay').style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;border:none';let shell=document.getElementById('opsShell');if(shell)shell.classList.add('fullscreen');if(idx===-1){let cols=Math.min(feeds.length,3);let rows=Math.ceil(feeds.length/cols);let h=`<div style='position:relative;width:100%;height:100%'><button onclick="exitFullScreen()" style='position:absolute;top:10px;right:10px;z-index:10000;padding:8px 16px;background:#081821;border:1px solid #00ffee66;color:#00ffee;cursor:pointer;font-family:Share Tech Mono'>EXIT</button><div style='height:100%;display:grid;grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr);gap:2px'>`;feeds.forEach(f=>h+=`<div class='feed-panel'><div class='feed-label'>${f[0]}</div><iframe src='${f[1]}' style='width:100%;height:100%;border:none'></iframe></div>`);viewport.innerHTML=h+'</div></div>'}else{viewport.innerHTML=`<div style='position:relative;width:100%;height:100%'><button onclick="exitFullScreen()" style='position:absolute;top:10px;right:10px;z-index:10000;padding:8px 16px;background:#081821;border:1px solid #00ffee66;color:#00ffee;cursor:pointer;font-family:Share Tech Mono'>EXIT</button><iframe src='${feeds[idx][1]}' style='width:100%;height:100%;border:none'></iframe></div>`}return}
+document.getElementById('opsBay').style.cssText='';
+let h="<div style='height:100%;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:2px'>";
+feeds.forEach(f=>h+=`<div class='feed-panel'><div class='feed-label'>${f[0]}</div><iframe src='${f[1]}'></iframe></div>`);
+viewport.innerHTML=h+'</div>'}
 
-        <div id="conflictMenu" class="subMenu">
-            <a href="https://monitor-the-situation.com/" target="_blank" rel="noopener noreferrer" class="subLinkBtn">Situation</a>
-            <a href="https://www.worldmonitor.app/" target="_blank" rel="noopener noreferrer" class="subLinkBtn">World</a>
-        </div>
+function loadPanAfricaHub(){
+active('newsBtn');
+renderOps(`
+<button class='command-btn' onclick='loadNews()'>⬅ BACK</button><br><br>
+<button class='command-btn' onclick="loadRegionFeeds('NorthAfrica')">NORTH AFRICA</button><br><br>
+<button class='command-btn' onclick="loadRegionFeeds('WestAfrica')">WEST AFRICA</button><br><br>
+<button class='command-btn' onclick="loadRegionFeeds('CentralAfrica')">CENTRAL AFRICA</button><br><br>
+<button class='command-btn' onclick="loadRegionFeeds('EastAfrica')">EAST AFRICA</button><br><br>
+<button class='command-btn' onclick="loadRegionFeeds('SouthernAfrica')">SOUTHERN AFRICA</button>
+`,`<div id='panAfricaViewport' style='height:100%;overflow-y:auto'></div>`);
+loadRegionFeeds('WestAfrica');
+}
+function loadRegionFeeds(region){
+const countries=africaData[region];
+let html="<div style='display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px'>";
+Object.entries(countries).forEach(([country,sources])=>{
+html+=`<div class='feed-panel'><div class='feed-label'>${country}</div><div style='padding:54px 14px'>`;
+sources.forEach(src=>html+=`<p style='margin:12px 0'><a href='${src[1]}' target='_blank'>${src[0]}</a></p>`);
+html+='</div></div>'});
+html+='</div>';
+document.getElementById('panAfricaViewport').innerHTML=html;
+}
 
-        <div id="marketsMenu" class="subMenu">
-            <button onclick="showMarket(event,'overview')" class="active">Overview</button>
-            <button onclick="showMarket(event,'stocks')">Stock Heatmap</button>
-            <button onclick="showMarket(event,'crypto')">Crypto Heatmap</button>
-        </div>
+function loadRegionHub(channels,label){
+active('newsBtn');
+let feeds=channels;
+let cols=Math.min(feeds.length,3);
+let rows=Math.ceil(feeds.length/cols);
+let menu=`<button class='command-btn' onclick='loadNews()'>⬅ BACK</button><br><br>`;
+menu+=`<button class='command-btn' onclick="regionFullScreen(currentRegionChannels)">FULL SCREEN</button><br><br>`;
+menu+=`<button class='command-btn' onclick='exitFullScreen()'>EXIT FULL SCREEN</button>`;
+renderOps(menu,`<div style='display:flex;flex-direction:column;height:100%'><div id='hubChannelBar'></div><div id='channelHubViewport' style='flex:1;min-height:0;overflow-y:auto'></div></div>`);
+let bar="<div style='display:flex;gap:0;overflow-x:auto;border-bottom:1px solid #00ffee44;background:#061018;flex-shrink:0'>";
+feeds.forEach((f,i)=>bar+=`<button onclick="document.querySelectorAll('#hubChannelBar .channel').forEach(x=>x.classList.remove('active'));this.classList.add('active');switchHubChannel('${f[1]}')" class='channel' style='padding:6px 12px;border-right:1px solid #00ffee22;font-size:11px;white-space:nowrap'>${f[0]}</button>`);
+bar+='</div>';
+let hubBar=document.getElementById('hubChannelBar');if(hubBar)hubBar.innerHTML=bar;
+let html=`<div style='height:100%;display:grid;grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr);gap:2px'>`;
+feeds.forEach(f=>html+=`<div class='feed-panel'><div class='feed-label'>${f[0]}</div><iframe src='${f[1]}' allow='autoplay;encrypted-media' allowfullscreen></iframe></div>`);
+html+='</div>';
+document.getElementById('channelHubViewport').innerHTML=html;
+}
+function switchHubChannel(url){let vp=document.getElementById('channelHubViewport');if(full){vp.innerHTML=`<div style='position:relative;width:100%;height:100%'><button onclick="exitFullScreen()" style='position:absolute;top:10px;right:10px;z-index:10000;padding:8px 16px;background:#081821;border:1px solid #00ffee66;color:#00ffee;cursor:pointer;font-family:Share Tech Mono'>EXIT</button><iframe src='${url}' style='width:100%;height:100%;border:none' allow='autoplay;encrypted-media' allowfullscreen></iframe></div>`}else{vp.innerHTML=`<iframe src='${url}' style='width:100%;height:100%;border:none' allow='autoplay;encrypted-media' allowfullscreen></iframe>`}}
+let currentRegionChannels=[];
+function regionFullScreen(channels){
+full=true;currentRegionChannels=channels;
+let viewport=document.getElementById('channelHubViewport');
+document.getElementById('opsBay').style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999;border:none';let shell=document.getElementById('opsShell');if(shell)shell.classList.add('fullscreen');
+let cols=Math.min(channels.length,3);let rows=Math.ceil(channels.length/cols);
+let h=`<div style='position:relative;width:100%;height:100%'><button onclick="exitFullScreen()" style='position:absolute;top:10px;right:10px;z-index:10000;padding:8px 16px;background:#081821;border:1px solid #00ffee66;color:#00ffee;cursor:pointer;font-family:Share Tech Mono'>EXIT</button><div style='height:100%;display:grid;grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr);gap:2px'>`;
+channels.forEach(f=>h+=`<div class='feed-panel'><div class='feed-label'>${f[0]}</div><iframe src='${f[1]}' style='width:100%;height:100%;border:none' allow='autoplay;encrypted-media' allowfullscreen></iframe></div>`);
+viewport.innerHTML=h+'</div></div>';
+}
 
-        <div class="marketTicker">
-            <script type="module" src="https://widgets.tradingview-widget.com/w/en/tv-ticker-tape.js"></script>
-            <tv-ticker-tape symbols="FOREXCOM:SPXUSD,FOREXCOM:NSXUSD,FOREXCOM:DJI,BITSTAMP:BTCUSD,BITSTAMP:ETHUSD,CMCMARKETS:GOLD,TVC:SILVER,BLACKBULL:BRENT,OANDA:GBPUSD,FX_IDC:GBPNGN,BINANCE:SOLUSDT,BINANCE:AVAXUSDT,BINANCE:RENDERUSDT" item-size="compact" hover-type="performance-grid" show-hover theme="dark">
-            </tv-ticker-tape>
-        </div>
-        </div>
+function exitFullScreen(){full=false;document.getElementById('opsBay').style.cssText='';let shell=document.getElementById('opsShell');if(shell)shell.classList.remove('fullscreen');loadNews()}
+function updateChannelBar(){let bar=document.getElementById('channelBar');if(bar)bar.innerHTML=renderChannelBar(globalFeeds)}
+function renderChannelBar(feeds){
+let bar="<div style='display:flex;gap:0;overflow-x:auto;border-bottom:1px solid #00ffee44;background:#061018;flex-shrink:0'>";
+feeds.forEach((f,i)=>bar+=`<button onclick="document.querySelectorAll('#channelBar .channel').forEach(x=>x.classList.remove('active'));this.classList.add('active');idx=${i};full=true;renderNews()" class='channel' style='padding:6px 12px;border-right:1px solid #00ffee22;font-size:11px;white-space:nowrap'>${f[0]}</button>`);
+return bar+'</div>'}
+function loadNews(){
+active('newsBtn');
+renderOps(`
+<button class='command-btn' onclick="full=false;updateChannelBar();renderNews()">GLOBAL NEWS</button><br><br>
+<button class='command-btn' onclick="currentRegionChannels=africanChannels;loadRegionHub(africanChannels,'AFRICAN')">AFRICAN NEWS</button><br><br>
+<button class='command-btn' onclick="currentRegionChannels=americanChannels;loadRegionHub(americanChannels,'AMERICAN')">AMERICAN NEWS</button><br><br>
+<button class='command-btn' onclick="currentRegionChannels=asianChannels;loadRegionHub(asianChannels,'ASIAN')">ASIAN NEWS</button><br><br>
+<button class='command-btn' onclick="currentRegionChannels=chineseChannels;loadRegionHub(chineseChannels,'CHINESE')">CHINESE NEWS</button><br><br>
+<button class='command-btn' onclick="currentRegionChannels=europeanChannels;loadRegionHub(europeanChannels,'EUROPEAN')">EUROPEAN NEWS</button><br><br>
+<button class='command-btn' onclick="currentRegionChannels=russianChannels;loadRegionHub(russianChannels,'RUSSIAN')">RUSSIAN NEWS</button><br><br>
+<button class='command-btn' onclick="full=true;idx=-1;renderNews()">FULL SCREEN</button><br><br>
+<button class='command-btn' onclick='exitFullScreen()'>EXIT FULL SCREEN</button>
+`,`<div style='display:flex;flex-direction:column;height:100%'><div style='display:flex;align-items:center'><div id='channelBar' style='flex:1'></div><button onclick='loadPanAfricaHub()' style='padding:6px 12px;background:#081821;border:1px solid #00ffee55;color:#00ffee;cursor:pointer;font-family:Share Tech Mono;font-size:11px;white-space:nowrap;flex-shrink:0;transition:background 0.15s,text-shadow 0.15s' onmouseover='this.style.background="#0c2430";this.style.textShadow="0 0 8px #00ffee"' onmouseout='this.style.background="#081821";this.style.textShadow="none"'>PAN AFRICAN</button></div><div id='newsViewport' style='flex:1;min-height:0'></div></div>`);
+let currentFeeds=globalFeeds;
+document.getElementById('channelBar').innerHTML=renderChannelBar(currentFeeds);
+renderNews();
+}
 
-    <main>
+function setConflict(z){const m={iran:'https://iran.liveuamap.com/',sudan:'https://sudan.liveuamap.com/',nigeria:'https://nigeria.liveuamap.com/',sahel:'https://sahel.liveuamap.com/',drcongo:'https://drcongo.liveuamap.com/',ethiopia:'https://ethiopia.liveuamap.com/',somalia:'https://somalia.liveuamap.com/'};document.getElementById('opsViewport').innerHTML=`<iframe class='map-frame' src='${m[z]}'></iframe>`}
+function loadConflict(){active('mapBtn');renderOps(`
+<button class='command-btn' onclick=\"setConflict('iran')\">MIDDLE EAST</button><br><br>
+<button class='command-btn' onclick=\"setConflict('sudan')\">SUDAN</button><br><br>
+<button class='command-btn' onclick=\"setConflict('nigeria')\">NIGERIA</button><br><br>
+<button class='command-btn' onclick=\"setConflict('sahel')\">SAHEL</button><br><br>
+<button class='command-btn' onclick=\"setConflict('drcongo')\">DR CONGO</button><br><br>
+<button class='command-btn' onclick=\"setConflict('ethiopia')\">ETHIOPIA</button><br><br>
+<button class='command-btn' onclick=\"setConflict('somalia')\">SOMALIA</button>
+`,`<iframe class='map-frame' src='https://drcongo.liveuamap.com/'></iframe>`)}
+function setMarine(z){const f={hormuz:'https://www.marinetraffic.com/en/ais/embed/zoom:6/centery:25.9/centerx:57.6/maptype:4',bab:'https://www.marinetraffic.com/en/ais/embed/zoom:6/centery:12.6/centerx:43.3/maptype:4',suez:'https://www.marinetraffic.com/en/ais/embed/zoom:7/centery:30.5/centerx:32.3/maptype:4',bosporus:'https://www.marinetraffic.com/en/ais/embed/zoom:8/centery:41/centerx:29/maptype:4',malacca:'https://www.marinetraffic.com/en/ais/embed/zoom:5/centery:3.5/centerx:100.5/maptype:4',panama:'https://www.marinetraffic.com/en/ais/embed/zoom:8/centery:9.1/centerx:-79.7/maptype:4',gibraltar:'https://www.marinetraffic.com/en/ais/embed/zoom:8/centery:36/centerx:-5.5/maptype:4'};document.getElementById('marineFrame').innerHTML=`<iframe class='map-frame' src='${f[z]}'></iframe>`}
+function loadMarine(){active('marineBtn');renderOps(`
+<button class='command-btn' onclick=\"setMarine('hormuz')\">HORMUZ</button><br><br>
+<button class='command-btn' onclick=\"setMarine('bab')\">BAB EL MANDEB</button><br><br>
+<button class='command-btn' onclick=\"setMarine('suez')\">SUEZ</button><br><br>
+<button class='command-btn' onclick=\"setMarine('bosporus')\">BOSPORUS</button><br><br>
+<button class='command-btn' onclick=\"setMarine('malacca')\">MALACCA</button><br><br>
+<button class='command-btn' onclick=\"setMarine('panama')\">PANAMA</button><br><br>
+<button class='command-btn' onclick=\"setMarine('gibraltar')\">GIBRALTAR</button>
+`,`<div id='marineFrame' style='height:100%'></div>`);setMarine('hormuz')}
+function setFlight(z){const m={global:'https://globe.adsbexchange.com/',africa:'https://globe.adsbexchange.com/?lat=5&lon=20&zoom=3',europe:'https://globe.adsbexchange.com/?lat=50&lon=10&zoom=4',americas:'https://globe.adsbexchange.com/?lat=25&lon=-90&zoom=3',me:'https://globe.adsbexchange.com/?lat=26&lon=45&zoom=5',asia:'https://globe.adsbexchange.com/?lat=25&lon=100&zoom=3'};document.getElementById('flightFrame').innerHTML=`<iframe class='map-frame' src='${m[z]}'></iframe>`}
+function loadFlight(){active('flightBtn');renderOps(`
+<button class='command-btn' onclick=\"setFlight('global')\">GLOBAL</button><br><br>
+<button class='command-btn' onclick=\"setFlight('africa')\">AFRICA</button><br><br>
+<button class='command-btn' onclick=\"setFlight('europe')\">EUROPE</button><br><br>
+<button class='command-btn' onclick=\"setFlight('americas')\">AMERICAS</button><br><br>
+<button class='command-btn' onclick=\"setFlight('me')\">MIDDLE EAST</button><br><br>
+<button class='command-btn' onclick=\"setFlight('asia')\">ASIA</button>
+`,`<div id='flightFrame' style='height:100%'></div>`);setFlight('global')}
+const tvWidgets={
+overview:{src:'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js',cfg:{"allow_symbol_change":true,"calendar":false,"details":false,"hide_side_toolbar":false,"hide_top_toolbar":false,"hide_legend":false,"hide_volume":false,"hotlist":false,"interval":"D","locale":"en","save_image":true,"style":"1","symbol":"BINANCE:BTCUSD","theme":"dark","timezone":"Europe/London","backgroundColor":"#0F0F0F","gridColor":"rgba(242, 242, 242, 0.06)","watchlist":["BINANCE:ETHUSD","BINANCE:SOLUSDT","BINANCE:AVAXUSDT","VELOCITY:BRENT","TVC:GOLD","TVC:SILVER"],"withdateranges":true,"compareSymbols":[],"studies":["STD;Divergence%1Indicator"],"autosize":true}},
+stocks:{src:'https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js',cfg:{"dataSource":"SPX500","blockSize":"market_cap_basic","blockColor":"change","grouping":"sector","locale":"en","symbolUrl":"","colorTheme":"dark","exchanges":[],"hasTopBar":false,"isDataSetEnabled":false,"isZoomEnabled":true,"hasSymbolTooltip":true,"isMonoSize":false,"width":"100%","height":"100%"}},
+crypto:{src:'https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js',cfg:{"dataSource":"Crypto","blockSize":"market_cap_calc","blockColor":"24h_close_change|5","locale":"en","symbolUrl":"","colorTheme":"dark","hasTopBar":false,"isDataSetEnabled":false,"isZoomEnabled":true,"hasSymbolTooltip":true,"isMonoSize":false,"width":"100%","height":"100%"}},
+charts:{src:'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js',cfg:{"allow_symbol_change":true,"calendar":false,"details":false,"hide_side_toolbar":false,"hide_top_toolbar":false,"hide_legend":false,"hide_volume":false,"hotlist":false,"interval":"D","locale":"en","save_image":true,"style":"1","symbol":"BINANCE:BTCUSD","theme":"dark","timezone":"Europe/London","backgroundColor":"#0F0F0F","gridColor":"rgba(242, 242, 242, 0.06)","watchlist":["BINANCE:ETHUSD","BINANCE:SOLUSDT","BINANCE:AVAXUSDT","VELOCITY:BRENT","TVC:GOLD","TVC:SILVER"],"withdateranges":true,"compareSymbols":[],"studies":["STD;Divergence%1Indicator"],"autosize":true}}
+};
+function marketView(mode){const f=document.getElementById('marketFrame');const w=tvWidgets[mode];f.innerHTML='<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div></div>';const s=document.createElement('script');s.type='text/javascript';s.src=w.src;s.async=true;s.textContent=JSON.stringify(w.cfg);f.querySelector('.tradingview-widget-container').appendChild(s)}
+function loadMarkets(){active('marketsBtn');renderOps(`
+<button class='command-btn' onclick=\"marketView('overview')\">OVERVIEW</button><br><br>
+<button class='command-btn' onclick=\"marketView('stocks')\">STOCKS</button><br><br>
+<button class='command-btn' onclick=\"marketView('crypto')\">CRYPTO</button><br><br>
+<button class='command-btn' onclick='loadAfricanExchange()'>AFRICAN FX RATES</button>
+`,`<div id='marketFrame' style='height:100%'></div>`);marketView('overview')}
+function loadAfricanExchange(){
+const f=document.getElementById('marketFrame');
+f.innerHTML=`<div style='height:100%;overflow-y:auto;padding:20px;background:#061018;font-family:Rajdhani,sans-serif;display:flex;align-items:flex-start;justify-content:center'>
+<div style='display:flex;gap:20px;width:100%;max-width:1200px;flex-wrap:wrap;justify-content:center'>
+<div style='flex:1;min-width:300px;max-width:450px'>
+<h2 style='text-align:center;color:#00ffee;font-family:Share Tech Mono,monospace;letter-spacing:2px;text-shadow:0 0 10px #00ffee88;margin-bottom:16px'>AFRICAN CURRENCY CONVERTER</h2>
+<input type='number' id='exchAmount' placeholder='Enter amount' style='width:100%;padding:10px;margin:8px 0;font-size:16px;border:1px solid #00ffee44;border-radius:5px;background:#081821;color:#00ffee;font-family:Share Tech Mono,monospace'>
+<select id='exchFrom' style='width:100%;padding:10px;margin:8px 0;font-size:14px;border:1px solid #00ffee44;border-radius:5px;background:#081821;color:#00ffee;font-family:Share Tech Mono,monospace'></select>
+<select id='exchTo' style='width:100%;padding:10px;margin:8px 0;font-size:14px;border:1px solid #00ffee44;border-radius:5px;background:#081821;color:#00ffee;font-family:Share Tech Mono,monospace'></select>
+<button onclick='exchConvert()' style='width:100%;padding:10px;margin:8px 0;background:#081821;border:1px solid #00ffee66;color:#00ffee;font-weight:bold;cursor:pointer;font-family:Share Tech Mono,monospace;font-size:16px;border-radius:5px;transition:background 0.15s,box-shadow 0.15s'>CONVERT</button>
+<div id='exchResult' style='font-size:18px;font-weight:bold;text-align:center;margin-top:16px;color:#00ffee;text-shadow:0 0 8px #00ffee88'></div>
+<div id='exchError' style='color:#ff4444;text-align:center;margin-top:8px'></div>
+</div>
+<div style='flex:1;min-width:250px;max-width:350px'>
+<h2 style='color:#00ffee;font-family:Share Tech Mono,monospace;letter-spacing:2px;text-shadow:0 0 10px #00ffee88;margin-bottom:16px;text-align:center'>NGN EXCHANGE RATES</h2>
+<table style='width:100%;border-collapse:collapse'>
+<thead><tr><th style='border:1px solid #00ffee33;padding:10px;background:#081821;color:#00ffee;font-family:Share Tech Mono,monospace'>Currency</th><th style='border:1px solid #00ffee33;padding:10px;background:#081821;color:#00ffee;font-family:Share Tech Mono,monospace'>NGN Rate</th></tr></thead>
+<tbody id='exchTableBody'>
+<tr><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#7fd6df;text-align:center'>GBP</td><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#00ffee;text-align:center;font-family:Share Tech Mono,monospace' id='rate-gbp'>-</td></tr>
+<tr><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#7fd6df;text-align:center'>USD</td><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#00ffee;text-align:center;font-family:Share Tech Mono,monospace' id='rate-usd'>-</td></tr>
+<tr><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#7fd6df;text-align:center'>CAD</td><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#00ffee;text-align:center;font-family:Share Tech Mono,monospace' id='rate-cad'>-</td></tr>
+<tr><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#7fd6df;text-align:center'>EUR</td><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#00ffee;text-align:center;font-family:Share Tech Mono,monospace' id='rate-eur'>-</td></tr>
+<tr><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#7fd6df;text-align:center'>RUB</td><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#00ffee;text-align:center;font-family:Share Tech Mono,monospace' id='rate-rub'>-</td></tr>
+<tr><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#7fd6df;text-align:center'>CNY</td><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#00ffee;text-align:center;font-family:Share Tech Mono,monospace' id='rate-cny'>-</td></tr>
+<tr><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#7fd6df;text-align:center'>ZAR</td><td style='border:1px solid #00ffee22;padding:10px;background:#0a1520;color:#00ffee;text-align:center;font-family:Share Tech Mono,monospace' id='rate-zar'>-</td></tr>
+</tbody></table>
+</div>
+</div>
+</div>`;
+exchPopulate();exchUpdateTable()}
+const exchFixedCurrencies=[{code:'USD',country:'United States Dollar'},{code:'GBP',country:'United Kingdom Pound'},{code:'EUR',country:'Euro'},{code:'CAD',country:'Canadian Dollar'},{code:'RUB',country:'Russian Ruble'},{code:'CNY',country:'Chinese Yuan'}];
+const exchAfricanCurrencies=[{code:'NGN',country:'Nigeria'},{code:'XOF',country:'Benin (XOF)'},{code:'XOF',country:'Burkina Faso (XOF)'},{code:'XOF',country:'Guinea-Bissau (XOF)'},{code:'XOF',country:"Ivory Coast (XOF)"},{code:'XOF',country:'Mali (XOF)'},{code:'XOF',country:'Niger (XOF)'},{code:'XOF',country:'Senegal (XOF)'},{code:'XOF',country:'Togo (XOF)'},{code:'XAF',country:'Cameroon (XAF)'},{code:'XAF',country:'Central African Republic (XAF)'},{code:'XAF',country:'Chad (XAF)'},{code:'XAF',country:'Republic of the Congo (XAF)'},{code:'XAF',country:'Equatorial Guinea (XAF)'},{code:'XAF',country:'Gabon (XAF)'},{code:'KES',country:'Kenya (Shilling)'},{code:'GHS',country:'Ghana (Cedi)'},{code:'EGP',country:'Egypt (Pound)'},{code:'MAD',country:'Morocco (Dirham)'},{code:'DZD',country:'Algeria (Dinar)'},{code:'TND',country:'Tunisia (Dinar)'},{code:'SLL',country:'Sierra Leone (Leone)'},{code:'LRD',country:'Liberia (Dollar)'},{code:'ETB',country:'Ethiopia (Birr)'},{code:'TZS',country:'Tanzania (Shilling)'},{code:'UGX',country:'Uganda (Shilling)'},{code:'RWF',country:'Rwanda (Franc)'},{code:'BIF',country:'Burundi (Franc)'},{code:'MWK',country:'Malawi (Kwacha)'},{code:'MZN',country:'Mozambique (Metical)'},{code:'SZL',country:'Eswatini (Lilangeni)'},{code:'NAD',country:'Namibia (Dollar)'},{code:'BWP',country:'Botswana (Pula)'},{code:'ZMW',country:'Zambia (Kwacha)'},{code:'CDF',country:'DR Congo (Franc)'},{code:'SCR',country:'Seychelles (Rupee)'},{code:'MUR',country:'Mauritius (Rupee)'},{code:'SOS',country:'Somalia (Shilling)'},{code:'DJF',country:'Djibouti (Franc)'},{code:'ERN',country:'Eritrea (Nakfa)'},{code:'LSL',country:'Lesotho (Loti)'},{code:'AOA',country:'Angola (Kwanza)'},{code:'GMD',country:'Gambia (Dalasi)'},{code:'STD',country:'Sao Tome and Principe (Dobra)'},{code:'LYD',country:'Libya (Dinar)'},{code:'ZAR',country:'South Africa (Rand)'}].sort((a,b)=>a.country.localeCompare(b.country));
+function exchPopulate(){const all=[...exchFixedCurrencies,...exchAfricanCurrencies];const opts=all.map(c=>`<option value="${c.code}">${c.code} - ${c.country}</option>`).join('');const f=document.getElementById('exchFrom');const t=document.getElementById('exchTo');if(f&&t){f.innerHTML=opts;t.innerHTML=opts;f.value='USD';t.value='NGN'}}
+async function exchFetchRates(base){const r=await fetch('https://api.exchangerate-api.com/v4/latest/'+base);const d=await r.json();return d.rates}
+async function exchUpdateTable(){try{const rates=await exchFetchRates('NGN');const pairs={gbp:'GBP',usd:'USD',cad:'CAD',eur:'EUR',rub:'RUB',cny:'CNY',zar:'ZAR'};for(const[id,code]of Object.entries(pairs)){const el=document.getElementById('rate-'+id);if(el){const rate=rates[code];el.textContent=rate?(1/rate).toFixed(2):'0.00'}}}catch(e){}}
+async function exchConvert(){const amount=parseFloat(document.getElementById('exchAmount').value);const from=document.getElementById('exchFrom').value;const to=document.getElementById('exchTo').value;const res=document.getElementById('exchResult');const err=document.getElementById('exchError');if(isNaN(amount)||amount<=0){err.textContent='Please enter a valid amount.';res.textContent='';return}err.textContent='';res.textContent='';try{const rates=await exchFetchRates(from);const rate=rates[to];if(rate){res.textContent=amount+' '+from+' = '+(amount*rate).toFixed(2)+' '+to}else{res.textContent='Conversion not available.'}}catch(e){res.textContent='';err.textContent='Failed to fetch rates.'}}
 
-        <section id="home" class="tab active">
-            <div class="homeHero">
-                <img src="hero.png" class="heroImage">
-                <div class="heroOverlay">
-                    <h2>BSG Strategic Awareness Dashboard</h2>
-                    <p>Situational awareness is the foundation of preparedness.</p>
-                    <p>Monitor global events in real time.</p>
-                    <p class="heroTag">Stay informed. Stay ready.</p>
-                </div>
-            </div>
-        </section>
+newsBtn.onclick=loadNews;mapBtn.onclick=loadConflict;marineBtn.onclick=loadMarine;flightBtn.onclick=loadFlight;marketsBtn.onclick=loadMarkets;headlinesBtn.onclick=loadHeadlines;
+function loadHeadlines(){active('headlinesBtn');renderOps(`
+<button class='command-btn' onclick='loadHeadlines()'>REFRESH</button>
+`,`<div id='headlinesFrame' style='height:100%;overflow-y:auto;padding:20px;background:#061018'></div>`);fetchAllHeadlines()}
+async function fetchAllHeadlines(){
+const frame=document.getElementById('headlinesFrame');
+frame.innerHTML='<div style="text-align:center;color:#00ffee;font-family:Share Tech Mono,monospace;padding:40px">Loading headlines...</div>';
+let allItems=[];
+for(let i=0;i<rss.length;i++){try{let r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rss[i]));let d=await r.json();d.items.slice(0,10).forEach(item=>{const img=item.thumbnail||item.enclosure&&item.enclosure.link||'';allItems.push({title:item.title,link:item.link,pubDate:item.pubDate,source:tags[i],img:img})})}catch(e){}}
+allItems.sort((a,b)=>new Date(b.pubDate)-new Date(a.pubDate));
+if(!allItems.length){frame.innerHTML='<div style="text-align:center;color:#ff4444;padding:40px">No headlines available.</div>';return}
+frame.innerHTML='<h2 style="text-align:center;color:#00ffee;font-family:Share Tech Mono,monospace;letter-spacing:2px;text-shadow:0 0 10px #00ffee88;margin-bottom:20px">HEADLINES</h2><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px">'+allItems.map(i=>`<a href='${safeHref(i.link)}' target='_blank' style='text-decoration:none;display:block'><div style='background:#081821;border:1px solid #00ffee33;border-radius:8px;overflow:hidden;transition:border-color 0.15s,box-shadow 0.15s,transform 0.15s;height:100%'onmouseenter="this.style.borderColor='#00ffee';this.style.boxShadow='0 0 12px #00ffee44';this.style.transform='translateY(-2px)'"onmouseleave="this.style.borderColor='#00ffee33';this.style.boxShadow='none';this.style.transform='none'">${i.img?`<img src='${esc(i.img).replace(/'/g,"&#39;")}' style='width:100%;height:140px;object-fit:cover;display:block;background-color:#0a1520' onerror="this.style.display='none'">`:''}<div style='padding:12px'><div style='color:#00ffee;font-family:Share Tech Mono,monospace;font-size:11px;margin-bottom:6px'>[${esc(i.source)}]</div><div style='color:#f1f5f9;font-family:Rajdhani,sans-serif;font-size:14px;line-height:1.3'>${esc(i.title)}</div><div style='color:#7fd6df;font-size:11px;margin-top:8px;font-family:Share Tech Mono,monospace'>${i.pubDate?new Date(i.pubDate).toLocaleString('en-GB',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):''}</div></div></div></a>`).join('')+'</div>'}
+const rss=[
+'https://www.aljazeera.com/xml/rss/all.xml',
+'https://news.google.com/rss/search?q=site:apnews.com&hl=en-US&gl=US&ceid=US:en',
+'https://feeds.bbci.co.uk/news/world/rss.xml',
+'https://www.cnbc.com/id/100003114/device/rss/rss.html',
+'https://rss.dw.com/xml/rss-en-all',
+'https://www.euronews.com/rss?format=xml',
+'https://www.france24.com/en/rss',
+'https://www.theguardian.com/world/rss',
+'https://news.google.com/rss/search?q=site:reuters.com+world&hl=en-US&gl=US&ceid=US:en',
+'https://www.rt.com/rss/news/',
+'https://feeds.skynews.com/feeds/rss/world.xml'
+];
+const tags=['AJ','AP','BBC','CNBC','DW','EURO','FR24','GUARDIAN','REUTERS','RT','SKY'];let cf=0;
+document.querySelectorAll('#newsTickerWrap .channel').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#newsTickerWrap .channel').forEach(x=>x.classList.remove('active'));b.classList.add('active');cf=i;loadTicker()});
+async function loadTicker(){try{let r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(rss[cf]));let d=await r.json();newsTicker.innerHTML=d.items.slice(0,10).map(i=>`<a class='headline-link' href='${safeHref(i.link)}' target='_blank'>[${tags[cf]}] ${esc(i.title)}</a>`).join('')}catch(e){newsTicker.innerHTML='Tactical Feed Offline...'}}
 
-        <section id="live" class="tab">
-            <div id="liveSingle" class="livePlayer">
-                <iframe id="liveFrame" src="https://www.youtube.com/embed/gCNeDWCI0vo" allowfullscreen></iframe>
-            </div>
-
-            <div id="liveQuad" class="quadGrid">
-                <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-                <iframe src="https://www.youtube.com/embed/gCNeDWCI0vo"></iframe>
-                <iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
-                <iframe src="https://www.youtube.com/embed/BOy2xDU1LC8"></iframe>
-                <iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-                <iframe src="https://www.youtube.com/embed/YDvsBbKfLPA"></iframe>
-            </div>
-
-            <div id="africaQuad" class="quadGrid" style="display:none;">
-                <iframe src="https://www.youtube.com/embed/W8nThq62Vb4"></iframe>
-                <iframe src="https://www.youtube.com/embed/E8PRZmDUiPw"></iframe>
-                <iframe src="https://www.youtube.com/embed/NQjabLGdP5g"></iframe>
-                <iframe src="https://www.youtube.com/embed/Mv14aabg4mA"></iframe>
-                <iframe src="https://www.youtube.com/embed/iEpJwprxDdk"></iframe>
-                <iframe src="https://rumble.com/embed/v33aw1a/?pub=4jw3x3"></iframe>
-            </div>
-        </section>
-
-        <section id="conflict" class="tab">
-            <iframe id="conflictMainMap" src="https://iran.liveuamap.com/" style="width:100%;height:80vh;border:0;"></iframe>
-        </section>
-
-        <section id="markets" class="tab">
-            <div id="marketOverview">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                        {
-                            "colorTheme": "dark",
-                            "dateRange": "12M",
-                            "showChart": true,
-                            "locale": "en",
-                            "isTransparent": false,
-                            "showSymbolLogo": true,
-                            "width": "100%",
-                            "height": "100%"
-                        }
-                    </script>
-                </div>
-            </div>
-
-            <div id="marketStocks" style="display:none;">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-stock-heatmap.js" async>
-                        {
-                            "dataSource": "SPX500",
-                            "grouping": "sector",
-                            "blockSize": "market_cap_basic",
-                            "blockColor": "change",
-                            "locale": "en",
-                            "colorTheme": "dark"
-                        }
-                    </script>
-                </div>
-            </div>
-
-            <div id="marketCrypto" style="display:none;">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-crypto-coins-heatmap.js" async>
-                        {
-                            "dataSource": "Crypto",
-                            "blockSize": "market_cap_calc",
-                            "blockColor": "change",
-                            "locale": "en",
-                            "colorTheme": "dark"
-                        }
-                    </script>
-                </div>
-            </div>
-        </section>
-
-        <section id="aircraft" class="tab"><iframe src="https://globe.adsbexchange.com"></iframe></section>
-        <section id="marine" class="tab"><iframe src="https://www.marinetraffic.com/en/ais/embed/zoom:2/maptype:4"></iframe></section>
-        <section id="cyber" class="tab"><iframe src="https://threatmap.checkpoint.com"></iframe></section>
-        <section id="radio" class="tab"><iframe src="https://radio.garden/"></iframe></section>
-
-    </main>
-
-    <footer class="mainFooter">
-        <div class="footerTop">
-            <video autoplay muted loop playsinline>
-                <source src="RADAR3.mp4">
-            </video>
-        </div>
-        <div class="footerVersion">BSG OSINT: VBase3</div>
-        <div class="footerCenter">
-            <a href="https://BlackSurvivalGear.com">BlackSurvivalGear.com</a>
-        </div>
-    </footer>
-
-    <div id="africaDrawer">
-        <button id="africaToggle">▲ PAN AFRICAN NEWS DRAW</button>
-
-        <div id="africaContent">
-            <div class="regionButtons">
-                <button onclick="showCountries('North Africa')">North</button>
-                <button onclick="showCountries('West Africa')">West</button>
-                <button onclick="showCountries('Central Africa')">Central</button>
-                <button onclick="showCountries('East Africa')">East</button>
-                <button onclick="showCountries('Southern Africa')">South</button>
-            </div>
-
-            <div id="country-buttons"></div>
-            <div id="news-links"></div>
-        </div>
-    </div>
-
-    <script src="africaData.js"></script>
-
-    <script>
-        /* SPLASH */
-        document.addEventListener("DOMContentLoaded", function() {
-            const splash = document.getElementById("introRadar");
-            if (!splash) return;
-
-            setTimeout(() => {
-                splash.style.opacity = "0";
-                setTimeout(() => {
-                    splash.style.display = "none"
-                }, 600);
-            }, 1500);
-        });
-
-        setTimeout(() => {
-            let splash = document.getElementById("introRadar");
-            if (splash) splash.style.display = "none";
-        }, 4000);
-
-        /* CLOCK */
-        setInterval(() => {
-            document.getElementById("dateTime").textContent = new Date().toLocaleString()
-        }, 1000)
-
-        /* NAV */
-        document.querySelectorAll("nav button").forEach(btn => {
-            btn.addEventListener("click", () => {
-                if (!btn.dataset.tab) return;
-
-                document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"))
-                document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"))
-
-                btn.classList.add("active")
-                document.getElementById(btn.dataset.tab).classList.add("active")
-
-                subMenuBar.style.display = "none"
-                document.querySelectorAll(".subMenu").forEach(m => m.style.display = "none")
-
-                if (btn.dataset.tab === "live") {
-                    subMenuBar.style.display = "block"
-                    liveMenu.style.display = "flex"
-                } else if (btn.dataset.tab === "conflict") {
-                    subMenuBar.style.display = "block"
-                    conflictMenu.style.display = "flex"
-                } else if (btn.dataset.tab === "markets") {
-                    subMenuBar.style.display = "block"
-                    marketsMenu.style.display = "flex"
-                }
-            });
-        });
-
-        /* MARKETS */
-        function showMarket(e, t) {
-            document.querySelectorAll("#marketsMenu button").forEach(b => b.classList.remove("active"))
-            e.target.classList.add("active")
-
-            document.getElementById("marketOverview").style.display = "none"
-            document.getElementById("marketStocks").style.display = "none"
-            document.getElementById("marketCrypto").style.display = "none"
-
-            if (t === "overview") document.getElementById("marketOverview").style.display = "block"
-            if (t === "stocks") document.getElementById("marketStocks").style.display = "block"
-            if (t === "crypto") document.getElementById("marketCrypto").style.display = "block"
-        }
-
-        /* WEATHER */
-        document.getElementById("weatherBtn").onclick = function() {
-            window.open("https://www.windy.com", "_blank");
-        };
-
-        /* FULLSCREEN */
-        function fullscreenPlayer() {
-            let el = liveSingle;
-            if (liveQuad.style.display === "grid") el = liveQuad;
-            if (africaQuad.style.display === "grid") el = africaQuad;
-
-            if (el.requestFullscreen) el.requestFullscreen();
-        }
-
-        /* LIVE */
-        function showLive(e, c) {
-            document.querySelectorAll("#liveMenu button").forEach(b => b.classList.remove("active"))
-            e.target.classList.add("active")
-
-            liveSingle.style.display = "block"
-            liveQuad.style.display = "none"
-            africaQuad.style.display = "none"
-
-            if (c === "aj") liveFrame.src = "https://www.youtube.com/embed/gCNeDWCI0vo"
-            if (c === "arise") liveFrame.src = "https://www.youtube.com/embed/E8PRZmDUiPw"
-            if (c === "channels") liveFrame.src = "https://www.youtube.com/embed/W8nThq62Vb4"
-            if (c === "africanews") liveFrame.src = "https://www.youtube.com/embed/live_stream?channel=UC1_E8NeF5QHY2dtdLRBCCLA"
-            if (c === "rt") liveFrame.src = "https://rumble.com/embed/v33aw1a/?pub=4jw3x3"
-            if (c === "sky") liveFrame.src = "https://www.youtube.com/embed/YDvsBbKfLPA"
-            if (c === "wion") liveFrame.src = "https://www.youtube.com/embed/h9SRBxdqNcs"
-            if (c === "cgtn") liveFrame.src = "https://www.youtube.com/embed/BOy2xDU1LC8"
-            if (c === "Bloomberg") liveFrame.src = "https://www.youtube.com/embed/iEpJwprxDdk"
-
-            if (c === "quad") {
-                liveSingle.style.display = "none"
-                liveQuad.style.display = "grid"
-            }
-            if (c === "africaQuad") {
-                liveSingle.style.display = "none"
-                africaQuad.style.display = "grid"
-            }
-        }
-
-        /* AFRICA */
-        function showCountries(region) {
-            const c = document.getElementById('country-buttons');
-            const n = document.getElementById('news-links');
-            c.innerHTML = '';
-            n.innerHTML = '';
-            Object.keys(africaData[region]).forEach(country => {
-                let b = document.createElement('button');
-                b.textContent = country;
-                b.onclick = () => showNews(region, country);
-                c.appendChild(b);
-            });
-        }
-
-        function showNews(region, country) {
-            const n = document.getElementById('news-links');
-            n.innerHTML = '';
-            let links = africaData[region][country];
-            for (let i = 0; i < links.length; i += 2) {
-                let b = document.createElement('button');
-                b.innerHTML = `<a href="${links[i+1]}" target="_blank">${links[i]}</a>`;
-                n.appendChild(b);
-            }
-        }
-
-        document.getElementById("africaToggle").onclick = function() {
-            document.getElementById("africaContent").classList.toggle("active");
-        };
-    </script>
-
+const breakingFeeds=['https://feeds.bbci.co.uk/news/world/rss.xml','https://news.google.com/rss/search?q=site:reuters.com+world&hl=en-US&gl=US&ceid=US:en','https://news.google.com/rss/search?q=site:apnews.com&hl=en-US&gl=US&ceid=US:en'];
+const breakingSources=['BBC','REUTERS','AP'];
+let seenBreaking=new Set();
+async function checkBreaking(){
+let allItems=[];
+for(let i=0;i<breakingFeeds.length;i++){
+try{let r=await fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(breakingFeeds[i]));let d=await r.json();
+d.items.slice(0,5).forEach(item=>{
+let title=item.title.toLowerCase();
+if(title.includes('breaking')||title.includes('urgent')||title.includes('just in')||title.includes('developing')){
+if(!seenBreaking.has(item.link)){seenBreaking.add(item.link);allItems.push({source:breakingSources[i],title:item.title,link:item.link})}}
+})}catch(e){}}
+let banner=document.getElementById('breakingBanner');
+let track=document.getElementById('breakingTrack');
+if(allItems.length>0){
+let existing=track.innerHTML;
+let newHtml=allItems.map(a=>`<a class='breaking-link' href='${safeHref(a.link)}' target='_blank'>[${esc(a.source)}] ${esc(a.title)}</a>`).join('');
+track.innerHTML=newHtml+(existing?existing:'');
+banner.classList.add('active')}
+}
+checkBreaking();setInterval(checkBreaking,120000);
+loadTicker();loadNews();
+async function fetchPrices(){
+let gotGold=false,gotSilver=false,gotBrent=false;
+try{const r=await fetch('https://scanner.tradingview.com/global/scan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({symbols:{tickers:['TVC:GOLD','TVC:SILVER','NYMEX:BB1!']},columns:['close']})});const d=await r.json();d.data.forEach(item=>{if(item.s==='TVC:GOLD'){document.getElementById('priceGold').textContent=Math.round(item.d[0]).toLocaleString();gotGold=true}if(item.s==='TVC:SILVER'){document.getElementById('priceSilver').textContent=item.d[0].toFixed(2);gotSilver=true}if(item.s.includes('BB1')){document.getElementById('priceBrent').textContent=item.d[0].toFixed(1);gotBrent=true}})}catch(e){}
+if(!gotGold){try{const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pax-gold&vs_currencies=usd');const d=await r.json();document.getElementById('priceGold').textContent=Math.round(d['pax-gold'].usd).toLocaleString()}catch(e){}}
+if(!gotSilver){try{const r=await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/SI=F?interval=1d&range=1d'));const w=await r.json();const d=JSON.parse(w.contents);document.getElementById('priceSilver').textContent=d.chart.result[0].meta.regularMarketPrice.toFixed(2)}catch(e){}}
+if(!gotBrent){try{const r=await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/BZ=F?interval=1d&range=1d'));const w=await r.json();const d=JSON.parse(w.contents);document.getElementById('priceBrent').textContent=d.chart.result[0].meta.regularMarketPrice.toFixed(1)}catch(e){}}
+try{const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');const d=await r.json();document.getElementById('priceBtc').textContent=Math.round(d.bitcoin.usd).toLocaleString()}catch(e){}
+}
+fetchPrices();setInterval(fetchPrices,60000);
+</script>
 </body>
-
 </html>
+
+
